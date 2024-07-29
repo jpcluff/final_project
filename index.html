@@ -16,48 +16,31 @@
     <header>
         <nav class="navbar">
             <div class="title">
-                <h1>Bees</h1>
+                <h1>Alien Lifeform Database</h1>
             </div>
-            <div class="menu">
-                <div class="nav-item"><a href="about-bees.html">About Bees</a></div>
-                <div class="logo"><a href="index.html"><img src="images/hive-v2-gif-optimized-5.gif" alt="beehive"></a>
-                </div>
-                <div class="nav-item"><a href="instructions.html">Instructions</a></div>
-            </div>
+            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship" width="50"></a>
+            </div>  
         </nav>
+        <menu class="burger-menu" tabindex="0">
+        <li class="menu-toggle"><a href="#"><img src="/images/noun-burger-menu-crop.png" alt="burger menu open" width="40"></a></li>
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>
+        <li class="nav-item"><a href="#">How to Submit an Update</a></li>
+        <li class="nav-item"><a href="#"> Report an Issue</a></li>
+        <li class="nav-item"><a href="#">About the ALfDb</a></li>        
+    </menu>
     </header>
     <main class="container">
-        <div class="selector-bar">
-            <div class="form-title">
-                <label for="stateSelect">Select a US State:</label>
-            </div>
-            <div class="stateSelect">
-                <select name="stateSelect" id="stateSelect">
-                    <!-- fetch values from json -->
-                </select>
-            </div>
-            <div class="buttons">
+                <div class="buttons">
                 <div class="submit"><button class="go-button" type="button">Go</button></div>
                 <div class="submit"><button class="stop-button" type="button">Stop</button></div>
             </div>
         </div>
-        <section class="beehive-container">
-            <canvas id="canvas"></canvas>
-            <div class="beehive" id="beehive"></div>
-            <div class="alert">
+        <section class="main-container">
+                <div class="alert">
                 <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.</div>
                 <div class="closebtn" onclick="this.parentElement.style.display='none';">
                     <div class="closex">&times;</div>
-                </div>
-            </div>
-        </section>
-        <section class="stats-container">
-            <div class="stats-bar" id="stats">
-                <div class="stats">
-                    <p class="stats year">Yr. <span class="stats-yr" id="stateYear">yyyy</span></p>
-                </div>
-                <div class="stats">
-                    <p class="stats population">Pop. <span class="stats-pop" id="statePopulation">nnn,nnn</span></p>
                 </div>
             </div>
         </section>
