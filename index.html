@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="prototype alien lifeform database">
+    <meta name="keywords" content="alien, generative prompt">
+    <meta name="author" content="JPC">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <title>Alien Lifeform Database</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="title">
+                <h1>Bees</h1>
+            </div>
+            <div class="menu">
+                <div class="nav-item"><a href="about-bees.html">About Bees</a></div>
+                <div class="logo"><a href="index.html"><img src="images/hive-v2-gif-optimized-5.gif" alt="beehive"></a>
+                </div>
+                <div class="nav-item"><a href="instructions.html">Instructions</a></div>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="selector-bar">
+            <div class="form-title">
+                <label for="stateSelect">Select a US State:</label>
+            </div>
+            <div class="stateSelect">
+                <select name="stateSelect" id="stateSelect">
+                    <!-- fetch values from json -->
+                </select>
+            </div>
+            <div class="buttons">
+                <div class="submit"><button class="go-button" type="button">Go</button></div>
+                <div class="submit"><button class="stop-button" type="button">Stop</button></div>
+            </div>
+        </div>
+        <section class="beehive-container">
+            <canvas id="canvas"></canvas>
+            <div class="beehive" id="beehive"></div>
+            <div class="alert">
+                <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.</div>
+                <div class="closebtn" onclick="this.parentElement.style.display='none';">
+                    <div class="closex">&times;</div>
+                </div>
+            </div>
+        </section>
+        <section class="stats-container">
+            <div class="stats-bar" id="stats">
+                <div class="stats">
+                    <p class="stats year">Yr. <span class="stats-yr" id="stateYear">yyyy</span></p>
+                </div>
+                <div class="stats">
+                    <p class="stats population">Pop. <span class="stats-pop" id="statePopulation">nnn,nnn</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-item">
+            <p>&copy; JPC 2024</p>
+        </div>
+        <div class="footer-item">
+            <h3><a href="prototypes.html">Prototypes</a></h3>
+        </div>
+        <div class="footer-item"><a href="credits.html">Credits</a></div>
+    </footer>
+</body>
+
+</html>
