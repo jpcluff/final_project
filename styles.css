@@ -91,6 +91,7 @@ menu li.nav-item {
     display: none;
 }
 
+
 .logo {
     position: absolute;
     top: 1rem;
@@ -160,7 +161,8 @@ button {
 
 button:hover {
     background-color: black;
-    color: black;
+    color: white;
+
 }
 
 .submit {
