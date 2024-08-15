@@ -79,6 +79,7 @@ nav {
 
 menu {
     list-style-type: none;
+    background-color: blue;
 }
 
 menu li {
@@ -91,6 +92,10 @@ menu li.nav-item {
     display: none;
 }
 
+li.menu-toggle a {
+    padding: 0;
+    height: 4rem;
+}
 
 .logo {
     position: absolute;
