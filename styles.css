@@ -35,26 +35,44 @@ img {
 
 .main-container {
     display: flex;
-    flex-wrap: nowrap;
     align-items: flex-start;
     padding-bottom: 3rem;
     background-color: lightgrey;
     margin: 0 auto;
     border-radius: 1.5rem;
-    height: 100%;
+    min-height: 100%;
+}
+
+.actions 
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    min-width: fit-content;
+    /* margin: auto; */
+    border-radius: 0.5rem;
+    border: solid 0.1rem black;
 }
 
 @media only screen and (max-width: 425px) {
 .main-container {
         width: 80%;
         background-color: lightpink;
+        flex-direction: column;
     }
+.actions{
+}
 }
 
 @media only screen and (min-width: 426px) {
  .main-container {
         width: 70%;
         background-color: lightblue;
+    }
+    .actions {
+        width: 30%;
     }
 }
 
@@ -104,6 +122,7 @@ menu {
     z-index: 1; /* overlay page */
     top: 2rem; /* fixed position near top left */
     left: 2rem;
+    overflow: hidden;
 }
 
 menu li {
@@ -213,19 +232,6 @@ section {
 
 }
 
-.actions 
-{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-    /* margin: auto; */
-    width: 30%;
-    border-radius: 0.5rem;
-    border: solid 0.1rem black;
-}
-
 .actions-label {
     align-self: flex-start;
     padding: 0 1rem;
@@ -246,7 +252,8 @@ section {
 }
 
 .stats {
-width: 70%;
+min-width: 70%;
+min-height: fit-content;
 border-radius: 0.5rem;
 border: solid 0.1rem black;
 padding: 1rem 0;
