@@ -167,11 +167,6 @@ button:hover {
     background-color: grey;
 }
 
-.search-button img {
-    width: 2rem;
-    height: 2rem;
-}
-
 main {
     display: flex;
     flex-direction: column;
