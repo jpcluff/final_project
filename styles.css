@@ -33,6 +33,17 @@ img {
     max-width: 100%;
 }
 
+.main-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding-bottom: 3rem;
+    background-color: lightgrey;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    height: 100%;
+}
+
 @media only screen and (max-width: 425px) {
 .main-container {
         width: 80%;
@@ -67,8 +78,7 @@ a:hover {
 
 header {
     position: sticky;
-    padding: 1.1rem 1rem;
-    width: 100%;
+    padding: 1rem;
 }
 
 nav {
@@ -84,6 +94,7 @@ main {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    height: 100%;
 }
 
 menu {
@@ -177,15 +188,6 @@ button:hover {
     background-color: grey;
 }
 
-.main-container {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    padding-bottom: 3rem;
-    background-color: lightgrey;
-    margin: auto;
-    border-radius: 1.5rem;
-}
 
 section {
     padding: 1rem;
