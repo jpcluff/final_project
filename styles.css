@@ -97,7 +97,7 @@ menu li.nav-item {
     padding: 1rem;
 }
 
-li.menu-toggle a {
+img#menu-toggle {
     height: 4rem;
 }
 
@@ -109,6 +109,7 @@ li.menu-toggle a {
 
 .logo a img {
     border-radius: 1rem;
+    width: 5rem;
 }
 
 li.nav-item.selected a {
@@ -161,6 +162,7 @@ button:hover {
     padding: 1rem;
     border: 2px solid black;
     border-radius: 0.5rem;
+    width: 5rem;
 }
 
 .search-button:hover {
