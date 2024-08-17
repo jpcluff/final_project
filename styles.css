@@ -266,8 +266,10 @@ section {
     margin: 1rem;
 }
 
-// REMOVE
-.raw {}
+/* // REMOVE */
+.raw {
+    width: 90%;
+}
 
 .ticker-block {
     display: flex;
