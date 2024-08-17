@@ -32,56 +32,60 @@
             <li class="nav-item"><a href="/test.html">test page</a></li>
         </menu>
         <div class="search-bar">
-            <form class="search-box" id="search-box" action="/submit-url" method="post">
-                <label for="search" class="search-box-label"></label>
-                <input type="text" id="search" name="search" placeholder="Search for an alien lifeform"
-                    aria-label="Search for an alien lifeform" tabindex="1">
-                <button class="search-button" type="button" aria-label="Search button"><img class="search-button-img"
-                        src="/images/noun-search-crop.png" alt="search button"></button>
-            </form>
+            <div class="search-bar-container">
+                <form class="search-box" id="search-box" action="/submit-url" method="post">
+                    <label for="search" class="search-box-label"></label>
+                    <input type="text" id="search" name="search" placeholder="Search for an alien lifeform"
+                        aria-label="Search for an alien lifeform" tabindex="1">
+                    <button class="search-button" type="button" aria-label="Search button"><img
+                            class="search-button-img" src="/images/noun-search-crop.png" alt="search button"></button>
+                </form>
+            </div>
         </div>
         </div>
     </header>
     <main>
         <section class="ticker-block">
-            <span class="ticker-span">…Last added <i>alfName</i>…Last updated <i>alfName</i>…Last updated <i>alfName</i>…</span>
+            <span class="ticker-span">…Last added <i>alfName</i>…Last updated <i>alfName</i>…Last updated
+                <i>alfName</i>…</span>
         </section>
         <div class="main-container">
-        <section class="actions">
-            <span class="actions-label">Actions</span>
-            <div class="submit"><button class="action-button add-button" type="button">Add Alien +</button></div>
-            <div class="submit"><button class="action-button browse-button" type="button">Browse</button></div>
-        </section>
-        <section class="stats">
-            <span class="stats-label">ALfDb Statistics</span>
-            <div class="stat">
-                <p class="stat added">Aliens added: <span id="stat added-value">nnnn</span></p>
-            </div>
-            <div class="stat">
-                <p class="stat validated">Aliens validated: <span id="stat validated">nnnn</span></p>
-            </div>
-            <div class="ranked-visited">
-                <span class="ranking-label">Most visited&bsol;searched:</span>
-                <ol class="ranked-visited-list" id="ranked-visited-list">
-                    <li><i>alfName-1</i></li>
-                    <li><i>alfNamealfName</i></li>
-                    <li><i>alfName</i></li>
-                    <li><i>alfName</i></li>
-                </ol>
-            </div>
-            
-            <div class="alert">
-                <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.</div>
-                <div class="closebtn" onclick="this.parentElement.style.display='none';">
-                    <div class="closex">&times;</div>
+            <section class="actions">
+                <span class="actions-label">Actions</span>
+                <div class="submit"><button class="action-button add-button" type="button">Add Alien +</button></div>
+                <div class="submit"><button class="action-button browse-button" type="button">Browse</button></div>
+            </section>
+            <section class="stats">
+                <span class="stats-label">ALfDb Statistics</span>
+                <div class="stat">
+                    <p class="stat added">Aliens added: <span id="stat added-value">nnnn</span></p>
                 </div>
-            </div>
-        </section>
-    </div>
+                <div class="stat">
+                    <p class="stat validated">Aliens validated: <span id="stat validated">nnnn</span></p>
+                </div>
+                <div class="ranked-visited">
+                    <span class="ranking-label">Most visited&bsol;searched:</span>
+                    <ol class="ranked-visited-list" id="ranked-visited-list">
+                        <li><i>alfName-1</i></li>
+                        <li><i>alfNamealfName</i></li>
+                        <li><i>alfName</i></li>
+                        <li><i>alfName</i></li>
+                    </ol>
+                </div>
+
+                <div class="alert">
+                    <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
+                    </div>
+                    <div class="closebtn" onclick="this.parentElement.style.display='none';">
+                        <div class="closex">&times;</div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
     <footer>
         <div class="footer-item">
-            <p>&copy; JPC 2024</p>
+            <p>&copy;JPC2024</p>
         </div>
         <div class="footer-item">
             <h3><a href="prototypes.html">Prototypes</a></h3>
