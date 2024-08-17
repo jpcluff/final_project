@@ -34,9 +34,9 @@
         <div class="search-bar">
             <form class="search-box" id="search-box" action="/submit-url" method="post">
                 <label for="search" class="search-box-label"></label>
-                <input type="text" id="search" name="search" placeholder="Search alien lifeforms"
+                <input type="text" id="search" name="search" placeholder="Search for an alien lifeform"
                     aria-label="Search for an alien lifeform" tabindex="1">
-                <button class="search-button" type="button" aria-label="Search button"><img
+                <button class="search-button" type="button" aria-label="Search button"><img class="search-button-img"
                         src="/images/noun-search-crop.png" alt="search button"></button>
             </form>
         </div>
@@ -62,9 +62,9 @@
             </div>
             <div class="ranked-visited">
                 <span class="ranking-label">Most visited&bsol;searched:</span>
-                <ol id="visited-chart-ranking">
-                    <li><i>alfName</i></li>
-                    <li><i>alfName</i></li>
+                <ol class="ranked-visited-list" id="ranked-visited-list">
+                    <li><i>alfName-1</i></li>
+                    <li><i>alfNamealfName</i></li>
                     <li><i>alfName</i></li>
                     <li><i>alfName</i></li>
                 </ol>
@@ -78,6 +78,7 @@
             </div>
         </section>
     </div>
+    </main>
     <footer>
         <div class="footer-item">
             <p>&copy; JPC 2024</p>
@@ -87,7 +88,6 @@
         </div>
         <div class="footer-item"><a href="credits.html">Credits</a></div>
     </footer>
-    </main>
 </body>
 
 </html>

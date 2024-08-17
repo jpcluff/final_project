@@ -9,7 +9,7 @@ function menuToggle() {
     if (!menuOpen) {
         menuToggleImg.src = "/images/noun-close-crop.png";
         menuToggleImg.alt = "burger menu close";
-        menu.style.backgroundColor = "white";
+        // menu.style.backgroundColor = "white";
         menuOpen = true;
         menuItems.forEach(listItem => {
             listItem.style.display = 'flex';
@@ -17,10 +17,10 @@ function menuToggle() {
     } else {
         menuToggleImg.src = "/images/noun-burger-menu-crop.png";
         menuToggleImg.alt = "burger menu open";
-        menu.style.backgroundColor = "transparent";
+        // menu.style.backgroundColor = "transparent";
         menuOpen = false; 
         menuItems.forEach(listItem => {
-            listItem.style.display = 'none';
+        listItem.style.display = 'none';
         });
     }
 }

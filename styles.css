@@ -33,18 +33,20 @@ img {
     max-width: 100%;
 }
 
+
+
 .main-container {
     display: flex;
-    align-items: flex-start;
-    padding-bottom: 3rem;
+    flex-direction: row;
+    justify-content: flex-start;
     background-color: lightgrey;
     margin: 0 auto;
     border-radius: 1.5rem;
-    min-height: 100%;
+    align-items: center;
+    min-width: 80%;
 }
 
-.actions 
-{
+.actions {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -57,20 +59,32 @@ img {
 }
 
 @media only screen and (max-width: 425px) {
-.main-container {
-        width: 80%;
+    .main-container {
         background-color: lightpink;
         flex-direction: column;
+        justify-content: space-between;
+        width: 90%;
     }
-.actions{
-}
+
+    .title {
+        width: 50%;
+    }
+
+    .actions {
+flex-direction: column;
+justify-content: center;
+        width: 90%;
+
+    }
 }
 
-@media only screen and (min-width: 426px) {
- .main-container {
-        width: 70%;
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+    .main-container {
+        min-width: 70%;
         background-color: lightblue;
+        flex-direction: column;
     }
+
     .actions {
         width: 30%;
     }
@@ -79,6 +93,8 @@ img {
 h1 {
     margin: auto;
     font-size: 2rem;
+    text-align: center;
+    text-wrap: wrap;
 }
 
 a {
@@ -95,17 +111,24 @@ a:hover {
 }
 
 header {
+    display: flex;
+    flex-direction: column;
     position: sticky;
     padding: 1rem;
 }
 
 nav {
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;
-    margin: auto;
     width: 100%;
+}
+
+.title {
+    padding: 1rem;
+    margin: auto;
 }
 
 main {
@@ -118,11 +141,11 @@ main {
 menu {
     list-style-type: none;
     height: 100%;
-    position: fixed;
-    z-index: 1; /* overlay page */
-    top: 2rem; /* fixed position near top left */
+    position: absolute;
+    z-index: 1;
+    /* overlay page */
+    /* fixed position near top left */
     left: 2rem;
-    overflow: hidden;
 }
 
 menu li {
@@ -142,7 +165,7 @@ img#menu-toggle {
 .logo {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    right: 2rem;
 }
 
 .logo a img {
@@ -150,31 +173,49 @@ img#menu-toggle {
     width: 5rem;
 }
 
-li.nav-item.selected a {
+.nav-item {
+    padding: 0.5rem;
+    background-color: white;
+}
+
+.nav-item.selected a {
     background-color: black;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 1rem;
     color: white;
 }
 
 .nav-item a:hover {
     text-decoration: underline;
+    padding: 0.5rem;
 }
 
 .nav-item a:active {
     background-color: grey;
     text-decoration: none;
+    border-radius: 0.5rem;
+    width: 100%;
 }
 
 
 button:hover {
     background-color: black;
     color: white;
+    padding: 0.5rem;
 
 }
 
 .search-bar {
-    display: block;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    max-width: 50%;
+    height: 4.4rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid black;
 }
 
 .search-box {
@@ -183,30 +224,32 @@ button:hover {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: auto;
-    width: 50%;
-    height: 4.4rem;
-    border-radius: 0.5rem;
-    border: 0.1rem solid black;
-    text-align: left;
+    width: 100%;
+}
+
+input#search {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: large;
+    padding: 0.5rem;
+}
+
+input#search:focus {
+    outline: none;
 }
 
 .search-button {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     padding: 1rem;
     border: 2px solid black;
     border-radius: 0.5rem;
     width: 5rem;
+    background-color: white;
 }
 
 .search-button:hover {
     background-color: grey;
 }
-
 
 section {
     padding: 1rem;
@@ -214,22 +257,24 @@ section {
 }
 
 // REMOVE
-.raw {
-}
+.raw {}
 
-.ticker-block {     
+.ticker-block {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    max-width: 80%;
+
 }
+
 .ticker-span {
-    flex-wrap: nowrap;
+    text-wrap: nowrap;
     border: solid 0.2rem black;
     padding: 1rem;
-    border-radius: 0.5rem;
-    margin: auto;
-
+    min-width: 50%;
+    overflow: hidden;
 }
 
 .actions-label {
@@ -251,12 +296,15 @@ section {
     border-radius: 0.5rem;
 }
 
+.submit {
+    padding: 0.2rem;
+}
+
 .stats {
-min-width: 70%;
-min-height: fit-content;
-border-radius: 0.5rem;
-border: solid 0.1rem black;
-padding: 1rem 0;
+    min-width: 50%;
+    border-radius: 0.5rem;
+    border: solid 0.1rem black;
+    padding: 1rem 0;
 }
 
 .stats-label {
@@ -266,21 +314,27 @@ padding: 1rem 0;
 }
 
 .stat {
+    align-self: flex-start;
     padding: 0.5rem 1rem;
 }
 
 .ranking-label {
     padding: 1rem;
 }
+
 .ranked-visited {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;
-    /* margin: auto; */
-    width: 100%;
-    height: 100%;
+}
+
+.ranked-visited-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
 footer {
