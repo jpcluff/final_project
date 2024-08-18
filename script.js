@@ -25,7 +25,15 @@ function menuToggle() {
     }
 }
 
-fetch('https://www.wikitable2json.com/api/List_of_fictional_alien_species:_B?keyRows=1')
+const wikiurl = "https://www.wikitable2json.com/api/";
+const wikiPageRoot = "List_of_fictional_alien_species:_";    
+// key-value format using the first row as keys
+const keyRows= "?keyRows=1";
+let alphabet = ["A"];
+let letter = alphabet[0]; // ,"B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+let url = `${wikiurl + wikiPageRoot + letter + keyRows}`;
+
+fetch(url)
     .then(response => response.json())
     .then(data => {
         let rawElement = document.getElementById('raw');
@@ -38,3 +46,5 @@ fetch('https://www.wikitable2json.com/api/List_of_fictional_alien_species:_B?key
     .catch(error => {
         console.error('Error fetching data:', error);
     });
+
+         
