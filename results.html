@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="prototype alien lifeform database">
+    <meta name="keywords" content="alien, generative prompt search results">
+    <meta name="author" content="JPC">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <script defer src="script.js"></script>
+    <title>Alien Lifeform Database</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="title">
+                <h1>Alien Lifeform Database</h1>
+            </div>
+            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship"></a>
+            </div>
+        </nav>
+        <menu class="burger-menu" tabindex="0">
+            <li class="menu-toggle"><a href="#"><img id="menu-toggle" src="/images/noun-burger-menu-crop.png"
+                        alt="burger menu open"></a></li>
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>
+            <li class="nav-item"><a href="#">How to Submit an Update</a></li>
+            <li class="nav-item"><a href="#"> Report an Issue</a></li>
+            <li class="nav-item"><a href="#">About the ALfDb</a></li>
+            <li class="nav-item"><a href="/test.html">test page</a></li>
+            <li class="nav-item selected"><a href="results.html">Results</a></li>
+        </menu>
+        <div class="search-bar">
+            <div class="search-bar-container">
+                <form class="search-box" id="search-box" action="/submit-url" method="post">
+                    <label for="search" class="search-box-label"></label>
+                    <input type="text" id="search" name="search" placeholder="Search for an alien lifeform"
+                        aria-label="Search for an alien lifeform" tabindex="1">
+                    <button class="search-button" type="button" aria-label="Search button"><img
+                            class="search-button-img" src="/images/noun-search-crop.png" alt="search button"></button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </header>
+    <main>
+        <div class="search-results-header">
+            <h2>Search Results</h2>
+            <div class="search-results-count">
+                <h3>Showing <span id="page-count-min">1</span>-<span id="page-count-max">10</span> of <span id="result-count">results</span></h3>
+            </div>
+        </div>
+        <section class="search-results">
+            <h4 class="alfName" id="alfName">alfName</h4>
+            <div class="search-result">
+                <div class="search-result-image">
+                    <img class="img-search-result" src="images/noun-alien-crop.png" alt="alien in a spaceship"
+                        width="200px ">
+                </div>
+                <div class="search-result-text">
+                    <h5>Overview</h5>
+                    <p class="result-summary" id="result-summary">Alien Lifeform Description Lorem ipsum dolor sit amet,
+                        consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                        nec, pellentesque eu, pretium.</p>
+                </div>
+                <!-- actions hidden by default -->
+                <div class="search-result-actions">
+                    <button class="action-button add-button" type="button">Add Alien +</button>
+                    <button class="action-button browse-button" type="button">Browse</button>
+            </div>
+        </section>
+        <div class="alert">
+            <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
+            </div>
+            <div class="closebtn" onclick="this.parentElement.style.display='none';">
+                <div class="closex">&times;</div>
+            </div>
+        </div>
+        </section>
+        </div>
+        <div class="pagination">
+            <div class="pagination-button" id="previous-page">Previous</div>
+            <div class="pagination">Page <span id="page-number">1</span> of <span id="page-count">1</span></div>
+        </div>
+        <div class="pagination-button" id="next-page">Next</div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-item">
+            <p>&copy;JPC2024</p>
+        </div>
+        <div class="footer-item">
+            <h3><a href="prototypes.html">Prototypes</a></h3>
+        </div>
+        <div class="footer-item"><a href="credits.html">Credits</a></div>
+    </footer>
+</body>
+
+</html>
