@@ -1,3 +1,6 @@
+import { accessSync, mkdirSync, writeFileSync } from "node:fs";
+import fetch from "node-fetch";
+
 // using https://www.wikitable2json.com/ API to get table data from wikipedia 
 const wikiurl = "https://www.wikitable2json.com/api/";
 const wikiPageRoot = "List_of_fictional_alien_species:_";    
@@ -16,7 +19,6 @@ function fetchAndProcessData(url) {
                 let childArray = data[0];
                 let newArray = [];
                 childArray.forEach(item => {
-                    // Modify this part based on the structure of your JSON objects
                     newArray.push({
                         name: item.Name,
                         source: item.Source
@@ -24,29 +26,48 @@ function fetchAndProcessData(url) {
                 });
                 return newArray;
             } else {
-                console.error('Unexpected JSON structure');
+                console.error("Unexpected JSON structure");
                 return [];
             }
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
+            console.error("Error fetching data:", error);
             return [];
         });
 }
 
+function createAlienRefListJsonFile(alienRefListData, letter) {
+    console.log(`Creating JSON file for letter ${letter} with data`);
+    let json = JSON.stringify(alienRefListData);
+    let filename = `server\\${letter}_alienRefList.json`;
+    writeFileSync(filename, json, "utf8", (err) => {
+        if (err) {
+            console.error("Error writing file:", err);
+        } else {
+            console.log(`File ${filename} created successfully.`);
+        }
+    });
+}
+
 function buildAlienRefList() {
-    let alienRefList = [];
     let promises = [];
     alphabet.forEach(letter => {
-        let url = `"${wikiurl + wikiPageRoot + letter + keyRows}"`;
-        promises.push(fetchAndProcessData(url));
+        let url = wikiurl + wikiPageRoot + letter + keyRows; // Construct the URL
+        promises.push(
+            fetchAndProcessData(url).then(result => {
+                createAlienRefListJsonFile(result, letter);
+            })
+        );
     });
 
     Promise.all(promises)
-        .then(results => {
-            results.forEach(result => {
-                alienRefList = alienRefList.concat(result);
-            });
-            console.log(alienRefList);
+        .then(() => {
+            console.log("All JSON files created successfully.");
+        })
+        .catch(error => {
+            console.error("Error processing data:", error);
         });
 }
+
+// Call the function to build the alien reference lists
+buildAlienRefList();
