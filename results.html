@@ -50,43 +50,61 @@
         <div class="search-results-header">
             <h2>Search Results</h2>
             <div class="search-results-count">
-                <h3>Showing <span id="page-count-min">1</span>-<span id="page-count-max">10</span> of <span id="result-count">results</span></h3>
+                <h3>Showing page <span id="page-count-min">1</span> of <span id="page-count-max">10</span></h3>
+                <h3><span id="result-count">1</span> alien matched to search.</h3>
             </div>
         </div>
-        <section class="search-results">
-            <h4 class="alfName" id="alfName">alfName</h4>
-            <div class="search-result">
-                <div class="search-result-image">
-                    <img class="img-search-result" src="images/noun-alien-crop.png" alt="alien in a spaceship"
-                        width="200px ">
+        <div class="main-container">
+            <section class="search-results">
+                <h4 class="alfName" id="alfName">alfName</h4>
+                <div class="search-result">
+                    <div class="search-result-text">
+                        <h5>Overview</h5>
+                        <p class="search-result-summary" id="result-summary">Alien Lifeform Description Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis                             natoque
+                            penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+                    </div>
+                    <div class="search-result-image">
+                        <img class="img-search-result" src="images/noun-alien-crop.png" alt="alien in a spaceship">
+                    </div>
+                    <!-- actions hidden by default -->
+                    <div class="search-result-actions" style="display:none">
+                        <button class="action-button add-button" type="button">Add Alien +</button>
+                        <button class="action-button browse-button" type="button">Browse</button>
+                    </div>
+            </section>
+            <section class="search-results">
+                <h4 class="alfName" id="alfName">alfName</h4>
+                <div class="search-result">
+                    <div class="search-result-text">
+                        <h5>Overview</h5>
+                        <p class="search-result-summary" id="result-summary">Alien Lifeform Description Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis                             natoque
+                            penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+                    </div>
+                    <div class="search-result-image">
+                        <img class="img-search-result" src="images/noun-alien-crop.png" alt="alien in a spaceship">
+                    </div>
+                    <!-- actions hidden by default -->
+                    <div class="search-result-actions" style="display:none">
+                        <button class="action-button add-button" type="button">Add Alien +</button>
+                        <button class="action-button browse-button" type="button">Browse</button>
+                    </div>
+            </section>
+            <!-- alert hidden by default -->
+            <div class="alert">
+                <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
                 </div>
-                <div class="search-result-text">
-                    <h5>Overview</h5>
-                    <p class="result-summary" id="result-summary">Alien Lifeform Description Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                        nec, pellentesque eu, pretium.</p>
+                <div class="closebtn" onclick="this.parentElement.style.display='none';">
+                    <div class="closex">&times;</div>
                 </div>
-                <!-- actions hidden by default -->
-                <div class="search-result-actions">
-                    <button class="action-button add-button" type="button">Add Alien +</button>
-                    <button class="action-button browse-button" type="button">Browse</button>
             </div>
-        </section>
-        <div class="alert">
-            <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
-            </div>
-            <div class="closebtn" onclick="this.parentElement.style.display='none';">
-                <div class="closex">&times;</div>
-            </div>
-        </div>
-        </section>
+            </section>
         </div>
         <div class="pagination">
             <div class="pagination-button" id="previous-page">Previous</div>
-            <div class="pagination">Page <span id="page-number">1</span> of <span id="page-count">1</span></div>
-        </div>
-        <div class="pagination-button" id="next-page">Next</div>
+            <div class="pagination">
+            <h3>Page <span id="page-number">1</span> of <span id="page-count">1</span></h3>
+            </div>
+            <div class="pagination-button" id="next-page">Next</div>
         </div>
     </main>
     <footer>
