@@ -25,26 +25,58 @@ function menuToggle() {
     }
 }
 
-const wikiurl = "https://www.wikitable2json.com/api/";
-const wikiPageRoot = "List_of_fictional_alien_species:_";    
-// key-value format using the first row as keys
-const keyRows= "?keyRows=1";
-let alphabet = ["A"];
-let letter = alphabet[0]; // ,"B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-let url = `${wikiurl + wikiPageRoot + letter + keyRows}`;
+// const wikiurl = "https://www.wikitable2json.com/api/";
+// const wikiPageRoot = "List_of_fictional_alien_species:_";    
+// // key-value format using the first row as keys
+// const keyRows= "?keyRows=1";
+// let alphabet = ["A"];
+// let letter = alphabet[0]; // ,"B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+// let url = `${wikiurl + wikiPageRoot + letter + keyRows}`;
 
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        let rawElement = document.getElementById('raw');
-        if (rawElement) {
-            rawElement.innerHTML = JSON.stringify(data, null, 2);
+// fetch(url)
+//     .then(response => response.json())
+//     .then(data => {
+//         let rawElement = document.getElementById('raw');
+//         if (rawElement) {
+//             rawElement.innerHTML = JSON.stringify(data, null, 2);
+//         } else {
+//             console.error('Error: Element with id "raw" not found.');
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error fetching data:', error);
+//     });
+
+
+let alienRefList = JSON.parse([
+    {
+        "name": "Aaamazzarite",
+        "source": "Star Trek: The Motion Picture"
+    },
+    {
+        "name": "Aalaag",
+        "source": "Gordon R. Dickson's Way of the Pilgrim"
+    },
+    {
+        "name": "Abh",
+        "source": "Crest of the Stars"
+    },
+    {
+        "name": "Abductors",
+        "source": " , Squee"
+    }
+])
+
+function searchBar() {
+    let input = document.getElementById('search-bar').value;
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('species');
+    for (let i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = 'none';
         } else {
-            console.error('Error: Element with id "raw" not found.');
+            x[i].style.display = 'list-item';
         }
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
-
+    }
+}
          
