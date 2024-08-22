@@ -269,22 +269,23 @@ input#search:focus {
 }
 
 .search-matching-list {
-    list-style: none;
+    display: inline-block;
     margin: 0;
     padding: 0;
+    background-color: tomato;
 }
 
-.search-matching-list li {
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
+/* .search-matching-list li {
+    background-color: lime;
+    border: 1px solid black;
     margin-top: -1px;
     padding: 12px;
     text-align: left;
 }
 
 .search-matching-list li:hover {
-    background-color: #ddd;
-}
+    background-color: magenta;
+} */
 
 section {
     padding: 1rem;

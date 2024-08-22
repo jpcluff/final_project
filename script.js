@@ -18,65 +18,84 @@ function menuToggle() {
         menuToggleImg.src = "/images/noun-burger-menu-crop.png";
         menuToggleImg.alt = "burger menu open";
         // menu.style.backgroundColor = "transparent";
-        menuOpen = false; 
+        menuOpen = false;
         menuItems.forEach(listItem => {
-        listItem.style.display = 'none';
+            listItem.style.display = "none";
         });
     }
 }
 
-// const wikiurl = "https://www.wikitable2json.com/api/";
-// const wikiPageRoot = "List_of_fictional_alien_species:_";    
-// // key-value format using the first row as keys
-// const keyRows= "?keyRows=1";
-// let alphabet = ["A"];
-// let letter = alphabet[0]; // ,"B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-// let url = `${wikiurl + wikiPageRoot + letter + keyRows}`;
+// load & validate alienRefList from JSON file
+let alienRefList = JSON.parse('[{"name":"Aaamazzarite","source":"Star Trek: The Motion Picture"},{"name":"Aalaag","source":"Gordon R. Dickson\'s Way of the Pilgrim"},{"name":"Aaroun","source":"The Orville"},{"name":"Abh","source":"Crest of the Stars"},{"name":"Abductors","source":"Squee"}]');
+const Ajv = require('ajv');
+const ajv = new Ajv();
 
-// fetch(url)
-//     .then(response => response.json())
-//     .then(data => {
-//         let rawElement = document.getElementById('raw');
-//         if (rawElement) {
-//             rawElement.innerHTML = JSON.stringify(data, null, 2);
-//         } else {
-//             console.error('Error: Element with id "raw" not found.');
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error fetching data:', error);
-//     });
-
-
-let alienRefList = JSON.parse([
-    {
-        "name": "Aaamazzarite",
-        "source": "Star Trek: The Motion Picture"
+const schema = {
+  "required": ["name", "source"],
+  "properties": {
+    "name": {
+      "type": "string"
     },
-    {
-        "name": "Aalaag",
-        "source": "Gordon R. Dickson's Way of the Pilgrim"
-    },
-    {
-        "name": "Abh",
-        "source": "Crest of the Stars"
-    },
-    {
-        "name": "Abductors",
-        "source": " , Squee"
+    "source": {
+      "type": "string"
     }
-])
+  }
+};
 
-function searchBar() {
-    let input = document.getElementById('search-bar').value;
-    input = input.toLowerCase();
-    let x = document.getElementsByClassName('species');
-    for (let i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display = 'none';
-        } else {
-            x[i].style.display = 'list-item';
-        }
-    }
+const validate = ajv.compile(schema);
+
+alienRefList.forEach((alien) => {
+  const valid = validate(alien);
+  if (!valid) {
+    console.error(validate.errors);
+  }
+});
+
+// Get input element and results list
+let search = document.getElementById("search");
+let results = document.getElementById("search-matching-list");
+let searchButton = document.getElementById("search-button");
+let currentFocusJSON = -1;
+// Add event listener to input element
+
+search.addEventListener("input", suggestAliens);
+search.addEventListener("click", () => {
+	search.select();
+});
+searchButton.addEventListener("click", () => {
+	if(search.value !== "") {
+		alert(search.value);
+	}
+});
+
+function suggestAliens() {
+    let suggest = [];
+let input = this.value.trim();
+if(input.length) {
+    suggest = alienRefList.filter((keyword) => {
+        return keyword.search.toLowerCase().includes(input.toLowerCase());
+    });
 }
-         
+displayJSON(suggest);
+if(!suggest.length) {
+    result.innerHTML = "";
+}
+}
+
+function displayJSON(suggest) {
+    currentFocusJSON = -1;
+    const content = suggest.map((list) => {
+        const alien = list.search;
+        return `<li class="item" onclick="selectInputJSON('${alien}')">${HighlightJSON(alien)}</li>`;
+    });
+
+    // Clear previous results
+    results.innerHTML = '';
+
+    // Create a new li element
+    const li = document.createElement('li');
+    li.innerHTML = content.join("");
+
+    // Append the li element to the results ul element
+    results.appendChild(li);
+}

@@ -39,6 +39,7 @@ function fetchAndProcessData(url) {
 function createAlienRefListJsonFile(alienRefListData, letter) {
     console.log(`Creating JSON file for letter ${letter} with data`);
     let json = JSON.stringify(alienRefListData);
+    // let wrappedResult =  `{"alienRefList": ${json}}`;
     let filename = `server\\${letter}_alienRefList.json`;
     writeFileSync(filename, json, "utf8", (err) => {
         if (err) {

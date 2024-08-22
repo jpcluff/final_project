@@ -35,13 +35,14 @@
         </menu>
         <div class="search-bar">
             <div class="search-bar-container">
-                <form class="search-box" id="search-box" action="/submit-url" method="post">
+                <form autocomplete="off" class="search-box" id="search-box" action="#">
                     <label for="search" class="search-box-label"></label>
                     <input type="text" id="search" name="search" placeholder="Search for an alien lifeform"
                         aria-label="Search for an alien lifeform" tabindex="1">
-                    <ul class="search-matching-list" id="search-matching-list" role="listbox" aria-label="Results matching search"></ul>
-                    <button class="search-button" type="button" aria-label="Search button"><img
+                    <button class="search-button" id="search-button" aria-label="Search button"><img
                             class="search-button-img" src="/images/noun-search-crop.png" alt="search button"></button>
+                    <div class="search-matching-list" id="search-matching-list" role="listbox"
+                        aria-label="Results matching search"></div>
                 </form>
             </div>
         </div>
@@ -75,7 +76,7 @@
                         <li><i>alfName</i></li>
                     </ol>
                 </div>
-            <!-- alert hidden by default -->
+                <!-- alert hidden by default -->
                 <div class="alert">
                     <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
                     </div>
