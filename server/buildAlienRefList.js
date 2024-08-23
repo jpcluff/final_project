@@ -19,26 +19,37 @@ try {
     mkdirSync('data')
   }
 
+//  verify the response data structure 
+ function verifyResponseData(data) {
+    if (!Array.isArray(data)) {
+        return false;
+    }
+    if (data.length === 0 || !Array.isArray(data[0])) {
+        return false;
+    }
+    if (data[0].length === 0 || typeof data[0][0] !== "object") {
+        return false;
+    }
+    return true;
+}
+
 function fetchAndProcessData(url) {
     return fetch(url)
         .then(response => response.json())
         .then(data => {
-            // Assuming the JSON response structure is:
-            // data = [ [ { ... }, { ... }, ... ] ]
-            if (Array.isArray(data) && data.length > 0 && Array.isArray(data[0])) {
-                let childArray = data[0];
-                let newArray = [];
-                childArray.forEach(item => {
-                    newArray.push({
-                        name: item.Name,
-                        source: item.Source
-                    });
-                });
-                return newArray;
-            } else {
-                console.error("Unexpected JSON structure");
+            if (!verifyResponseData(data)) {
+                console.error("Unexpected structure");
                 return [];
             }
+            let childArray = data[0];
+            let newArray = [];
+            childArray.forEach(item => {
+                newArray.push({
+                    name: item.Name,
+                    source: item.Source
+                });
+            });
+            return newArray;
         })
         .catch(error => {
             console.error("Error fetching data:", error);
@@ -49,7 +60,6 @@ function fetchAndProcessData(url) {
 function createAlienRefListJsonFile(alienRefListData, letter) {
     console.log(`Creating JSON file for letter ${letter} with data`);
     let json = JSON.stringify(alienRefListData);
-    // let wrappedResult =  `{"alienRefList": ${json}}`;
     letter = letter.toLowerCase();
     let filename = `data\\${letter}_alienRefList.json`;
     writeFileSync(filename, json, "utf8", (err) => {

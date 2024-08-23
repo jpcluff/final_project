@@ -1,1 +1,182 @@
-[{"name":"L1Z1X Mindnet","source":"Twilight Imperium"},{"name":"Lagomorphic Humanoids","source":"Adventure Time: Distant Lands"},{"name":"Lallorans","source":"DC Comics' Legion of Super-Heroes"},{"name":"Lance Corporal Dororo","source":"Sgt. Frog"},{"name":"Large Nostril People of Boodie-Nen","source":"Invader Zim"},{"name":"Lavos","source":"Square-Enix's Chrono Trigger"},{"name":"Laxidasians","source":"Marvel Comics"},{"name":"Lectroids","source":"The Adventures of Buckaroo Banzai Across the Eighth Dimension"},{"name":"Leerans","source":"K. A. Applegate's Animorphs"},{"name":"Lekgolo","source":"Halo"},{"name":"Legislators","source":"Captive State"},{"name":"Lenny Longlegs","source":"Adventure Time: Distant Lands"},{"name":"Leoniders","source":"Noon Universe"},{"name":"Lepidopterran","source":"Ben 10"},{"name":"Leviathan","source":"Farscape"},{"name":"Life Fibers","source":"Kill la Kill"},{"name":"Liir","source":"Sword of the Stars"},{"name":"Limax","source":"Ben 10"},{"name":"Lipul","source":"Star Trek"},{"name":"Lithians","source":"James Blish's A Case of Conscience"},{"name":"Little Guys","source":"2300 AD"},{"name":"Livrai","source":"Joe Haldeman's Mindbridge"},{"name":"Lk (fungi type alien)","source":"Star Control 3"},{"name":"Llorn","source":"The Haunted Stars"},{"name":"Loboan","source":"Ben 10"},{"name":"Lobster Men","source":"X-COM: Terror from the Deep"},{"name":"Locust","source":"Gears of War"},{"name":"Logrians","source":"The History of the Galaxy series"},{"name":"Lohvo","source":"Sluggy Freelance"},{"name":"Lombaxes","source":"Ratchet & Clank"},{"name":"Loomi","source":"Space Patrol"},{"name":"Loric","source":"Lorien Legacies"},{"name":"Lorwardians","source":"Kim Possible"},{"name":"Lucratians","source":"Utopia"},{"name":"Lumas","source":"Super Mario Galaxy, Super Mario Galaxy 2"},{"name":"Luminoth","source":"Metroid Prime 2: Echoes"},{"name":"Lunarians","source":"Final Fantasy IV"},{"name":"Lunarian","source":"Touhou Project"},{"name":"Lunatone","source":"Pokémon"},{"name":"Lurian","source":"Star Trek"},{"name":"Lurmans","source":"Doctor Who"},{"name":"Luxans","source":"Farscape"},{"name":"Ly-Cilph","source":"The Night's Dawn Trilogy"},{"name":"Lycocians","source":"Star Trek"},{"name":"Lyrans","source":"Star Fleet Universe"}]
+[
+    {
+        "name": "L1Z1X Mindnet",
+        "source": "Twilight Imperium"
+    },
+    {
+        "name": "Lagomorphic Humanoids",
+        "source": "Adventure Time: Distant Lands"
+    },
+    {
+        "name": "Lallorans",
+        "source": "DC Comics' Legion of Super-Heroes"
+    },
+    {
+        "name": "Lance Corporal Dororo",
+        "source": "Sgt. Frog"
+    },
+    {
+        "name": "Large Nostril People of Boodie-Nen",
+        "source": "Invader Zim"
+    },
+    {
+        "name": "Lavos",
+        "source": "Square-Enix's Chrono Trigger"
+    },
+    {
+        "name": "Laxidasians",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Lectroids",
+        "source": "The Adventures of Buckaroo Banzai Across the Eighth Dimension"
+    },
+    {
+        "name": "Leerans",
+        "source": "K. A. Applegate's Animorphs"
+    },
+    {
+        "name": "Lekgolo",
+        "source": "Halo"
+    },
+    {
+        "name": "Legislators",
+        "source": "Captive State"
+    },
+    {
+        "name": "Lenny Longlegs",
+        "source": "Adventure Time: Distant Lands"
+    },
+    {
+        "name": "Leoniders",
+        "source": "Noon Universe"
+    },
+    {
+        "name": "Lepidopterran",
+        "source": "Ben 10"
+    },
+    {
+        "name": "Leviathan",
+        "source": "Farscape"
+    },
+    {
+        "name": "Life Fibers",
+        "source": "Kill la Kill"
+    },
+    {
+        "name": "Liir",
+        "source": "Sword of the Stars"
+    },
+    {
+        "name": "Limax",
+        "source": "Ben 10"
+    },
+    {
+        "name": "Lipul",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Lithians",
+        "source": "James Blish's A Case of Conscience"
+    },
+    {
+        "name": "Little Guys",
+        "source": "2300 AD"
+    },
+    {
+        "name": "Livrai",
+        "source": "Joe Haldeman's Mindbridge"
+    },
+    {
+        "name": "Lk (fungi type alien)",
+        "source": "Star Control 3"
+    },
+    {
+        "name": "Llorn",
+        "source": "The Haunted Stars"
+    },
+    {
+        "name": "Loboan",
+        "source": "Ben 10"
+    },
+    {
+        "name": "Lobster Men",
+        "source": "X-COM: Terror from the Deep"
+    },
+    {
+        "name": "Locust",
+        "source": "Gears of War"
+    },
+    {
+        "name": "Logrians",
+        "source": "The History of the Galaxy series"
+    },
+    {
+        "name": "Lohvo",
+        "source": "Sluggy Freelance"
+    },
+    {
+        "name": "Lombaxes",
+        "source": "Ratchet & Clank"
+    },
+    {
+        "name": "Loomi",
+        "source": "Space Patrol"
+    },
+    {
+        "name": "Loric",
+        "source": "Lorien Legacies"
+    },
+    {
+        "name": "Lorwardians",
+        "source": "Kim Possible"
+    },
+    {
+        "name": "Lucratians",
+        "source": "Utopia"
+    },
+    {
+        "name": "Lumas",
+        "source": "Super Mario Galaxy, Super Mario Galaxy 2"
+    },
+    {
+        "name": "Luminoth",
+        "source": "Metroid Prime 2: Echoes"
+    },
+    {
+        "name": "Lunarians",
+        "source": "Final Fantasy IV"
+    },
+    {
+        "name": "Lunarian",
+        "source": "Touhou Project"
+    },
+    {
+        "name": "Lunatone",
+        "source": "Pokémon"
+    },
+    {
+        "name": "Lurian",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Lurmans",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Luxans",
+        "source": "Farscape"
+    },
+    {
+        "name": "Ly-Cilph",
+        "source": "The Night's Dawn Trilogy"
+    },
+    {
+        "name": "Lycocians",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Lyrans",
+        "source": "Star Fleet Universe"
+    }
+]

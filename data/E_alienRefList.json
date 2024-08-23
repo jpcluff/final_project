@@ -1,1 +1,178 @@
-[{"name":"Earth people (Parallel Planet on the contrary)","source":"Doraemon"},{"name":"Eber","source":"2300 AD"},{"name":"Ectonurite","source":"Ben 10"},{"name":"Edestekai","source":"Star Frontiers"},{"name":"Edo","source":"Star Trek"},{"name":"Ekhonides","source":"Perry Rhodan"},{"name":"Ekoplektoid","source":"Ben 10"},{"name":"El-Aurians","source":"Star Trek"},{"name":"Eldar","source":"Warhammer 40,000"},{"name":"Elder Gods","source":"Cthulhu Mythos"},{"name":"Elder Thing","source":"Cthulhu Mythos"},{"name":"Eldorians","source":"Utopia"},{"name":"Electrogoomba","source":"Super Mario Galaxy"},{"name":"Elerians","source":"Master of Orion II"},{"name":"Elites (Sangheili)","source":"Halo"},{"name":"Ellimist","source":"K. A. Applegate's Animorphs"},{"name":"Elves","source":"Bravest Warriors"},{"name":"Elvis","source":"Perfect Dark"},{"name":"Elgyem","source":"Pokémon"},{"name":"Engineers (Huragok)","source":"Halo"},{"name":"Engineers","source":"Prometheus (2012 film)"},{"name":"Eoladi","source":"Master of Orion III"},{"name":"Eorna","source":"Star Frontiers"},{"name":"Eosapien","source":"Alien Planet"},{"name":"Ep-Hogers","source":"Perry Rhodan"},{"name":"Eppori","source":"Harry Turtledove's Worldwar series"},{"name":"Erg","source":"Hyperion Cantos"},{"name":"Eridani","source":"Battlelords of the 23rd Century"},{"name":"Eschiff","source":"London Wild"},{"name":"Esmers","source":"Little Big Adventure 2"},{"name":"Esperians","source":"Star Fleet"},{"name":"E.T.","source":"E.T. the Extra-Terrestrial"},{"name":"Eternians","source":"Masters of the Universe franchise"},{"name":"Ethereals","source":"X-COM: UFO Defense"},{"name":"Ethereans","source":"Masters of the Universe franchise"},{"name":"Exobot","source":"Star Trek"},{"name":"Extraterrestrial Biological Entities (EBE)","source":"The Event"},{"name":"Exquivan","source":"Star Control 3"},{"name":"Extraterrestrial Living-metal Shape-shifter (ELS)","source":"Mobile Suit Gundam 00 the Movie: Awakening of the Trailblazer"},{"name":"Evon","source":"Master of Orion III"},{"name":"Evroniani","source":"PKNA - Paperinik New Adventure"},{"name":"Ewoks","source":"Star Wars"},{"name":"Experiments","source":"Lilo & Stitch"},{"name":"Eywa","source":"James Cameron's Avatar"}]
+[
+    {
+        "name": "Earth people (Parallel Planet on the contrary)",
+        "source": "Doraemon"
+    },
+    {
+        "name": "Eber",
+        "source": "2300 AD"
+    },
+    {
+        "name": "Ectonurite",
+        "source": "Ben 10"
+    },
+    {
+        "name": "Edestekai",
+        "source": "Star Frontiers"
+    },
+    {
+        "name": "Edo",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Ekhonides",
+        "source": "Perry Rhodan"
+    },
+    {
+        "name": "Ekoplektoid",
+        "source": "Ben 10"
+    },
+    {
+        "name": "El-Aurians",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Eldar",
+        "source": "Warhammer 40,000"
+    },
+    {
+        "name": "Elder Gods",
+        "source": "Cthulhu Mythos"
+    },
+    {
+        "name": "Elder Thing",
+        "source": "Cthulhu Mythos"
+    },
+    {
+        "name": "Eldorians",
+        "source": "Utopia"
+    },
+    {
+        "name": "Electrogoomba",
+        "source": "Super Mario Galaxy"
+    },
+    {
+        "name": "Elerians",
+        "source": "Master of Orion II"
+    },
+    {
+        "name": "Elites (Sangheili)",
+        "source": "Halo"
+    },
+    {
+        "name": "Ellimist",
+        "source": "K. A. Applegate's Animorphs"
+    },
+    {
+        "name": "Elves",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Elvis",
+        "source": "Perfect Dark"
+    },
+    {
+        "name": "Elgyem",
+        "source": "Pokémon"
+    },
+    {
+        "name": "Engineers (Huragok)",
+        "source": "Halo"
+    },
+    {
+        "name": "Engineers",
+        "source": "Prometheus (2012 film)"
+    },
+    {
+        "name": "Eoladi",
+        "source": "Master of Orion III"
+    },
+    {
+        "name": "Eorna",
+        "source": "Star Frontiers"
+    },
+    {
+        "name": "Eosapien",
+        "source": "Alien Planet"
+    },
+    {
+        "name": "Ep-Hogers",
+        "source": "Perry Rhodan"
+    },
+    {
+        "name": "Eppori",
+        "source": "Harry Turtledove's Worldwar series"
+    },
+    {
+        "name": "Erg",
+        "source": "Hyperion Cantos"
+    },
+    {
+        "name": "Eridani",
+        "source": "Battlelords of the 23rd Century"
+    },
+    {
+        "name": "Eschiff",
+        "source": "London Wild"
+    },
+    {
+        "name": "Esmers",
+        "source": "Little Big Adventure 2"
+    },
+    {
+        "name": "Esperians",
+        "source": "Star Fleet"
+    },
+    {
+        "name": "E.T.",
+        "source": "E.T. the Extra-Terrestrial"
+    },
+    {
+        "name": "Eternians",
+        "source": "Masters of the Universe franchise"
+    },
+    {
+        "name": "Ethereals",
+        "source": "X-COM: UFO Defense"
+    },
+    {
+        "name": "Ethereans",
+        "source": "Masters of the Universe franchise"
+    },
+    {
+        "name": "Exobot",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Extraterrestrial Biological Entities (EBE)",
+        "source": "The Event"
+    },
+    {
+        "name": "Exquivan",
+        "source": "Star Control 3"
+    },
+    {
+        "name": "Extraterrestrial Living-metal Shape-shifter (ELS)",
+        "source": "Mobile Suit Gundam 00 the Movie: Awakening of the Trailblazer"
+    },
+    {
+        "name": "Evon",
+        "source": "Master of Orion III"
+    },
+    {
+        "name": "Evroniani",
+        "source": "PKNA - Paperinik New Adventure"
+    },
+    {
+        "name": "Ewoks",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Experiments",
+        "source": "Lilo & Stitch"
+    },
+    {
+        "name": "Eywa",
+        "source": "James Cameron's Avatar"
+    }
+]

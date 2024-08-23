@@ -1,1 +1,278 @@
-[{"name":"Baalols","source":"Perry Rhodan"},{"name":"Babel fish","source":"The Hitchhiker's Guide to the Galaxy"},{"name":"Badoon","source":"Marvel Comics"},{"name":"Bahmi","source":"Rift: Planes of Telara"},{"name":"Bailies","source":"Cleopatra 2525"},{"name":"Bajoran","source":"Star Trek"},{"name":"Ba'ku","source":"Star Trek"},{"name":"Baliflids","source":"Ascendancy"},{"name":"Ballchinnian","source":"Men in Black II"},{"name":"Balmarian","source":"Super Robot Wars"},{"name":"Baltan","source":"Ultraman"},{"name":"Bane","source":"The Sarah Jane Adventures"},{"name":"Bandersnatchi","source":"Larry Niven's Known Space"},{"name":"Bandi","source":"Star Trek"},{"name":"Banik","source":"Farscape"},{"name":"Bannermen","source":"Doctor Who"},{"name":"Bantha","source":"Star Wars"},{"name":"Barkonides","source":"Perry Rhodan"},{"name":"Barzans","source":"Star Trek"},{"name":"Battle Cupcakes","source":"Bravest Warriors"},{"name":"Baufrin","source":"Renegade Legion"},{"name":"Batarian","source":"Mass Effect"},{"name":"Beffel","source":"Harry Turtledove's Worldwar series"},{"name":"Beings of the Extra Terrestrial origin which is Adversary of human race","source":"Muv-Luv"},{"name":"Benjari","source":"Battlelords of the 23rd Century"},{"name":"Benzite","source":"Star Trek"},{"name":"Berellian","source":"Star Trek"},{"name":"Berserkers","source":"Fred Saberhagen's Berserker series"},{"name":"Berubelan","source":"Anachronox"},{"name":"Besalisk","source":"Star Wars"},{"name":"Betazoid","source":"Star Trek"},{"name":"Bgztl","source":"DC Comics Legion of Super-Heroes"},{"name":"Bioroids","source":"Intense Stories"},{"name":"Bith","source":"Star Wars"},{"name":"Bismollian","source":"DC Comics' Legion of Super-Heroes"},{"name":"Bjorn","source":"Space Quest"},{"name":"Black Arms","source":"Shadow the Hedgehog"},{"name":"Black Cloud","source":"Fred Hoyle"},{"name":"Black Oil","source":"The X-Files"},{"name":"Blastaar","source":"Marvel Comics"},{"name":"Blathereen","source":"Doctor Who"},{"name":"Blisk","source":"Destroy All Humans! 2"},{"name":"Blobs","source":"Invader Zim"},{"name":"Boazanians","source":"Voltes V"},{"name":"Bolian","source":"Star Trek"},{"name":"Boolite","source":"Farscape"},{"name":"Borg","source":"Star Trek"},{"name":"Bothans","source":"Star Wars"},{"name":"Bortronians","source":"Ready Jet Go!"},{"name":"Braalians","source":"DC Comics' Legion of Super-Heroes"},{"name":"Bradicor","source":"Schlock Mercenary"},{"name":"Brain Dogs","source":"Bravest Warriors"},{"name":"Brainiac","source":"Smallville"},{"name":"Brains","source":"The Adventures of Jimmy Neutron: Boy Genius (\"Win, Lose and Kaboom\")"},{"name":"Brakiri","source":"Babylon 5"},{"name":"Breen","source":"Star Trek"},{"name":"Brikar","source":"Star Trek: New Frontier"},{"name":"Briori","source":"Star Trek"},{"name":"Brood","source":"Marvel Comics"},{"name":"Brunnen G","source":"LEXX"},{"name":"Brunali","source":"Star Trek"},{"name":"Brutes (Jiralhanae)","source":"Halo"},{"name":"Budong","source":"Farscape"},{"name":"Bug+BurpBall","source":"Adventure Time: Fionna and Cake"},{"name":"Buggers","source":"Ender's Game series"},{"name":"Bulrathi","source":"Master of Orion"},{"name":"Bunless People","source":"Bravest Warriors"},{"name":"Bugs from Klendathu","source":"Starship Troopers"},{"name":"Bynar","source":"Star Trek"}]
+[
+    {
+        "name": "Baalols",
+        "source": "Perry Rhodan"
+    },
+    {
+        "name": "Babel fish",
+        "source": "The Hitchhiker's Guide to the Galaxy"
+    },
+    {
+        "name": "Badoon",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Bahmi",
+        "source": "Rift: Planes of Telara"
+    },
+    {
+        "name": "Bailies",
+        "source": "Cleopatra 2525"
+    },
+    {
+        "name": "Bajoran",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Ba'ku",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Baliflids",
+        "source": "Ascendancy"
+    },
+    {
+        "name": "Ballchinnian",
+        "source": "Men in Black II"
+    },
+    {
+        "name": "Balmarian",
+        "source": "Super Robot Wars"
+    },
+    {
+        "name": "Baltan",
+        "source": "Ultraman"
+    },
+    {
+        "name": "Bane",
+        "source": "The Sarah Jane Adventures"
+    },
+    {
+        "name": "Bandersnatchi",
+        "source": "Larry Niven's Known Space"
+    },
+    {
+        "name": "Bandi",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Banik",
+        "source": "Farscape"
+    },
+    {
+        "name": "Bannermen",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Bantha",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Barkonides",
+        "source": "Perry Rhodan"
+    },
+    {
+        "name": "Barzans",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Battle Cupcakes",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Baufrin",
+        "source": "Renegade Legion"
+    },
+    {
+        "name": "Batarian",
+        "source": "Mass Effect"
+    },
+    {
+        "name": "Beffel",
+        "source": "Harry Turtledove's Worldwar series"
+    },
+    {
+        "name": "Beings of the Extra Terrestrial origin which is Adversary of human race",
+        "source": "Muv-Luv"
+    },
+    {
+        "name": "Benjari",
+        "source": "Battlelords of the 23rd Century"
+    },
+    {
+        "name": "Benzite",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Berellian",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Berserkers",
+        "source": "Fred Saberhagen's Berserker series"
+    },
+    {
+        "name": "Berubelan",
+        "source": "Anachronox"
+    },
+    {
+        "name": "Besalisk",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Betazoid",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Bgztl",
+        "source": "DC Comics Legion of Super-Heroes"
+    },
+    {
+        "name": "Bioroids",
+        "source": "Intense Stories"
+    },
+    {
+        "name": "Bith",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Bismollian",
+        "source": "DC Comics' Legion of Super-Heroes"
+    },
+    {
+        "name": "Bjorn",
+        "source": "Space Quest"
+    },
+    {
+        "name": "Black Arms",
+        "source": "Shadow the Hedgehog"
+    },
+    {
+        "name": "Black Cloud",
+        "source": "Fred Hoyle"
+    },
+    {
+        "name": "Black Oil",
+        "source": "The X-Files"
+    },
+    {
+        "name": "Blastaar",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Blathereen",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Blisk",
+        "source": "Destroy All Humans! 2"
+    },
+    {
+        "name": "Blobs",
+        "source": "Invader Zim"
+    },
+    {
+        "name": "Boazanians",
+        "source": "Voltes V"
+    },
+    {
+        "name": "Bolian",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Boolite",
+        "source": "Farscape"
+    },
+    {
+        "name": "Borg",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Bothans",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Bortronians",
+        "source": "Ready Jet Go!"
+    },
+    {
+        "name": "Braalians",
+        "source": "DC Comics' Legion of Super-Heroes"
+    },
+    {
+        "name": "Bradicor",
+        "source": "Schlock Mercenary"
+    },
+    {
+        "name": "Brain Dogs",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Brainiac",
+        "source": "Smallville"
+    },
+    {
+        "name": "Brains",
+        "source": "The Adventures of Jimmy Neutron: Boy Genius (\"Win, Lose and Kaboom\")"
+    },
+    {
+        "name": "Brakiri",
+        "source": "Babylon 5"
+    },
+    {
+        "name": "Breen",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Brikar",
+        "source": "Star Trek: New Frontier"
+    },
+    {
+        "name": "Briori",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Brood",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Brunnen G",
+        "source": "LEXX"
+    },
+    {
+        "name": "Brunali",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Brutes (Jiralhanae)",
+        "source": "Halo"
+    },
+    {
+        "name": "Budong",
+        "source": "Farscape"
+    },
+    {
+        "name": "Bug+BurpBall",
+        "source": "Adventure Time: Fionna and Cake"
+    },
+    {
+        "name": "Buggers",
+        "source": "Ender's Game series"
+    },
+    {
+        "name": "Bulrathi",
+        "source": "Master of Orion"
+    },
+    {
+        "name": "Bunless People",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Bugs from Klendathu",
+        "source": "Starship Troopers"
+    },
+    {
+        "name": "Bynar",
+        "source": "Star Trek"
+    }
+]

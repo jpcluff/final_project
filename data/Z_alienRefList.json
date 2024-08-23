@@ -1,1 +1,106 @@
-[{"name":"Za'baby","source":"Adventure Time: Fionna and Cake"},{"name":"Zabrak","source":"Star Wars"},{"name":"Zakdorns","source":"Star Trek"},{"name":"Zaldans","source":"Star Trek"},{"name":"Zalkonians","source":"Star Trek"},{"name":"Zarbi","source":"Doctor Who"},{"name":"Zbornaks","source":"Wander Over Yonder"},{"name":"Zebesians","source":"Metroid series"},{"name":"Zen Rigeln","source":"Battlelords of the 23rd Century"},{"name":"Zen-Whoberis","source":"Marvel Comics"},{"name":"Zenetan","source":"Farscape"},{"name":"Zenn-Lavians","source":"Marvel Comics"},{"name":"Zentradi","source":"Macross, adapted as the Zentraedi in Robotech"},{"name":"Zerg","source":"StarCraft"},{"name":"Zhodani","source":"Traveller RPG"},{"name":"Zin","source":"Saints Row"},{"name":"Zinoboppian","source":"Melonpool"},{"name":"Zirkonian","source":"Aliens in the Attic"},{"name":"Zisuili","source":"Harry Turtledove's Worldwar series"},{"name":"Zog","source":"Renegade Legion"},{"name":"Zoni","source":"Ratchet & Clank"},{"name":"Zoq-Fot-Pik","source":"Star Control"},{"name":"Zorgons","source":"Sluggy Freelance"},{"name":"Zorgons","source":"Zathura"},{"name":"Zurg","source":"Toy Story franchise"},{"name":"Zygons","source":"Doctor Who"}]
+[
+    {
+        "name": "Za'baby",
+        "source": "Adventure Time: Fionna and Cake"
+    },
+    {
+        "name": "Zabrak",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Zakdorns",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Zaldans",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Zalkonians",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Zarbi",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Zbornaks",
+        "source": "Wander Over Yonder"
+    },
+    {
+        "name": "Zebesians",
+        "source": "Metroid series"
+    },
+    {
+        "name": "Zen Rigeln",
+        "source": "Battlelords of the 23rd Century"
+    },
+    {
+        "name": "Zen-Whoberis",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Zenetan",
+        "source": "Farscape"
+    },
+    {
+        "name": "Zenn-Lavians",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Zentradi",
+        "source": "Macross, adapted as the Zentraedi in Robotech"
+    },
+    {
+        "name": "Zerg",
+        "source": "StarCraft"
+    },
+    {
+        "name": "Zhodani",
+        "source": "Traveller RPG"
+    },
+    {
+        "name": "Zin",
+        "source": "Saints Row"
+    },
+    {
+        "name": "Zinoboppian",
+        "source": "Melonpool"
+    },
+    {
+        "name": "Zirkonian",
+        "source": "Aliens in the Attic"
+    },
+    {
+        "name": "Zisuili",
+        "source": "Harry Turtledove's Worldwar series"
+    },
+    {
+        "name": "Zog",
+        "source": "Renegade Legion"
+    },
+    {
+        "name": "Zoni",
+        "source": "Ratchet & Clank"
+    },
+    {
+        "name": "Zoq-Fot-Pik",
+        "source": "Star Control"
+    },
+    {
+        "name": "Zorgons",
+        "source": "Sluggy Freelance"
+    },
+    {
+        "name": "Zorgons",
+        "source": "Zathura"
+    },
+    {
+        "name": "Zurg",
+        "source": "Toy Story franchise"
+    },
+    {
+        "name": "Zygons",
+        "source": "Doctor Who"
+    }
+]

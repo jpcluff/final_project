@@ -1,1 +1,470 @@
-[{"name":"Saiyan","source":"Dragon Ball Z"},{"name":"Sakkra","source":"Master of Orion"},{"name":"Salayan","source":"The Orville"},{"name":"Sal-Kadeem","source":"Utopia"},{"name":"Salarians","source":"Mass Effect"},{"name":"Samaan","source":"Star Twinkle PreCure"},{"name":"San 'Shyuum","source":"Halo"},{"name":"Sandworm","source":"Dune universe"},{"name":"Sangheili","source":"Halo"},{"name":"Santeeians","source":"Bravest Warriors"},{"name":"Sariens","source":"Space Quest"},{"name":"Sarturians","source":"Utopia"},{"name":"Sathar","source":"Star Frontiers"},{"name":"Sau-Bau","source":"Battlelords of the 23rd Century"},{"name":"Scarrans","source":"Farscape"},{"name":"Schniarfeurs","source":"Valérian and Laureline"},{"name":"Scorvians","source":"Farscape"},{"name":"Screwheads","source":"Invader Zim"},{"name":"Scrin","source":"Command & Conquer"},{"name":"Scwozzworts","source":"Lunchbox and the Aliens"},{"name":"Sdanli","source":"Harry Turtledove's Worldwar series"},{"name":"Sebaceans","source":"Farscape"},{"name":"Second through Last Men","source":"Olaf Stapledon's Last and First Men"},{"name":"Sectoids","source":"X-COM: UFO Defense"},{"name":"Seekers","source":"Advent Rising"},{"name":"Selay","source":"Star Trek"},{"name":"Selkath","source":"Star Wars"},{"name":"Seraphim","source":"Supreme Commander"},{"name":"Séroni","source":"Space Trilogy"},{"name":"Sevod","source":"Hary Turtledove's Worldwar series"},{"name":"Shadoks","source":"Les Shadoks"},{"name":"Shadows","source":"Babylon 5"},{"name":"Shalka","source":"Doctor Who"},{"name":"Shafter","source":"Adventure Time: Distant Lands"},{"name":"Sharrh","source":"C. J. Cherryh's Alliance-Union universe"},{"name":"Sheeda","source":"Grant Morrison's Seven soldiers of Victory megaseries"},{"name":"Sheliak","source":"Star Trek"},{"name":"Shevar","source":"Ascendancy"},{"name":"Sheyangs","source":"Farscape"},{"name":"Shi'ar","source":"Marvel Comics"},{"name":"Shinari","source":"Imperium Galactica II: Alliances"},{"name":"Shingouz","source":"Valérian comics"},{"name":"Shiori Goshiki","source":"A Galaxy Next Door"},{"name":"Shivans","source":"Descent: FreeSpace – The Great War"},{"name":"Shizuka Minamoto (Parallel Planet on the contrary)","source":"Doraemon"},{"name":"Shofixti","source":"Star Control"},{"name":"Shoggoths","source":"H. P. Lovecraft"},{"name":"Sholans","source":"Lisanne Norman - Sholan Alliance"},{"name":"Shongairi","source":"David Weber's Out of the Dark"},{"name":"Shonunin","source":"C. J. Cherryh's Alliance-Union universe"},{"name":"Shroobs","source":"Mario & Luigi: Partners in Time"},{"name":"Silacoids","source":"X-COM: UFO Defense"},{"name":"Silfen","source":"Peter F. Hamilton's Pandora's Star"},{"name":"Silicoids","source":"Master of Orion"},{"name":"Sirians","source":"Serious Sam: The First Encounter"},{"name":"Skaarj","source":"Unreal series"},{"name":"Skedar","source":"Perfect Dark"},{"name":"Skinnies","source":"Starship Troopers"},{"name":"Skolarians","source":"Zak McKracken and the Alien Mindbenders"},{"name":"Skroderiders","source":"Vernor Vinge's A Fire Upon the Deep"},{"name":"Skrulls","source":"Marvel Comics"},{"name":"Slaughtering Rat People","source":"Invader Zim"},{"name":"Slavers (see Thrint)","source":"Larry Niven's Known Space"},{"name":"Slitheen","source":"Doctor Who"},{"name":"Slylandro","source":"Star Control"},{"name":"Snakemen","source":"X-COM: UFO Defense"},{"name":"Snarks","source":"Marvel Comics"},{"name":"Snotlings","source":"Warhammer 40,000"},{"name":"Snovemdomas","source":"Ascendancy"},{"name":"SoI-002","source":"SCP Foundation"},{"name":"Solaris","source":"Stanisław Lem's Solaris"},{"name":"Solomon Family","source":"3rd Rock from the Sun"},{"name":"Solon","source":"Haegemonia: Legions of Iron"},{"name":"Solrock","source":"Pokémon"},{"name":"Son'a","source":"Star Trek"},{"name":"Sonorosians","source":"Ben 10"},{"name":"Sontarans","source":"Doctor Who"},{"name":"Soomanii","source":"Utopia"},{"name":"Sorn","source":"C. S. Lewis' Space Trilogy"},{"name":"Soro","source":"David Brin's Uplift Universe"},{"name":"Sosiqui","source":"The Journeyman Project 3: Legacy of Time"},{"name":"Southern Aliens","source":"Bravest Warriors"},{"name":"Space Angel Princess","source":"Adventure Time"},{"name":"Space Chickens","source":"Bravest Warriors"},{"name":"Space Chickens","source":"Courage the Cowardly Dog"},{"name":"Space Moth","source":"Adventure Time"},{"name":"Space Pirates","source":"Metroid series"},{"name":"Spathi","source":"Star Control"},{"name":"Species","source":"Species and its sequels"},{"name":"Species 8472","source":"Star Trek"},{"name":"S'pht","source":"Marathon Trilogy"},{"name":"Spibbley","source":"Invader Zim"},{"name":"Spiridons","source":"Doctor Who"},{"name":"Spirits","source":"Stargate SG-1"},{"name":"Splixson","source":"Ben 10"},{"name":"Sprixie","source":"Super Mario 3D World"},{"name":"Squirps","source":"Super Paper Mario"},{"name":"Squiz-Quijy","source":"Utopia"},{"name":"Ssora","source":"Renegade Legion"},{"name":"Ssvapi","source":"Harry Turtledove's Worldwar series"},{"name":"Starmen","source":"EarthBound"},{"name":"Strogg","source":"Quake II and Quake 4"},{"name":"Stsho","source":"C. J. Cherryh's Chanur novels"},{"name":"Stu","source":"Pixar's Lifted"},{"name":"Sugarbellies","source":"Bravest Warriors"},{"name":"Suliban","source":"Star Trek"},{"name":"Sun-Dog","source":"Terry Pratchett's The Dark Side of the Sun"},{"name":"Suneo Honekawa (Parallel Planet on the contrary)","source":"Doraemon"},{"name":"Sungs","source":"2300 AD"},{"name":"Supox","source":"Star Control"},{"name":"Serrakin","source":"Stargate SG-1"},{"name":"Swaparamans","source":"Ascendancy"},{"name":"Sycorax","source":"Doctor Who"},{"name":"Sye-Men","source":"Battlelords of the 23rd Century"},{"name":"Sykarians","source":"Farscape"},{"name":"Symbiote","source":"Marvel Comics"},{"name":"Syreen","source":"Star Control"}]
+[
+    {
+        "name": "Saiyan",
+        "source": "Dragon Ball Z"
+    },
+    {
+        "name": "Sakkra",
+        "source": "Master of Orion"
+    },
+    {
+        "name": "Salayan",
+        "source": "The Orville"
+    },
+    {
+        "name": "Sal-Kadeem",
+        "source": "Utopia"
+    },
+    {
+        "name": "Salarians",
+        "source": "Mass Effect"
+    },
+    {
+        "name": "Samaan",
+        "source": "Star Twinkle PreCure"
+    },
+    {
+        "name": "San 'Shyuum",
+        "source": "Halo"
+    },
+    {
+        "name": "Sandworm",
+        "source": "Dune universe"
+    },
+    {
+        "name": "Sangheili",
+        "source": "Halo"
+    },
+    {
+        "name": "Santeeians",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Sariens",
+        "source": "Space Quest"
+    },
+    {
+        "name": "Sarturians",
+        "source": "Utopia"
+    },
+    {
+        "name": "Sathar",
+        "source": "Star Frontiers"
+    },
+    {
+        "name": "Sau-Bau",
+        "source": "Battlelords of the 23rd Century"
+    },
+    {
+        "name": "Scarrans",
+        "source": "Farscape"
+    },
+    {
+        "name": "Schniarfeurs",
+        "source": "Valérian and Laureline"
+    },
+    {
+        "name": "Scorvians",
+        "source": "Farscape"
+    },
+    {
+        "name": "Screwheads",
+        "source": "Invader Zim"
+    },
+    {
+        "name": "Scrin",
+        "source": "Command & Conquer"
+    },
+    {
+        "name": "Scwozzworts",
+        "source": "Lunchbox and the Aliens"
+    },
+    {
+        "name": "Sdanli",
+        "source": "Harry Turtledove's Worldwar series"
+    },
+    {
+        "name": "Sebaceans",
+        "source": "Farscape"
+    },
+    {
+        "name": "Second through Last Men",
+        "source": "Olaf Stapledon's Last and First Men"
+    },
+    {
+        "name": "Sectoids",
+        "source": "X-COM: UFO Defense"
+    },
+    {
+        "name": "Seekers",
+        "source": "Advent Rising"
+    },
+    {
+        "name": "Selay",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Selkath",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Seraphim",
+        "source": "Supreme Commander"
+    },
+    {
+        "name": "Séroni",
+        "source": "Space Trilogy"
+    },
+    {
+        "name": "Sevod",
+        "source": "Hary Turtledove's Worldwar series"
+    },
+    {
+        "name": "Shadoks",
+        "source": "Les Shadoks"
+    },
+    {
+        "name": "Shadows",
+        "source": "Babylon 5"
+    },
+    {
+        "name": "Shalka",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Shafter",
+        "source": "Adventure Time: Distant Lands"
+    },
+    {
+        "name": "Sharrh",
+        "source": "C. J. Cherryh's Alliance-Union universe"
+    },
+    {
+        "name": "Sheeda",
+        "source": "Grant Morrison's Seven soldiers of Victory megaseries"
+    },
+    {
+        "name": "Sheliak",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Shevar",
+        "source": "Ascendancy"
+    },
+    {
+        "name": "Sheyangs",
+        "source": "Farscape"
+    },
+    {
+        "name": "Shi'ar",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Shinari",
+        "source": "Imperium Galactica II: Alliances"
+    },
+    {
+        "name": "Shingouz",
+        "source": "Valérian comics"
+    },
+    {
+        "name": "Shiori Goshiki",
+        "source": "A Galaxy Next Door"
+    },
+    {
+        "name": "Shivans",
+        "source": "Descent: FreeSpace – The Great War"
+    },
+    {
+        "name": "Shizuka Minamoto (Parallel Planet on the contrary)",
+        "source": "Doraemon"
+    },
+    {
+        "name": "Shofixti",
+        "source": "Star Control"
+    },
+    {
+        "name": "Shoggoths",
+        "source": "H. P. Lovecraft"
+    },
+    {
+        "name": "Sholans",
+        "source": "Lisanne Norman - Sholan Alliance"
+    },
+    {
+        "name": "Shongairi",
+        "source": "David Weber's Out of the Dark"
+    },
+    {
+        "name": "Shonunin",
+        "source": "C. J. Cherryh's Alliance-Union universe"
+    },
+    {
+        "name": "Shroobs",
+        "source": "Mario & Luigi: Partners in Time"
+    },
+    {
+        "name": "Silacoids",
+        "source": "X-COM: UFO Defense"
+    },
+    {
+        "name": "Silfen",
+        "source": "Peter F. Hamilton's Pandora's Star"
+    },
+    {
+        "name": "Silicoids",
+        "source": "Master of Orion"
+    },
+    {
+        "name": "Sirians",
+        "source": "Serious Sam: The First Encounter"
+    },
+    {
+        "name": "Skaarj",
+        "source": "Unreal series"
+    },
+    {
+        "name": "Skedar",
+        "source": "Perfect Dark"
+    },
+    {
+        "name": "Skinnies",
+        "source": "Starship Troopers"
+    },
+    {
+        "name": "Skolarians",
+        "source": "Zak McKracken and the Alien Mindbenders"
+    },
+    {
+        "name": "Skroderiders",
+        "source": "Vernor Vinge's A Fire Upon the Deep"
+    },
+    {
+        "name": "Skrulls",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Slaughtering Rat People",
+        "source": "Invader Zim"
+    },
+    {
+        "name": "Slavers (see Thrint)",
+        "source": "Larry Niven's Known Space"
+    },
+    {
+        "name": "Slitheen",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Slylandro",
+        "source": "Star Control"
+    },
+    {
+        "name": "Snakemen",
+        "source": "X-COM: UFO Defense"
+    },
+    {
+        "name": "Snarks",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Snotlings",
+        "source": "Warhammer 40,000"
+    },
+    {
+        "name": "Snovemdomas",
+        "source": "Ascendancy"
+    },
+    {
+        "name": "SoI-002",
+        "source": "SCP Foundation"
+    },
+    {
+        "name": "Solaris",
+        "source": "Stanisław Lem's Solaris"
+    },
+    {
+        "name": "Solomon Family",
+        "source": "3rd Rock from the Sun"
+    },
+    {
+        "name": "Solon",
+        "source": "Haegemonia: Legions of Iron"
+    },
+    {
+        "name": "Solrock",
+        "source": "Pokémon"
+    },
+    {
+        "name": "Son'a",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Sonorosians",
+        "source": "Ben 10"
+    },
+    {
+        "name": "Sontarans",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Soomanii",
+        "source": "Utopia"
+    },
+    {
+        "name": "Sorn",
+        "source": "C. S. Lewis' Space Trilogy"
+    },
+    {
+        "name": "Soro",
+        "source": "David Brin's Uplift Universe"
+    },
+    {
+        "name": "Sosiqui",
+        "source": "The Journeyman Project 3: Legacy of Time"
+    },
+    {
+        "name": "Southern Aliens",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Space Angel Princess",
+        "source": "Adventure Time"
+    },
+    {
+        "name": "Space Chickens",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Space Chickens",
+        "source": "Courage the Cowardly Dog"
+    },
+    {
+        "name": "Space Moth",
+        "source": "Adventure Time"
+    },
+    {
+        "name": "Space Pirates",
+        "source": "Metroid series"
+    },
+    {
+        "name": "Spathi",
+        "source": "Star Control"
+    },
+    {
+        "name": "Species",
+        "source": "Species and its sequels"
+    },
+    {
+        "name": "Species 8472",
+        "source": "Star Trek"
+    },
+    {
+        "name": "S'pht",
+        "source": "Marathon Trilogy"
+    },
+    {
+        "name": "Spibbley",
+        "source": "Invader Zim"
+    },
+    {
+        "name": "Spiridons",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Spirits",
+        "source": "Stargate SG-1"
+    },
+    {
+        "name": "Splixson",
+        "source": "Ben 10"
+    },
+    {
+        "name": "Sprixie",
+        "source": "Super Mario 3D World"
+    },
+    {
+        "name": "Squirps",
+        "source": "Super Paper Mario"
+    },
+    {
+        "name": "Squiz-Quijy",
+        "source": "Utopia"
+    },
+    {
+        "name": "Ssora",
+        "source": "Renegade Legion"
+    },
+    {
+        "name": "Ssvapi",
+        "source": "Harry Turtledove's Worldwar series"
+    },
+    {
+        "name": "Starmen",
+        "source": "EarthBound"
+    },
+    {
+        "name": "Strogg",
+        "source": "Quake II and Quake 4"
+    },
+    {
+        "name": "Stsho",
+        "source": "C. J. Cherryh's Chanur novels"
+    },
+    {
+        "name": "Stu",
+        "source": "Pixar's Lifted"
+    },
+    {
+        "name": "Sugarbellies",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Suliban",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Sun-Dog",
+        "source": "Terry Pratchett's The Dark Side of the Sun"
+    },
+    {
+        "name": "Suneo Honekawa (Parallel Planet on the contrary)",
+        "source": "Doraemon"
+    },
+    {
+        "name": "Sungs",
+        "source": "2300 AD"
+    },
+    {
+        "name": "Supox",
+        "source": "Star Control"
+    },
+    {
+        "name": "Serrakin",
+        "source": "Stargate SG-1"
+    },
+    {
+        "name": "Swaparamans",
+        "source": "Ascendancy"
+    },
+    {
+        "name": "Sycorax",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Sye-Men",
+        "source": "Battlelords of the 23rd Century"
+    },
+    {
+        "name": "Sykarians",
+        "source": "Farscape"
+    },
+    {
+        "name": "Symbiote",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Syreen",
+        "source": "Star Control"
+    }
+]

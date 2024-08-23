@@ -1,1 +1,242 @@
-[{"name":"H'Harn","source":"Edmond Hamilton's Star Kings series"},{"name":"Hacan","source":"Twilight Imperium"},{"name":"Haggunenons","source":"The Hitchhiker's Guide to the Galaxy"},{"name":"Halflings","source":"Dances in the Snow, Genome"},{"name":"Halfworlders","source":"Marvel Comics"},{"name":"Hallessi","source":"Harry Turtledove's Worldwar series"},{"name":"Hallucinoids","source":"X-COM: Terror from the Deep"},{"name":"Halosians","source":"Farscape"},{"name":"Hangi","source":"Farscape"},{"name":"Hani","source":"C. J. Cherryh's Chanur novels"},{"name":"Hanshaks","source":"Ascendancy"},{"name":"Harammins","source":"The History of the Galaxy series)"},{"name":"Hardcore Hill Midgets","source":"Bravest Warriors"},{"name":"Harika","source":"Star Control 3"},{"name":"Harmonia","source":"The Sirens of Titan"},{"name":"Harvesters","source":"Independence Day"},{"name":"Haydonites","source":"Robotech"},{"name":"Headcrabs","source":"Half-Life"},{"name":"Headies","source":"Noon Universe"},{"name":"Heechee","source":"Frederik Pohl"},{"name":"Helmacrons","source":"K. A. Applegate's Animorphs series (specifically books 24 and 42)"},{"name":"Heptapods","source":"Arrival"},{"name":"Herald","source":"Star Control 3"},{"name":"Hermat","source":"Star Trek"},{"name":"Hi-Five Aliens","source":"Bravest Warriors"},{"name":"Hidetoshi Dekisugi (Parallel Planet on the contrary)","source":"Doraemon"},{"name":"Hierarchy","source":"Universe at War"},{"name":"Highbreed","source":"Ben 10: Alien Force"},{"name":"High Ones","source":"Elfquest"},{"name":"Hiigarans","source":"Homeworld"},{"name":"Hirogen","source":"Star Trek"},{"name":"Hisa","source":"C. J. Cherryh's Alliance-Union universe"},{"name":"Hive, The","source":"Renegade Legion"},{"name":"Hivers","source":"Sword of the Stars"},{"name":"Hivers","source":"Traveller RPG"},{"name":"Hobos","source":"Invader Zim"},{"name":"Hoka","source":"Poul Anderson and Gordon R. Dickson"},{"name":"Hoix","source":"Doctor Who and Torchwood."},{"name":"Hooloovoo","source":"The Hitchhiker's Guide to the Galaxy"},{"name":"Hoofonoggles","source":"Froonga Planet"},{"name":"Hoon","source":"David Brin's Uplift Universe"},{"name":"Horda[broken anchor]","source":"Doctor Who"},{"name":"Hork-Bajir","source":"K. A. Applegate's Animorphs"},{"name":"Horta","source":"Star Trek"},{"name":"Hoshio (Tatsuya)","source":"Starman: Love in Earth"},{"name":"Howlers","source":"Animorphs (specifically book 26, The Attack)"},{"name":"Hrossa","source":"C. S. Lewis' Space Trilogy"},{"name":"Hrud","source":"Warhammer 40,000"},{"name":"Hugo","source":"Adventure Time: Distant Lands"},{"name":"Hunters (Lekgolo)","source":"Halo"},{"name":"Hunters","source":"Star Trek"},{"name":"Humma","source":"Star Frontiers"},{"name":"Hur'q","source":"Star Trek"},{"name":"Hutts","source":"Star Wars"},{"name":"Husnock","source":"Star Trek"},{"name":"Hydrans","source":"Star Trek"},{"name":"Hydrogues","source":"Saga of the Seven Suns"},{"name":"Hykraius","source":"DC Comics' Legion of Super-Heroes"},{"name":"Hylar","source":"Twilight Imperium"},{"name":"Hynerians","source":"Farscape"}]
+[
+    {
+        "name": "H'Harn",
+        "source": "Edmond Hamilton's Star Kings series"
+    },
+    {
+        "name": "Hacan",
+        "source": "Twilight Imperium"
+    },
+    {
+        "name": "Haggunenons",
+        "source": "The Hitchhiker's Guide to the Galaxy"
+    },
+    {
+        "name": "Halflings",
+        "source": "Dances in the Snow, Genome"
+    },
+    {
+        "name": "Halfworlders",
+        "source": "Marvel Comics"
+    },
+    {
+        "name": "Hallessi",
+        "source": "Harry Turtledove's Worldwar series"
+    },
+    {
+        "name": "Hallucinoids",
+        "source": "X-COM: Terror from the Deep"
+    },
+    {
+        "name": "Halosians",
+        "source": "Farscape"
+    },
+    {
+        "name": "Hangi",
+        "source": "Farscape"
+    },
+    {
+        "name": "Hani",
+        "source": "C. J. Cherryh's Chanur novels"
+    },
+    {
+        "name": "Hanshaks",
+        "source": "Ascendancy"
+    },
+    {
+        "name": "Harammins",
+        "source": "The History of the Galaxy series)"
+    },
+    {
+        "name": "Hardcore Hill Midgets",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Harika",
+        "source": "Star Control 3"
+    },
+    {
+        "name": "Harmonia",
+        "source": "The Sirens of Titan"
+    },
+    {
+        "name": "Harvesters",
+        "source": "Independence Day"
+    },
+    {
+        "name": "Haydonites",
+        "source": "Robotech"
+    },
+    {
+        "name": "Headcrabs",
+        "source": "Half-Life"
+    },
+    {
+        "name": "Headies",
+        "source": "Noon Universe"
+    },
+    {
+        "name": "Heechee",
+        "source": "Frederik Pohl"
+    },
+    {
+        "name": "Helmacrons",
+        "source": "K. A. Applegate's Animorphs series (specifically books 24 and 42)"
+    },
+    {
+        "name": "Heptapods",
+        "source": "Arrival"
+    },
+    {
+        "name": "Herald",
+        "source": "Star Control 3"
+    },
+    {
+        "name": "Hermat",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Hi-Five Aliens",
+        "source": "Bravest Warriors"
+    },
+    {
+        "name": "Hidetoshi Dekisugi (Parallel Planet on the contrary)",
+        "source": "Doraemon"
+    },
+    {
+        "name": "Hierarchy",
+        "source": "Universe at War"
+    },
+    {
+        "name": "Highbreed",
+        "source": "Ben 10: Alien Force"
+    },
+    {
+        "name": "High Ones",
+        "source": "Elfquest"
+    },
+    {
+        "name": "Hiigarans",
+        "source": "Homeworld"
+    },
+    {
+        "name": "Hirogen",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Hisa",
+        "source": "C. J. Cherryh's Alliance-Union universe"
+    },
+    {
+        "name": "Hive, The",
+        "source": "Renegade Legion"
+    },
+    {
+        "name": "Hivers",
+        "source": "Sword of the Stars"
+    },
+    {
+        "name": "Hivers",
+        "source": "Traveller RPG"
+    },
+    {
+        "name": "Hobos",
+        "source": "Invader Zim"
+    },
+    {
+        "name": "Hoka",
+        "source": "Poul Anderson and Gordon R. Dickson"
+    },
+    {
+        "name": "Hoix",
+        "source": "Doctor Who and Torchwood."
+    },
+    {
+        "name": "Hooloovoo",
+        "source": "The Hitchhiker's Guide to the Galaxy"
+    },
+    {
+        "name": "Hoofonoggles",
+        "source": "Froonga Planet"
+    },
+    {
+        "name": "Hoon",
+        "source": "David Brin's Uplift Universe"
+    },
+    {
+        "name": "Horda[broken anchor]",
+        "source": "Doctor Who"
+    },
+    {
+        "name": "Hork-Bajir",
+        "source": "K. A. Applegate's Animorphs"
+    },
+    {
+        "name": "Horta",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Hoshio (Tatsuya)",
+        "source": "Starman: Love in Earth"
+    },
+    {
+        "name": "Howlers",
+        "source": "Animorphs (specifically book 26, The Attack)"
+    },
+    {
+        "name": "Hrossa",
+        "source": "C. S. Lewis' Space Trilogy"
+    },
+    {
+        "name": "Hrud",
+        "source": "Warhammer 40,000"
+    },
+    {
+        "name": "Hugo",
+        "source": "Adventure Time: Distant Lands"
+    },
+    {
+        "name": "Hunters (Lekgolo)",
+        "source": "Halo"
+    },
+    {
+        "name": "Hunters",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Humma",
+        "source": "Star Frontiers"
+    },
+    {
+        "name": "Hur'q",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Hutts",
+        "source": "Star Wars"
+    },
+    {
+        "name": "Husnock",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Hydrans",
+        "source": "Star Trek"
+    },
+    {
+        "name": "Hydrogues",
+        "source": "Saga of the Seven Suns"
+    },
+    {
+        "name": "Hykraius",
+        "source": "DC Comics' Legion of Super-Heroes"
+    },
+    {
+        "name": "Hylar",
+        "source": "Twilight Imperium"
+    },
+    {
+        "name": "Hynerians",
+        "source": "Farscape"
+    }
+]
