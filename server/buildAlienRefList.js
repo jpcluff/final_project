@@ -1,4 +1,5 @@
-import { accessSync, mkdirSync, writeFileSync } from "node:fs";
+import { accessSync, writeFileSync } from "node:fs";
+import { mkdirSync } from 'fs';
 import fetch from "node-fetch";
 
 // using https://www.wikitable2json.com/ API to get table data from wikipedia 
@@ -6,8 +7,20 @@ const wikiurl = "https://www.wikitable2json.com/api/";
 const wikiPageRoot = "List_of_fictional_alien_species:_";    
 // key-value format using the first row as keys
 const keyRows= "?keyRows=1";
-let alphabet = ["A"];
-// ,"B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+let alphabet = ["A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K", "L","M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X","Y", "Z"];
+// , "b", "c", "d", "e", "f",
+//     "g", "h", "i", "j", "k", "l",
+//     "m", "n", "o", "p", "q", "r",
+//     "s", "t", "u", "v", "w", "x",
+//     "y", "z"
+//   ];
+
+// Create a directory folder data to store the JSON files
+try {
+    accessSync('data')
+  } catch (err) {
+    mkdirSync('data')
+  }
 
 function fetchAndProcessData(url) {
     return fetch(url)
@@ -40,7 +53,7 @@ function createAlienRefListJsonFile(alienRefListData, letter) {
     console.log(`Creating JSON file for letter ${letter} with data`);
     let json = JSON.stringify(alienRefListData);
     // let wrappedResult =  `{"alienRefList": ${json}}`;
-    let filename = `server\\${letter}_alienRefList.json`;
+    let filename = `data\\${letter}_alienRefList.json`;
     writeFileSync(filename, json, "utf8", (err) => {
         if (err) {
             console.error("Error writing file:", err);

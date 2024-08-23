@@ -52,9 +52,13 @@ let currentFocusJSON = -1;
 // Add event listeners to search bar element to handle key presses
 search.addEventListener("input", function onFirstInput() {
   let searchValue = search.value.charAt(0);
-  let alienRefListFiltered = alienRefList.filter(alien => alien.name.toLowerCase().startsWith(searchValue.toLowerCase()));
   searchList.innerHTML = "";
-  populateDatalist(alienRefListFiltered);
+  if (!searchValue.match(/[a-zA-Z]/)) {
+    alert("Invalid input. Search must start with a letter.");
+    console.log("Invalid input"); 
+    return;
+  }
+  populateDatalist(alienRefList, searchValue);
 
   // Remove the event listener after the first input
   search.removeEventListener("input", onFirstInput);
@@ -67,7 +71,9 @@ console.log("Search button clicked");
 	// }
 });
 
-function populateDatalist (alienRefList) {
+function populateDatalist (alienRefList, firstLetter) {
+  //test if firstLetter is a letter
+
   alienRefList.forEach(alien => {
     let option = document.createElement("option");
     option.value = `${alien.name} - ${alien.source}`;
