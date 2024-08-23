@@ -9,7 +9,7 @@
     <meta name="author" content="JPC">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <script defer src="script.js"></script>
+    <script defer type="module" src="script.js"></script>
     <title>Alien Lifeform Database</title>
 </head>
 
@@ -37,12 +37,13 @@
             <div class="search-bar-container">
                 <form autocomplete="off" class="search-box" id="search-box" action="#">
                     <label for="search" class="search-box-label"></label>
-                    <input type="text" id="search" name="search" placeholder="Search for an alien lifeform"
+                    <input list="search-list" id="search" name="search" placeholder="Search for an alien lifeform"
                         aria-label="Search for an alien lifeform" tabindex="1">
                     <button class="search-button" id="search-button" aria-label="Search button"><img
                             class="search-button-img" src="/images/noun-search-crop.png" alt="search button"></button>
-                    <div class="search-matching-list" id="search-matching-list" role="listbox"
-                        aria-label="Results matching search"></div>
+                    <datalist id="search-list" class="search-matching-list" role="listbox"
+                        aria-label="Results matching search">
+                    </datalist>
                 </form>
             </div>
         </div>

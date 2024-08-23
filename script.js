@@ -25,12 +25,10 @@ function menuToggle() {
     }
 }
 
-// load & validate alienRefList from JSON file
-let alienRefList = JSON.parse('[{"name":"Aaamazzarite","source":"Star Trek: The Motion Picture"},{"name":"Aalaag","source":"Gordon R. Dickson\'s Way of the Pilgrim"},{"name":"Aaroun","source":"The Orville"},{"name":"Abh","source":"Crest of the Stars"},{"name":"Abductors","source":"Squee"}]');
-const Ajv = require('ajv');
-const ajv = new Ajv();
 
-const schema = {
+// load & validate alienRefList from JSON file
+
+const alienRefListSchema = {
   "required": ["name", "source"],
   "properties": {
     "name": {
@@ -42,60 +40,37 @@ const schema = {
   }
 };
 
-const validate = ajv.compile(schema);
+let alienRefList = JSON.parse('[{"name":"Aaamazzarite","source":"Star Trek: The Motion Picture"},{"name":"Aalaag","source":"Gordon R. Dickson\'s Way of the Pilgrim"},{"name":"Aaroun","source":"The Orville"},{"name":"Abh","source":"Crest of the Stars"},{"name":"Abductors","source":"Squee"}]');
 
-alienRefList.forEach((alien) => {
-  const valid = validate(alien);
-  if (!valid) {
-    console.error(validate.errors);
-  }
-});
 
 // Get input element and results list
 let search = document.getElementById("search");
-let results = document.getElementById("search-matching-list");
+let searchList = document.getElementById("search-list");
 let searchButton = document.getElementById("search-button");
 let currentFocusJSON = -1;
-// Add event listener to input element
 
-search.addEventListener("input", suggestAliens);
-search.addEventListener("click", () => {
-	search.select();
+// Add event listeners to search bar element to handle key presses
+search.addEventListener("input", function onFirstInput() {
+  let searchValue = search.value.charAt(0);
+  let alienRefListFiltered = alienRefList.filter(alien => alien.name.toLowerCase().startsWith(searchValue.toLowerCase()));
+  searchList.innerHTML = "";
+  populateDatalist(alienRefListFiltered);
+
+  // Remove the event listener after the first input
+  search.removeEventListener("input", onFirstInput);
 });
+
 searchButton.addEventListener("click", () => {
-	if(search.value !== "") {
-		alert(search.value);
-	}
+console.log("Search button clicked");
+  // if(search.value !== "") {
+	// 	alert(search.value);
+	// }
 });
 
-function suggestAliens() {
-    let suggest = [];
-let input = this.value.trim();
-if(input.length) {
-    suggest = alienRefList.filter((keyword) => {
-        return keyword.search.toLowerCase().includes(input.toLowerCase());
-    });
-}
-displayJSON(suggest);
-if(!suggest.length) {
-    result.innerHTML = "";
-}
-}
-
-function displayJSON(suggest) {
-    currentFocusJSON = -1;
-    const content = suggest.map((list) => {
-        const alien = list.search;
-        return `<li class="item" onclick="selectInputJSON('${alien}')">${HighlightJSON(alien)}</li>`;
-    });
-
-    // Clear previous results
-    results.innerHTML = '';
-
-    // Create a new li element
-    const li = document.createElement('li');
-    li.innerHTML = content.join("");
-
-    // Append the li element to the results ul element
-    results.appendChild(li);
+function populateDatalist (alienRefList) {
+  alienRefList.forEach(alien => {
+    let option = document.createElement("option");
+    option.value = `${alien.name} - ${alien.source}`;
+    searchList.appendChild(option);
+  });
 }
