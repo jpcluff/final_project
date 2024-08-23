@@ -4,16 +4,13 @@ import fetch from "node-fetch";
 
 // using https://www.wikitable2json.com/ API to get table data from wikipedia 
 const wikiurl = "https://www.wikitable2json.com/api/";
+// endpoint delay to avoid any API rate limit 
+const delayDuration = 1000;
 const wikiPageRoot = "List_of_fictional_alien_species:_";    
 // key-value format using the first row as keys
 const keyRows= "?keyRows=1";
 let alphabet = ["A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K", "L","M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X","Y", "Z"];
-// , "b", "c", "d", "e", "f",
-//     "g", "h", "i", "j", "k", "l",
-//     "m", "n", "o", "p", "q", "r",
-//     "s", "t", "u", "v", "w", "x",
-//     "y", "z"
-//   ];
+
 
 // Create a directory folder data to store the JSON files
 try {
@@ -53,6 +50,7 @@ function createAlienRefListJsonFile(alienRefListData, letter) {
     console.log(`Creating JSON file for letter ${letter} with data`);
     let json = JSON.stringify(alienRefListData);
     // let wrappedResult =  `{"alienRefList": ${json}}`;
+    letter = letter.toLowerCase();
     let filename = `data\\${letter}_alienRefList.json`;
     writeFileSync(filename, json, "utf8", (err) => {
         if (err) {
@@ -65,22 +63,30 @@ function createAlienRefListJsonFile(alienRefListData, letter) {
 
 function buildAlienRefList() {
     let promises = [];
+    // Delay to avoid hitting a rate limit
+    let delay = 0;
     alphabet.forEach(letter => {
         let url = wikiurl + wikiPageRoot + letter + keyRows; // Construct the URL
-        promises.push(
-            fetchAndProcessData(url).then(result => {
-                createAlienRefListJsonFile(result, letter);
-            })
-        );
-    });
+        setTimeout(() => {
+            promises.push(
+                fetchAndProcessData(url).then(result => {
+                    createAlienRefListJsonFile(result, letter);
+                })
+            );
 
-    Promise.all(promises)
-        .then(() => {
-            console.log("All JSON files created successfully.");
-        })
-        .catch(error => {
-            console.error("Error processing data:", error);
-        });
+            if (promises.length === alphabet.length) {
+                Promise.all(promises)
+                    .then(() => {
+                        console.log("All JSON files created successfully.");
+                    })
+                    .catch(error => {
+                        console.error("Error processing data:", error);
+                    });
+            }
+        }, delay);
+
+        delay += delayDuration; // Increase delay by 1 second for each iteration
+    });
 }
 
 // Call the function to build the alien reference lists
