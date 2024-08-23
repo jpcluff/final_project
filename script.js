@@ -46,21 +46,39 @@ const alienRefListSchema = {
 let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
 let searchButton = document.getElementById("search-button");
-let currentFocusJSON = -1;
+
+function clearSearchList() {
+  searchList.innerHTML = "";
+}
 
 // Add event listeners to search bar element to handle key presses
-search.addEventListener("input", function onFirstInput() {
+search.addEventListener("input", function onFirstInput(event) {
   let searchValue = search.value.charAt(0);
-  searchList.innerHTML = "";
-  if (!searchValue.match(/[a-zA-Z]/)) {
+  clearSearchList();
+  if (searchValue.match(/^[A-Za-z]+$/)) {
+    fetchAlienRefList(searchValue);
+    // Remove the event listener after the first valid input
+  } else if (event.inputType === "deleteContentBackward") {
+    // Handle backspace input
+    clearSearchList();
+    search.removeEventListener("input", onFirstInput);
+  } else if (searchValue.match(/[0-9]/)) {
     alert("Invalid input. Search must start with a letter.");
     console.log("Invalid input");
     return;
   }
-  fetchAlienRefList(searchValue);
+});
 
-  // Remove the event listener after the first input
-  search.removeEventListener("input", onFirstInput);
+search.addEventListener("keydown", function(event) {
+  if (event.key === "Backspace") {
+    clearSearchList();
+  }
+});
+
+document.addEventListener("click", function(event) {
+  if (!search.contains(event.target)) {
+    clearSearchList();
+  }
 });
 
 searchButton.addEventListener("click", () => {
@@ -69,6 +87,7 @@ searchButton.addEventListener("click", () => {
   // call search process display search results in same window
 
 });
+
 
 function populateDatalist(alienRefList) {
   alienRefList.forEach(alien => {
