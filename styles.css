@@ -472,6 +472,29 @@ footer {
     align-items: center;
 }
 
+/* alien details page */
+details {
+    user-select: none;
+  }
+details > summary span.icon-pointer {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s;
+  }
+    details[open] summary span.icon-pointer {
+        transform: rotate(180deg);
+    }
+
+  summary {
+    display: flex;
+    cursor: pointer;
+  }
+  
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+/* alert */
 .alert {
     display: none;
     flex-wrap: nowrap;
