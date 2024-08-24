@@ -1,9 +1,8 @@
 // import fetch from "node-fetch";
 
-let menuOpen = false;
-
+// Toggle menu visibility
 document.querySelector('.menu-toggle').addEventListener('click', menuToggle);
-
+let menuOpen = false;
 function menuToggle() {
   let menu = document.querySelector('.burger-menu');
   let menuToggleImg = document.getElementById('menu-toggle');
@@ -28,8 +27,7 @@ function menuToggle() {
 }
 
 
-// load & validate alienRefList from JSON file
-
+// load & validate alienRefList from JSON file then populate datalist
 const alienRefListSchema = {
   "required": ["name", "source"],
   "properties": {
@@ -42,53 +40,69 @@ const alienRefListSchema = {
   }
 };
 
-// Get input element and results list
+// Get input element and clear search list
+let searching = false;
+const acceptableChars = /^[A-Za-z]+$/;
 let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
 let searchButton = document.getElementById("search-button");
 
 function clearSearchList() {
+  console.log("Cleared search list");
   searchList.innerHTML = "";
 }
 
 // Add event listeners to search bar element to handle key presses
 search.addEventListener("input", function onFirstInput(event) {
   let searchValue = search.value.charAt(0);
-  clearSearchList();
-  if (searchValue.match(/^[A-Za-z]+$/)) {
-    fetchAlienRefList(searchValue);
-    // Remove the event listener after the first valid input
-  } else if (event.inputType === "deleteContentBackward") {
-    // Handle backspace input
+  console.log("Searching started: " + searching + ", typed value:" + searchValue);
+  if (searchValue.length > 0) {
+    if (!acceptableChars.test(searchValue)) {
+      alert("Invalid input. Search must start with a letter.");
+      console.log("Invalid character");
+      search.value = "";
+      return;
+    } else {
+      if (!searching) {
+        fetchAlienRefList(searchValue);
+        searching = true;
+      }
+      else {
+        // console.log("Already searching");
+      }
+    }
+  }
+  else {
+    // search value lenght is 0
+    searching = false;
     clearSearchList();
-    search.removeEventListener("input", onFirstInput);
-  } else if (searchValue.match(/[0-9]/)) {
-    alert("Invalid input. Search must start with a letter.");
-    console.log("Invalid input");
-    return;
+  }
+})
+
+// Clear search list when backspace is pressed and search value is empty
+search.addEventListener("keydown", function (event) {
+  if ((event.key === "Backspace") && (search.value.length === 0)) {
+    searching = false;
+    clearSearchList();
   }
 });
 
-search.addEventListener("keydown", function(event) {
-  if (event.key === "Backspace") {
-    clearSearchList();
-  }
-});
-
-document.addEventListener("click", function(event) {
+// Clear search list when clicking outside of search bar
+document.addEventListener("click", function (event) {
   if (!search.contains(event.target)) {
+    searching = false;
     clearSearchList();
   }
 });
 
 searchButton.addEventListener("click", () => {
-  console.log("Search button clicked");
   let searchValue = search.value;
+  console.log("Search button clicked with Search value: "+searchValue);
   // call search process display search results in same window
 
 });
 
-
+// Populate datalist with alienRefList data
 function populateDatalist(alienRefList) {
   alienRefList.forEach(alien => {
     let option = document.createElement("option");

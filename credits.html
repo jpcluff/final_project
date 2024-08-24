@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="prototype alien lifeform database">
+    <meta name="keywords" content="alien, generative prompt">
+    <meta name="author" content="JPC">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <script defer src="script.js" type="module"></script>
+    <title>Alien Lifeform Database</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="title">
+                <h1>Alien Lifeform Database</h1>
+            </div>
+            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship"></a>
+            </div>
+        </nav>
+        <menu class="burger-menu" tabindex="0">
+            <li class="menu-toggle"><a href="#"><img id="menu-toggle" src="/images/noun-burger-menu-crop.png"
+                        alt="burger menu open"></a></li>
+            <li class="nav-item selected"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>
+            <li class="nav-item"><a href="#">How to Submit an Update</a></li>
+            <li class="nav-item"><a href="#"> Report an Issue</a></li>
+            <li class="nav-item"><a href="#">About the ALfDb</a></li>
+            <li class="nav-item"><a href="/results.html">results page</a></li>
+            <li class="nav-item"><a href="/test.html">test page</a></li>
+        </menu>
+        <div class="search-bar">
+            <div class="search-bar-container">
+                <form autocomplete="off" class="search-box" id="search-box" action="#">
+                    <label for="search" class="search-box-label"></label>
+                    <input list="search-list" id="search" name="search" placeholder="Search for an alien lifeform"
+                        aria-label="Search for an alien lifeform" tabindex="1">
+                    <button class="search-button" id="search-button" aria-label="Search button"><img
+                            class="search-button-img" src="/images/noun-search-crop.png" alt="search button"></button>
+                    <datalist id="search-list" class="search-matching-list" role="listbox"
+                        aria-label="Results matching search">
+                    </datalist>
+                </form>
+            </div>
+        </div>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <section>
+                <h2>Image Source Credits & Attribution</h2>
+                <ul class="credits">
+                <li>Search by <a href="https://thenounproject.com/creator/designalzam/">Alzam</a> from <a href="https://thenounproject.com/icon/search-5079145/" target="_blank" title="Search Icons">Noun Project</a> (CC BY 3.0)</li>
+                <li><a href="https://birkbeck2.github.io/web-development-website-project-jpcluff/">Visual Design Assignment 1 Web Page</a></li>
+            </ul>
+            </section>
+            <section>
+                <h3>Project Links</h3>
+                <ul class="credits">
+                <li><a href="https://birkbeck2.github.io/web-development-website-project-jpcluff/">Visual Design Assignment 1 Web Page</a></li>
+            </ul>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-item">
+            <p>&copy;JPC2024</p>
+        </div>
+        <div class="footer-item">
+            <h3><a href="prototypes.html">Prototypes</a></h3>
+        </div>
+        <div class="footer-item"><a href="credits.html">Credits</a></div>
+    </footer>
+</body>
+
+</html>

@@ -479,3 +479,22 @@ footer {
     font-weight: bold;
     margin: 0.2rem;
 }
+
+.credits {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start ;
+    align-items: center;
+    width: 100%;
+    border-top: 2px solid black;
+}
+.credits li {
+  align-self: flex-start;
+  padding: 0.25rem;
+}
+
+.credits li a {
+    color: blue;
+    text-decoration:underline;
+}

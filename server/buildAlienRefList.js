@@ -46,7 +46,8 @@ function fetchAndProcessData(url) {
             childArray.forEach(item => {
                 newArray.push({
                     name: item.Name,
-                    source: item.Source
+                    source: item.Source,
+                    overview: item.Type
                 });
             });
             return newArray;
