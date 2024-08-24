@@ -114,6 +114,7 @@ h3 {
     font-size: 1.5rem;
     text-align: center;
     text-wrap: wrap;
+    margin: auto;
 }
 a {
     color: black;
@@ -446,8 +447,13 @@ padding: 1rem;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    margin: auto;
 } 
+
+.pagination-button {
+  margin: auto;
+  padding: 1rem;
+}
 
 footer {
     display: flex;

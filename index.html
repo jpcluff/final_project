@@ -30,7 +30,7 @@
             <li class="nav-item"><a href="#">How to Submit an Update</a></li>
             <li class="nav-item"><a href="#"> Report an Issue</a></li>
             <li class="nav-item"><a href="#">About the ALfDb</a></li>
-            <li class="nav-item"><a href="/results.html">Search results page</a></li>
+            <li class="nav-item"><a href="search-results.html">Search results page</a></li>
             <li class="nav-item"><a href="lofi-designs.html">Lofi Designs</a></li>
             <li class="nav-item"><a href="credits.html">Credits</a></li>
         </menu>
@@ -55,12 +55,16 @@
         </section>
         <div class="main-container">
             <section class="actions">
-                <span class="actions-label"><h2>Actions</h2></span>
+                <div class="actions-label">
+                    <h2>Actions</h2>
+                </div>
                 <div class="submit"><button class="action-button add-button" type="button">Add Alien +</button></div>
                 <div class="submit"><button class="action-button browse-button" type="button">Browse</button></div>
             </section>
             <section class="stats">
-                <span class="stats-label"><h2>ALfDb Statistics</h2></span>
+                <div class="stats-label">
+                    <h2>ALfDb Statistics</h2>
+                </div>
                 <div class="stat">
                     <p class="stat added">Aliens added: <span id="stat-added-value">nnnn</span></p>
                 </div>
@@ -76,16 +80,18 @@
                         <li><i>alfName</i></li>
                     </ol>
                 </div>
-                <!-- alert hidden by default -->
-                <div class="alert">
-                    <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
-                    </div>
-                    <div class="closebtn" onclick="this.parentElement.style.display='none';">
-                        <div class="closex">&times;</div>
-                    </div>
-                </div>
             </section>
-            <!-- main contain end -->
+                <!-- alert hidden by default -->
+                <section class="alert-box">
+                    <div class="alert">
+                        <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
+                        </div>
+                        <div class="closebtn" onclick="this.parentElement.style.display='none';">
+                            <div class="closex">&times;</div>
+                        </div>
+                    </div>
+                </section>
+                <!-- main contain end -->
         </div>
     </main>
     <footer>
