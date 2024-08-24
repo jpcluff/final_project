@@ -36,15 +36,14 @@ function verifyResponseData(data) {
 }
 
 function randomNumberGenerator(limit) {
-    return Math.floor(Math.random() * limit);
+    return Math.floor(Math.random() * limit) + 1;
 }
 
 function setPlaceholderImg() {
     let imageNumber = randomNumberGenerator(countPlaceholderImg);
-    let imgUri = imageNumber + "-alien.png" + locatePlaceholderImg;
-    console.log("Image URI:" + imgUri);
+    let imgUri = locatePlaceholderImg+imageNumber+ "-alien.png" ;
+    console.log("Created Image URI:" + imgUri);
     return imgUri;
-
 }
 
 function fetchAndProcessData(url) {
@@ -58,11 +57,12 @@ function fetchAndProcessData(url) {
             let childArray = data[0];
             let newArray = [];
             childArray.forEach(item => {
+                let imgOverview = setPlaceholderImg();
                 newArray.push({
                     name: item.Name,
                     source: item.Source,
                     overview: item.Type,
-                    imgOverview: setPlaceholderImg();
+                    imgOverview: imgOverview
                 });
             });
             return newArray;
