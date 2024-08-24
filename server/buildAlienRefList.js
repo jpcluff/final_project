@@ -6,21 +6,23 @@ import fetch from "node-fetch";
 const wikiurl = "https://www.wikitable2json.com/api/";
 // endpoint delay to avoid any API rate limit 
 const delayDuration = 1000;
-const wikiPageRoot = "List_of_fictional_alien_species:_";    
+const wikiPageRoot = "List_of_fictional_alien_species:_";
 // key-value format using the first row as keys
-const keyRows= "?keyRows=1";
-let alphabet = ["A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K", "L","M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X","Y", "Z"];
+const keyRows = "?keyRows=1";
+const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const countPlaceholderImg = 4;
+const locatePlaceholderImg = "images/placeholderImg/";
 
 
 // Create a directory folder data to store the JSON files
 try {
     accessSync('data')
-  } catch (err) {
+} catch (err) {
     mkdirSync('data')
-  }
+}
 
 //  verify the response data structure 
- function verifyResponseData(data) {
+function verifyResponseData(data) {
     if (!Array.isArray(data)) {
         return false;
     }
@@ -31,6 +33,18 @@ try {
         return false;
     }
     return true;
+}
+
+function randomNumberGenerator(limit) {
+    return Math.floor(Math.random() * limit);
+}
+
+function setPlaceholderImg() {
+    let imageNumber = randomNumberGenerator(countPlaceholderImg);
+    let imgUri = imageNumber + "-alien.png" + locatePlaceholderImg;
+    console.log("Image URI:" + imgUri);
+    return imgUri;
+
 }
 
 function fetchAndProcessData(url) {
@@ -47,7 +61,8 @@ function fetchAndProcessData(url) {
                 newArray.push({
                     name: item.Name,
                     source: item.Source,
-                    overview: item.Type
+                    overview: item.Type,
+                    imgOverview: setPlaceholderImg();
                 });
             });
             return newArray;

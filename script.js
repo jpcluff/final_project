@@ -98,7 +98,7 @@ document.addEventListener("click", function (event) {
 searchButton.addEventListener("click", () => {
   let searchValue = search.value;
   console.log("Search button clicked with Search value: "+searchValue);
-  // call search process display search results in same window
+  // call search process display search results in same window  
 
 });
 
