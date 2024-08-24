@@ -61,7 +61,7 @@ function fetchAndProcessData(url) {
                 newArray.push({
                     name: item.Name,
                     source: item.Source,
-                    overview: item.Type,
+                    summary: item.Type,
                     imgOverview: imgOverview
                 });
             });

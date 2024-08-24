@@ -98,8 +98,9 @@ document.addEventListener("click", function (event) {
 searchButton.addEventListener("click", () => {
   let searchValue = search.value;
   console.log("Search button clicked with Search value: "+searchValue);
-  // call search process display search results in same window  
-
+  // call search value validator
+  console.log("Calling validateSearchValue with: "+searchValue);
+  validateSearchValue(searchValue);
 });
 
 // Populate datalist with alienRefList data
@@ -143,4 +144,25 @@ function fetchAlienRefList(firstLetter) {
     .catch(error => {
       console.error("Error fetching data:", error);
     });
+}
+
+function validateSearchValue(searchValue) {
+  // Validate search value isn't empty
+  if (searchValue.length === 0) {
+    alert("Search value cannot be empty.");
+    return;
+  }
+  // Validate search value contains hyphen character
+  else if (!searchValue.includes("-")) {
+    alert("Invalid input. Search must start with a letter.");
+    console.log("Invalid character");
+    search.value = "";
+    return;
+  }
+  else { // no hyphen character call generative search
+    //call function generative search
+  }
+  console.log("Search Error from search value: "+searchValue);
+  // call function redirect to Failed search page
+  //TODO: Redirect to failed search page
 }
