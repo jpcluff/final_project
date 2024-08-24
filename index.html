@@ -9,7 +9,7 @@
     <meta name="author" content="JPC">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <script defer src="script.js" type="module"></script>
+    <script async src="script.js" type="module"></script>
     <title>Alien Lifeform Database</title>
 </head>
 
@@ -30,8 +30,9 @@
             <li class="nav-item"><a href="#">How to Submit an Update</a></li>
             <li class="nav-item"><a href="#"> Report an Issue</a></li>
             <li class="nav-item"><a href="#">About the ALfDb</a></li>
-            <li class="nav-item"><a href="/results.html">results page</a></li>
-            <li class="nav-item"><a href="/test.html">test page</a></li>
+            <li class="nav-item"><a href="/results.html">Search results page</a></li>
+            <li class="nav-item"><a href="lofi-designs.html">Lofi Designs</a></li>
+            <li class="nav-item"><a href="credits.html">Credits</a></li>
         </menu>
         <div class="search-bar">
             <div class="search-bar-container">
@@ -41,12 +42,10 @@
                         aria-label="Search for an alien lifeform" tabindex="1">
                     <button class="search-button" id="search-button" aria-label="Search button"><img
                             class="search-button-img" src="/images/noun-search-crop.png" alt="search button"></button>
-                    <datalist id="search-list" class="search-matching-list" role="listbox"
-                        aria-label="Results matching search">
+                    <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
                     </datalist>
                 </form>
             </div>
-        </div>
         </div>
     </header>
     <main>
@@ -56,17 +55,17 @@
         </section>
         <div class="main-container">
             <section class="actions">
-                <span class="actions-label">Actions</span>
+                <span class="actions-label"><h2>Actions</h2></span>
                 <div class="submit"><button class="action-button add-button" type="button">Add Alien +</button></div>
                 <div class="submit"><button class="action-button browse-button" type="button">Browse</button></div>
             </section>
             <section class="stats">
-                <span class="stats-label">ALfDb Statistics</span>
+                <span class="stats-label"><h2>ALfDb Statistics</h2></span>
                 <div class="stat">
-                    <p class="stat added">Aliens added: <span id="stat added-value">nnnn</span></p>
+                    <p class="stat added">Aliens added: <span id="stat-added-value">nnnn</span></p>
                 </div>
                 <div class="stat">
-                    <p class="stat validated">Aliens validated: <span id="stat validated">nnnn</span></p>
+                    <p class="stat validated">Aliens validated: <span id="stat-validated">nnnn</span></p>
                 </div>
                 <div class="ranked-visited">
                     <span class="ranking-label">Most visited&bsol;searched:</span>

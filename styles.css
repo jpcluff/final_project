@@ -104,10 +104,20 @@ h1 {
     text-wrap: wrap;
 }
 
+h2  {
+    font-size: 2rem;
+    text-align: center;
+    text-wrap: wrap;
+}
+
+h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    text-wrap: wrap;
+}
 a {
     color: black;
-    text-decoration: none;
-}
+    text-decoration:none;}
 
 a:hover {
     text-decoration: underline;

@@ -169,6 +169,7 @@ function validateSearchValue(searchInput) {
 }
 
 function failedSearch(searchInput) {
+  
 
 }
 
