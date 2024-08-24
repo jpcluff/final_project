@@ -96,11 +96,11 @@ document.addEventListener("click", function (event) {
 });
 
 searchButton.addEventListener("click", () => {
-  let searchValue = search.value;
-  console.log("Search button clicked with Search value: "+searchValue);
+  let searchInput = search.value;
+  console.log("Search button clicked with Search value: "+searchInput);
   // call search value validator
-  console.log("Calling validateSearchValue with: "+searchValue);
-  validateSearchValue(searchValue);
+  console.log("Calling validateSearchValue with: "+searchInput);
+  validateSearchValue(searchInput);
 });
 
 // Populate datalist with alienRefList data
@@ -146,23 +146,37 @@ function fetchAlienRefList(firstLetter) {
     });
 }
 
-function validateSearchValue(searchValue) {
+function validateSearchValue(searchInput) {
   // Validate search value isn't empty
-  if (searchValue.length === 0) {
+  if (searchInput.length === 0) {
     alert("Search value cannot be empty.");
     return;
   }
   // Validate search value contains hyphen character
-  else if (!searchValue.includes("-")) {
-    alert("Invalid input. Search must start with a letter.");
-    console.log("Invalid character");
-    search.value = "";
-    return;
+  if (searchInput.includes("-")) {
+    // call function to extract substring before hyphen
+    let alienName = extractSearchValue(searchInput);
+    // call function to search for alien name in the let alienName = search.value.charAt(0);_alienOverviewList.json
+    //TODO: Call searchOverviewList function
+  } else {
+    // No hyphen character, call generative search
+    // TODO: call generative search function
   }
-  else { // no hyphen character call generative search
-    //call function generative search
-  }
-  console.log("Search Error from search value: "+searchValue);
-  // call function redirect to Failed search page
+    // Error handling (if needed)
+  console.log("Search Error from search value: " + searchInput);
+  //call function to redirect to failed search page 
   //TODO: Redirect to failed search page
 }
+
+function failedSearch(searchInput) {
+
+}
+
+function extractSearchValue(searchInput) {
+  let searchArray = searchInput.split("-");
+  let alienName = searchArray[0].trim();
+  let alienSource = searchArray[1].trim();
+  console.log("Alien Name: " + alienName + ", Alien Source: " + alienSource);
+  return alienName;
+}
+
