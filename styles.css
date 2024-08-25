@@ -535,11 +535,13 @@ footer {
 }
 
 details {
-    flex:1;
+    /* flex:1; */
+
     user-select: none;
 }
 
-details>summary span.icon-pointer {
+summary span.icon-pointer {
+    height: 3rem;
     font-size: 2rem;
     transition: all 0.3s;
     transform: rotate(90deg);
@@ -547,17 +549,22 @@ details>summary span.icon-pointer {
 }
 
 details[open] summary span.icon-pointer {
+
     transform: rotate(270deg);
 }
 
 summary {
-    min-height: 10%;
+
+    border-bottom: solid 0.1rem black;
+    width: 97%;
     cursor: pointer;
 }
 
 summary::-webkit-details-marker {
     display: none;
 }
+
+
 .overview-text-container {
     display: flex;
     flex-wrap: nowrap;
@@ -581,12 +588,15 @@ summary::-webkit-details-marker {
 /* Validator Icon */
 
 .icon-validator-container {
+    z-index: 1;
     display: flex;
     flex-wrap: nowrap;  
     flex-direction: column;
     align-items: flex-end;
     width: 100%;
     height: 1%;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .icon-validator {
