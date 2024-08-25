@@ -89,7 +89,7 @@ search.addEventListener("keydown", function (event) {
 
 // Clear search list when clicking outside of search bar
 document.addEventListener("click", function (event) {
-  if (!search.contains(event.target)) {
+  if (!search.contains(event.target) && searching) {
     searching = false;
     clearSearchList();
   }
