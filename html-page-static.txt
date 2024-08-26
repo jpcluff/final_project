@@ -19,11 +19,11 @@
             <div class="title">
                 <h1>Alien Lifeform Database</h1>
             </div>
-            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship"></a>
+            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship" title="Home"></a>
             </div>
         </nav>
         <menu class="burger-menu" tabindex="0">
-            <li class="menu-toggle"><a href="#"><img id="menu-toggle" src="/images/noun-burger-menu-crop.png"
+            <li class="menu-toggle" title="Click to expand &amp; close"><a href="#"><img id="menu-toggle" src="/images/noun-burger-menu-crop.png"
                         alt="burger menu open"></a></li>
             <li class="nav-item selected"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>

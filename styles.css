@@ -100,7 +100,7 @@ a:hover {
     /* Places underlines below the descenders */
     text-underline-position: under;
     /* Sets the thickness as a percentage of the font size */
-    text-decoration-thickness: 0.8rem;
+    text-decoration-thickness: 0.2rem;
 }
 
 header {
@@ -411,6 +411,12 @@ section {
     padding: 1rem;
 }
 
+a:hover.search-result-link {
+    background-color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    border-radius: 1rem;
+}
+
 .search-result-text {
     min-width: 50%;
 }
@@ -505,9 +511,10 @@ footer {
     width: 100%;
 }
 .alien-image {
+    position: relative;
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -522,6 +529,21 @@ footer {
 .alien-image img {
     border-radius: 0.5rem;
     border: solid 0.1rem black;
+}
+
+.image-validator-container {
+    position: absolute;
+    bottom: 10%;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    flex-wrap: nowrap;  
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    height: 1%;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
 }
 .alien-details-container{
     display: flex;
@@ -605,6 +627,7 @@ summary::-webkit-details-marker {
     text-align: center;
     padding: 0.5rem;
     width: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); /* Optional: Add a shadow for better visibility */
     background-color: lightgreen;
 }
 
