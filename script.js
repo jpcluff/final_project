@@ -8,7 +8,7 @@ function menuToggle() {
   let menuToggleImg = document.getElementById('menu-toggle');
   let menuItems = document.querySelectorAll('.nav-item');
   if (!menuOpen) {
-    menuToggleImg.src = "/images/noun-close-crop.png";
+    menuToggleImg.src = "images/noun-close-crop.png";
     menuToggleImg.alt = "burger menu close";
     // menu.style.backgroundColor = "white";
     menuOpen = true;
@@ -16,7 +16,7 @@ function menuToggle() {
       listItem.style.display = 'flex';
     });
   } else {
-    menuToggleImg.src = "/images/noun-burger-menu-crop.png";
+    menuToggleImg.src = "images/noun-burger-menu-crop.png";
     menuToggleImg.alt = "burger menu open";
     // menu.style.backgroundColor = "transparent";
     menuOpen = false;
