@@ -1,5 +1,5 @@
 :root {
-    font-size: 62.5%;   
+    font-size: 62.5%;
 }
 
 
@@ -479,7 +479,6 @@ footer {
 
 .creators-container {
     display: flex;
-    ;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
@@ -488,9 +487,13 @@ footer {
 }
 
 .creator-name {
-    /* padding: 0.5rem; */
+    padding: 0 0.5rem;
     white-space: nowrap;
 }
+.creator-name p {
+    text-indent: -0.6rem
+}
+
 /* alien details images section */
 .alien-images-section {
     display: flex;
@@ -501,6 +504,7 @@ footer {
     margin: 1rem 0;
     width: 90%;
 }
+
 .alien-images-container {
     display: flex;
     flex-wrap: nowrap;
@@ -510,6 +514,7 @@ footer {
     margin: auto;
     width: 100%;
 }
+
 .alien-image {
     position: relative;
     display: flex;
@@ -533,35 +538,33 @@ footer {
 
 .image-validator-container {
     position: absolute;
-    bottom: 10%;
-    right: 0;
+    bottom: 2rem;
+    right: -0.3rem;
     z-index: 1;
     display: flex;
-    flex-wrap: nowrap;  
+    flex-wrap: nowrap;
     flex-direction: column;
     align-items: flex-end;
     width: 100%;
     height: 1%;
-    margin-left: 0.5rem;
     margin-bottom: 1rem;
 }
-.alien-details-container{
+
+/* alien details containers */
+.alien-details-container {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: center;
     width: 90%;
-height: 50%;
     border-radius: 1rem;
     background-color: white;
 }
-
 details {
     /* flex:1; */
 
     user-select: none;
 }
-
 summary span.icon-pointer {
     height: 3rem;
     font-size: 2rem;
@@ -569,23 +572,19 @@ summary span.icon-pointer {
     transform: rotate(90deg);
 
 }
-
 details[open] summary span.icon-pointer {
 
     transform: rotate(270deg);
 }
-
 summary {
     font-size: large;
     border-bottom: solid 0.1rem black;
     width: 97%;
     cursor: pointer;
 }
-
 summary::-webkit-details-marker {
     display: none;
 }
-
 
 .text-container {
     display: flex;
@@ -596,6 +595,7 @@ summary::-webkit-details-marker {
     margin: auto;
     border-bottom: solid 0.1rem black;
 }
+
 .ptext {
     display: flex;
     flex-wrap: nowrap;
@@ -615,7 +615,7 @@ summary::-webkit-details-marker {
     top: 0;
     right: 0;
     display: flex;
-    flex-wrap: nowrap;  
+    flex-wrap: nowrap;
     flex-direction: column;
     align-items: flex-end;
     width: 100%;
@@ -623,34 +623,36 @@ summary::-webkit-details-marker {
     margin-left: 0.5rem;
     margin-bottom: 1rem;
 }
-
 .icon-validator {
-    border: 0.1rem solid black;
+    border: 0.2rem solid black;
     border-radius: 50%;
     text-align: center;
     padding: 0.5rem;
     width: 2rem;
     background-color: lightgreen;
 }
-
 .icon-validator:hover {
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); /* Optional: Add a shadow for better visibility */
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
+    /* Add a shadow for better visibility */
 }
 
 /* Details table */
 table {
-    overflow-x:auto;
+    overflow-x: auto;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  th, td {
+}
+
+th,
+td {
     text-align: left;
     padding: 0.8rem;
     border-top: solid 0.1rem black;
-  }
-  
-  tr:nth-child(odd) {background-color: lightgrey;}
+}
+
+tr:nth-child(odd) {
+    background-color: lightgrey;
+}
 
 /* alert */
 .alert {
@@ -746,30 +748,38 @@ table {
         width: 90%;
 
     }
+
     .alien-main-banner {
         flex-direction: column;
         width: 100%;
     }
+
     #creators.creators-container {
         flex-direction: column;
         align-items: flex-start;
         padding: 0.2rem;
     }
+
     .creator-name {
         white-space: wrap;
         padding: 0;
+   
     }
+
     .creator-name p {
-        font-size: medium;
+        font-size: large;
+
     }
+
     section.alien-images-section {
         padding: 0;
         width: 100%;
     }
+
     .alien-images-container {
         width: 100%;
         margin: 0;
-}
+    }
 }
 
 /* tablet */
@@ -783,6 +793,7 @@ table {
     .actions {
         width: 30%;
     }
+
     .alien-main-banner {
         width: 95%;
     }
@@ -793,4 +804,43 @@ table {
     }
 }
 
+/* Special responsiveness for Alien Details Page Table */
+/* CREDIT https://css-tricks.com/responsive-data-tables/ */
+@media 
+only screen and (max-width: 550px) {
+    table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+    thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+    tr { border: 1px solid grey; }
+
+    td { 
+		/* Style as a "row" */
+		border: none;
+		border-bottom: 0.1rem solid white; 
+		position: relative;
+		padding-left: 30%;
+	}
+    td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0.6rem;
+		left: 0.6rem;
+		/* width: 45%;  */
+		padding-right: 1rem; 
+		white-space: nowrap;
+	}
+    	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Title:"; }
+	td:nth-of-type(2):before { content: "Year:"; }
+	td:nth-of-type(3):before { content: "Format:"; }
+    td:nth-of-type(4):before { content: "Credits:"; }
+}
 /* end responsive----------------------------------------------- */
