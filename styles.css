@@ -165,7 +165,7 @@ img#menu-toggle {
     border-radius: 1rem;
     width: 5rem;
 }
-
+/* Ensure the nav-item links have a consistent underline */
 .nav-item {
     padding: 0.5rem;
     background-color: white;
@@ -180,16 +180,7 @@ img#menu-toggle {
 
 .nav-item a:hover {
     text-decoration: underline;
-    padding: 0.5rem;
 }
-
-.nav-item a:active {
-    background-color: grey;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    width: 100%;
-}
-
 
 button:hover {
     background-color: black;
