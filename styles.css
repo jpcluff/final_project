@@ -277,7 +277,7 @@ input#search:focus {
 
 section {
     padding: 1rem;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 /* ticket */
@@ -549,8 +549,7 @@ footer {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: flex-start;
-    margin: 0;
+    justify-content: center;
     width: 90%;
     border-radius: 1rem;
     background-color: white;
@@ -587,7 +586,7 @@ summary::-webkit-details-marker {
 }
 
 
-.overview-text-container {
+.text-container {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -596,7 +595,7 @@ summary::-webkit-details-marker {
     margin: auto;
     border-bottom: solid 0.1rem black;
 }
-.overview-text {
+.ptext {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -634,6 +633,21 @@ summary::-webkit-details-marker {
 .icon-validator:hover {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); /* Optional: Add a shadow for better visibility */
 }
+
+/* Details table */
+table {
+    overflow-x:auto;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 0.8rem;
+    border-top: solid 0.1rem black;
+  }
+  
+  tr:nth-child(odd) {background-color: lightgrey;}
 
 /* alert */
 .alert {

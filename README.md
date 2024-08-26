@@ -1,2 +1,4 @@
 # final_project
-Check after Git Crash
+TODO
+fix validator with positioning same as image.
+Table responsive mobile
