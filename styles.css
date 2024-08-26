@@ -539,6 +539,7 @@ footer {
 
 .image-validator-container {
     position: absolute;
+    z-index: 1;
     bottom: 2rem;
     right: -0.3rem;
     display: flex;
