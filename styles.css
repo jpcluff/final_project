@@ -16,7 +16,7 @@
 
 html {
     height: 100%;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     /* (62.5/100) * 16 =10 so now 1rem == 10px*/
 
 }
@@ -40,7 +40,7 @@ img {
 main {
     height: 100%;
     flex: 1;
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 
@@ -52,7 +52,7 @@ main {
     margin: 0 auto;
     border-radius: 1.5rem;
     align-items: center;
-    width: 90%;
+    width: 80%;
 }
 
 .actions {
@@ -551,6 +551,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     width: 90%;
+height: 50%;
     border-radius: 1rem;
     background-color: white;
 }
@@ -575,7 +576,7 @@ details[open] summary span.icon-pointer {
 }
 
 summary {
-
+    font-size: large;
     border-bottom: solid 0.1rem black;
     width: 97%;
     cursor: pointer;
@@ -609,7 +610,10 @@ summary::-webkit-details-marker {
 /* Validator Icon */
 
 .detail-validator-container {
+    position: relative;
     z-index: 1;
+    top: 0;
+    right: 0;
     display: flex;
     flex-wrap: nowrap;  
     flex-direction: column;
@@ -626,7 +630,6 @@ summary::-webkit-details-marker {
     text-align: center;
     padding: 0.5rem;
     width: 2rem;
-
     background-color: lightgreen;
 }
 
@@ -772,7 +775,7 @@ table {
 /* tablet */
 @media only screen and (min-width: 426px) and (max-width: 768px) {
     .main-container {
-        min-width: 70%;
+        width: 85%;
         background-color: lightblue;
         flex-direction: column;
     }
