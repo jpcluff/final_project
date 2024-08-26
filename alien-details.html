@@ -1,156 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="prototype alien lifeform database">
-    <meta name="keywords" content="alien, generative prompt">
-    <meta name="author" content="JPC">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <script async src="script.js" type="module"></script>
-    <title>Alien Lifeform Database</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="prototype alien lifeform database">
+        <meta name="keywords" content="alien, generative prompt">
+        <meta name="author" content="JPC">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <script async src="script.js" type="module"></script>
+        <title>Alien Lifeform Database</title>
+    </head>
 
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="title">
-                <h1>Alien Lifeform Database</h1>
-            </div>
-            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship" title="Home"></a>
-            </div>
-        </nav>
-        <menu class="burger-menu" tabindex="0">
-            <li class="menu-toggle" title="Click to expand &amp; close"><a href="#"><img id="menu-toggle" src="images/noun-burger-menu-crop.png"
-                        alt="burger menu open"></a></li>
-            <li class="nav-item selected"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>
-            <li class="nav-item"><a href="#">How to Submit an Update</a></li>
-            <li class="nav-item"><a href="#"> Report an Issue</a></li>
-            <li class="nav-item"><a href="#">About the ALfDb</a></li>
-            <li class="nav-item"><a href="search-results.html">Search results page</a></li>
-            <li class="nav-item"><a href="lofi-designs.html">Lofi Designs</a></li>
-            <li class="nav-item"><a href="credits.html">Credits</a></li>
-        </menu>
-        <div class="search-bar">
-            <div class="search-bar-container">
-                <form autocomplete="off" class="search-box" id="search-box" action="#">
-                    <label for="search" class="search-box-label"></label>
-                    <input list="search-list" id="search" name="search" placeholder="Search for an alien lifeform"
-                        aria-label="Search for an alien lifeform" tabindex="1">
-                    <button class="search-button" id="search-button" aria-label="Search button"><img
-                            class="search-button-img" src="images/noun-search-crop.png" alt="search button"></button>
-                    <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
-                    </datalist>
-                </form>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="alien-name" id="alien-name">
-            <h2>alfName</h2>
-        </div>
-        <div class="main-container">
-            <div class="alien-main-banner" id="alien-name-banner">
-                <div class="alien-name-max" id="alien-name-max">
-                    <h2 class="h2-alfname">alfName</h2>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="title">
+                    <h1>Alien Lifeform Database</h1>
                 </div>
-                <div class="creators-container" id="creators">
-                    <div class="creator-label">
-                        <h2 class="h2-creator">Creator&sol;s:</h2>
-                    </div>
-                    <div class="creator-name" id="creator-name-1">
-                        <p>Firstname Lastname,</p>
-                    </div>
-                    <div class="creator-name" id="creator-name-2">
-                        <p>LongerFirstname LongerLastname</p>
-                    </div>
+                <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship" title="Home"></a>
+                </div>
+            </nav>
+            <menu class="burger-menu" tabindex="0">
+                <li class="menu-toggle" title="Click to expand &amp; close"><a href="#"><img id="menu-toggle" src="images/noun-burger-menu-crop.png"
+                            alt="burger menu open"></a></li>
+                <li class="nav-item selected"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>
+                <li class="nav-item"><a href="#">How to Submit an Update</a></li>
+                <li class="nav-item"><a href="#"> Report an Issue</a></li>
+                <li class="nav-item"><a href="#">About the ALfDb</a></li>
+                <li class="nav-item"><a href="search-results.html">Search results page</a></li>
+                <li class="nav-item"><a href="lofi-designs.html">Lofi Designs</a></li>
+                <li class="nav-item"><a href="credits.html">Credits</a></li>
+            </menu>
+            <div class="search-bar">
+                <div class="search-bar-container">
+                    <form autocomplete="off" class="search-box" id="search-box" action="#">
+                        <label for="search" class="search-box-label"></label>
+                        <input list="search-list" id="search" name="search" placeholder="Search for an alien lifeform"
+                            aria-label="Search for an alien lifeform" tabindex="1">
+                        <button class="search-button" id="search-button" aria-label="Search button"><img
+                                class="search-button-img" src="images/noun-search-crop.png" alt="search button"></button>
+                        <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
+                        </datalist>
+                    </form>
                 </div>
             </div>
-            <section class="alien-images-section">
-                <div class="alien-images-container">
-                    <div class="alien-image" id="alien-image-1">
-                        <img src="images/placeholderImg/1-alien.png" alt="placeholder image of an alien lifeform">
-                        <div class="image-validator-container" id="image-validator-icon-1-alien-alfname-1"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
-
+        </header>
+        <main>
+            <div class="alien-name" id="alien-name">
+                <h2>alfName</h2>
+            </div>
+            <span id="span-open-validatorOverlay">open</span>
+            <div class="main-container">
+                <div class="alien-main-banner" id="alien-name-banner">
+                    <div class="alien-name-max" id="alien-name-max">
+                        <h2 class="h2-alfname">alfName</h2>
                     </div>
-                    <div class="alien-image" id="alien-image-2">
-                        <img src="images/placeholderImg/2-alien.png" alt="placeholder image of an alien lifeform">
-                        <div class="image-validator-container" id="image-validator-icon-2-alien-alfname-1"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
+                    <div class="creators-container" id="creators">
+                        <div class="creator-label">
+                            <div class="creators-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
+                            <h2 class="h2-creator">Creator&sol;s:</h2>
+                        </div>
+                        <div class="creator-name" id="creator-name-1">
+                            <p>Firstname Lastname,</p>
+                        </div>
+                        <div class="creator-name" id="creator-name-2">
+                            <p>LongerFirstname LongerLastname</p>
+                        </div>
                     </div>
                 </div>
-            </section>
-            <section class="alien-details-container overview">
-                <div class="detail-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
-                <details class="expandable overview" id="overview-alfname-1">
-                    <summary title="Click to expand">Overview</summary>
-                    <div class="text-container overview">
-                        <p class="ptext overview" id="overview-text-alfname-1">Alien Lifeform Description Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
-                    </div>
-                </details>
-            </section>
-            <section class="alien-details-container sources">
-                <div class="detail-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
-                <details class="expandable sources" id="sources-alfname-1">
-                    <summary title="Click to expand">Associated Works</summary>
-                    <div class="text-container sources">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Year</th>
-                                    <th>Format</th>
-                                    <th>Credits</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="sources-cell-1-title"><i>Title Lorem Ipsum Dolor Sit Amet</i></td>
-                                    <td id="sources-cell-1-year"><i>YYYY</i></td>
-                                    <td id="sources-cell-1-format">Book</td>
-                                    <td id="sources-cell-1-credits">Firstname Lastname</td>
-                                </tr>
-                                <tr>
-                                    <td id="sources-cell-2-title"><i>Title Consectetur Adipiscing Elit</i></td>
-                                    <td id="sources-cell-2-year">YYYY</td>
-                                    <td id="sources-cell-2-format">TV Show</td>
-                                    <td id="sources-cell-2-credits">LongerFirstname LongerLastname, Firstname LongerLastname</td>
-                                </tr>
-                                <tr>
-                                    <td id="sources-cell-3-title"><i>Nam in nibh ullamcorper, pharetra elit vel, luctus dolor</i></td>
-                                    <td id="sources-cell-3-year">YYYY</td>
-                                    <td id="sources-cell-3-format"><i>Source Format</i></td>
-                                    <td id="sources-cell-3-credits">Production Company, Author, Originator</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </details>
-            </section>
-            <section class="alien-details-container physical-characteristics">
-                <div class="detail-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
-                <details class="expandable physical-characteristics" id="physical-characteristics-alfname-1">
-                    <summary title="Click to expand">Physical Characteristics</summary>
-                    <div class="text-container physical-characteristics">
-                        <p class="ptext physical-characteristics" id="physical-characteristics-text-alfname-1">Alien Lifeform Description Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
-                    </div>
-                </details>
-            </section>
+                <section class="alien-images-section">
+                    <div class="alien-images-container">
+                        <div class="alien-image" id="alien-image-1">
+                            <img src="images/placeholderImg/1-alien.png" alt="placeholder image of an alien lifeform">
+                            <div class="image-validator-container" id="image-validator-icon-1-alien-alfname-1"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
 
-            <!-- main contain end -->
+                        </div>
+                        <div class="alien-image" id="alien-image-2">
+                            <img src="images/placeholderImg/2-alien.png" alt="placeholder image of an alien lifeform">
+                            <div class="image-validator-container" id="image-validator-icon-2-alien-alfname-1"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="alien-details-container overview">
+                    <div class="detail-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
+                    <details class="expandable overview" id="overview-alfname-1">
+                        <summary title="Click to expand">Overview</summary>
+                        <div class="text-container overview">
+                            <p class="ptext overview" id="overview-text-alfname-1">Alien Lifeform Description Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+                        </div>
+                    </details>
+                </section>
+                <section class="alien-details-container sources">
+                    <div class="detail-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
+                    <details class="expandable sources" id="sources-alfname-1">
+                        <summary title="Click to expand">Associated Works</summary>
+                        <div class="text-container sources">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Year</th>
+                                        <th>Format</th>
+                                        <th>Credits</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="sources-cell-1-title"><i>Title Lorem Ipsum Dolor Sit Amet</i></td>
+                                        <td id="sources-cell-1-year"><i>YYYY</i></td>
+                                        <td id="sources-cell-1-format">Book</td>
+                                        <td id="sources-cell-1-credits">Firstname Lastname</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="sources-cell-2-title"><i>Title Consectetur Adipiscing Elit</i></td>
+                                        <td id="sources-cell-2-year">YYYY</td>
+                                        <td id="sources-cell-2-format">TV Show</td>
+                                        <td id="sources-cell-2-credits">LongerFirstname LongerLastname, Firstname LongerLastname</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="sources-cell-3-title"><i>Nam in nibh ullamcorper, pharetra elit vel, luctus dolor</i></td>
+                                        <td id="sources-cell-3-year">YYYY</td>
+                                        <td id="sources-cell-3-format"><i>Source Format</i></td>
+                                        <td id="sources-cell-3-credits">Production Company, Author, Originator</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                </section>
+                <section class="alien-details-container physical-characteristics">
+                    <div class="detail-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
+                    <details class="expandable physical-characteristics" id="physical-characteristics-alfname-1">
+                        <summary title="Click to expand">Physical Characteristics</summary>
+                        <div class="text-container physical-characteristics">
+                            <p class="ptext physical-characteristics" id="physical-characteristics-text-alfname-1">Alien Lifeform physical characteristics Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+                        </div>
+                    </details>
+                </section>
+                <section class="alien-details-container habitat">
+                    <div class="detail-validator-container"><span class="icon-validator" title="Click to report error or question accuracy">&check;</span></div>
+                    <details class="expandable habitat" id="habitat-alfname-1">
+                        <summary title="Click to expand">Habitat</summary>
+                        <div class="text-container physical-characteristics">
+                            <p class="ptext habitat" id="habitat-text-alfname-1">Alien Lifeform Habitat Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+                        </div>
+                    </details>
+                </section>
+    <!-- NEW ALIEN ADDED OVERLAY -->
+    <!-- START overlay -->
+    <div id="validatorOverlay" class="overlay">
+       <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" id="overlay-closebtn">&times;</a>
+        <!-- Overlay content -->
+        <div class="overlay-content">
         </div>
-    </main>
-    <footer>
-        <div class="footer-item">
-            <p>&copy;JPC2024</p>
-        </div>
-        <div class="footer-item">
-            <h3><a href="lofi-designs.html">Lofi Designs</a></h3>
-        </div>
-        <div class="footer-item"><a href="credits.html">Credits</a></div>
-    </footer>
-</body>
+        <!-- END Validator Overlay -->
+    </div>
+                <!-- END main container -->
+            </div>
+        </main>
+        <footer>
+            <div class="footer-item">
+                <p>&copy;JPC2024</p>
+            </div>
+            <div class="footer-item">
+                <h3><a href="lofi-designs.html">Lofi Designs</a></h3>
+            </div>
+            <div class="footer-item"><a href="credits.html">Credits</a></div>
+        </footer>
+    </body>
 
-</html>
+    </html>

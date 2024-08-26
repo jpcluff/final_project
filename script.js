@@ -7,6 +7,7 @@ function menuToggle() {
   let menu = document.querySelector('.burger-menu');
   let menuToggleImg = document.getElementById('menu-toggle');
   let menuItems = document.querySelectorAll('.nav-item');
+  let mainContainer = document.querySelector('.main-container'); // Get the main-container element
   if (!menuOpen) {
     menuToggleImg.src = "images/noun-close-crop.png";
     menuToggleImg.alt = "burger menu close";
@@ -15,17 +16,18 @@ function menuToggle() {
     menuItems.forEach(listItem => {
       listItem.style.display = 'flex';
     });
+    mainContainer.style.zIndex = '-1'; // Set z-index to -1 to push main container AND overlay behind menu
   } else {
     menuToggleImg.src = "images/noun-burger-menu-crop.png";
     menuToggleImg.alt = "burger menu open";
     // menu.style.backgroundColor = "transparent";
     menuOpen = false;
     menuItems.forEach(listItem => {
-      listItem.style.display = "none";
+    listItem.style.display = "none";
     });
+    mainContainer.style.zIndex = '0'; // Set z-index to 0 to bring main container AND overlay in front of menu
   }
 }
-
 
 // load & validate alienRefList from JSON file then populate datalist
 const alienRefListSchema = {
@@ -180,4 +182,21 @@ function extractSearchValue(searchInput) {
   console.log("Alien Name: " + alienName + ", Alien Source: " + alienSource);
   return alienName;
 }
+// Alien Details Overlay
+/* Open when someone clicks on the span element */
 
+const spanOpenOverlay = document.getElementById("span-open-validatorOverlay");
+const spanCloseOverlay = document.getElementById("overlay-closebtn");
+spanOpenOverlay.addEventListener("click", openNav);
+spanCloseOverlay.addEventListener("click", closeNav);
+console.log("Listeners added for spanOpenOverlay and spanCloseOverlay");
+
+
+function openNav() {
+  document.getElementById("validatorOverlay").style.width = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("validatorOverlay").style.width = "0%";
+}
