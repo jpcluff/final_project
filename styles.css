@@ -609,7 +609,7 @@ summary::-webkit-details-marker {
 
 /* Validator Icon */
 
-.icon-validator-container {
+.detail-validator-container {
     z-index: 1;
     display: flex;
     flex-wrap: nowrap;  
@@ -627,8 +627,12 @@ summary::-webkit-details-marker {
     text-align: center;
     padding: 0.5rem;
     width: 2rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); /* Optional: Add a shadow for better visibility */
+
     background-color: lightgreen;
+}
+
+.icon-validator:hover {
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); /* Optional: Add a shadow for better visibility */
 }
 
 /* alert */
