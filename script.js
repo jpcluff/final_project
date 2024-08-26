@@ -11,16 +11,18 @@ function menuToggle() {
   if (!menuOpen) {
     menuToggleImg.src = "images/noun-close-crop.png";
     menuToggleImg.alt = "burger menu close";
-    // menu.style.backgroundColor = "white";
+    menu.style.backgroundColor = "white";
+    menu.style.width = "100%";
     menuOpen = true;
     menuItems.forEach(listItem => {
-      listItem.style.display = 'flex';
+    listItem.style.display = 'flex';
     });
     mainContainer.style.zIndex = '-1'; // Set z-index to -1 to push main container AND overlay behind menu
   } else {
     menuToggleImg.src = "images/noun-burger-menu-crop.png";
     menuToggleImg.alt = "burger menu open";
-    // menu.style.backgroundColor = "transparent";
+    menu.style.backgroundColor = "transparent";
+    menu.style.width = "10%";
     menuOpen = false;
     menuItems.forEach(listItem => {
     listItem.style.display = "none";
@@ -66,10 +68,11 @@ search.addEventListener("input", function onFirstInput(event) {
       return;
     } else {
       if (!searching) {
-        fetchAlienRefList(searchValue);
         searching = true;
+        fetchAlienRefList(searchValue);
       }
       else {
+        window.location.replace("search-results.html");
         // console.log("Already searching");
       }
     }
@@ -80,6 +83,16 @@ search.addEventListener("input", function onFirstInput(event) {
     clearSearchList();
   }
 })
+// Add event listener to search button
+searchButton.addEventListener("click", () => {
+  searching = true;
+  let searchInput = search.value;
+  window.open("search-results.html", "_self");
+  console.log("Search button clicked with Search value: " + searchInput);
+  // call search value validator
+  console.log("Calling validateSearchValue with: " + searchInput);
+  validateSearchValue(searchInput);
+});
 
 // Clear search list when backspace is pressed and search value is empty
 search.addEventListener("keydown", function (event) {
@@ -91,18 +104,11 @@ search.addEventListener("keydown", function (event) {
 
 // Clear search list when clicking outside of search bar
 document.addEventListener("click", function (event) {
-  if (!search.contains(event.target) && searching) {
+  const searchBar = document.querySelector(".search-bar-container");
+  if (!searchBar.contains(event.target) && searching) {
     searching = false;
     clearSearchList();
   }
-});
-
-searchButton.addEventListener("click", () => {
-  let searchInput = search.value;
-  console.log("Search button clicked with Search value: "+searchInput);
-  // call search value validator
-  console.log("Calling validateSearchValue with: "+searchInput);
-  validateSearchValue(searchInput);
 });
 
 // Populate datalist with alienRefList data
@@ -156,9 +162,13 @@ function validateSearchValue(searchInput) {
   }
   // Validate search value contains hyphen character
   if (searchInput.includes("-")) {
+    // TEMP UX
+    console.log("Redirecting to search-results.html");
+    window.location.replace("search-results.html");
     // call function to extract substring before hyphen
-    let alienName = extractSearchValue(searchInput);
+    // let alienName = extractSearchValue(searchInput);
     // call function to search for alien name in the let alienName = search.value.charAt(0);_alienOverviewList.json
+
     //TODO: Call searchOverviewList function
   } else {
     // No hyphen character, call generative search
@@ -171,7 +181,7 @@ function validateSearchValue(searchInput) {
 }
 
 function failedSearch(searchInput) {
-  
+
 
 }
 
@@ -182,14 +192,25 @@ function extractSearchValue(searchInput) {
   console.log("Alien Name: " + alienName + ", Alien Source: " + alienSource);
   return alienName;
 }
+
 // Alien Details Overlay
-/* Open when someone clicks on the span element */
+/* Click temp span element to open */
 
 const spanOpenOverlay = document.getElementById("span-open-validatorOverlay");
 const spanCloseOverlay = document.getElementById("overlay-closebtn");
-spanOpenOverlay.addEventListener("click", openNav);
-spanCloseOverlay.addEventListener("click", closeNav);
-console.log("Listeners added for spanOpenOverlay and spanCloseOverlay");
+if (spanOpenOverlay) {
+  console.log("Listener added for spanOpenOverlay");
+  spanOpenOverlay.addEventListener("click", openNav);
+} else {
+  // console.error("Element with ID 'span-open-validatorOverlay' not found.");
+}
+if (spanCloseOverlay) {
+  console.log("Listener added for spanCloseOverlay");
+  spanCloseOverlay.addEventListener("click", closeNav);
+} else {
+  // console.error("Element with ID 'overlay-closebtn' not found.");
+}
+
 
 
 function openNav() {
