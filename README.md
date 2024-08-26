@@ -1,3 +1,5 @@
 # final_project
 TODO
-Table responsive mobile
+links
+alien image validator layer & alfname unique 
+rounded menu & width
