@@ -40,9 +40,9 @@
                     <label for="search" class="search-box-label"></label>
                     <input list="search-list" id="search" name="search" placeholder="Search for an alien lifeform"
                         aria-label="Search for an alien lifeform" tabindex="1">
-                    <button onclick="location.href='search-results.html';" class="search-button" id="search-button"
+                    <button type="submit" formaction="search-results.html" class="search-button" id="search-button"
                         aria-label="Search button">
-                        <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
+                       <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
                     </button>
                     <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
                     </datalist>
@@ -60,8 +60,8 @@
                 <div class="actions-label">
                     <h2>Actions</h2>
                 </div>
-                <div class="submit"><button class="action-button add-button" type="button">Add Alien +</button></div>
-                <div class="submit"><button class="action-button browse-button" type="button">Browse</button></div>
+                <div class="submit"><button onclick = "window.location.href='add-alien.html';" class="action-button add-button" type="button">Add Alien +</button></div>
+                <div class="submit"><button onclick = "window.location.href='browse-aliens.html';" class="action-button browse-button" type="button">Browse</button></div>
             </section>
             <section class="stats">
                 <div class="stats-label">

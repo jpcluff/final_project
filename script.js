@@ -13,6 +13,7 @@ function menuToggle() {
     menuToggleImg.alt = "burger menu close";
     menu.style.backgroundColor = "white";
     menu.style.width = "100%";
+    menu.style.borderBottom = "solid 0.1rem black";
     menuOpen = true;
     menuItems.forEach(listItem => {
     listItem.style.display = 'flex';
@@ -23,6 +24,7 @@ function menuToggle() {
     menuToggleImg.alt = "burger menu open";
     menu.style.backgroundColor = "transparent";
     menu.style.width = "10%";
+    menu.style.borderBottom = "none";
     menuOpen = false;
     menuItems.forEach(listItem => {
     listItem.style.display = "none";
@@ -50,18 +52,29 @@ const acceptableChars = /^[A-Za-z]+$/;
 let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
 let searchButton = document.getElementById("search-button");
-
+let searchClick = false;
 function clearSearchList() {
   console.log("Cleared search list");
   searchList.innerHTML = "";
 }
 
+//Add event listener to search list to handle click events
+searchList.addEventListener("click", function (event) {
+  searchClick = true;
+  let selectedValue = event.target.value;
+  let searchValue = search.value;
+  console.log("Selected value: " + selectedValue);
+  console.log("Search value: " + searchValue);
+  window.open("search-results.html", "_self");
+});
+
 // Add event listeners to search bar element to handle key presses
 search.addEventListener("input", function onFirstInput(event) {
-  let searchValue = search.value.charAt(0);
+  let searchChar = search.value.charAt(0);
+  let searchValue = search.value;
   console.log("Searching started: " + searching + ", typed value:" + searchValue);
-  if (searchValue.length > 0) {
-    if (!acceptableChars.test(searchValue)) {
+  if (searchValue.length === 1) {
+    if (!acceptableChars.test(searchChar)) {
       alert("Invalid input. Search must start with a letter.");
       console.log("Invalid character");
       search.value = "";
@@ -69,30 +82,34 @@ search.addEventListener("input", function onFirstInput(event) {
     } else {
       if (!searching) {
         searching = true;
-        fetchAlienRefList(searchValue);
+        fetchAlienRefList(searchChar);
       }
-      else {
-        window.location.replace("search-results.html");
-        // console.log("Already searching");
+      else if (searchClick) {
+        window.open("search-results.html", "_self");
+        window.location.href = "search-results.html";
+        console.log("Already searching");
       }
     }
   }
-  else {
+  else if (searchValue.length === 0) {
     // search value lenght is 0
     searching = false;
     clearSearchList();
   }
+  else {
+    return;
+  }
 })
 // Add event listener to search button
-searchButton.addEventListener("click", () => {
-  searching = true;
-  let searchInput = search.value;
-  window.open("search-results.html", "_self");
-  console.log("Search button clicked with Search value: " + searchInput);
-  // call search value validator
-  console.log("Calling validateSearchValue with: " + searchInput);
-  validateSearchValue(searchInput);
-});
+// searchButton.addEventListener("click", () => {
+//   let searchInput = search.value;
+//   searching = true;
+//   window.open("search-results.html", "_self");
+//   console.log("Search button clicked with Search value: " + searchInput);
+//   // call search value validator
+//   console.log("Calling validateSearchValue with: " + searchInput);
+//   validateSearchValue(searchInput);
+// });
 
 // Clear search list when backspace is pressed and search value is empty
 search.addEventListener("keydown", function (event) {
