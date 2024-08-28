@@ -158,7 +158,12 @@ function verifyFileData(data) {
 function fetchAlienRefList(firstLetter) {
   let datafile = `data\\${firstLetter}_alienRefList.json`;
   fetch(datafile)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(alienDatafile => {
       if (!verifyFileData(alienDatafile)) {
         console.error("Unexpected structure");
