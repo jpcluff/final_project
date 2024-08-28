@@ -71,6 +71,7 @@ searchList.addEventListener("click", function (event) {
 // Add event listeners to search bar element to handle key presses
 search.addEventListener("input", function onFirstInput(event) {
   let searchChar = search.value.charAt(0);
+  searchChar = searchChar.toLowerCase();
   let searchValue = search.value;
   console.log("Searching started: " + searching + ", typed value:" + searchValue);
   if (searchValue.length === 1) {
