@@ -17,7 +17,9 @@
     <header>
         <nav class="navbar">
             <div class="title">
-                <a href="index.html" target="_self"><h1>Alien Lifeform Database</h1></a>
+                <a href="index.html" target="_self">
+                    <h1>Alien Lifeform Database</h1>
+                </a>
             </div>
             <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship"></a>
             </div>
@@ -42,7 +44,7 @@
                         aria-label="Search for an alien lifeform" tabindex="1">
                     <button type="submit" formaction="search-results.html" class="search-button" id="search-button"
                         aria-label="Search button">
-                       <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
+                        <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
                     </button>
                     <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
                     </datalist>
@@ -177,23 +179,34 @@
             <div id="validatorOverlay" class="overlay">
                 <!-- Button to close the overlay navigation -->
                 <a href="javascript:void(0)" class="closebtn" id="overlay-closebtn">&times;</a>
-                <div class="validator-explainer-container">
-                    <hgroup class="explainer-header-container">
-                    <h2 class="h2-toast">Congratulations!</h2>
-                    <h2 class="h2-">You're adding <span class="span-alfname-add" id="span-alfname-add">alfname-1</span> to the ALfDb.</h2>
-                    <div class="explainer-steps-container">
-
-
-                    </div>
-                </div>
-                </div>
                 <!-- Overlay content -->
                 <div class="overlay-content">
+                    <div class="validator-explainer-container">
+                        <hgroup class="explainer-header-container">
+                            <h2 class="h2-toast">Congratulations!</h2>
+                            <h2 class="h2-">You're adding <div class="span-alfname-add"
+                                    id="span-alfname-add">alfname-1</div> to the ALfDb.</h2>
+                        </hgroup>
+                        <div class="explainer-steps-container">
+                            <div class="explainer-img"><img src="images/noun-about-crop.png" alt=""></div>
+                            <div class="explainer-step">
+                                <p class="ptext-step">1. Click on the arrow to expand the info section & review
+                                    the information.</p>
+                            </div>
+                            <div class="explainer-step">
+                                <p class="ptext-step">2. Click on an X to confirm the images & info are correct.
+                                <p>Click again to switch between confirmed ✔ or unconfirmed X.</p>
+                                <p>Click on i to submit an update or query.</p>
+                                </p>
+                            </div>
+                            <div class="btn-continue"><a class="a-btn-continue" id="a-btn-continue" href="javascript:void(0)">Continue</a></div>
+                        </div>
+                    </div>
                 </div>
-                <!-- END Validator Overlay -->
             </div>
-            <!-- END main container -->
+            <!-- END Validator Overlay -->
         </div>
+        <!-- END main container -->
     </main>
     <footer>
         <div class="footer-item">

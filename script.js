@@ -221,6 +221,7 @@ function extractSearchValue(searchInput) {
 
 const spanOpenOverlay = document.getElementById("span-open-validatorOverlay");
 const spanCloseOverlay = document.getElementById("overlay-closebtn");
+const continueButton = document.getElementById("a-btn-continue");
 if (spanOpenOverlay) {
   console.log("Listener added for spanOpenOverlay");
   spanOpenOverlay.addEventListener("click", openNav);
@@ -232,6 +233,12 @@ if (spanCloseOverlay) {
   spanCloseOverlay.addEventListener("click", closeNav);
 } else {
   // console.error("Element with ID 'overlay-closebtn' not found.");
+}
+if (continueButton) {
+  console.log("Listener added for continueButton");
+  continueButton.addEventListener("click", closeNav);
+} else {
+  // console.error("Element with ID 'a-btn-continue' not found.");
 }
 
 
