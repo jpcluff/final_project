@@ -52,12 +52,13 @@ const acceptableChars = /^[A-Za-z]+$/;
 let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
 let searchButton = document.getElementById("search-button");
-
+const searchBar = document.getElementById("search-box")
 
 function clearSearchList() {
   searching = false;
   console.log("Cleared search list");
   searchList.innerHTML = "";
+  search.value = ""; // Clear the search input field
 }
 
 //add event listener to search input to handle keyup events
@@ -91,6 +92,12 @@ searchButton.addEventListener("click", function (event) {
   // clearSearchList();
 });
 
+// Clear search list when clicking outside of search bar
+document.addEventListener("click", function (event) {
+    if (!searchBar.contains(event.target)) {
+        clearSearchList();
+    }
+});
 
 
 
