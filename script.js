@@ -87,8 +87,8 @@ search.addEventListener("keyup", function (event) {
 //add event listener to search button to handle click events 
 searchButton.addEventListener("click", function (event) {
   let searchValue = search.value;
-  alert("Search button click event: " + searchValue);
-  // validateSearchValue(searchValue);
+  // alert("Search button click event: " + searchValue);
+  validateSearchValue(searchValue);
   // clearSearchList();
 });
 
@@ -156,10 +156,10 @@ function validateSearchValue(searchInput) {
     return;
   }
   // Validate search value contains hyphen character
-  if (searchInput.includes("-")) {
+  else if (searchInput.includes("-")) {
     // TEMP UX
     console.log("Redirecting to search-results.html");
-    window.location.replace("search-results.html");
+    window.location.assign = '/search-results.html';
     // call function to extract substring before hyphen
     // let alienName = extractSearchValue(searchInput);
     // call function to search for alien name in the let alienName = search.value.charAt(0);_alienOverviewList.json
