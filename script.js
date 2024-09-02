@@ -16,7 +16,7 @@ function menuToggle() {
     menu.style.borderBottom = "solid 0.1rem black";
     menuOpen = true;
     menuItems.forEach(listItem => {
-    listItem.style.display = 'flex';
+      listItem.style.display = 'flex';
     });
     mainContainer.style.zIndex = '-1'; // Set z-index to -1 to push main container AND overlay behind menu
   } else {
@@ -27,7 +27,7 @@ function menuToggle() {
     menu.style.borderBottom = "none";
     menuOpen = false;
     menuItems.forEach(listItem => {
-    listItem.style.display = "none";
+      listItem.style.display = "none";
     });
     mainContainer.style.zIndex = '0'; // Set z-index to 0 to bring main container AND overlay in front of menu
   }
@@ -51,8 +51,9 @@ let searching = false;
 const acceptableChars = /^[A-Za-z]+$/;
 let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
-let searchButton = document.getElementById("search-button");
-const searchBar = document.getElementById("search-box")
+// let searchButton = document.getElementById("search-button");
+const searchBar = document.getElementById("search-box");
+searchBar.onsubmit = validateSearchValue;
 
 function clearSearchList() {
   searching = false;
@@ -66,18 +67,18 @@ search.addEventListener("keyup", function (event) {
   console.log("Search keyup event");
   let searchValue = search.value;
   let firstLetter = searchValue.charAt(0);
-  if  (searchValue.length === 0) {
+  if (searchValue.length === 0) {
     clearSearchList();
     // do nothing
   } else if (searchValue.length > 1) {
-     searching = true;
+    searching = true;
     // Do nothing
   } else if (!searching && acceptableChars.test(firstLetter)) {
     searching = true;
     fetchAlienRefList(firstLetter);
   } else if (!acceptableChars.test(firstLetter)) {
     alert("Search value must start with a letter.");
-    clearSearchList();    
+    clearSearchList();
   }
   else {
     console.log("Search value already being fetched");
@@ -85,20 +86,18 @@ search.addEventListener("keyup", function (event) {
 });
 
 //add event listener to search button to handle click events 
-searchButton.addEventListener("click", function (event) {
-  let searchValue = search.value;
-  // alert("Search button click event: " + searchValue);
-  validateSearchValue(searchValue);
-  // clearSearchList();
-});
+// searchButton.addEventListener("click", function (event) {
+//   let searchValue = search.value;
+//   console.log("Search button click event: " + searchValue);
+//   validateSearchValue(searchValue);
+// });
 
 // Clear search list when clicking outside of search bar
 document.addEventListener("click", function (event) {
-    if (!searchBar.contains(event.target)) {
-        clearSearchList();
-    }
+  if (!searchBar.contains(event.target)) {
+    clearSearchList();
+  }
 });
-
 
 
 // Populate datalist with alienRefList data
@@ -150,34 +149,81 @@ function fetchAlienRefList(firstLetter) {
 }
 
 function validateSearchValue(searchInput) {
+  searchInput.preventDefault();
+  let searchValue = search.value;
   // Validate search value isn't empty
-  if (searchInput.length === 0) {
+  if (searchValue.length === 0) {
     alert("Search value cannot be empty.");
     return;
   }
   // Validate search value contains hyphen character
-  else if (searchInput.includes("-")) {
+  else if (searchValue.includes("-")) {
     // TEMP UX
-    console.log("Redirecting to search-results.html");
-    window.location.assign = '/search-results.html';
+    console.log("Hyphen character detected in " + searchValue);
     // call function to extract substring before hyphen
-    // let alienName = extractSearchValue(searchInput);
-    // call function to search for alien name in the let alienName = search.value.charAt(0);_alienOverviewList.json
-
-    //TODO: Call searchOverviewList function
+    let alienName = extractSearchValue(searchValue);
+    // check alienName is valid then call function to search for alien name in the alienName+ _alienOverviewList.json
+    if (typeof alienName === 'string' && alienName.trim() !== '') {
+      console.log("getAlienOverviewList called with alienName: " + alienName);
+      getAlienOverviewList(alienName);
+    } else {
+      console.error("Invalid alien name extracted: " + alienName);
+    }
   } else {
     // No hyphen character, call generative search
+    alert("NO hyphen character detected.");
     // TODO: call generative search function
   }
-    // Error handling (if needed)
-  console.log("Search Error from search value: " + searchInput);
+  // Error handling (if needed)
+  console.log("Search Error from search value: " + searchValue);
   //call function to redirect to failed search page 
   //TODO: Redirect to failed search page
 }
 
+function getAlienOverviewList(alienName) {
+  let firstLetter = alienName.charAt(0).toLowerCase();
+  // let datafile = `server/${firstLetter}_alienOverviewList.json`; 
+  let datafile = `server/a_alienOverviewList.json`;
+  fetch(datafile)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(alienDatafile => {
+      parseAlienRefList(alienDatafile, alienName);
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
+    });
+}
+
+function parseAlienRefList(alienDataList, alienName) {
+    let alienFound = false;
+    for (let alien of alienDataList) 
+      {
+      if (alien.name === alienName) 
+        {
+        alienFound = true;
+        break;
+      }
+    }
+    if (alienFound) 
+      {
+      // TODO call function to build & redirect to alien details page     
+      alert("Alien found: " + alienName);
+    }
+  else {
+    // TODO call function to redirect to failed search page
+    // failedSearch(alienName);
+    alert("No match for Alien found: " + alienName);
+  }
+}
+
 function failedSearch(searchInput) {
-
-
+  // TODO: Build & redirect to failed search page
+  alert("Alien not found: " + searchInput);
 }
 
 function extractSearchValue(searchInput) {
@@ -190,7 +236,6 @@ function extractSearchValue(searchInput) {
 
 // Alien Details Overlay
 /* Click temp span element to open */
-
 const spanOpenOverlay = document.getElementById("span-open-validatorOverlay");
 const spanCloseOverlay = document.getElementById("overlay-closebtn");
 const continueButton = document.getElementById("a-btn-continue");
@@ -212,13 +257,9 @@ if (continueButton) {
 } else {
   // console.error("Element with ID 'a-btn-continue' not found.");
 }
-
-
-
 function openNav() {
   document.getElementById("validatorOverlay").style.width = "100%";
 }
-
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeNav() {
   document.getElementById("validatorOverlay").style.width = "0%";
