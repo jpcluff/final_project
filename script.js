@@ -216,14 +216,35 @@ function parseAlienRefList(alienDataList, alienName) {
     }
   else {
     // TODO call function to redirect to failed search page
-    // failedSearch(alienName);
+    failedSearch(alienName);
     alert("No match for Alien found: " + alienName);
   }
 }
 
-function failedSearch(searchInput) {
-  // TODO: Build & redirect to failed search page
-  alert("Alien not found: " + searchInput);
+function failedSearch(searchValue) {
+  console.log("Alien not found: " + searchValue);
+  // Redirect to failed search page
+  window.location.assign("search-results.html");
+
+  // Delay DOM manipulation to ensure the new page has loaded
+  setTimeout(() => {
+    document.getElementById("page-count-max").innerHTML = "0";
+    document.getElementById("result-count").innerHTML = "No";
+    Array.from(document.getElementsByClassName("pagination-button")).forEach(button => {
+      button.style.display = "none";
+    });
+    document.getElementById("main-container").innerHTML = ""; // Clear the main container
+    Array.from(document.getElementsByClassName("actions")).forEach(action => {
+      action.style.display = "inline";
+    });
+    const searchResultsSection = document.createElement("section");
+    searchResultsSection.classList.add("search-results");
+    const mainContainer = document.querySelector(".main-container");
+    mainContainer.appendChild(searchResultsSection);
+    const failedSearchMessage = document.createElement("h3");
+    failedSearchMessage.innerHTML = `No results found for ${searchValue}. Try again or choose another action.`;
+    searchResultsSection.appendChild(failedSearchMessage);
+  }, 1000); // Adjust the delay as needed
 }
 
 function extractSearchValue(searchInput) {
