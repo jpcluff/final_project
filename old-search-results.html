@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script async src="script.js" type="module"></script>
-    <script defer src="search-results.js" type="module"></script>
     <title>Alien Lifeform Database</title>
 </head>
 
@@ -18,9 +17,7 @@
     <header>
         <nav class="navbar">
             <div class="title">
-                <a href="index.html" target="_self">
-                    <h1>Alien Lifeform Database</h1>
-                </a>
+                <a href="index.html" target="_self"><h1>Alien Lifeform Database</h1></a>
             </div>
             <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship"></a>
             </div>
@@ -28,7 +25,7 @@
         <menu class="burger-menu" tabindex="0">
             <li class="menu-toggle" title="Click to expand &amp; close"><a href="#"><img id="menu-toggle"
                         src="images/noun-burger-menu-crop.png" alt="burger menu open"></a></li>
-            <li class="nav-item "><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>
             <li class="nav-item"><a href="#">How to Submit an Update</a></li>
             <li class="nav-item"><a href="#"> Report an Issue</a></li>
@@ -39,13 +36,13 @@
         </menu>
         <div class="search-bar">
             <div class="search-bar-container">
-                <form autocomplete="off" class="search-box" id="search-box" action="/post" method="post">
+                <form autocomplete="off" class="search-box" id="search-box" action="#">
                     <label for="search" class="search-box-label"></label>
-                    <input autocomplete="off" list="search-list" id="search" name="search"
-                        placeholder="Search for an alien lifeform" aria-label="Search for an alien lifeform"
-                        tabindex="1">
-                    <button type="submit" class="search-button" id="search-button" aria-label="Search button">
-                        <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
+                    <input list="search-list" id="search" name="search" placeholder="Search for an alien lifeform"
+                        aria-label="Search for an alien lifeform" tabindex="1">
+                    <button type="submit" formaction="search-results.html" class="search-button" id="search-button"
+                        aria-label="Search button">
+                       <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
                     </button>
                     <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
                     </datalist>
@@ -57,15 +54,14 @@
         <div class="search-results-header">
             <h2>Search Results</h2>
             <div class="search-results-count">
-                <h3 id="h3-page-count">Showing page <span id="page-count-min">1</span> of <span
-                        id="page-count-max">10</span></h3>
+                <h3 id="h3-page-count">Showing page <span id="page-count-min">1</span> of <span id="page-count-max">10</span></h3>
                 <h3 id="h3-result-count"><span id="result-count">1</span> alien matched to search.</h3>
             </div>
         </div>
         <div class="main-container">
             <!-- START search result section including link -->
-            <section class="search-results">
-                <a class="search-result-link" href="1-alfname-alien-details.html">
+                <section class="search-results">
+                    <a class="search-result-link" href="1-alfname-alien-details.html">
                     <h4 class="alfName" id="alfName-1">1-alfName</h4>
                     <div class="search-result">
                         <div class="search-result-text">
@@ -76,16 +72,15 @@
                                 ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
                         </div>
                         <div class="search-result-image">
-                            <img class="img-search-result" src="images/placeholderImg/1-alien.png"
-                                alt="1-alien placeholder">
+                            <img class="img-search-result" src="images/placeholderImg/1-alien.png" alt="1-alien placeholder">
                         </div>
                     </div> <!-- Close the search-result div -->
-                </a>
-            </section>
+                    </a>
+                </section>
             <!-- END search result section including link -->
-            <!-- START search result section including link -->
-            <section class="search-results">
-                <a class="search-result-link" href="2-alfname-alien-details.html">
+                         <!-- START search result section including link -->
+                <section class="search-results">
+                    <a class="search-result-link" href="2-alfname-alien-details.html">
                     <h4 class="alfName" id="alfName-2">2-alfName</h4>
                     <div class="search-result">
                         <div class="search-result-text">
@@ -96,13 +91,20 @@
                                 ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
                         </div>
                         <div class="search-result-image">
-                            <img class="img-search-result" src="images/placeholderImg/2-alien.png"
-                                alt="2-alien placeholder">
+                            <img class="img-search-result" src="images/placeholderImg/2-alien.png" alt="2-alien placeholder">
                         </div>
                     </div> <!-- Close the search-result div -->
-                </a>
-            </section>
+                    </a>
+                </section>
             <!-- END search result section including link -->
+            <!-- actions hidden by default -->
+            <section class="actions" style="display: none;">
+                <div class="actions-label">
+                    <h2>Actions</h2>
+                </div>
+                <div class="submit"><button class="action-button add-button" type="button">Add Alien +</button></div>
+                <div class="submit"><button class="action-button browse-button" type="button">Browse</button></div>
+            </section>
             <!-- main contain end -->
         </div>
         <div class="pagination">

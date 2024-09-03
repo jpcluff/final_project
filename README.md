@@ -1,3 +1,4 @@
 # final_project
 TODO
-TODO Adding Alien Buttons etc.
+refactor to create one actions sections
+refactor search-results section to manage parentElement

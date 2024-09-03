@@ -216,36 +216,11 @@ function parseAlienRefList(alienDataList, alienName) {
     }
   else {
     // TODO call function to redirect to failed search page
-    failedSearch(alienName);
-    alert("No match for Alien found: " + alienName);
+    console.log("No match for Alien found: " + alienName);
+    failedSearch(alienName, alienFound);
   }
 }
 
-function failedSearch(searchValue) {
-  console.log("Alien not found: " + searchValue);
-  // Redirect to failed search page
-  window.location.assign("search-results.html");
-
-  // Delay DOM manipulation to ensure the new page has loaded
-  setTimeout(() => {
-    document.getElementById("page-count-max").innerHTML = "0";
-    document.getElementById("result-count").innerHTML = "No";
-    Array.from(document.getElementsByClassName("pagination-button")).forEach(button => {
-      button.style.display = "none";
-    });
-    document.getElementById("main-container").innerHTML = ""; // Clear the main container
-    Array.from(document.getElementsByClassName("actions")).forEach(action => {
-      action.style.display = "inline";
-    });
-    const searchResultsSection = document.createElement("section");
-    searchResultsSection.classList.add("search-results");
-    const mainContainer = document.querySelector(".main-container");
-    mainContainer.appendChild(searchResultsSection);
-    const failedSearchMessage = document.createElement("h3");
-    failedSearchMessage.innerHTML = `No results found for ${searchValue}. Try again or choose another action.`;
-    searchResultsSection.appendChild(failedSearchMessage);
-  }, 1000); // Adjust the delay as needed
-}
 
 function extractSearchValue(searchInput) {
   let searchArray = searchInput.split("-");
@@ -253,5 +228,15 @@ function extractSearchValue(searchInput) {
   let alienSource = searchArray[1].trim();
   console.log("Alien Name: " + alienName + ", Alien Source: " + alienSource);
   return alienName;
+}
+
+function failedSearch(searchValue,alienFound) {
+  console.log("Alien found? "+alienFound+ "Was looking for " + searchValue);
+  // Redirect to failed search page with search value & alienFound=FALSE as query parameters
+  const searchParams = new URLSearchParams();
+  searchParams.set('searchValue', searchValue);
+  searchParams.set('alienFound', false);
+  console.log("Redirecting for: " + searchParams);
+  window.location.assign(`search-results.html?${searchParams.toString()}`);
 }
 
