@@ -53,6 +53,7 @@ let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
 // let searchButton = document.getElementById("search-button");
 const searchBar = document.getElementById("search-box");
+const addAlienSearch = document.querySelector("add-alien-input");
 searchBar.onsubmit = validateSearchValue;
 
 function clearSearchList() {
@@ -94,7 +95,7 @@ search.addEventListener("keyup", function (event) {
 
 // Clear search list when clicking outside of search bar
 document.addEventListener("click", function (event) {
-  if (!searchBar.contains(event.target)) {
+  if (!searchBar.contains(event.target || !addAlienSearch.contains(event.target))) {
     clearSearchList();
   }
 });
