@@ -55,30 +55,72 @@ let searchList = document.getElementById("search-list");
 const searchBar = document.getElementById("search-box");
 searchBar.onsubmit = validateSearchValue;
 
-const addAlienSearch = document.getElementById("add-alien-input");
 const addSearch = document.getElementById("add-search");
+if (addSearch) {
+  addSearch.addEventListener("input", addAlienFormValidation);
+}
 const addSubmitButton = document.getElementById("add-submit-button");
-addSubmitButton.disabled = true;
-let addSource = document.getElementById("sources");
-let sourceValue = "";
-sourceValue = addSource.value;
+if (addSubmitButton) {
+  addSubmitButton.disabled = true;
+}
+let addSource = document.getElementById("source-types");
+if (addSource) {  
+addSource.addEventListener("click", addAlienFormValidation);
+}
 
-// enable add-submit-button if addAlienSearch is not empty & addSource is not default
-addAlienSearch.addEventListener("keyup", function (event) {
-  if (addAlienSearch.value.trim() !== "" && addSource.value !== "default") {
+const addAlienSearch = document.getElementById("add-search-box");
+addAlienSearch.onsubmit = overwriteSearchValue;
+
+function overwriteSearchValue(form) {
+  form.preventDefault();
+  search = document.getElementById("add-search");
+  console.log("overwrite the global variable search with the add-search value: "+search.value);
+  validateSearchValue(form);
+}
+
+// enable add-submit-button if addSearch is not empty & addSource is not default
+function addAlienFormValidation()
+{
+  const othersourceTypes = document.querySelector(".add-alien-input.other-source-types");
+  const othersourceTypesInput = document.getElementById("other-source-types");
+// if the addSearch is not null & source is not default, enable the submit button
+if (addSearch.value.trim() !== "" && addSource.value !== "default")
+{
+ if (addSource.value === "other") 
+  {
+    addSource.style.borderStyle = "dashed";
+    othersourceTypes.style.display = "flex";
+    othersourceTypesInput.style.borderWidth= "0.5rem";
+    othersourceTypesInput.tabIndex = 3;
+    // othersourceTypesInput.focus();
     addSubmitButton.disabled = false;
-  } else {
+  }
+else
+  {
+    //toggle other source-types input field
+    addSource.style.borderStyle = "solid";
+    othersourceTypes.style.display = "none";
+    othersourceTypesInput.tabIndex = "";
+    addSubmitButton.disabled = false;
+  }
+}
+  else
+  {
+    console.log("Disable submit button");
+    addSource.style.borderStyle = "solid";
+    othersourceTypes.style.display = "none";
+    othersourceTypesInput.tabIndex = "";
     addSubmitButton.disabled = true;
   }
-});
-
-
+};
 
 function clearSearchList() {
+  if (searching) {
   searching = false;
   console.log("Cleared search list");
   searchList.innerHTML = "";
   search.value = ""; // Clear the search input field
+  } 
 }
 
 //add event listener to search input to handle keyup events
@@ -117,9 +159,6 @@ document.addEventListener("click", function (event) {
     clearSearchList();
   }
 });
-
-
-
 
 // Populate datalist with alienRefList data
 function populateDatalist(alienRefList) {
@@ -171,6 +210,7 @@ function fetchAlienRefList(firstLetter) {
 
 function validateSearchValue(searchInput) {
   searchInput.preventDefault();
+  console.log("Search form: " + searchInput);
   let searchValue = search.value;
   // Validate search value isn't empty
   if (searchValue.length === 0) {
@@ -192,7 +232,7 @@ function validateSearchValue(searchInput) {
     }
   } else {
     // No hyphen character, call generative search
-    alert("NO hyphen character detected: " + searchValue + " with sources: " + sourceValue);  
+    alert("NO hyphen character detected: " + searchValue + " with source-types: " + addSource.value);  
     // TODO: call generative search function
   }
   // Error handling (if needed)
@@ -260,4 +300,4 @@ function failedSearch(searchValue,alienFound) {
   console.log("Redirecting for: " + searchParams);
   window.location.assign(`search-results.html?${searchParams.toString()}`);
 }
-
+ 

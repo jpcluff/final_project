@@ -64,29 +64,33 @@
                 <div class="add-alien-container">
                     <h3 class="h3-add-alien">Add Alien Lifeform</h3>
                     <div class="add-alien-form">
-                        <form autocomplete="off" class="add-search-box" id="add-search-box" action="#">
-                            <!-- TODO restore removed action="/post" method="post" -->
+                        <form autocomplete="off" class="add-search-box" id="add-search-box" action="/post" method="post">
                             <div class="add-alien-input">
                                 <label for="add-search" class="add-box-label">Enter a name:</label>
                                 <input type="search" class="search-input" autocomplete="off"  id="add-search"
                                     name="search" placeholder="Alien Name" aria-label="Add an alien lifeform"
-                                    tabindex="1">   
+                                    tabindex="1" title="Enter an alien lifeform">   
                             </div>
                             <div class="add-alien-input">
-                                <label for="sources" class="source-label">Source:</label>
-                                <select form="search-box" auto="off" name="sources" id="sources" size="1">
+                                <label for="source-types" class="source-label">Source:</label>
+                                <select form="search-box" auto="off" name="source-types" id="source-types" size="1" tabindex="2" title="Select a source from the list">
                                     <option value="default" selected>Select from list</option>
                                     <option value="book">Book</option>
                                     <option value="film">Film</option>
                                     <option value="tv">TV</option>
                                     <option value="game">Game</option>
-                                    <option value="other">Comic</option>
+                                    <option value="comic">Comic</option>
                                     <option value="other">Other</option>
                                 </select>
                             </div>
+                            <div class="add-alien-input other-source-types">
+                                <label for="other-source-types" class="source-label">Other Source:</label>
+                                <input type="text" class="search-input" autocomplete="off" id="other-source-types"
+                                    name="other-source-types" placeholder="Enter other Source" aria-label="Enter other source">
+                            </div>
                             <div class="add-alien-input-submit">
                             <button type="submit" class="search-button" id="add-submit-button" aria-label="Add alien button">
-                                <img class="search-button-img" src="images/plus.png" alt="add" title="Add Alien">
+                                <img class="search-button-img" src="images/plus.png" alt="add" title="Add Alien button">
                             </button>
                             </div>
                         </form>

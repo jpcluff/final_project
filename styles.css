@@ -888,6 +888,7 @@ padding-bottom: 1rem;
         border: solid 0.1rem black;
         padding: 1rem;
         width: 100%;
+        background-color: white;
     }
 
     .add-alien-container {
@@ -896,7 +897,7 @@ padding-bottom: 1rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 1rem;
+        padding: 1rem 0;
         border-radius: 1rem;
         border: solid 0.1rem black;
         height: 100%;
@@ -946,6 +947,12 @@ padding-bottom: 1rem;
         align-items: center;
         width: 100%;
     }
+.source-label {
+    white-space: nowrap;
+}
+.other-sources {
+    display: none;
+}
 
 
     /* ---------------------responsive------------------------ */
@@ -1025,8 +1032,11 @@ padding-bottom: 1rem;
     .add-box-label {
         white-space:wrap;
     }
-        /* END MOBILE Responsive */
+    .source-label {
+        white-space: wrap;
     }
+        /* END MOBILE Responsive */
+}
 
 
     /* tablet */
