@@ -101,6 +101,8 @@ document.addEventListener("click", function (event) {
 });
 
 
+
+
 // Populate datalist with alienRefList data
 function populateDatalist(alienRefList) {
   alienRefList.forEach(alien => {
