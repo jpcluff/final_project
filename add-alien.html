@@ -64,12 +64,13 @@
                 <div class="add-alien-container">
                     <h3 class="h3-add-alien">Add Alien Lifeform</h3>
                     <div class="add-alien-form">
-                        <form autocomplete="off" class="add-search-box" id="search-box" action="/post" method="post">
+                        <form autocomplete="off" class="add-search-box" id="add-search-box" action="#">
+                            <!-- TODO restore removed action="/post" method="post" -->
                             <div class="add-alien-input">
-                                <label for="search" class="add-box-label">Enter a name:</label>
+                                <label for="add-search" class="add-box-label">Enter a name:</label>
                                 <input type="search" class="search-input" autocomplete="off"  id="add-search"
                                     name="search" placeholder="Alien Name" aria-label="Add an alien lifeform"
-                                    tabindex="1">
+                                    tabindex="1">   
                             </div>
                             <div class="add-alien-input">
                                 <label for="sources" class="source-label">Source:</label>
@@ -84,8 +85,8 @@
                                 </select>
                             </div>
                             <div class="add-alien-input-submit">
-                            <button type="submit" class="search-button" id="search-button" aria-label="Search button">
-                                <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
+                            <button type="submit" class="search-button" id="add-submit-button" aria-label="Add alien button">
+                                <img class="search-button-img" src="images/plus.png" alt="add" title="Add Alien">
                             </button>
                             </div>
                         </form>

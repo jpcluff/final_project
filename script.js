@@ -53,8 +53,26 @@ let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
 // let searchButton = document.getElementById("search-button");
 const searchBar = document.getElementById("search-box");
-const addAlienSearch = document.querySelector("add-alien-input");
 searchBar.onsubmit = validateSearchValue;
+
+const addAlienSearch = document.getElementById("add-alien-input");
+const addSearch = document.getElementById("add-search");
+const addSubmitButton = document.getElementById("add-submit-button");
+addSubmitButton.disabled = true;
+let addSource = document.getElementById("sources");
+let sourceValue = "";
+sourceValue = addSource.value;
+
+// enable add-submit-button if addAlienSearch is not empty & addSource is not default
+addAlienSearch.addEventListener("keyup", function (event) {
+  if (addAlienSearch.value.trim() !== "" && addSource.value !== "default") {
+    addSubmitButton.disabled = false;
+  } else {
+    addSubmitButton.disabled = true;
+  }
+});
+
+
 
 function clearSearchList() {
   searching = false;
@@ -95,7 +113,7 @@ search.addEventListener("keyup", function (event) {
 
 // Clear search list when clicking outside of search bar
 document.addEventListener("click", function (event) {
-  if (!searchBar.contains(event.target || !addAlienSearch.contains(event.target))) {
+  if (!searchBar.contains(event.target)) {
     clearSearchList();
   }
 });
@@ -174,7 +192,7 @@ function validateSearchValue(searchInput) {
     }
   } else {
     // No hyphen character, call generative search
-    alert("NO hyphen character detected.");
+    alert("NO hyphen character detected: " + searchValue + " with sources: " + sourceValue);  
     // TODO: call generative search function
   }
   // Error handling (if needed)
