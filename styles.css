@@ -887,7 +887,7 @@ padding-bottom: 1rem;
         border-radius: 1rem;
         border: solid 0.1rem black;
         padding: 1rem;
-        width: 100%;
+        min-width: 80%;
         background-color: white;
     }
 
@@ -911,7 +911,7 @@ padding-bottom: 1rem;
         display: flex;
         flex-wrap: nowrap;
         flex-direction:row;
-        justify-content: flex-start;
+        justify-content: flex-end;
         align-items: center;
         /* padding: 1rem; */
         width: 100%;
@@ -1035,6 +1035,9 @@ padding-bottom: 1rem;
     .source-label {
         white-space: wrap;
     }
+    .search-input, #source-types {
+        min-width: 77%;
+    }
         /* END MOBILE Responsive */
 }
 
@@ -1070,7 +1073,6 @@ padding-bottom: 1rem;
         }
     .add-alien-form {
         width: 80%;
-
     }
 /* END tablet */
     }
