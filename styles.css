@@ -882,7 +882,7 @@ padding-bottom: 1rem;
 
     /* Add Alien Page */
 
-    .search-input, #sources {   
+    .search-input, #source-types {   
         font-family: 'Courier New', Courier, monospace;
         border-radius: 1rem;
         border: solid 0.1rem black;
@@ -950,7 +950,7 @@ padding-bottom: 1rem;
 .source-label {
     white-space: nowrap;
 }
-.other-sources {
+.other-source-types {
     display: none;
 }
 
