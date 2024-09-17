@@ -69,7 +69,9 @@ addSource.addEventListener("click", addAlienFormValidation);
 }
 
 const addAlienSearch = document.getElementById("add-search-box");
-addAlienSearch.onsubmit = overwriteSearchValue;
+if (addAlienSearch) {
+  addAlienSearch.onsubmit = overwriteSearchValue;
+}
 
 function overwriteSearchValue(form) {
   form.preventDefault();
@@ -230,9 +232,10 @@ function validateSearchValue(searchInput) {
     } else {
       console.error("Invalid alien name extracted: " + alienName);
     }
-  } else {
-    // No hyphen character, call generative search
-    alert("NO hyphen character detected: " + searchValue + " with source-types: " + addSource.value);  
+  } else 
+  // No hyphen character, call generative search
+  {
+       alert("NO hyphen character detected: " + searchValue + " with source-types: " + addSource.value);  
     // TODO: call generative search function
   }
   // Error handling (if needed)
