@@ -49,11 +49,12 @@ const alienRefListSchema = {
 // Get input element and clear search list
 let searching = false;
 const acceptableChars = /^[A-Za-z]+$/;
+// global variable search to store search input value for finding & adding alien
 let search = document.getElementById("search");
 let searchList = document.getElementById("search-list");
 // let searchButton = document.getElementById("search-button");
 const searchBar = document.getElementById("search-box");
-searchBar.onsubmit = validateSearchValue;
+searchBar.onsubmit = overwriteSearchValue;
 
 const addSearch = document.getElementById("add-search");
 if (addSearch) {
@@ -64,50 +65,56 @@ if (addSubmitButton) {
   addSubmitButton.disabled = true;
 }
 let addSource = document.getElementById("source-types");
-if (addSource) {  
-addSource.addEventListener("click", addAlienFormValidation);
+if (addSource) {
+  addSource.addEventListener("click", addAlienFormValidation);
 }
 
 const addAlienSearch = document.getElementById("add-search-box");
 if (addAlienSearch) {
-  addAlienSearch.onsubmit = overwriteSearchValue;
+addAlienSearch.onsubmit = overwriteSearchValue;
 }
 
-function overwriteSearchValue(form) {
-  form.preventDefault();
+function overwriteSearchValue(event) {
+  event.preventDefault();
+  let submitter = event.submitter;
+  let handler = submitter.id;
+  if (handler === "search-button") {
+    search = document.getElementById("search");
+    validateSearchValue(search);
+  }
+  else if (handler === "add-search-button") {
   search = document.getElementById("add-search");
-  console.log("overwrite the global variable search with the add-search value: "+search.value);
+  console.log("overwrite the global variable search with the add-search value: " + search.value);
   validateSearchValue(form);
+}
+else {
+  console.log("OnSubmit data: "+event);
+}
 }
 
 // enable add-submit-button if addSearch is not empty & addSource is not default
-function addAlienFormValidation()
-{
+function addAlienFormValidation() {
   const othersourceTypes = document.querySelector(".add-alien-input.other-source-types");
   const othersourceTypesInput = document.getElementById("other-source-types");
-// if the addSearch is not null & source is not default, enable the submit button
-if (addSearch.value.trim() !== "" && addSource.value !== "default")
-{
- if (addSource.value === "other") 
-  {
-    addSource.style.borderStyle = "dashed";
-    othersourceTypes.style.display = "flex";
-    othersourceTypesInput.style.borderWidth= "0.5rem";
-    othersourceTypesInput.tabIndex = 3;
-    // othersourceTypesInput.focus();
-    addSubmitButton.disabled = false;
+  // if the addSearch is not null & source is not default, enable the submit button
+  if (addSearch.value.trim() !== "" && addSource.value !== "default") {
+    if (addSource.value === "other") {
+      addSource.style.borderStyle = "dashed";
+      othersourceTypes.style.display = "flex";
+      othersourceTypesInput.style.borderWidth = "0.5rem";
+      othersourceTypesInput.tabIndex = 3;
+      // othersourceTypesInput.focus();
+      addSubmitButton.disabled = false;
+    }
+    else {
+      //toggle other source-types input field
+      addSource.style.borderStyle = "solid";
+      othersourceTypes.style.display = "none";
+      othersourceTypesInput.tabIndex = "";
+      addSubmitButton.disabled = false;
+    }
   }
-else
-  {
-    //toggle other source-types input field
-    addSource.style.borderStyle = "solid";
-    othersourceTypes.style.display = "none";
-    othersourceTypesInput.tabIndex = "";
-    addSubmitButton.disabled = false;
-  }
-}
-  else
-  {
+  else {
     console.log("Disable submit button");
     addSource.style.borderStyle = "solid";
     othersourceTypes.style.display = "none";
@@ -118,11 +125,11 @@ else
 
 function clearSearchList() {
   if (searching) {
-  searching = false;
-  console.log("Cleared search list");
-  searchList.innerHTML = "";
-  search.value = ""; // Clear the search input field
-  } 
+    searching = false;
+    console.log("Cleared search list");
+    searchList.innerHTML = "";
+    search.value = ""; // Clear the search input field
+  }
 }
 
 //add event listener to search input to handle keyup events
@@ -211,8 +218,7 @@ function fetchAlienRefList(firstLetter) {
 }
 
 function validateSearchValue(searchInput) {
-  searchInput.preventDefault();
-  console.log("Search form: " + searchInput);
+  console.log("Validate Search called with form: " + searchInput);
   let searchValue = search.value;
   // Validate search value isn't empty
   if (searchValue.length === 0) {
@@ -232,16 +238,17 @@ function validateSearchValue(searchInput) {
     } else {
       console.error("Invalid alien name extracted: " + alienName);
     }
-  } else 
+  } else
   // No hyphen character, call generative search
   {
-       alert("NO hyphen character detected: " + searchValue + " with source-types: " + addSource.value);  
+    alert("NO hyphen character detected: " + searchValue + " with source-types: " + addSource.value);
     // TODO: call generative search function
   }
   // Error handling (if needed)
   console.log("Search Error from search value: " + searchValue);
+  alienFound = false;
   //call function to redirect to failed search page 
-  //TODO: Redirect to failed search page
+  failedSearch(searchValue, alienFound)
 }
 
 function getAlienOverviewList(alienName) {
@@ -264,24 +271,20 @@ function getAlienOverviewList(alienName) {
 }
 
 function parseAlienRefList(alienDataList, alienName) {
-    let alienFound = false;
-    for (let alien of alienDataList) 
-      {
-      if (alien.name === alienName) 
-        {
-        alienFound = true;
-        break;
-      }
-    }
-    if (alienFound) 
-      {
-      // TODO call function to build & redirect to alien details page     
+  let alienFound = false;
+  for (let alien of alienDataList) {
+    if (alien.name === alienName) {
+      alienFound = true;
+      let foundAlien = alien; // Found alien object
       alert("Alien found: " + alienName);
+      break;
+      // TODO call function to redirect to alien overview page with alien name as query parameter
     }
-  else {
-    // TODO call function to redirect to failed search page
-    console.log("No match for Alien found: " + alienName);
-    failedSearch(alienName, alienFound);
+    else {
+      // call function to redirect to failed search page
+      console.log("No match for Alien found: " + alienName);
+      failedSearch(alienName, alienFound);
+    }
   }
 }
 
@@ -294,8 +297,8 @@ function extractSearchValue(searchInput) {
   return alienName;
 }
 
-function failedSearch(searchValue,alienFound) {
-  console.log("Alien found? "+alienFound+ "Was looking for " + searchValue);
+function failedSearch(searchValue, alienFound) {
+  console.log("Alien found? " + alienFound + "Was looking for " + searchValue);
   // Redirect to failed search page with search value & alienFound=FALSE as query parameters
   const searchParams = new URLSearchParams();
   searchParams.set('searchValue', searchValue);
@@ -303,4 +306,4 @@ function failedSearch(searchValue,alienFound) {
   console.log("Redirecting for: " + searchParams);
   window.location.assign(`search-results.html?${searchParams.toString()}`);
 }
- 
+
