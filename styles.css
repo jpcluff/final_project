@@ -562,7 +562,6 @@
         align-items: flex-end;
         width: 100%;
         height: 1%;
-        margin-bottom: 1rem;
     }
 
     /* alien details containers */
@@ -778,17 +777,48 @@ padding-bottom: 1rem;
         border: 0.2rem solid black;
         border-radius: 50%;
         text-align: center;
-        padding: 0.5rem;
-        width: 2rem;
-        background-color: lightgreen;
+        padding: 0.5rem 1rem;
+
     }
 
+      /* On mouse-over, add a light grey background color */
     .icon-validator:hover {
         cursor: pointer;
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
+        background-color: lightgray;
+        /* box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); */
         /* Add a shadow for better visibility */
     }
 
+    .icon-validator-label {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+.icon-validator-label input {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+/* On mouse-over, add a light grey background color */
+ .icon-validator-label:hover input ~ .icon-validator {
+cursor: pointer;
+background-color: lightgray;
+box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
+/* Add a shadow for better visibility */
+}
+  
+  .icon-validator-label input:checked ~ .icon-validator {
+    background-color: lightgreen;
+      }
+  
     /* Details table */
     table {
         overflow-x: auto;
