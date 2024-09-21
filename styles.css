@@ -204,7 +204,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        margin: auto;
     }
 
     .search-bar-container {
@@ -214,7 +213,7 @@
         align-items: center;
         justify-content: space-around;
         margin: auto;
-        min-width: 30rem;
+        width: 55%;
     }
 
     .search-box {
@@ -232,11 +231,10 @@
     }
 
     input#search {
-        /* width: 100%;
-    height: 100%;
-    border: none; */
+        width: 100%;
         font-size: medium;
-        padding: 1rem;
+        padding: 0.5rem;
+        /* text-align: center; */
     }
 
     input#search:focus {
@@ -720,9 +718,11 @@
     .explainer-header-container {
         padding: 1rem;
     }
+
     .h2-toast {
-padding-bottom: 1rem;
+        padding-bottom: 1rem;
     }
+
     .span-alfname-add {
         font-size: larger;
         padding: 1rem 0;
@@ -753,6 +753,7 @@ padding-bottom: 1rem;
         text-indent: 1rem;
         margin: 1rem 0;
     }
+
     .explainer-step p {
         padding: 0.5rem;
     }
@@ -781,7 +782,7 @@ padding-bottom: 1rem;
 
     }
 
-      /* On mouse-over, add a light grey background color */
+    /* On mouse-over, add a light grey background color */
     .icon-validator:hover {
         cursor: pointer;
         background-color: lightgray;
@@ -797,28 +798,28 @@ padding-bottom: 1rem;
     }
 
     /* Hide the browser's default checkbox */
-.icon-validator-label input {
-    appearance: none;
-    -webkit-appearance: none;
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+    .icon-validator-label input {
+        appearance: none;
+        -webkit-appearance: none;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
 
-/* On mouse-over, add a light grey background color */
- .icon-validator-label:hover input ~ .icon-validator {
-cursor: pointer;
-background-color: lightgray;
-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
-/* Add a shadow for better visibility */
-}
-  
-  .icon-validator-label input:checked ~ .icon-validator {
-    background-color: lightgreen;
-      }
-  
+    /* On mouse-over, add a light grey background color */
+    .icon-validator-label:hover input~.icon-validator {
+        cursor: pointer;
+        background-color: lightgray;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
+        /* Add a shadow for better visibility */
+    }
+
+    .icon-validator-label input:checked~.icon-validator {
+        background-color: lightgreen;
+    }
+
     /* Details table */
     table {
         overflow-x: auto;
@@ -928,37 +929,12 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
     .h3-add-alien {
         margin: 0;
     }
-    .add-alien-input {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction:row;
-        justify-content: space-between  ;
-        align-items: center;
-        /* padding: 1rem; */
-        width: 100%;
-        margin: auto;
+
+    .add-alien-form {
+        width: 75%;
     }
 
-    .add-alien-input label {
-        width: 35%;
-        padding: 0.5rem;
-        font-weight: bold;
-    }
-
-    .add-alien-input input, select {   
-        font-family: 'Courier New', Courier, monospace;
-        border-radius: 1rem;
-        border: solid 0.1rem black;
-        padding: 1rem;
-        width: 85%;
-        background-color: white;
-    }
-
-.add-alien-form {
-    width: 75%;
-}
-
-.add-alien-form form{
+    .add-alien-form form {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
@@ -966,12 +942,35 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         height: 100%;
         align-items: center;
     }
-    
-.add-search-box  {
+
+    .add-alien-input {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .add-alien-input label {
+        white-space: nowrap;
+    }
+
+    .add-alien-input input,
+    select {
+        font-family: 'Courier New', Courier, monospace;
+        border-radius: 1rem;
+        border: solid 0.1rem black;
+        padding: 1rem;
+        background-color: white;
+        width: 70%;
+    }
+
+    .add-search-box {
         padding: 1rem;
     }
 
-.add-alien-input-submit {
+    .add-alien-input-submit {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
@@ -980,9 +979,10 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         width: 100%;
     }
 
-#other-source-types-div {
-    display: none; 
-}
+
+    #other-source-types-div {
+        display: none;
+    }
 
 
     /* ---------------------responsive------------------------ */
@@ -1002,6 +1002,7 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         .actions {
             flex-direction: column;
             justify-content: center;
+
             width: 90%;
 
         }
@@ -1049,20 +1050,34 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
             top: 1rem;
             right: 0.5rem;
         }
-    .add-alien-section {
-        width: 100%;
-    }
-    .add-alien-form {
-        width: 100%;
-    }
-    .add-box-label {
-        white-space:wrap;
-    }
-    .source-label {
-        white-space: wrap;
-    }
+
+        .search-input {
+            width: 100%;
+        }
+
+        .add-alien-section {
+            width: 100%;
+        }
+
+        .add-alien-form {
+            width: 100%;
+        }
+
+        .add-alien-input label {
+            white-space: wrap;
+        }
+
+        .add-alien-input input,
+        select {
+            width: 100%;
+        }
+
+        .search-bar-container {
+            width: 100%;
+        }
+
         /* END MOBILE Responsive */
-}
+    }
 
 
     /* tablet */
@@ -1071,6 +1086,10 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
             width: 85%;
             background-color: lightblue;
             flex-direction: column;
+        }
+
+        .search-bar-container {
+            width: 85%;
         }
 
         .actions {
@@ -1091,16 +1110,16 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
             white-space: wrap;
             padding: 0.5rem;
         }
+
         .add-alien-section {
             width: 80%;
         }
-    .add-alien-form {
-        width: 90%;
-    }
-    .add-alien-input input, select {   
-        width: 70%;
-    }
-/* END tablet */
+
+        .add-alien-form {
+            width: 100%;
+        }
+
+        /* END tablet */
     }
 
     /* Special responsiveness for Alien Details Page Table */
