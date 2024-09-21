@@ -937,7 +937,6 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         /* padding: 1rem; */
         width: 100%;
         margin: auto;
-        background-color: yellow;
     }
 
     .add-alien-input label {
@@ -983,7 +982,6 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
 
 #other-source-types-div {
     display: none; 
-    background-color: violet;
 }
 
 
