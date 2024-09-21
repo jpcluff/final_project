@@ -28,12 +28,14 @@ function handlePageLoad() {
   // Get the search value from query parameters
   const params = getQueryParams();
   const searchValue = params.searchValue || '';
-  const alienFound = params.alienFound || false;
-
+  // Get the alienFound value from query parameters
+  const alienFound = params.alienFound;
   if (alienFound === 'true') {
-    // redirect to alien details page
-    // TODO call function buildSearchResultsElements(searchValue);
-  } else {
+    alert("Alien found! is "+alienFound+". Building Search Results for " + alien.name);
+    buildSearchResultsElements(searchValue);
+  }
+  // TODO call function buildSearchResultsElements(searchValue);
+  else {
     buildFailedSearchElements(searchValue);
   }
 }
@@ -87,7 +89,7 @@ function createActionsSection() {
   addButton.classList.add('action-button', 'add-button');
   addButton.textContent = 'Add Alien +';
   addButton.id = 'action-add-button';
-  addButton.onclick = function () {window.location.href = '../add-alien.html'; };
+  addButton.onclick = function () { window.location.href = '../add-alien.html'; };
   addButtonDiv.appendChild(addButton);
 
   // Create the browse button div

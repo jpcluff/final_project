@@ -229,13 +229,14 @@ function validateSearchValue(searchInput) {
   console.log("Validate Search called with form: " + searchInput);
   let searchValue = search.value;
   // Validate search value isn't empty
-  if (searchValue.length === 0) {
+  if (searchValue.length === 0) 
+    {
     alert("Search value cannot be empty.");
     return;
   }
   // Validate search value contains hyphen character
-  else if (searchValue.includes("-")) {
-    // TEMP UX
+  else if (searchValue.includes("-")) 
+    {
     console.log("Hyphen character detected in " + searchValue);
     // call function to extract substring before hyphen
     let alienName = extractSearchValue(searchValue);
@@ -249,20 +250,17 @@ function validateSearchValue(searchInput) {
   } else
   // No hyphen character, call generative search
   {
-    alert("NO hyphen character detected: " + searchValue + " with source-types: " + addSource.value);
+    alert("NO hyphen character detected: " + searchValue);
     // TODO: call generative search function
   }
   // Error handling (if needed)
-  console.log("Search Error from search value: " + searchValue);
-  alienFound = false;
-  //call function to redirect to failed search page 
-  failedSearch(searchValue, alienFound)
+  console.log("Search value: " + searchValue);
 }
 
 function getAlienOverviewList(alienName) {
-  let firstLetter = alienName.charAt(0).toLowerCase();
-  // let datafile = `server/${firstLetter}_alienOverviewList.json`; 
-  let datafile = `server/a_alienOverviewList.json`;
+let firstLetter = alienName.charAt(0).toLowerCase();
+let datafile = `server/a_alienOverviewList.json`;
+// let datafile = `server/${firstLetter}_alienOverviewList.json`; 
   fetch(datafile)
     .then(response => {
       if (!response.ok) {
@@ -271,7 +269,7 @@ function getAlienOverviewList(alienName) {
       return response.json();
     })
     .then(alienDatafile => {
-      parseAlienRefList(alienDatafile, alienName);
+    parseAlienRefList(alienDatafile, alienName);
     })
     .catch(error => {
       console.error("Error fetching data:", error);
@@ -279,19 +277,17 @@ function getAlienOverviewList(alienName) {
 }
 
 function parseAlienRefList(alienDataList, alienName) {
-  let alienFound = false;
+  let alienFound = true;
   for (let alien of alienDataList) {
     if (alien.name === alienName) {
       alienFound = true;
       let foundAlien = alien; // Found alien object
-      alert("Alien found: " + alienName);
-      break;
-      // TODO call function to redirect to alien overview page with alien name as query parameter
+      redirectToSearch(foundAlien, alienFound);// TODO call function to redirect to search-results page with alien name as query parameter
     }
     else {
       // call function to redirect to failed search page
       console.log("No match for Alien found: " + alienName);
-      failedSearch(alienName, alienFound);
+      redirectToSearch(alienName, alienFound);
     }
   }
 }
@@ -305,11 +301,11 @@ function extractSearchValue(searchInput) {
   return alienName;
 }
 
-function failedSearch(searchValue, alienFound) {
+function redirectToSearch(alienName, alienFound) {
   console.log("Alien found? " + alienFound + "Was looking for " + searchValue);
   // Redirect to failed search page with search value & alienFound=FALSE as query parameters
   const searchParams = new URLSearchParams();
-  searchParams.set('searchValue', searchValue);
+  searchParams.set('searchValue', alienName);
   searchParams.set('alienFound', false);
   console.log("Redirecting for: " + searchParams);
   window.location.assign(`search-results.html?${searchParams.toString()}`);
