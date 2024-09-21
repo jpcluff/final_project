@@ -912,15 +912,6 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
 
     /* Add Alien Page */
 
-    .search-input, #source-types {   
-        font-family: 'Courier New', Courier, monospace;
-        border-radius: 1rem;
-        border: solid 0.1rem black;
-        padding: 1rem;
-        min-width: 80%;
-        background-color: white;
-    }
-
     .add-alien-container {
         display: flex;
         flex-wrap: nowrap;
@@ -941,19 +932,31 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         display: flex;
         flex-wrap: nowrap;
         flex-direction:row;
-        justify-content: flex-end;
+        justify-content: space-between  ;
         align-items: center;
         /* padding: 1rem; */
         width: 100%;
         margin: auto;
+        background-color: yellow;
     }
 
-    .add-box-label {
-            white-space: nowrap;
-        }
+    .add-alien-input label {
+        width: 35%;
+        padding: 0.5rem;
+        font-weight: bold;
+    }
+
+    .add-alien-input input, select {   
+        font-family: 'Courier New', Courier, monospace;
+        border-radius: 1rem;
+        border: solid 0.1rem black;
+        padding: 1rem;
+        width: 85%;
+        background-color: white;
+    }
 
 .add-alien-form {
-    width: 65%;
+    width: 75%;
 }
 
 .add-alien-form form{
@@ -977,11 +980,10 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         align-items: center;
         width: 100%;
     }
-.source-label {
-    white-space: nowrap;
-}
-.other-source-types {
-    display: none;
+
+#other-source-types-div {
+    display: none; 
+    background-color: violet;
 }
 
 
@@ -1002,7 +1004,6 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         .actions {
             flex-direction: column;
             justify-content: center;
-
             width: 90%;
 
         }
@@ -1050,9 +1051,6 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
             top: 1rem;
             right: 0.5rem;
         }
-    .search-input {
-        width: 100%;
-    }
     .add-alien-section {
         width: 100%;
     }
@@ -1064,9 +1062,6 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
     }
     .source-label {
         white-space: wrap;
-    }
-    .search-input, #source-types {
-        min-width: 77%;
     }
         /* END MOBILE Responsive */
 }
@@ -1102,7 +1097,10 @@ box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
             width: 80%;
         }
     .add-alien-form {
-        width: 80%;
+        width: 90%;
+    }
+    .add-alien-input input, select {   
+        width: 70%;
     }
 /* END tablet */
     }

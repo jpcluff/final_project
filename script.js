@@ -60,6 +60,7 @@ const addSearch = document.getElementById("add-search");
 if (addSearch) {
   addSearch.addEventListener("input", addAlienFormValidation);
 }
+// add-submit-button is for add-alien page. Disable add-submit-button by default
 const addSubmitButton = document.getElementById("add-submit-button");
 if (addSubmitButton) {
   addSubmitButton.disabled = true;
@@ -72,6 +73,13 @@ if (addSource) {
 const addAlienSearch = document.getElementById("add-search-box");
 if (addAlienSearch) {
 addAlienSearch.onsubmit = overwriteSearchValue;
+}
+// action-add-button is for opening the add-alien page
+const addAlienButton = document.getElementById("action-add-button");
+if (addAlienButton) {
+  addAlienButton.addEventListener("click", function () {
+    window.location.href = "add-alien.html";
+  });
 }
 
 function overwriteSearchValue(event) {
@@ -94,7 +102,7 @@ else {
 
 // enable add-submit-button if addSearch is not empty & addSource is not default
 function addAlienFormValidation() {
-  const othersourceTypes = document.querySelector(".add-alien-input.other-source-types");
+  const othersourceTypes = document.getElementById("other-source-types-div");
   const othersourceTypesInput = document.getElementById("other-source-types");
   // if the addSearch is not null & source is not default, enable the submit button
   if (addSearch.value.trim() !== "" && addSource.value !== "default") {
