@@ -83,9 +83,10 @@ function createActionsSection() {
   const addButtonDiv = document.createElement('div');
   addButtonDiv.classList.add('submit');
   const addButton = document.createElement('button');
-  addButton.classList.add('action-button', 'add-button');
   addButton.type = 'button';
+  addButton.classList.add('action-button', 'add-button');
   addButton.textContent = 'Add Alien +';
+  addButton.id = 'action-add-button';
   addButton.onclick = function () {window.location.href = '../add-alien.html'; };
   addButtonDiv.appendChild(addButton);
 
@@ -93,8 +94,10 @@ function createActionsSection() {
   const browseButtonDiv = document.createElement('div');
   browseButtonDiv.classList.add('submit');
   const browseButton = document.createElement('button');
-  browseButton.classList.add('action-button', 'browse-button');
   browseButton.type = 'button';
+  browseButton.classList.add('action-button', 'browse-button');
+  browseButton.id = 'action-browse-button';
+
   browseButton.textContent = 'Browse';
   browseButton.onclick = function () { window.location.href = '../browse-alien.html'; };
   browseButtonDiv.appendChild(browseButton);
