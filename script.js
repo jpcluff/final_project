@@ -141,12 +141,7 @@ searchBoxInput.addEventListener("keyup", function (event) {
 // END HEADER POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
 
 // START CODEBLOCK SEARCHING the ALfDb
-// Extract an alien name from searchInput selected from datalist value
-function extractSearchValue(searchInput) {
-  let searchArray = searchInput.split("-");
-  let alienName = searchArray[0].trim();
-  return alienName;
-}
+
 // Redirect to search-results page with alien name as query parameter
 function redirectToResults(alienName, alienFound, originAction) {
   let typeTest = typeof alienFound
@@ -159,8 +154,48 @@ function redirectToResults(alienName, alienFound, originAction) {
   console.log("Redirecting for: " + searchParams);
   window.location.assign(`search-results.html?${searchParams.toString()}`);
 }
+// Get the alienOverviewList from JSON file
+async function getAlienOverviewList(alienName) {
+  let firstLetter = alienName.charAt(0).toLowerCase();
+  let datafile = "./server/a_alienOverviewList.json";
+  // let datafile = `server/${firstLetter}_alienOverviewList.json`;
+  try {
+    const response = await fetch(datafile);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const alienDatafile = await response.json();
+    console.log(alienDatafile);
+    return alienDatafile;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+// Search the alienOverviewList for alienName
+async function searchAlienOverviewDb(alienName) {
+  let alienFound = false;
+  let alienDataList = await getAlienOverviewList(alienName); // Await the asynchronous call
+  if (!alienDataList) {
+    console.log("No data returned from getAlienOverviewList");
+    return alienFound;
+  }
+  //else alienDataList is not empty
+  for (let alien of alienDataList) {
+    if (alien.name === alienName) {
+      alienFound=true;
+      return alienFound; // Return true immediately if alien is found
+    }
+  }
+  return alienFound; // Return false if no match is found
+}
+// Extract an alien name from searchInput selected from datalist value
+function extractSearchValue(searchInput) {
+  let searchArray = searchInput.split("-");
+  let alienName = searchArray[0].trim();
+  return alienName;
+}
 // validate the search value from search-box & add-alien form then redirect to search-results page
-function validateSearchValue(searchedValue, originAction) {
+async function validateSearchValue(searchedValue, originAction) {
   let foundAlien = false;
   // Validate search value is empty
   if (searchedValue.length === 0) {
@@ -173,7 +208,8 @@ function validateSearchValue(searchedValue, originAction) {
     let alienName = extractSearchValue(searchedValue);
     // check alienName is valid then call function to redirect to search-results page
     if (typeof alienName === 'string' && alienName.trim() !== '') {
-      foundAlien = searchAlienOverviewDb(alienName);
+      foundAlien = await searchAlienOverviewDb(alienName);
+      alert("Alien found: " + alienName + " - " + foundAlien);
       if (foundAlien) {
         console.log("Alien found: " + alienName);
         // call function to redirect to search-results page
@@ -268,40 +304,3 @@ if (addAlienButton) {
   });
 }
 // END CODEBLOCK ADD-ALIEN FORM PROCESS
-
-
-async function getAlienOverviewList(alienName) {
-  let firstLetter = alienName.charAt(0).toLowerCase();
-  let datafile = './a_alienOverviewList.json';
-  // let datafile = `server/${firstLetter}_alienOverviewList.json`;
-  try {
-    const response = await fetch(datafile);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    const alienDatafile = await response.json();
-    console.log(alienDatafile);
-    return alienDatafile;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-async function searchAlienOverviewDb(alienName) {
-  let alienFound = false;
-  let alienDataList = await getAlienOverviewList(alienName); // Await the asynchronous call
-  if (!alienDataList) {
-    alert("No data returned from getAlienOverviewList");
-    return alienFound;
-  }
-  //else alienDataList is not empty
-  for (let alien of alienDataList) {
-    if (alien.name === alienName) {
-      alert("Searching alienDataList to search for alien: " + alienName);
-      //return true; // Return true immediately if alien is found
-    }
-  }
-
-  alert("No match for Alien found: " + alienName);
-  //return alienFound; // Return false if no match is found
-}
