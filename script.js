@@ -46,146 +46,39 @@ const alienRefListSchema = {
   }
 };
 
-// Get input element and clear search list
+// Get search-box elements
 let searching = false;
 const acceptableChars = /^[A-Za-z]+$/;
 // global variable search to store search input value for finding & adding alien
-let search = document.getElementById("search");
-let searchList = document.getElementById("search-list");
-// let searchButton = document.getElementById("search-button");
-const searchBar = document.getElementById("search-box");
+const searchBoxInput = document.getElementById("search"); // Get the search-box input element
+let searchDataList = document.getElementById("search-list"); // Get the search-list datalist element
+const searchBar = document.getElementById("search-box"); // Get the search-box form element
+// add event listener to search-box form to handle submit events
 searchBar.onsubmit = overwriteSearchValue;
 
-const addSearch = document.getElementById("add-search");
-if (addSearch) {
-  addSearch.addEventListener("input", addAlienFormValidation);
-}
-// add-submit-button is for add-alien page. Disable add-submit-button by default
-const addSubmitButton = document.getElementById("add-submit-button");
-if (addSubmitButton) {
-  addSubmitButton.disabled = true;
-}
-let addSource = document.getElementById("source-types");
-if (addSource) {
-  addSource.addEventListener("click", addAlienFormValidation);
-}
-
-const addAlienSearch = document.getElementById("add-search-box");
-if (addAlienSearch) {
-addAlienSearch.onsubmit = overwriteSearchValue;
-}
-// action-add-button is for opening the add-alien page
-const addAlienButton = document.getElementById("action-add-button");
-if (addAlienButton) {
-  addAlienButton.addEventListener("click", function () {
-    window.location.href = "add-alien.html";
-  });
-}
-
-function overwriteSearchValue(event) {
-  event.preventDefault();
-  let submitter = event.submitter;
-  let handler = submitter.id;
-  if (handler === "search-button") {
-    search = document.getElementById("search");
-    validateSearchValue(search);
-  }
-  else if (handler === "add-search-button") {
-  search = document.getElementById("add-search");
-  console.log("overwrite the global variable search with the add-search value: " + search.value);
-  validateSearchValue(form);
-}
-else {
-  console.log("OnSubmit data: "+event);
-}
-}
-
-// enable add-submit-button if addSearch is not empty & addSource is not default
-function addAlienFormValidation() {
-  const othersourceTypes = document.getElementById("other-source-types-div");
-  const othersourceTypesInput = document.getElementById("other-source-types");
-  // if the addSearch is not null & source is not default, enable the submit button
-  if (addSearch.value.trim() !== "" && addSource.value !== "default") {
-    if (addSource.value === "other") {
-      addSource.style.borderStyle = "dashed";
-      othersourceTypes.style.display = "flex";
-      othersourceTypesInput.style.borderWidth = "0.5rem";
-      othersourceTypesInput.tabIndex = 3;
-      // othersourceTypesInput.focus();
-      addSubmitButton.disabled = false;
-    }
-    else {
-      //toggle other source-types input field
-      addSource.style.borderStyle = "solid";
-      othersourceTypes.style.display = "none";
-      othersourceTypesInput.tabIndex = "";
-      addSubmitButton.disabled = false;
-    }
-  }
-  else {
-    console.log("Disable submit button");
-    addSource.style.borderStyle = "solid";
-    othersourceTypes.style.display = "none";
-    othersourceTypesInput.tabIndex = "";
-    addSubmitButton.disabled = true;
-  }
-};
-
+// START CODEBLOCK POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
 function clearSearchList() {
   if (searching) {
     searching = false;
     console.log("Cleared search list");
-    searchList.innerHTML = "";
-    search.value = ""; // Clear the search input field
+    searchDataList.innerHTML = "";
+    searchBoxInput.value = ""; // Clear the search input field
   }
 }
-
-//add event listener to search input to handle keyup events
-search.addEventListener("keyup", function (event) {
-  console.log("Search keyup event");
-  let searchValue = search.value;
-  let firstLetter = searchValue.charAt(0);
-  if (searchValue.length === 0) {
-    clearSearchList();
-    // do nothing
-  } else if (searchValue.length > 1) {
-    searching = true;
-    // Do nothing
-  } else if (!searching && acceptableChars.test(firstLetter)) {
-    searching = true;
-    fetchAlienRefList(firstLetter);
-  } else if (!acceptableChars.test(firstLetter)) {
-    alert("Search value must start with a letter.");
-    clearSearchList();
-  }
-  else {
-    console.log("Search value already being fetched");
-  }
-});
-
-//add event listener to search button to handle click events 
-// searchButton.addEventListener("click", function (event) {
-//   let searchValue = search.value;
-//   console.log("Search button click event: " + searchValue);
-//   validateSearchValue(searchValue);
-// });
-
 // Clear search list when clicking outside of search bar
 document.addEventListener("click", function (event) {
   if (!searchBar.contains(event.target)) {
     clearSearchList();
   }
 });
-
 // Populate datalist with alienRefList data
 function populateDatalist(alienRefList) {
   alienRefList.forEach(alien => {
     let option = document.createElement("option");
     option.value = `${alien.name} - ${alien.source}`;
-    searchList.appendChild(option);
+    searchDataList.appendChild(option);
   });
 }
-
 function verifyFileData(data) {
   if (!Array.isArray(data)) {
     console.log("Data is not an array");
@@ -203,7 +96,6 @@ function verifyFileData(data) {
   }
   return true;
 }
-
 function fetchAlienRefList(firstLetter) {
   let datafile = `data\\${firstLetter}_alienRefList.json`;
   fetch(datafile)
@@ -224,90 +116,192 @@ function fetchAlienRefList(firstLetter) {
       console.error("Error fetching data:", error);
     });
 }
-
-function validateSearchValue(searchInput) {
-  console.log("Validate Search called with form: " + searchInput);
-  let searchValue = search.value;
-  // Validate search value isn't empty
-  if (searchValue.length === 0) 
-    {
-    alert("Search value cannot be empty.");
-    return;
+//add event listener to search input to handle keyup events & populate search list
+searchBoxInput.addEventListener("keyup", function (event) {
+  console.log("Search keyup event");
+  let searchValue = searchBoxInput.value; // LOCAL variable to store search input value
+  let firstLetter = searchValue.charAt(0);
+  if (searchValue.length === 0) {
+    clearSearchList();
+    // do nothing
+  } else if (searchValue.length > 1) {
+    searching = true;
+    // Do nothing
+  } else if (!searching && acceptableChars.test(firstLetter)) {
+    searching = true;
+    fetchAlienRefList(firstLetter);
+  } else if (!acceptableChars.test(firstLetter)) {
+    alert("Search value must start with a letter.");
+    clearSearchList();
   }
-  // Validate search value contains hyphen character
-  else if (searchValue.includes("-")) 
-    {
-    console.log("Hyphen character detected in " + searchValue);
-    // call function to extract substring before hyphen
-    let alienName = extractSearchValue(searchValue);
-    // check alienName is valid then call function to search for alien name in the alienName+ _alienOverviewList.json
-    if (typeof alienName === 'string' && alienName.trim() !== '') {
-      console.log("getAlienOverviewList called with alienName: " + alienName);
-      getAlienOverviewList(alienName);
-    } else {
-      console.error("Invalid alien name extracted: " + alienName);
-    }
-  } else
-  // No hyphen character, call generative search
-  {
-    alert("NO hyphen character detected: " + searchValue);
-    // TODO: call generative search function
+  else {
+    console.log("Search value already being fetched");
   }
-  // Error handling (if needed)
-  console.log("Search value: " + searchValue);
-}
+});
+// END HEADER POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
 
-function getAlienOverviewList(alienName) {
-let firstLetter = alienName.charAt(0).toLowerCase();
-let datafile = `server/a_alienOverviewList.json`;
-// let datafile = `server/${firstLetter}_alienOverviewList.json`; 
-  fetch(datafile)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(alienDatafile => {
-    parseAlienRefList(alienDatafile, alienName);
-    })
-    .catch(error => {
-      console.error("Error fetching data:", error);
-    });
-}
-
-function parseAlienRefList(alienDataList, alienName) {
-  let alienFound = true;
-  for (let alien of alienDataList) {
-    if (alien.name === alienName) {
-      alienFound = true;
-      let foundAlien = alien; // Found alien object
-      redirectToSearch(foundAlien, alienFound);// TODO call function to redirect to search-results page with alien name as query parameter
-    }
-    else {
-      // call function to redirect to failed search page
-      console.log("No match for Alien found: " + alienName);
-      redirectToSearch(alienName, alienFound);
-    }
-  }
-}
-
-
+// START CODEBLOCK SEARCHING the ALfDb
+// Extract an alien name from searchInput selected from datalist value
 function extractSearchValue(searchInput) {
   let searchArray = searchInput.split("-");
   let alienName = searchArray[0].trim();
-  let alienSource = searchArray[1].trim();
-  console.log("Alien Name: " + alienName + ", Alien Source: " + alienSource);
   return alienName;
 }
-
-function redirectToSearch(alienName, alienFound) {
-  console.log("Alien found? " + alienFound + "Was looking for " + searchValue);
-  // Redirect to failed search page with search value & alienFound=FALSE as query parameters
+// Redirect to search-results page with alien name as query parameter
+function redirectToResults(alienName, alienFound, originAction) {
+  let typeTest = typeof alienFound
+  console.log("Alien found? " + alienFound + ":" + typeTest + ", was looking for " + alienName);
+  // Redirect to search page with search value, alienFound, originAction as query parameters
   const searchParams = new URLSearchParams();
   searchParams.set('searchValue', alienName);
-  searchParams.set('alienFound', false);
+  searchParams.set('alienFound', false); // TODO alienFound is a static boolean to test redirection
+  searchParams.set('originAction', originAction);
   console.log("Redirecting for: " + searchParams);
   window.location.assign(`search-results.html?${searchParams.toString()}`);
 }
+// validate the search value from search-box & add-alien form then redirect to search-results page
+function validateSearchValue(searchedValue, originAction) {
+  let foundAlien = false;
+  // Validate search value is empty
+  if (searchedValue.length === 0) {
+    alert("Search value cannot be empty.");
+    return;
+  }
+  // Validate search value contains hyphen character & could be from existing datalist
+  else if (searchedValue.includes("-")) {
+   // call function to extract substring before hyphen
+    let alienName = extractSearchValue(searchedValue);
+    // check alienName is valid then call function to redirect to search-results page
+    if (typeof alienName === 'string' && alienName.trim() !== '') {
+      foundAlien = searchAlienOverviewDb(alienName);
+      if (foundAlien) {
+        console.log("Alien found: " + alienName);
+        // call function to redirect to search-results page
+        redirectToResults(alienName, true, originAction);
+        return;
+      }
+    }
+  }
+  // If validation fails, redirect with alienFound = false
+  redirectToResults(searchedValue, false, originAction);
+}
 
+// Overwrite search value to handle search value from add-alien form
+function overwriteSearchValue(event) {
+  event.preventDefault();
+  let submitter = event.submitter;
+  let handler = submitter.id;
+  let searchValue = "";
+  let originAction = "";
+  if (handler === "search-button") {
+    searchValue = searchBoxInput.value; // Get the search input value from global variable
+    originAction = "search";
+    validateSearchValue(searchValue, originAction); // Call function to validate search value
+  }
+  // Search value is from add-alien add-search input field
+  else if (handler === "add-submit-button") {
+    searchValue = addSearchInput.value;
+    originAction = "add";
+    alert("overwrite the global variable search with the add-search input value: " + searchValue);
+    validateSearchValue(searchValue); // Call function to validate search value
+  }
+  else {
+    alert("OnSubmit data: " + event.name);
+  }
+}
+// END CODEBLOCK SEARCHING the ALfDb
+
+// START CODEBLOCK ADD-ALIEN FORM PROCESS
+// enable add-submit-button if addSearch is not empty & addSourceSelect is not default
+function addAlienFormValidation() {
+  const othersourceTypes = document.getElementById("other-source-types-div");
+  const othersourceTypesInput = document.getElementById("other-source-types");
+  // if the addSearch is not null & source is not default, enable the submit button
+  if (addSearchInput.value.trim() !== "" && addSourceSelect.value !== "default") {
+    if (addSourceSelect.value === "other") {
+      addSourceSelect.style.borderStyle = "dashed";
+      othersourceTypes.style.display = "flex";
+      othersourceTypesInput.style.borderWidth = "0.5rem";
+      othersourceTypesInput.tabIndex = 3;
+      // othersourceTypesInput.focus();
+      addSubmitButton.disabled = false;
+    }
+    else {
+      //toggle other source-types input field
+      addSourceSelect.style.borderStyle = "solid";
+      othersourceTypes.style.display = "none";
+      othersourceTypesInput.tabIndex = "";
+      addSubmitButton.disabled = false;
+    }
+  }
+  else {
+    console.log("Disable submit button");
+    addSourceSelect.style.borderStyle = "solid";
+    othersourceTypes.style.display = "none";
+    othersourceTypesInput.tabIndex = "";
+    addSubmitButton.disabled = true;
+  }
+};
+// add-search is for add-alien page. Add global event listener to add-search input to handle keyup events
+const addSearchInput = document.getElementById("add-search");
+if (addSearchInput) {
+  addSearchInput.addEventListener("input", addAlienFormValidation);
+}
+// add-submit-button is for add-alien page. Disable add-submit-button in ui by default
+const addSubmitButton = document.getElementById("add-submit-button");
+if (addSubmitButton) {
+  addSubmitButton.disabled = true;
+}
+let addSourceSelect = document.getElementById("source-types");
+if (addSourceSelect) {
+  addSourceSelect.addEventListener("click", addAlienFormValidation);
+}
+const addAlienForm = document.getElementById("add-search-box");
+if (addAlienForm) {
+  addAlienForm.onsubmit = overwriteSearchValue;
+}
+// action-add-button is for opening the TEMP add-alien page
+const addAlienButton = document.getElementById("action-add-button");
+if (addAlienButton) {
+  addAlienButton.addEventListener("click", function () {
+    window.location.href = "add-alien.html";
+  });
+}
+// END CODEBLOCK ADD-ALIEN FORM PROCESS
+
+
+async function getAlienOverviewList(alienName) {
+  let firstLetter = alienName.charAt(0).toLowerCase();
+  let datafile = './a_alienOverviewList.json';
+  // let datafile = `server/${firstLetter}_alienOverviewList.json`;
+  try {
+    const response = await fetch(datafile);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const alienDatafile = await response.json();
+    console.log(alienDatafile);
+    return alienDatafile;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+async function searchAlienOverviewDb(alienName) {
+  let alienFound = false;
+  let alienDataList = await getAlienOverviewList(alienName); // Await the asynchronous call
+  if (!alienDataList) {
+    alert("No data returned from getAlienOverviewList");
+    return alienFound;
+  }
+  //else alienDataList is not empty
+  for (let alien of alienDataList) {
+    if (alien.name === alienName) {
+      alert("Searching alienDataList to search for alien: " + alienName);
+      //return true; // Return true immediately if alien is found
+    }
+  }
+
+  alert("No match for Alien found: " + alienName);
+  //return alienFound; // Return false if no match is found
+}
