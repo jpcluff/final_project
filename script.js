@@ -178,8 +178,8 @@ function redirectToResults(alienName, alienFound, originAction) {
 // Get the alienOverviewList from JSON file
 async function getAlienOverviewList(alienName) {
   let firstLetter = alienName.charAt(0).toLowerCase();
-  let datafile = "./server/a_alienOverviewList.json";
-  // let datafile = `server/${firstLetter}_alienOverviewList.json`;
+  //let datafile = "./server/a_alienOverviewList.json";
+  let datafile = `.server/${firstLetter}_alienOverviewList.json`;
   try {
     const response = await fetch(datafile);
     if (!response.ok) {
