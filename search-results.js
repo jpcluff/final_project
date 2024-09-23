@@ -65,6 +65,10 @@ async function getMatchedAlienOverview(alienName) {
 
 
 async function buildSearchResultsElements(searchValue) {
+  if (!searchValue) {
+    console.error("No search value provided.");
+    return;
+  }
   // Get the search results from the API
   const matchedAlienObj = await getMatchedAlienOverview(searchValue);
   console("Search Results:" + JSON.stringify(matchedAlienObj));
