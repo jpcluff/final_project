@@ -49,6 +49,7 @@ const alienRefListSchema = {
 // Get search-box elements
 let searching = false;
 const acceptableChars = /^[A-Za-z]+$/;
+const whiteSpace = /\s/g;
 // global variable search to store search input value for finding & adding alien
 const searchBoxInput = document.getElementById("search"); // Get the search-box input element
 let searchDataList = document.getElementById("search-list"); // Get the search-list datalist element
@@ -179,7 +180,8 @@ function redirectToResults(alienName, alienFound, originAction) {
 async function getAlienOverviewList(alienName) {
   let firstLetter = alienName.charAt(0).toLowerCase();
   //let datafile = "./server/a_alienOverviewList.json";
-  let datafile = `.server/${firstLetter}_alienOverviewList.json`;
+  let datafile = "./server/"+firstLetter+"_alienOverviewList.json";
+  alert("datafile: " + datafile);
   try {
     const response = await fetch(datafile);
     if (!response.ok) {
@@ -204,8 +206,10 @@ async function searchAlienOverviewDb(alienName) {
   for (let alien of alienDataList) {
     let dataAlienName = alien.name;
     dataAlienName = dataAlienName.toLowerCase();
+    dataAlienName = dataAlienName.replace(whiteSpace, "");
     alienName = alienName.toLowerCase();
-    if (dataAlienName === alienName) {
+    alienName = alienName.replace(whiteSpace, "");
+    if (dataAlienName == alienName) {
       alienFound = true;
       return alienFound; // Return true immediately if alien is found
     }
