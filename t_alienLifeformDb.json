@@ -1,29 +1,65 @@
 [
     {
         "name": "The Thing",
-        "alien": true,
-        "creators": "John Carpenter, Bill Lancaster",
-        "summary": "A shape-shifting extraterrestrial organism that infiltrates an Antarctic research station, mimicking its human hosts and creating paranoia and terror among the survivors.",
-        "imageSrc": "./images/TheThing.png"
-    },
-    {
-        "name": "Aaamazzarite",
-        "alien": true,
-        "creators": "Gene Roddenberry, Harold Livingston",
-        "summary": "Peaceful isolationist species from planet Aaamazzara, known for their biochemical ability to create materials. They are members of the Federation but rarely leave their homeworld.",
-        "imgOverview": "./images/Aaamazzarite.jpg"
-    },
-    {
-        "name": "Aalaag",   
-        "alien": true,
-        "creator": "Gordon R. Dickson",
-        "summary": "In the novel 'Way of the Pilgrim' by Gordon R. Dickson, Shane, a gifted linguist, has spent his life learning the language of the old and powerful alien race that has conquered Earth. The interstellar masters regard him as a valuable servant, but Shane harbors a secret. He invented 'The Aalaag,' a mysterious figure who incites rebellion and vanishes unseen, leaving a distinctive icon behind. Now, the human underground is preparing to rebel, and Shane knows he will be unable to keep himself from taking part.",
-        "imgOverview": "./images/Aalaag.jpg"
-    },
-    {
-        "name": "Abductors",
-        "alien": true,
-        "summary": "The Abductors are fictional aliens from the Nickelodeon animated series Invader Zim, created by Jhonen Vasquez. In the episode 'Abducted,' these aliens claim to be Zim's new neighbors but turn out to be spectacularly stupid. Zim escapes their spaceship disguised as a whale, leaving behind a blob-like being who tearfully asks for help. The Abductors bicker and forget about their escapees, focusing on fusing metal pieces to the Blob Creature and searching for their next specimen, the Earth weasel.",
-        "imgOverview": "./images/Abductors.png"
+        "alienValidated": true,
+        "addedDate": "2024-09-23",
+        "creatorObj": {
+            "creators": "John Carpenter, Bill Lancaster",
+            "validated": true,
+            "validatedDate": "2024-09-23"
+        },
+        "summaryObj": {
+            "summary": "A shape-shifting extraterrestrial organism that infiltrates an Antarctic research station, mimicking its human hosts and creating paranoia and terror among the survivors.",
+            "validated": true,
+            "validatedDate": "2024-09-23"
+        },
+        "imagesArray": [
+            {
+                "imageObj": {
+                    "addSequence": 0,
+                    "imageSrc": "./images/TheThing.png",
+                    "validated": true,
+                    "validatedDate": "2024-09-23",
+                    "issuesReportedArray": [
+                        {
+                            "issue": "The image is incorrect.",
+                            "reportedBy": "User123",
+                            "reportedDate": "2024-09-23"
+                        },
+                        {
+                            "issue": "The image is too small.",
+                            "reportedBy": "User456",
+                            "reportedDate": "2024-09-23"
+                        }
+                    ]
+                }
+            },
+            {
+                "imageObj": {
+                    "addSequence": 1,
+                    "imageSrc": "./images/TheThing.png",
+                    "validated": true,
+                    "validatedDate": "2024-09-23",
+                    "issuesReportedArray": [
+                        {
+                            "issueObj": {
+                                "addSequence": 0,
+                                "issue": "The image is incorrect.",
+                                "reportedBy": "User123",
+                                "reportedDate": "2024-09-23"
+                            }
+                        },
+                        {
+                            "issueObj": {
+                                "addSequence": 1,
+                                "issue": "The image is too small.",
+                                "reportedBy": "User456",
+                                "reportedDate": "2024-09-23"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
     }
 ]

@@ -1,0 +1,142 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "alienValidated": {
+          "type": "boolean"
+        },
+        "addedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "creatorObj": {
+          "type": "object",
+          "properties": {
+            "creators": {
+              "type": "string"
+            },
+            "validated": {
+              "type": "boolean"
+            },
+            "validatedDate": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "creators",
+            "validated"
+          ]
+        },
+        "summaryObj": {
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "validated": {
+              "type": "boolean"
+            },
+            "validatedDate": {
+              "type": "string",
+              "format": "date-time" 
+            }
+          },
+          "required": [
+            "summary",
+            "validated"
+          ]
+        },
+        "imagesArray": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "imageObj": {
+                "type": "object",
+                "properties": {
+                  "addSequence": {
+                    "type": "number",
+                    "Minimum":0     
+                  },
+                  "imageSrc": {
+                    "type": "string"      
+                  },
+                  "validated": {
+                    "type": "boolean"      
+                  },
+                  "validatedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "issuesReportedArray": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "issue": {
+                          "type": "string"
+                        },
+                        "reportedBy": {
+                          "type": "string"
+                        },
+                        "reportedDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "issueObj": {
+                          "type": "object",
+                          "properties": {
+                            "addSequence": {
+                              "type": "number",
+                              "Minimum":0
+                            },
+                            "issue": {
+                              "type": "string"
+                            },
+                            "reportedBy": {
+                              "type": "string"
+                            },
+                            "reportedDate": {
+                              "type": "string",
+                              "format": "date-time"
+                            }
+                          },
+                          "required": [
+                            "addSequence",
+                            "issue",
+                            "reportedBy",
+                            "reportedDate"
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  }
+                },
+                "required": [
+                  "addSequence",
+                  "imageSrc",
+                  "validated"
+                ]
+              }
+            },
+            "required": [
+              "imageObj"
+            ]
+          }
+        }
+      },
+      "required": [
+        "name",
+        "alienValidated",
+        "summaryObj"
+      ]
+    }
+  }

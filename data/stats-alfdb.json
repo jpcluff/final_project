@@ -1,0 +1,25 @@
+[
+    {
+        "aliensAdded": 0,
+        "aliensValidated": 0,
+        "aliensVisitedArray": 
+        [
+            {
+                "name": "Aaamazzarite",
+                "visited": 0
+            },
+            {
+                "name": "Aalaag",
+                "visited": 0
+            },
+            {
+                "name": "Abductors",
+                "visited": 0
+            },
+            {
+                "name": "The Thing",
+                "visited": 0
+            }
+        ]
+    }
+]

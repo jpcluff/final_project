@@ -8,8 +8,8 @@
         "name": {
           "type": "string"
         },
-        "source": {
-          "type": "string"
+        "alienValidated": {
+          "type": "boolean"
         },
         "summary": {
           "type": "string"
@@ -20,7 +20,7 @@
       },
       "required": [
         "name",
-        "source",
+        "alienValidated",
         "summary",
         "imgOverview"
       ]
