@@ -167,7 +167,7 @@ searchBoxInput.addEventListener("keyup", function (event) {
 // Redirect to search-results page with alien name, alienFound, originAction as query parameters
 function redirectToResults(alienName, alienFound, originAction) {
   let typeTest = typeof alienFound
-  alert("Alien found? " + alienFound + ":" + typeTest + ", was looking for " + alienName);
+  console.log("Alien found? " + alienFound + ":" + typeTest + ", was looking for " + alienName);
   const searchParams = new URLSearchParams();
   searchParams.set('searchValue', alienName);
   searchParams.set('alienFound', alienFound);
@@ -226,7 +226,6 @@ async function dataListUserInput(searchedValue, originAction) {
     let alienName = extractSearchValue(searchedValue);
     foundAlien = await searchAlienOverviewDb(alienName);
     if (foundAlien) {
-      alert("Hyphen Alien:" + alienName + "found in database.");
       redirectToResults(alienName, foundAlien, originAction);
     }
     // Alien Name not found in database
@@ -354,6 +353,7 @@ function handleAddSearchInput(event)
 } ;
 // END CODEBLOCK for ADD-SEARCH Auto-Complete
 
+// START CODEBLOCK ADD-ALIEN FORM PROCESS
 // add-submit-button is for add-alien page. Disable add-submit-button in ui by default
 const addSubmitButton = document.getElementById("add-submit-button");
 if (addSubmitButton) {
