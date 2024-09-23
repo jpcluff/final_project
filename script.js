@@ -61,7 +61,7 @@ function clearSearchList(handler) {
   if (searching) {
     searching = false;
     console.log("Cleared search list");
-    if (handler === "search-button") {
+    if (handler === "search-button" || handler === "search") {
       searchDataList.innerHTML = "";
       searchBoxInput.value = ""; // Clear the search input field
     }
@@ -90,7 +90,7 @@ function populateDatalist(alienRefList, handler) {
   alienRefList.forEach(alien => {
     let option = document.createElement("option");
     option.value = `${alien.name} - ${alien.source}`;
-    if (handler === "search-button") {
+    if (handler === "search-button" || handler === "search") {
          searchDataList.appendChild(option);
     }
     else if (handler === "add-search-input") {
@@ -141,7 +141,6 @@ function fetchAlienRefList(firstLetter, handler) {
 }
 //add event listener to search input to handle keyup events & populate search list
 searchBoxInput.addEventListener("keyup", function (event) {
-  console.log("Search keyup event");
   let searchValue = searchBoxInput.value; // LOCAL variable to store search input value
   let firstLetter = searchValue.charAt(0);
   let handler = event.target.id;
@@ -326,7 +325,12 @@ if (addSearchInput) {
   addSearchInput.addEventListener("input", addAlienFormValidation);
 }
 // START CODEBLOCK for ADD-SEARCH Auto-Complete
-addSearchInput.addEventListener("keyup", function (event) {
+if (addSearchInput) {
+  addSearchInput.addEventListener("keyup", handleAddSearchInput); 
+}
+
+function handleAddSearchInput(event)
+ {
   console.log("add-search-input keyup event");
   let handler = event.target.id;
   let searchValue = addSearchInput.value; // LOCAL variable to store search input value
@@ -347,7 +351,7 @@ addSearchInput.addEventListener("keyup", function (event) {
   else {
     console.log("Search value already being fetched");
   }
-});
+} ;
 // END CODEBLOCK for ADD-SEARCH Auto-Complete
 
 // add-submit-button is for add-alien page. Disable add-submit-button in ui by default
