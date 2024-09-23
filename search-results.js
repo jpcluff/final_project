@@ -7,6 +7,8 @@ if (document.readyState === "loading") {
   // `DOMContentLoaded` has already fired
   handlePageLoad();
 }
+// function to get the alienOverviewList JSON file for the search results page
+import { getAlienOverviewList } from './script.js';
 
 // Function to get query parameters
 function getQueryParams() {
@@ -20,28 +22,10 @@ function getQueryParams() {
   return params;
 }
 
-// Function to get the alien overview from the ALfDb 
-async function getAlienOverviewList(alienName) {
-  let firstLetter = alienName.charAt(0).toLowerCase();
-  let datafile = "./server/a_alienOverviewList.json";
-  // let datafile = `server/${firstLetter}_alienOverviewList.json`;
-  try {
-    const response = await fetch(datafile);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    const alienDatafile = await response.json();
-    console.log(alienDatafile);
-    return alienDatafile;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
 // Search the alienOverviewList for alienName
 async function getMatchedAlienOverview(alienName) {
   let alienMatch = false; // LOCAL variable to store the result of the search
-  let alienDataList = await getAlienOverviewList(alienName);
+  let alienDataList = await getAlienOverviewList(alienName); // IMPORTED function alienOverviewList from script.ks 
   if (!alienDataList) {
     console.log("No data returned from getAlienOverviewList");
     buildFailedSearchElements(alienName);

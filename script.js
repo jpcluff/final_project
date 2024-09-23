@@ -79,13 +79,23 @@ function clearSearchList(handler) {
     console.log("Not actively searching");
   }
 }
-// Clear search list when clicking outside of search bar
+// Clear search list when clicking outside of the clear pseudo button for add-search input fields
+document.addEventListener("click", function (event) {
+  const searchClearElement = document.getElementById("search-clear");
+  if (searchClearElement && (searchClearElement.contains(event.target))) {
+    const handler = "add-search-input";
+    clearSearchList(handler);
+  }
+});
+// Clear search list when clicking outside of search bar or the clear pseudo button for both search & add-search input fields
 document.addEventListener("click", function (event) {
   if (!searchBar.contains(event.target)) {
     const handler = "search-button";
     clearSearchList(handler);
   }
 });
+
+
 // Populate datalist with alienRefList data
 function populateDatalist(alienRefList, handler) {
   alienRefList.forEach(alien => {
@@ -177,18 +187,17 @@ function redirectToResults(alienName, alienFound, originAction) {
   window.location.assign(`search-results.html?${searchParams.toString()}`);
 }
 // Get the alienOverviewList from JSON file
-async function getAlienOverviewList(alienName) {
+export async function getAlienOverviewList(alienName) {
   let firstLetter = alienName.charAt(0).toLowerCase();
   //let datafile = "./server/a_alienOverviewList.json";
   let datafile = "./server/"+firstLetter+"_alienOverviewList.json";
-  alert("datafile: " + datafile);
   try {
+    console.log("Fetching datafile... " + datafile);
     const response = await fetch(datafile);
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
     const alienDatafile = await response.json();
-    console.log(alienDatafile);
     return alienDatafile;
   } catch (error) {
     console.error(error.message);
@@ -207,9 +216,9 @@ async function searchAlienOverviewDb(alienName) {
     let dataAlienName = alien.name;
     dataAlienName = dataAlienName.toLowerCase();
     dataAlienName = dataAlienName.replace(whiteSpace, "");
-    alienName = alienName.toLowerCase();
-    alienName = alienName.replace(whiteSpace, "");
-    if (dataAlienName == alienName) {
+    let alienNameString = alienName.toLowerCase();
+    alienNameString = alienNameString.replace(whiteSpace, "");
+    if (dataAlienName == alienNameString) {
       alienFound = true;
       return alienFound; // Return true immediately if alien is found
     }
@@ -235,7 +244,7 @@ async function dataListUserInput(searchedValue, originAction) {
     // Alien Name not found in database
     else {
       foundAlien;
-      alert("Alien:" + alienName + "not found in database. Ask Gen AI to add it.");
+      alert("Alien with hyphen:" + alienName + "not found in database. Ask Gen AI to add it.");
       askGenAIifAlienExists(searchedValue, originAction);
     }
   }
@@ -247,7 +256,7 @@ async function dataListUserInput(searchedValue, originAction) {
       redirectToResults(searchedValue, foundAlien, originAction);
     }
     else {
-      alert("Alien:" + searchedValue + "not found in database. Ask Gen AI to add it.");
+      alert("Alien end else:" + searchedValue + "not found in database. Ask Gen AI to add it.");
       askGenAIifAlienExists(searchedValue, originAction);
     }
   }
@@ -279,7 +288,7 @@ function overwriteSearchValue(event) {
   else if (handler === "add-submit-button") {
     searchValue = addSearchInput.value;
     originAction = "add";
-    alert("overwrite the global variable search with the add-search-input input value: " + searchValue);
+    console.log("overwrite the global variable search with the add-search-input input value: " + searchValue);
     validateSearchValue(searchValue); // Call function to validate search value
   }
   else {
