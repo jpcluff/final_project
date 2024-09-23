@@ -12,12 +12,12 @@ if (document.readyState === "loading") {
 function getQueryParams() {
   const params = {};
   const queryString = window.location.search.substring(1);
-  const regex = /([^&=]+)=([^&]*)/g;
-  let m;
-  while (m = regex.exec(queryString)) {
-    params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+  const urlParams = new URLSearchParams(queryString);
+
+  for (const [key, value] of urlParams.entries()) {
+    params[decodeURIComponent(key)] = decodeURIComponent(value);
   }
-  console.log(params);
+  console.log("Params:"+JSON.stringify(params));
   return params;
 }
 

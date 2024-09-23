@@ -141,11 +141,10 @@ searchBoxInput.addEventListener("keyup", function (event) {
 // END HEADER POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
 
 // START CODEBLOCK SEARCHING the ALfDb
-// Redirect to search-results page with alien name as query parameter
+// Redirect to search-results page with alien name, alienFound, originAction as query parameters
 function redirectToResults(alienName, alienFound, originAction) {
   let typeTest = typeof alienFound
   alert("Alien found? " + alienFound + ":" + typeTest + ", was looking for " + alienName);
-  // Redirect to search page with search value, alienFound, originAction as query parameters
   const searchParams = new URLSearchParams();
   searchParams.set('searchValue', alienName);
   searchParams.set('alienFound', alienFound);
@@ -173,20 +172,21 @@ async function getAlienOverviewList(alienName) {
 // Search the alienOverviewList for alienName
 async function searchAlienOverviewDb(alienName) {
   let alienFound = false;
-  let alienDataList = await getAlienOverviewList(alienName); // Await the asynchronous call
+  let alienDataList = await getAlienOverviewList(alienName); 
   if (!alienDataList) {
     console.log("No data returned from getAlienOverviewList");
     return alienFound;
   }
   //else alienDataList is not empty
   for (let alien of alienDataList) {
-    if (alien.name.toLowerCase === alienName.toLowerCase) {
+    let dataAlienName = alien.name;
+    dataAlienName = dataAlienName.toLowerCase();
+    alienName = alienName.toLowerCase();
+    if (dataAlienName === alienName) {
       alienFound = true;
-      alert("Alien found in database: " + alien.name);
       return alienFound; // Return true immediately if alien is found
     }
   }
-  alert("Alien not found in database: " + alienName);
   return alienFound; // Return false if no match is found
 }
 // Extract an alien name from searchInput selected from datalist value
@@ -235,7 +235,6 @@ async function validateSearchValue(searchedValue, originAction) {
     return;
   }
     // else Search value is not empty
-    alert("Calling dataListUserInput because Search value is not empty: " + searchedValue);
     dataListUserInput(searchedValue, originAction);
 }
 // Overwrite search value to handle search value from add-alien form
