@@ -401,14 +401,14 @@
 
     .search-result-image img {
         max-width: 500px;
+        max-height: 295px;
     }
 
     .img-search-result {
         border-radius: 0.5rem;
         border: solid 0.1rem black;
         padding: 0.5rem;
-        min-width: 50%;
-        background-color: tomato;
+        /* min-width: 50%; */
     }
 
     a:hover.search-result-link {
@@ -1087,6 +1087,7 @@
         /* .img-search-result */
         {
             max-width: 100%;
+            max-height: 100%;   
         }
 
         /* END MOBILE Responsive */
@@ -1130,6 +1131,9 @@
 
         .add-alien-form {
             width: 100%;
+        }
+        .search-result-image img {
+            max-height: 230px;
         }
 
         /* END tablet */

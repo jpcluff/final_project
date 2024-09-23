@@ -123,6 +123,9 @@ async function buildSearchResultsElements(searchValue) {
   searchResultsSection.appendChild(alienDetailsHrefElement);
   mainContainer.appendChild(searchResultsSection);
   createActionsSection();
+  Array.from(document.getElementsByClassName("pagination-button")).forEach(button => {
+    button.style.display = "none";
+  });
 }
 
 // Build failed search page elements
