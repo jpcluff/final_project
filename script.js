@@ -57,26 +57,49 @@ const searchBar = document.getElementById("search-box"); // Get the search-box f
 searchBar.onsubmit = overwriteSearchValue;
 
 // START CODEBLOCK POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
-function clearSearchList() {
+function clearSearchList(handler) {
   if (searching) {
     searching = false;
     console.log("Cleared search list");
-    searchDataList.innerHTML = "";
-    searchBoxInput.value = ""; // Clear the search input field
+    if (handler === "search-button") {
+      searchDataList.innerHTML = "";
+      searchBoxInput.value = ""; // Clear the search input field
+    }
+    else if (handler === "add-search-input") {
+      let searchListAdd = document.getElementById("search-list-add");
+      searchListAdd.innerHTML = "";
+      addSearchInput.value = ""; // Clear the add-search input field
+    }
+    else {
+      console.log("Unexpected handler value: " + handler);
+    }
+  }
+  else {
+    console.log("Not actively searching");
   }
 }
 // Clear search list when clicking outside of search bar
 document.addEventListener("click", function (event) {
   if (!searchBar.contains(event.target)) {
-    clearSearchList();
+    const handler = "search-button";
+    clearSearchList(handler);
   }
 });
 // Populate datalist with alienRefList data
-function populateDatalist(alienRefList) {
+function populateDatalist(alienRefList, handler) {
   alienRefList.forEach(alien => {
     let option = document.createElement("option");
     option.value = `${alien.name} - ${alien.source}`;
-    searchDataList.appendChild(option);
+    if (handler === "search-button") {
+         searchDataList.appendChild(option);
+    }
+    else if (handler === "add-search-input") {
+      let searchListAdd = document.getElementById("search-list-add");
+      searchListAdd.appendChild(option);
+    }
+    else {
+      console.log("Unexpected handler value: " + handler);
+    }
   });
 }
 function verifyFileData(data) {
@@ -96,7 +119,7 @@ function verifyFileData(data) {
   }
   return true;
 }
-function fetchAlienRefList(firstLetter) {
+function fetchAlienRefList(firstLetter, handler) {
   let datafile = `data\\${firstLetter}_alienRefList.json`;
   fetch(datafile)
     .then(response => {
@@ -110,7 +133,7 @@ function fetchAlienRefList(firstLetter) {
         console.error("Unexpected structure");
         return [];
       }
-      populateDatalist(alienDatafile);
+      populateDatalist(alienDatafile, handler);
     })
     .catch(error => {
       console.error("Error fetching data:", error);
@@ -121,18 +144,19 @@ searchBoxInput.addEventListener("keyup", function (event) {
   console.log("Search keyup event");
   let searchValue = searchBoxInput.value; // LOCAL variable to store search input value
   let firstLetter = searchValue.charAt(0);
+  let handler = event.target.id;
   if (searchValue.length === 0) {
-    clearSearchList();
+    clearSearchList(handler);
     // do nothing
   } else if (searchValue.length > 1) {
     searching = true;
     // Do nothing
   } else if (!searching && acceptableChars.test(firstLetter)) {
     searching = true;
-    fetchAlienRefList(firstLetter);
+    fetchAlienRefList(firstLetter, handler);
   } else if (!acceptableChars.test(firstLetter)) {
     alert("Search value must start with a letter.");
-    clearSearchList();
+    clearSearchList(handler);
   }
   else {
     console.log("Search value already being fetched");
@@ -172,7 +196,7 @@ async function getAlienOverviewList(alienName) {
 // Search the alienOverviewList for alienName
 async function searchAlienOverviewDb(alienName) {
   let alienFound = false;
-  let alienDataList = await getAlienOverviewList(alienName); 
+  let alienDataList = await getAlienOverviewList(alienName);
   if (!alienDataList) {
     console.log("No data returned from getAlienOverviewList");
     return alienFound;
@@ -198,33 +222,33 @@ function extractSearchValue(searchInput) {
 // searchedValue is valid not empty
 async function dataListUserInput(searchedValue, originAction) {
   let foundAlien = false;
-// Check if searchedValue is selected from datalist & not just a hyphen
- if (searchedValue.includes("-") && searchedValue.length > 1) {
+  // Check if searchedValue is selected from datalist & not just a hyphen
+  if (searchedValue.includes("-") && searchedValue.length > 1) {
     let alienName = extractSearchValue(searchedValue);
     foundAlien = await searchAlienOverviewDb(alienName);
-     if (foundAlien) {
-      alert("Hyphen Alien:"+alienName+"found in database.");
-        redirectToResults(alienName, foundAlien, originAction);
-      }
-      // Alien Name not found in database
-      else {
-        foundAlien;
-        alert("Alien:"+alienName+"not found in database. Ask Gen AI to add it.");
-        askGenAIifAlienExists(searchedValue, originAction); 
-      }
+    if (foundAlien) {
+      alert("Hyphen Alien:" + alienName + "found in database.");
+      redirectToResults(alienName, foundAlien, originAction);
     }
-  else {
-  // searchedValue is user input not selected from datalist
-  searchedValue = searchedValue.trim();
-  foundAlien = await searchAlienOverviewDb(searchedValue);
-  if (foundAlien) {
-    redirectToResults(searchedValue, foundAlien, originAction);
+    // Alien Name not found in database
+    else {
+      foundAlien;
+      alert("Alien:" + alienName + "not found in database. Ask Gen AI to add it.");
+      askGenAIifAlienExists(searchedValue, originAction);
+    }
   }
   else {
-    alert("Alien:"+searchedValue+"not found in database. Ask Gen AI to add it.");
-    askGenAIifAlienExists(searchedValue, originAction);
+    // searchedValue is user input not selected from datalist
+    searchedValue = searchedValue.trim();
+    foundAlien = await searchAlienOverviewDb(searchedValue);
+    if (foundAlien) {
+      redirectToResults(searchedValue, foundAlien, originAction);
+    }
+    else {
+      alert("Alien:" + searchedValue + "not found in database. Ask Gen AI to add it.");
+      askGenAIifAlienExists(searchedValue, originAction);
+    }
   }
-}
 }
 
 // validate the search value from search-box & add-alien form then redirect to search-results page
@@ -234,8 +258,8 @@ async function validateSearchValue(searchedValue, originAction) {
     alert("Search value cannot be empty.");
     return;
   }
-    // else Search value is not empty
-    dataListUserInput(searchedValue, originAction);
+  // else Search value is not empty
+  dataListUserInput(searchedValue, originAction);
 }
 // Overwrite search value to handle search value from add-alien form
 function overwriteSearchValue(event) {
@@ -253,7 +277,7 @@ function overwriteSearchValue(event) {
   else if (handler === "add-submit-button") {
     searchValue = addSearchInput.value;
     originAction = "add";
-    alert("overwrite the global variable search with the add-search input value: " + searchValue);
+    alert("overwrite the global variable search with the add-search-input input value: " + searchValue);
     validateSearchValue(searchValue); // Call function to validate search value
   }
   else {
@@ -293,11 +317,39 @@ function addAlienFormValidation() {
     addSubmitButton.disabled = true;
   }
 };
-// add-search is for add-alien page. Add global event listener to add-search input to handle keyup events
-const addSearchInput = document.getElementById("add-search");
+
+// TODO ask Gen AI if alien exists in database
+
+// add-search-input is for add-alien page. Add global event listener to add-search input to handle keyup events
+const addSearchInput = document.getElementById("add-search-input");
 if (addSearchInput) {
   addSearchInput.addEventListener("input", addAlienFormValidation);
 }
+// START CODEBLOCK for ADD-SEARCH Auto-Complete
+addSearchInput.addEventListener("keyup", function (event) {
+  console.log("add-search-input keyup event");
+  let handler = event.target.id;
+  let searchValue = addSearchInput.value; // LOCAL variable to store search input value
+  let firstLetter = searchValue.charAt(0);
+  if (searchValue.length === 0) {
+    clearSearchList(handler);
+    // do nothing
+  } else if (searchValue.length > 1) {
+    searching = true;
+    // Do nothing
+  } else if (!searching && acceptableChars.test(firstLetter)) {
+    searching = true;
+    fetchAlienRefList(firstLetter, handler);
+  } else if (!acceptableChars.test(firstLetter)) {
+    alert("Search value must start with a letter.");
+    clearSearchList(handler);
+  }
+  else {
+    console.log("Search value already being fetched");
+  }
+});
+// END CODEBLOCK for ADD-SEARCH Auto-Complete
+
 // add-submit-button is for add-alien page. Disable add-submit-button in ui by default
 const addSubmitButton = document.getElementById("add-submit-button");
 if (addSubmitButton) {

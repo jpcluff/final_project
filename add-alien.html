@@ -66,14 +66,14 @@
                     <div class="add-alien-form">
                         <form autocomplete="off" class="add-search-box" id="add-search-box" action="/post" method="post">
                             <div class="add-alien-input">
-                                <label for="add-search" class="add-box-label">Enter name:</label>
-                                <input type="search" class="search-input" autocomplete="off"  id="add-search"
+                                <label for="add-search-input" class="add-box-label">Enter name:</label>
+                                <input type="search" class="search-input" autocomplete="off" list="search-list-add" id="add-search-input"
                                     name="search" placeholder="Alien Name" aria-label="Add an alien lifeform"
                                     tabindex="1" title="Enter an alien lifeform">   
                             </div>
                             <div class="add-alien-input">
                                 <label for="source-types" class="source-label">Source:</label>
-                                <select form="search-box" auto="off" name="source-types" id="source-types" size="1" tabindex="2" title="Select a source from the list">
+                                <select form="search-box" autocomplete="off" name="source-types" id="source-types" size="1" tabindex="2" title="Select a source from the list">
                                     <option value="default" selected>Select from list</option>
                                     <option value="book">Book</option>
                                     <option value="film">Film</option>
@@ -93,6 +93,8 @@
                                 <img class="search-button-img" src="images/plus.png" alt="add" title="Add Alien button">
                             </button>
                             </div>
+                            <datalist id="search-list-add" class="search-matching-list" aria-label="Results matching search">
+                            </datalist>
                         </form>
                     </div>
                 </div>
