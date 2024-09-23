@@ -54,7 +54,10 @@ async function getMatchedAlienOverview(alienName) {
     if (dataAlienName === alienName) {
       alienMatch = true;
       // hardcode the return object for now
-      alien = { "name": "Aaamazzarite", "alien": true, "creators": "Gene Roddenberry, Harold Livingston", "summary": "Peaceful isolationist species from planet Aaamazzara, known for their biochemical ability to create materials. They are members of the Federation but rarely leave their homeworld.", "imgOverview": "https://wiki.starbase118.net/wiki/index.php?title=File:Aaamazzarite.jpg" };
+      alien = { "name": "Aaamazzarite", "alien": true, 
+        "creators": "Gene Roddenberry, Harold Livingston", 
+        "summary": "Peaceful isolationist species from planet Aaamazzara, known for their biochemical ability to create materials. They are members of the Federation but rarely leave their homeworld.", 
+        "imgOverview": "https://wiki.starbase118.net/wiki/images/6/62/Aaamazzarite.jpg?20100810170615"};
       return alien; // Return matched alien object
     }
   }
@@ -62,17 +65,17 @@ async function getMatchedAlienOverview(alienName) {
 }
 
 async function fetchImgtoBlob(imgUrl) {
+   const defaultImg = "./images/placeholderImg/1-alien.png";
     // Fetch the image, convert to Blob, and set the src attribute
     try {
-      const response = await fetch(matchedAlienObj.image);
+      const response = await fetch(imgUrl);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const blob = await response.blob();
       const objectURL = URL.createObjectURL(blob);
-      return response.objectURL();
+      return objectURL;
     } catch (error) {
-      const defaultImg = "./images/placeholderImg/1-alien.png";
       console.error('Failed to fetch and decode image:', error);
       return defaultImg;
   }
@@ -86,7 +89,7 @@ async function buildSearchResultsElements(searchValue) {
   }
   // Get the search results from the API
   const matchedAlienObj = await getMatchedAlienOverview(searchValue);
-  alert("Search Results:" + JSON.stringify(matchedAlienObj));
+  console.log("Search Results:" + JSON.stringify(matchedAlienObj));
   // Display the search results
   document.getElementById("page-count-max").innerHTML = "1";
   document.getElementById("result-count").innerHTML = "1";
@@ -112,7 +115,7 @@ async function buildSearchResultsElements(searchValue) {
   const searchResultImageDiv = document.createElement("div");
   searchResultImageDiv.classList.add("search-result-image");
   const imgAlien = document.createElement("img");
-  imgAlien.src = await fetchImgtoBlob(matchedAlienObj.image);
+  imgAlien.src = await fetchImgtoBlob(matchedAlienObj.imgOverview);
   imgAlien.alt = matchedAlienObj.name;
   imgAlien.classList.add("img-search-result");
   searchResultImageDiv.appendChild(imgAlien);
