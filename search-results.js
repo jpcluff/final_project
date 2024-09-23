@@ -53,11 +53,6 @@ async function getMatchedAlienOverview(alienName) {
     alienName = alienName.toLowerCase();
     if (dataAlienName === alienName) {
       alienMatch = true;
-      // hardcode the return object for now
-      alien = { "name": "Aaamazzarite", "alien": true, 
-        "creators": "Gene Roddenberry, Harold Livingston", 
-        "summary": "Peaceful isolationist species from planet Aaamazzara, known for their biochemical ability to create materials. They are members of the Federation but rarely leave their homeworld.", 
-        "imgOverview": "https://wiki.starbase118.net/wiki/images/6/62/Aaamazzarite.jpg?20100810170615"};
       return alien; // Return matched alien object
     }
   }
@@ -65,10 +60,10 @@ async function getMatchedAlienOverview(alienName) {
 }
 
 async function fetchImgtoBlob(imgUrl) {
-   const defaultImg = "./images/placeholderImg/1-alien.png";
+   const defaultImg = "./images/placeholderImg/3-alien.png";
     // Fetch the image, convert to Blob, and set the src attribute
     try {
-      const response = await fetch(imgUrl);
+      const response = await fetch(imgUrl,{ mode: 'no-cors' });
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

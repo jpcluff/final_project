@@ -4,21 +4,21 @@
         "alien": true,
         "creators": "John Carpenter, Bill Lancaster",
         "summary": "A shape-shifting extraterrestrial organism that infiltrates an Antarctic research station, mimicking its human hosts and creating paranoia and terror among the survivors.",
-        "imgOverview": "https://www.syfy.com/sites/syfy/files/styles/1200x680/public/2018/10/the_thing_1982.jpg"
+        "imgOverview": "./images/TheThing.png"
     },
     {
         "name": "Aaamazzarite",
         "alien": true,
         "creators": "Gene Roddenberry, Harold Livingston",
         "summary": "Peaceful isolationist species from planet Aaamazzara, known for their biochemical ability to create materials. They are members of the Federation but rarely leave their homeworld.",
-        "imgOverview": "https://wiki.starbase118.net/wiki/index.php?title=File:Aaamazzarite.jpg"
+        "imgOverview": "./images/Aaamazzarite.jpg"
     },
     {
         "name": "Aalaag",
         "alien": true,
         "creator": "Gordon R. Dickson",
         "summary": "In the novel 'Way of the Pilgrim' by Gordon R. Dickson, Shane, a gifted linguist, has spent his life learning the language of the old and powerful alien race that has conquered Earth. The interstellar masters regard him as a valuable servant, but Shane harbors a secret. He invented 'The Aalaag,' a mysterious figure who incites rebellion and vanishes unseen, leaving a distinctive icon behind. Now, the human underground is preparing to rebel, and Shane knows he will be unable to keep himself from taking part.",
-        "imgOverview": "https://www.benespen.com/content/images/content/v1/51259dfce4b01b12552dad3e/1601046458919-WOQPC739B8ULZ8X1IGU5/8db35278d7c7a93593356315667444341587343_v5.jpg"
+        "imgOverview": "./images/Aalaag.jpg"
     },
     {
         "name": "Abductors",
