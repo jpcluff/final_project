@@ -141,15 +141,14 @@ searchBoxInput.addEventListener("keyup", function (event) {
 // END HEADER POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
 
 // START CODEBLOCK SEARCHING the ALfDb
-
 // Redirect to search-results page with alien name as query parameter
 function redirectToResults(alienName, alienFound, originAction) {
   let typeTest = typeof alienFound
-  console.log("Alien found? " + alienFound + ":" + typeTest + ", was looking for " + alienName);
+  alert("Alien found? " + alienFound + ":" + typeTest + ", was looking for " + alienName);
   // Redirect to search page with search value, alienFound, originAction as query parameters
   const searchParams = new URLSearchParams();
   searchParams.set('searchValue', alienName);
-  searchParams.set('alienFound', false); // TODO alienFound is a static boolean to test redirection
+  searchParams.set('alienFound', alienFound);
   searchParams.set('originAction', originAction);
   console.log("Redirecting for: " + searchParams);
   window.location.assign(`search-results.html?${searchParams.toString()}`);
@@ -181,11 +180,13 @@ async function searchAlienOverviewDb(alienName) {
   }
   //else alienDataList is not empty
   for (let alien of alienDataList) {
-    if (alien.name === alienName) {
-      alienFound=true;
+    if (alien.name.toLowerCase === alienName.toLowerCase) {
+      alienFound = true;
+      alert("Alien found in database: " + alien.name);
       return alienFound; // Return true immediately if alien is found
     }
   }
+  alert("Alien not found in database: " + alienName);
   return alienFound; // Return false if no match is found
 }
 // Extract an alien name from searchInput selected from datalist value
@@ -194,34 +195,49 @@ function extractSearchValue(searchInput) {
   let alienName = searchArray[0].trim();
   return alienName;
 }
+// searchedValue is valid not empty
+async function dataListUserInput(searchedValue, originAction) {
+  let foundAlien = false;
+// Check if searchedValue is selected from datalist & not just a hyphen
+ if (searchedValue.includes("-") && searchedValue.length > 1) {
+    let alienName = extractSearchValue(searchedValue);
+    foundAlien = await searchAlienOverviewDb(alienName);
+     if (foundAlien) {
+      alert("Hyphen Alien:"+alienName+"found in database.");
+        redirectToResults(alienName, foundAlien, originAction);
+      }
+      // Alien Name not found in database
+      else {
+        foundAlien;
+        alert("Alien:"+alienName+"not found in database. Ask Gen AI to add it.");
+        askGenAIifAlienExists(searchedValue, originAction); 
+      }
+    }
+  else {
+  // searchedValue is user input not selected from datalist
+  searchedValue = searchedValue.trim();
+  foundAlien = await searchAlienOverviewDb(searchedValue);
+  if (foundAlien) {
+    redirectToResults(searchedValue, foundAlien, originAction);
+  }
+  else {
+    alert("Alien:"+searchedValue+"not found in database. Ask Gen AI to add it.");
+    askGenAIifAlienExists(searchedValue, originAction);
+  }
+}
+}
+
 // validate the search value from search-box & add-alien form then redirect to search-results page
 async function validateSearchValue(searchedValue, originAction) {
-  let foundAlien = false;
   // Validate search value is empty
-  if (searchedValue.length === 0) {
+  if (searchedValue.length === 0 || searchedValue.trim() == '') {
     alert("Search value cannot be empty.");
     return;
   }
-  // Validate search value contains hyphen character & could be from existing datalist
-  else if (searchedValue.includes("-")) {
-   // call function to extract substring before hyphen
-    let alienName = extractSearchValue(searchedValue);
-    // check alienName is valid then call function to redirect to search-results page
-    if (typeof alienName === 'string' && alienName.trim() !== '') {
-      foundAlien = await searchAlienOverviewDb(alienName);
-      alert("Alien found: " + alienName + " - " + foundAlien);
-      if (foundAlien) {
-        console.log("Alien found: " + alienName);
-        // call function to redirect to search-results page
-        redirectToResults(alienName, true, originAction);
-        return;
-      }
-    }
-  }
-  // If validation fails, redirect with alienFound = false
-  redirectToResults(searchedValue, false, originAction);
+    // else Search value is not empty
+    alert("Calling dataListUserInput because Search value is not empty: " + searchedValue);
+    dataListUserInput(searchedValue, originAction);
 }
-
 // Overwrite search value to handle search value from add-alien form
 function overwriteSearchValue(event) {
   event.preventDefault();
@@ -242,7 +258,7 @@ function overwriteSearchValue(event) {
     validateSearchValue(searchValue); // Call function to validate search value
   }
   else {
-    alert("OnSubmit data: " + event.name);
+    console.log("OnSubmit data: " + event.name);
   }
 }
 // END CODEBLOCK SEARCHING the ALfDb

@@ -31,7 +31,7 @@ function handlePageLoad() {
   // Get the alienFound value from query parameters
   const alienFound = params.alienFound;
   if (alienFound === 'true') {
-    alert("Alien found! is "+alienFound+". Building Search Results for " + alien.name);
+    alert("Alien found! is "+alienFound+". Building Search Results for " + searchValue);
     buildSearchResultsElements(searchValue);
   }
   // TODO call function buildSearchResultsElements(searchValue);
