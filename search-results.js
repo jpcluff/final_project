@@ -13,7 +13,6 @@ function getQueryParams() {
   const params = {};
   const queryString = window.location.search.substring(1);
   const urlParams = new URLSearchParams(queryString);
-
   for (const [key, value] of urlParams.entries()) {
     params[decodeURIComponent(key)] = decodeURIComponent(value);
   }
@@ -55,7 +54,7 @@ async function getMatchedAlienOverview(alienName) {
     if (dataAlienName === alienName) {
       alienMatch = true;
       const typeOfAlien = typeof alien;
-      alert("Type of Alien Matched: " typeOfAlien);
+      alert("Type of Alien Matched: "+typeOfAlien);
       // hardcode the return object for now
       alien = { "name": "Aaamazzarite", "alien": true, "creators": "Gene Roddenberry, Harold Livingston", "summary": "Peaceful isolationist species from planet Aaamazzara, known for their biochemical ability to create materials. They are members of the Federation but rarely leave their homeworld.", "imgOverview": "https://wiki.starbase118.net/wiki/index.php?title=File:Aaamazzarite.jpg" };
       return alien; // Return matched alien object
@@ -107,24 +106,6 @@ async function buildSearchResultsElements(searchValue) {
   searchResultsSection.appendChild(alienDetailsHrefElement);
   mainContainer.appendChild(searchResultsSection);
   createActionsSection();
-}
-
-// test value of alienFound 
-//   TRUE then call function to build results page
-//   FALSE then call function to build failed search page
-function handlePageLoad() {
-  // Get the search value from query parameters
-  const params = getQueryParams();
-  const searchValue = params.searchValue || '';
-  // Get the alienFound value from query parameters
-  const alienFound = params.alienFound;
-  if (alienFound === 'true') {
-    console.log("Alien found! is " + alienFound + ". Building Search Results for " + searchValue);
-    buildSearchResultsElements(searchValue);
-  }
-  else {
-    buildFailedSearchElements(searchValue);
-  }
 }
 
 // Build failed search page elements
@@ -205,4 +186,21 @@ function createActionsSection() {
   }
 }
 
+// test value of alienFound 
+//   TRUE then call function to build results page
+//   FALSE then call function to build failed search page
+function handlePageLoad() {
+  // Get the search value from query parameters
+  const params = getQueryParams();
+  const searchValue = params.searchValue || '';
+  // Get the alienFound value from query parameters
+  const alienFound = params.alienFound;
+  if (alienFound === 'true') {
+    console.log("Alien found! is " + alienFound + ". Building Search Results for " + searchValue);
+    buildSearchResultsElements(searchValue);
+  }
+  else {
+    buildFailedSearchElements(searchValue);
+  }
+}
 
