@@ -19,7 +19,7 @@
             <div class="title">
                 <a href="index.html" target="_self"><h1>Alien Lifeform Database</h1></a>
             </div>
-            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship"></a>
+            <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship" title="ALfDb Home"></a>
             </div>
         </nav>
         <menu class="burger-menu" tabindex="0">
@@ -36,19 +36,18 @@
         </menu>
         <div class="search-bar">
             <div class="search-bar-container">
-                <form autocomplete="off" class="search-box" id="search-box" action="#">
+                <form autocomplete="off" class="search-box" id="search-box">
                     <label for="search" class="search-box-label"></label>
-                    <input autocomplete="off" list="search-list" id="search" name="search" placeholder="Search for an alien lifeform"
+                    <input type="search" autocomplete="off" list="search-list" id="search" name="search" placeholder="Search for alien lifeform"
                         aria-label="Search for an alien lifeform" tabindex="1">
-                    <button type="submit" formaction="search-results.html" class="search-button" id="search-button"
-                        aria-label="Search button">
+                    <button type="submit" class="search-button" id="search-button" form="search-box" aria-label="Search button">
                        <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
                     </button>
                     <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
                     </datalist>
                 </form>
             </div>
-        </div>
+        </div>      
     </header>
     <main>
         <section class="ticker-block">
@@ -60,8 +59,8 @@
                 <div class="actions-label">
                     <h2>Actions</h2>
                 </div>
-                <div class="submit"><button onclick = "window.location.href='add-alien.html';" class="action-button add-button" type="button">Add Alien +</button></div>
-                <div class="submit"><button onclick = "window.location.href='browse-aliens.html';" class="action-button browse-button" type="button">Browse</button></div>
+                <div class="submit"><button id="action-add-button" class="action-button add-button" type="button">Add Alien +</button></div>
+                <div class="submit"><button id="action-browse-button" onclick = "window.location.href='../browse-aliens.html';" class="action-button browse-button" type="button">Browse</button></div>
             </section>
             <section class="stats">
                 <div class="stats-label">

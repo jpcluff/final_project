@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "stats-alfdb",
+    "description": "document to store the statistics of the alfdb",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/Welcome3Element"
+    },
+    "definitions": {
+        "Welcome3Element": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "aliensAdded": {
+                    "type": "integer"
+                },
+                "aliensValidated": {
+                    "type": "integer"
+                },
+                "aliensVisitedArray": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AliensVisitedArray"
+                    }
+                }
+            },
+            "required": [
+                "aliensAdded",
+                "aliensValidated",
+                "aliensVisitedArray"
+            ],
+            "title": "Welcome3Element"
+        },
+        "AliensVisitedArray": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "visited": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "name",
+                "visited"
+            ],
+            "title": "AliensVisitedArray"
+        }
+    }
+}

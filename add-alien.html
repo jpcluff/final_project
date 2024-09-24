@@ -17,7 +17,9 @@
     <header>
         <nav class="navbar">
             <div class="title">
-                <a href="index.html" target="_self"><h1>Alien Lifeform Database</h1></a>
+                <a href="index.html" target="_self">
+                    <h1>Alien Lifeform Database</h1>
+                </a>
             </div>
             <div class="logo"><a href="index.html"><img src="images/noun-alien-crop.png" alt="alien in a spaceship"></a>
             </div>
@@ -25,7 +27,7 @@
         <menu class="burger-menu" tabindex="0">
             <li class="menu-toggle" title="Click to expand &amp; close"><a href="#"><img id="menu-toggle"
                         src="images/noun-burger-menu-crop.png" alt="burger menu open"></a></li>
-            <li class="nav-item selected"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="#">Browse Alien Lifeforms</a></li>
             <li class="nav-item"><a href="#">How to Submit an Update</a></li>
             <li class="nav-item"><a href="#"> Report an Issue</a></li>
@@ -42,7 +44,7 @@
                         aria-label="Search for an alien lifeform" tabindex="1">
                     <button type="submit" formaction="search-results.html" class="search-button" id="search-button"
                         aria-label="Search button">
-                       <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
+                        <img class="search-button-img" src="images/noun-search-crop.png" alt="search">
                     </button>
                     <datalist id="search-list" class="search-matching-list" aria-label="Results matching search">
                     </datalist>
@@ -51,16 +53,56 @@
         </div>
     </header>
     <main>
-        <section class="ticker-block">
-            <span class="ticker-span">…Last added <i>alfName</i>…Last updated <i>alfName</i>…Last updated
-                <i>alfName</i>…</span>
-        </section>
+        <div class="add-alien-header">
+            <h2>Add Alien</h2>
+            <div class="search-results-count">
+                <h3 class="h3-add-alien-title">Enter a name & the source <br>(book, film, tv etc.)</h3>
+            </div>
+        </div>
         <div class="main-container">
+            <section class="add-alien-section">
+                <div class="add-alien-container">
+                    <h3 class="h3-add-alien">Add Alien Lifeform</h3>
+                    <div class="add-alien-form">
+                        <form autocomplete="off" class="add-search-box" id="add-search-box" action="/post" method="post">
+                            <div class="add-alien-input">
+                                <label for="add-search-input" class="add-box-label">Enter name:</label>
+                                <input type="search" class="search-input" autocomplete="off" list="search-list-add" id="add-search-input"
+                                    name="search" placeholder="Alien Name" aria-label="Add an alien lifeform"
+                                    tabindex="1" title="Enter an alien lifeform">   
+                            </div>
+                            <div class="add-alien-input">
+                                <label for="source-types" class="source-label">Source:</label>
+                                <select form="search-box" autocomplete="off" name="source-types" id="source-types" size="1" tabindex="2" title="Select a source from the list">
+                                    <option value="default" selected>Select from list</option>
+                                    <option value="book">Book</option>
+                                    <option value="film">Film</option>
+                                    <option value="tv">TV</option>
+                                    <option value="game">Game</option>
+                                    <option value="comic">Comic</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="add-alien-input" id="other-source-types-div">
+                                <label for="other-source-types" class="source-label">Other Source:</label>
+                                <input type="text" class="search-input" autocomplete="off" id="other-source-types"
+                                    name="other-source-types" placeholder="Enter other Source" aria-label="Enter other source">
+                            </div>
+                            <div class="add-alien-input-submit">
+                            <button type="submit" class="search-button" id="add-submit-button" aria-label="Add alien button">
+                                <img class="search-button-img" src="images/plus.png" alt="add" title="Add Alien button">
+                            </button>
+                            </div>
+                            <datalist id="search-list-add" class="search-matching-list" aria-label="Results matching search">
+                            </datalist>
+                        </form>
+                    </div>
+                </div>
+            </section>
             <section class="actions">
                 <div class="actions-label">
-                    <h2>TODO Actions</h2>
+                    <h2>Actions</h2>
                 </div>
-                <div class="submit"><a class="action-button add-button" href="add-alien.html">Adding Alien +</a></div>
                 <div class="submit"><a class="action-button browse-button" href="browse-aliens.html">Browse</a></div>
             </section>
             <!-- alert hidden by default -->

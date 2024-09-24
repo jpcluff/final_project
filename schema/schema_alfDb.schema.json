@@ -1,0 +1,382 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "alienValidated": {
+          "type": "boolean"
+        },
+        "addedDate": {
+          "type": "string"
+        },
+        "creatorObj": {
+          "type": "object",
+          "properties": {
+            "creators": {
+              "type": "string"
+            },
+            "validated": {
+              "type": "boolean"
+            },
+            "validatedDate": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "creators",
+            "validated"          ]
+        },
+        "summaryObj": {
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "validated": {
+              "type": "boolean"
+            },
+            "validatedDate": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "summary",
+            "validated"
+          ]
+        },
+        "imagesArray": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "imageObj": {
+                  "type": "object",
+                  "properties": {
+                    "addSequence": {
+                      "type": "integer", "Minimum":0
+                    },
+                    "imageSrc": {
+                      "type": "string"
+                    },
+                    "validated": {
+                      "type": "boolean"
+                    },
+                    "validatedDate": {
+                      "type": "string",
+                      "format":"date-time"
+                    },
+                    "issuesReportedArray": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "issue": {
+                              "type": "string"
+                            },
+                            "reportedBy": {
+                              "type": "string"
+                            },
+                            "reportedDate": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "issue",
+                            "reportedBy",
+                            "reportedDate"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "issue": {
+                              "type": "string"
+                            },
+                            "reportedBy": {
+                              "type": "string"
+                            },
+                            "reportedDate": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "issue",
+                            "reportedBy",
+                            "reportedDate"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "addSequence",
+                    "imageSrc",
+                    "validated"
+                  ]
+                }
+              },
+              "required": [
+                "imageObj"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "imageObj": {
+                  "type": "object",
+                  "properties": {
+                    "addSequence": {
+                      "type": "integer"
+                    },
+                    "imageSrc": {
+                      "type": "string"
+                    },
+                    "validated": {
+                      "type": "boolean"
+                    },
+                    "validatedDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "issuesReportedArray": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "issueObj": {
+                              "type": "object",
+                              "properties": {
+                                "addSequence": {
+                                  "type": "integer"
+                                },
+                                "issue": {
+                                  "type": "string"
+                                },
+                                "reportedBy": {
+                                  "type": "string"
+                                },
+                                "reportedDate": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "addSequence",
+                                "issue",
+                                "reportedDate"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "issueObj"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "addSequence",
+                    "imageSrc",
+                    "validated"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "associatedWorksArray": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "workTitle": {
+                  "type": "string"
+                },
+                "year": {
+                  "type": "integer"
+                },
+                "workFormat": {
+                  "type": "string"
+                },
+                "creditsArray": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "role": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    }
+                  ]
+                },
+                "validated": {
+                  "type": "boolean"
+                },
+                "validatedDate": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": [
+                "workTitle",
+                "year",
+                "workFormat",
+                "creditsArray",
+                "validated"
+              ]
+            }
+          ]
+        },
+        "phsyicalCharacteristicsObj": {
+          "type": "object",
+          "properties": {
+            "phsyicalCharacteristicsSummary": {
+              "type": "string"
+            },
+            "validated": {
+              "type": "boolean"
+            },
+            "validatedDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "phsyicalCharacteristicsArray": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "characteristic": {
+                      "type": "string"
+                    },
+                    "validated": {
+                      "type": "boolean"
+                    },
+                    "validatedDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "characteristic",
+                    "validated"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "characteristic": {
+                      "type": "string"
+                    },
+                    "validated": {
+                      "type": "boolean"
+                    },
+                    "validatedDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "characteristic",
+                    "validated"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "phsyicalCharacteristicsSummary",
+            "validated"
+          ]
+        },
+        "habitatsObj": {
+          "type": "object",
+          "properties": {
+            "habitatsSummary": {
+              "type": "string"
+            },
+            "validated": {
+              "type": "boolean"
+            },
+            "validatedDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "habitatsArray": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "habitat": {
+                      "type": "string"
+                    },
+                    "validated": {
+                      "type": "boolean"
+                    },
+                    "validatedDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "habitat",
+                    "validated"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "habitatsSummary",
+            "validated"
+          ]
+        },
+        "cultureObj": {
+          "type": "object",
+          "properties": {
+            "cultureSummary": {
+              "type": "string"
+            },
+            "validated": {
+              "type": "boolean"
+            },
+            "validatedDate": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "cultureSummary",
+            "validated"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "alienValidated",
+        "addedDate",
+        "summaryObj",
+        "imagesArray"
+      ]
+    }
+  ]
+}
