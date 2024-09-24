@@ -1,6 +1,7 @@
 # Final Project
 
 <!-- final_project -->
+TODO fix datalist build to add value & innerhtml - test Chrome & Edge
 TODO generative AI function
 TODO fix search to create success or failed result
 TODO remove getAlienOverview img src load blob crap
