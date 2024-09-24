@@ -12,7 +12,7 @@ function menuToggle() {
     menuToggleImg.src = "images/noun-close-crop.png";
     menuToggleImg.alt = "burger menu close";
     menu.style.backgroundColor = "white";
-    menu.style.width = "100%";
+    menu.style.width = "95%";
     menu.style.borderBottom = "solid 0.1rem black";
     menuOpen = true;
     menuItems.forEach(listItem => {

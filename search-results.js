@@ -95,12 +95,12 @@ async function buildSearchResultsElements(searchValue) {
   searchResultImageFigure.classList.add("search-result-image");
   const searchResultImageFigCaption = document.createElement("figcaption");
   searchResultImageFigCaption.innerHTML = matchedAlienObj.name;
-  searchResultImageFigure.appendChild(searchResultImageFigCaption);
   const imgAlien = document.createElement("img");
   imgAlien.src = await fetchImgtoBlob(matchedAlienObj.imgOverview);
   imgAlien.alt = matchedAlienObj.name;
   imgAlien.classList.add("img-search-result");
   searchResultImageFigure.appendChild(imgAlien);
+  searchResultImageFigure.appendChild(searchResultImageFigCaption);
   searchResultTextDiv.appendChild(h5Overview);
   searchResultTextDiv.appendChild(pOverview);
   searchResultDiv.appendChild(searchResultTextDiv);
