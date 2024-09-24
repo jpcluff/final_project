@@ -271,6 +271,7 @@
         padding: 1rem;
         margin: 0.5rem;
         width: 90%;
+        background-color: white;
     }
 
     /* ticker */
@@ -846,6 +847,10 @@
     }
 
     /* alert */
+    .alert-box {
+        display: none;
+    }
+
     .alert {
         display: none;
         flex-wrap: nowrap;
