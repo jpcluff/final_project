@@ -353,6 +353,7 @@
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: space-around;
+        line-height: 3rem;
     }
 
     /* results page */
@@ -927,7 +928,7 @@
 
     /* Add Alien Page */
 
-    .add-alien-container {
+    .add-alien-section {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
@@ -937,7 +938,14 @@
         border-radius: 1rem;
         border: solid 0.1rem black;
         height: 100%;
-        /* width: 90%; */
+    }
+    .add-alien-container {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 
     .h3-add-alien {
@@ -945,16 +953,33 @@
     }
 
     .add-alien-form {
-        width: 75%;
-    }
-
-    .add-alien-form form {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        width: 100%;
+     }
+
+    .add-search-box {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items:center;
+        width: 90%;
         max-height: 20rem;
+        padding: 1rem;
+    }
+
+    .add-alien-input-container {
+        /* display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1rem; */
+        width: 100%;
     }
 
     .add-alien-input {
@@ -963,13 +988,13 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        /* width: 100%;*/
         padding: 0.5rem;
-
     }
 
     .add-alien-input label {
         white-space: nowrap;
+        min-width: 30%;
     }
 
     .add-alien-input input,
@@ -979,12 +1004,10 @@
         border: solid 0.1rem black;
         padding: 1rem;
         background-color: white;
-        width: 70%;
+        min-width: 60%;
     }
 
-    .add-search-box {
-        padding: 1rem;
-    }
+
 
     .add-alien-input-submit {
         display: flex;
@@ -1073,7 +1096,7 @@
         }
 
         .add-alien-section {
-            width: 100%;
+            width: 95%;
         }
 
         .add-alien-form {
@@ -1115,10 +1138,6 @@
             width: 85%;
         }
 
-        .actions {
-            width: 80%;
-        }
-
         .alien-main-banner {
             width: 95%;
         }
@@ -1132,10 +1151,6 @@
         .creator-name {
             white-space: wrap;
             padding: 0.5rem;
-        }
-
-        .add-alien-section {
-            width: 80%;
         }
 
         .add-alien-form {

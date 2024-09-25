@@ -231,6 +231,29 @@ function extractSearchValue(searchInput) {
   let alienName = searchArray[0].trim();
   return alienName;
 }
+
+// TODO export function askGenAIifAlienExists creates a prompt for AI using JSON schema & calls endpoint then awaits response then
+//tests response if alienExists=true changes the originAction to "add" then calls function to generateAlienOverview then
+// calls function to write new alien to alienOverviewList then calls function to redirectToResults with searchValue, alienFOund=true originAction=add
+// if alienExists=false or no response then calls function to redirectToResults with searchValue, alienFOund=false, originAction
+
+// Ask Gen AI if alien exists in database
+export function askGenAIifAlienExists(searchValue, originAction) {
+  console.log("Ask Gen AI if alien exists in database");
+  // TO DO JSON schema for the prompt
+  // TO DO call the endpoint
+  // TO DO await response
+  // TO DO call function test response
+  // TO DO call function to generateAlienOverview
+  // TO DO call the endpoint
+  // TO DO await response
+  // TO DO call function test response
+  // TO DO call function to write new alien to alienOverviewList
+
+}
+
+
+
 // searchedValue is valid not empty
 async function dataListUserInput(searchedValue, originAction) {
   let foundAlien = false;
@@ -388,3 +411,15 @@ if (addAlienButton) {
   });
 }
 // END CODEBLOCK ADD-ALIEN FORM PROCESS
+
+// Function to get query parameters
+export function getQueryParams() {
+  const params = {};
+  const queryString = window.location.search.substring(1);
+  const urlParams = new URLSearchParams(queryString);
+  for (const [key, value] of urlParams.entries()) {
+    params[decodeURIComponent(key)] = decodeURIComponent(value);
+  }
+  console.log("Params:" + JSON.stringify(params));
+  return params;
+}

@@ -65,28 +65,30 @@
                     <h3 class="h3-add-alien">Add Alien Lifeform</h3>
                     <div class="add-alien-form">
                         <form autocomplete="off" class="add-search-box" id="add-search-box" action="/post" method="post">
-                            <div class="add-alien-input">
-                                <label for="add-search-input" class="add-box-label">Enter name:</label>
-                                <input type="search" class="search-input" autocomplete="off" list="search-list-add" id="add-search-input"
-                                    name="search" placeholder="Alien Name" aria-label="Add an alien lifeform"
-                                    tabindex="1" title="Enter an alien lifeform">   
-                            </div>
-                            <div class="add-alien-input">
-                                <label for="source-types" class="source-label">Source:</label>
-                                <select form="search-box" autocomplete="off" name="source-types" id="source-types" size="1" tabindex="2" title="Select a source from the list">
-                                    <option value="default" selected>Select from list</option>
-                                    <option value="book">Book</option>
-                                    <option value="film">Film</option>
-                                    <option value="tv">TV</option>
-                                    <option value="game">Game</option>
-                                    <option value="comic">Comic</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="add-alien-input" id="other-source-types-div">
-                                <label for="other-source-types" class="source-label">Other Source:</label>
-                                <input type="text" class="search-input" autocomplete="off" id="other-source-types"
-                                    name="other-source-types" placeholder="Enter other Source" aria-label="Enter other source">
+                            <div class="add-alien-input-container">
+                                <div class="add-alien-input">
+                                    <label for="add-search-input" class="add-box-label">Enter name:</label>
+                                    <input type="search" class="search-input" autocomplete="off" list="search-list-add" id="add-search-input"
+                                        name="search" placeholder="Alien Name" aria-label="Add an alien lifeform"
+                                        tabindex="1" title="Enter an alien lifeform">   
+                                </div>
+                                <div class="add-alien-input">
+                                    <label for="source-types" class="source-label">Source:</label>
+                                    <select form="search-box" autocomplete="off" name="source-types" id="source-types" size="1" tabindex="2" title="Select a source from the list">
+                                        <option value="default" selected>Select from list</option>
+                                        <option value="book">Book</option>
+                                        <option value="film">Film</option>
+                                        <option value="tv">TV</option>
+                                        <option value="game">Game</option>
+                                        <option value="comic">Comic</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="add-alien-input" id="other-source-types-div">
+                                    <label for="other-source-types" class="source-label">Other Source:</label>
+                                    <input type="text" class="search-input" autocomplete="off" id="other-source-types"
+                                        name="other-source-types" placeholder="Enter other Source" aria-label="Enter other source">
+                                </div>
                             </div>
                             <div class="add-alien-input-submit">
                             <button type="submit" class="search-button" id="add-submit-button" aria-label="Add alien button">

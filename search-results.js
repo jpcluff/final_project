@@ -9,19 +9,9 @@ if (document.readyState === "loading") {
 }
 // function to get the alienOverviewList JSON file for the search results page
 import { getAlienOverviewList } from './script.js';
-const whiteSpace = /\s/g;
+import { getQueryParams } from './script.js';
+const whiteSpace = /\s/g; 
 
-// Function to get query parameters
-function getQueryParams() {
-  const params = {};
-  const queryString = window.location.search.substring(1);
-  const urlParams = new URLSearchParams(queryString);
-  for (const [key, value] of urlParams.entries()) {
-    params[decodeURIComponent(key)] = decodeURIComponent(value);
-  }
-  console.log("Params:" + JSON.stringify(params));
-  return params;
-}
 
 // Function to remove whitespace & lowercase the search value
 function cleanSearchValue(searchValue) {

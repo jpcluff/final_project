@@ -9,8 +9,7 @@ if (document.readyState === "loading") {
 }
 
 // Alien Details Overlay
-const spanCloseOverlay = document.getElementById("overlay-closebtn");
-const continueButton = document.getElementById("a-btn-continue");
+
 
 // decide if the overlay should be opened or closed
 // if originAction is "add" then open the overlay
@@ -23,11 +22,14 @@ function openOverlay(originAction) {
     }
 }
 
+const spanCloseOverlay = document.getElementById("overlay-closebtn");
+const continueButton = document.getElementById("a-btn-continue");
 if (spanOpenOverlay) {
   console.log("Listener added for spanOpenOverlay");
   spanOpenOverlay.addEventListener("click", openOverlay);
 } else {
-  // console.error("Element with ID 'span-open-validatorOverlay' not found.");
+ closeOverlay();
+  console.error("Element with ID 'openOverlay' not found.");
 }
 if (spanCloseOverlay) {
   console.log("Listener added for spanCloseOverlay");
@@ -41,17 +43,14 @@ if (continueButton) {
 } else {
   // console.error("Element with ID 'a-btn-continue' not found.");
 }
-function openOverlay() {
-  document.getElementById("validatorOverlay").style.width = "100%";
-}
+
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeOverlay() {
   document.getElementById("validatorOverlay").style.width = "0%";
 }
 // test value of originAction 
-//   add then flow logic must call function to generate the details from the alien overview list
-
-//   search then call function to build failed search page
+//  if add then flow logic must call function to generate the alien details from the alien overview list
+//  else browse i.e. alienFound=true from a search then flow logic must call function to generate the alien details from the alien overview list
 function handleDetailsPageLoad() {
     // Get the search value from query parameters
     const params = getQueryParams();
