@@ -1,14 +1,15 @@
-// Run handlePageLoad on document load
+// Run handleResutlsPageLoad on document load
 let counter = 0;
 if (document.readyState === "loading") {
   // Loading hasn't finished yet
-  document.addEventListener("DOMContentLoaded", handlePageLoad);
+  document.addEventListener("DOMContentLoaded", handleResultsPageLoad);
 } else {
   // `DOMContentLoaded` has already fired
-  handlePageLoad();
+  handleResultsPageLoad();
 }
 // function to get the alienOverviewList JSON file for the search results page
 import { getAlienOverviewList } from './script.js';
+const whiteSpace = /\s/g;
 
 // Function to get query parameters
 function getQueryParams() {
@@ -20,6 +21,12 @@ function getQueryParams() {
   }
   console.log("Params:" + JSON.stringify(params));
   return params;
+}
+
+// Function to remove whitespace & lowercase the search value
+function cleanSearchValue(searchValue) {
+  searchValue = searchValue.replace(whiteSpace, '');
+  return searchValue.trim().toLowerCase();
 }
 
 // Search the alienOverviewList for alienName
@@ -61,7 +68,7 @@ async function fetchImgtoBlob(imgUrl) {
 }
 
 
-async function buildSearchResultsElements(searchValue) {
+async function buildSearchResultsElements(searchValue, originAction) {
   if (!searchValue) {
     console.error("No search value provided.");
     return;
@@ -76,7 +83,7 @@ async function buildSearchResultsElements(searchValue) {
   const searchResultsSection = document.createElement("section");
   searchResultsSection.classList.add("search-results");
   const alienDetailsHrefElement = document.createElement("a");
-  alienDetailsHrefElement.href = `../alien-details.html?alienName=${matchedAlienObj.name}`;
+  alienDetailsHrefElement.href = `../alien-details.html?alienName=${cleanSearchValue(searchValue)}?originAction=${originAction}`;
   alienDetailsHrefElement.classList.add("search-result-link");
   const h4alienName = document.createElement("h4");
   h4alienName.innerHTML = matchedAlienObj.name;
@@ -196,18 +203,18 @@ function createActionsSection() {
 // test value of alienFound 
 //   TRUE then call function to build results page
 //   FALSE then call function to build failed search page
-function handlePageLoad() {
+function handleResultsPageLoad() {
   // Get the search value from query parameters
   const params = getQueryParams();
   const searchValue = params.searchValue || '';
   // Get the alienFound value from query parameters
   const alienFound = params.alienFound;
+  const originAction = params.originAction;
   if (alienFound === 'true') {
     console.log("Alien found! is " + alienFound + ". Building Search Results for " + searchValue);
-    buildSearchResultsElements(searchValue);
+    buildSearchResultsElements(searchValue, originAction);
   }
   else {
     buildFailedSearchElements(searchValue);
   }
 }
-

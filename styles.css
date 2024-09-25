@@ -705,9 +705,10 @@
         width: 6rem;
         height: 6rem;
         text-align: center;
-        margin: auto;
+        margin-top: 0.5rem;
         position: absolute;
-        right: 4.5rem;
+        right: 3.5rem;
+        top: 0;
         font-size: 6rem;
 
     }
@@ -719,8 +720,6 @@
         justify-content: center;
         align-items: center;
         margin: auto;
-        padding: 1rem;
-        /* background-color: paleturquoise; */
     }
 
     .explainer-header-container {
@@ -756,14 +755,17 @@
     }
 
     .explainer-step {
-        align-self: flex-start;
         text-align: left;
-        text-indent: 1rem;
         margin: 1rem 0;
+        padding: 0.5rem;
+        background-color: black;
+        border-radius: 0.5rem;
+        width: 90%;
     }
 
-    .explainer-step p {
-        padding: 0.5rem;
+    dd {
+        padding: 0 1rem;
+        line-height: 2rem;
     }
 
     .btn-continue {
@@ -1061,8 +1063,9 @@
 
         .overlay .closebtn {
             font-size: 4rem;
-            top: 1rem;
-            right: 0.5rem;
+            width: 4rem;
+            height: 4rem;
+            right: 0.2rem;
         }
 
         .search-input {
@@ -1108,7 +1111,6 @@
             background-color: lightblue;
             flex-direction: column;
         }
-
         .search-bar-container {
             width: 85%;
         }

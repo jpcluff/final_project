@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script async src="script.js" type="module"></script>
+    <script async src="alien-details.js" type="module"></script>
     <script defer src="overlay.js"></script>
     <title>Alien Lifeform Database</title>
 </head>
@@ -57,8 +58,7 @@
         <div class="alien-name" id="alien-name">
             <h2>1-alfName</h2>
         </div>
-        <span id="span-open-validatorOverlay">Temp Overlay open</span>
-        <div class="main-container">
+            <div class="main-container">
             <div class="alien-main-banner" id="alien-name-banner">
                 <div class="alien-name-max" id="alien-name-max">
                     <h2 class="h2-alfname">1-alfName</h2>
@@ -218,15 +218,16 @@
                         </hgroup>
                         <div class="explainer-steps-container">
                             <div class="explainer-img"><img src="images/noun-about-crop.png" alt=""></div>
-                            <dl class="explainer-step">
-                                <dt class="ptext-step">1. Click on the arrow to expand the info section & review
-                                    the information.</dt>
-                                </dl>
-                            <dl class="explainer-step">
-                                <dt class="ptext-step">2. Click on an X to confirm the images & info are correct.</dt>
-                                <dd>2.1 Click again to switch between confirmed ✔ or unconfirmed X.</dd>
-                                <dd>2.2 Click on i to submit an update or query.</dd>
-                            </dl>
+                            <div class="explainer-step">
+                                <p class="ptext-step">1. Click on the arrow to expand the info section & review
+                                    the information.</p>
+                            </div>
+                            <div class="explainer-step">
+                                <p class="ptext-step">2. Click on an X to confirm the images & info are correct.
+                                <p>Click again to switch between confirmed ✔ or unconfirmed X.</p>
+                                <p>Click on i to submit an update or query.</p>
+                                </p>
+                            </div>
                             <div class="btn-continue"><a class="a-btn-continue" id="a-btn-continue"
                                     href="javascript:void(0)">Continue</a></div>
                         </div>
