@@ -96,6 +96,7 @@ function buildAlienRefList() {
         setTimeout(() => {
             promises.push(
                 fetchAndProcessData(url).then(result => {
+                    letter = letter.toLowerCase();
                     createAlienRefListJsonFile(result, letter);
                 })
             );
