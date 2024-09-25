@@ -192,7 +192,7 @@ function createActionsSection() {
   actionsSection.appendChild(browseButtonDiv);
 
   // Append the actions section to the main container or any other parent element
-  const parentElement = document.querySelector('.main-container'); // Change this selector as needed
+  const parentElement = document.querySelector('.main-container');
   if (parentElement) {
     parentElement.appendChild(actionsSection);
   } else {
