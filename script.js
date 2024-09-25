@@ -35,16 +35,45 @@ function menuToggle() {
 
 // load & validate alienRefList from JSON file then populate datalist
 const alienRefListSchema = {
-  "required": ["name", "source"],
-  "properties": {
-    "name": {
-      "type": "string"
-    },
-    "source": {
-      "type": "string"
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "searchAlienName": {
+          "type": "string",
+          "description": "Field for the name of a fictional science-fiction scifi alien species as a string from the prompt."
+        },
+        "alienExists": {
+          "type": "boolean",
+                "description": "Field for the boolean value either TRUE or FALSE indicating if a search finds the fictional alien lifeform exists in any published public sources excluding fanfic."
+        },
+        "sourceType": {
+            "enum": ["book", "film", "tv", "videogame", "boardgame", "comic", "other"],
+           "minItems": 1,
+                "description": "If alienExists is TRUE then field for a short summary of the fictional alien lifeform"
+
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 255,
+                "description": "If alienExists is TRUE then field for the earliest known historical real+world published source of the fictional alien lifeform as a string from the prompt."
+
+        }
+      },
+      "required": [
+        "name",
+        "alienExists",
+      ],
+        "examples": [{
+    "name": "Aaamazzarite", "alienExists": true, "source": "tv", "summary": "The Aaamazzarite are a species of peaceful isolationists from the planet Aaamazzara, a homeworld located in the galaxy's Alpha Quadrant. They have no interest in the universe around them & generate their own clothing from out of own mouths, like bees."
+  }]
     }
-  }
+  ]
 };
+
+const promptConfirmIfAlien = "";
 
 // Get search-box elements
 let searching = false;
@@ -102,7 +131,7 @@ function populateDatalist(alienRefList, handler) {
     let option = document.createElement("option");
     option.value = `${alien.name} - ${alien.source}`;
     if (handler === "search-button" || handler === "search") {
-         searchDataList.appendChild(option);
+      searchDataList.appendChild(option);
     }
     else if (handler === "add-search-input") {
       let searchListAdd = document.getElementById("search-list-add");
@@ -190,7 +219,7 @@ function redirectToResults(alienName, alienFound, originAction) {
 export async function getAlienOverviewList(alienName) {
   let firstLetter = alienName.charAt(0).toLowerCase();
   //let datafile = "./server/a_alienOverviewList.json";
-  let datafile = "./server/"+firstLetter+"_alienOverviewList.json";
+  let datafile = "./server/" + firstLetter + "_alienOverviewList.json";
   try {
     console.log("Fetching datafile... " + datafile);
     const response = await fetch(datafile);
@@ -361,11 +390,10 @@ if (addSearchInput) {
 }
 // START CODEBLOCK for ADD-SEARCH Auto-Complete
 if (addSearchInput) {
-  addSearchInput.addEventListener("keyup", handleAddSearchInput); 
+  addSearchInput.addEventListener("keyup", handleAddSearchInput);
 }
 
-function handleAddSearchInput(event)
- {
+function handleAddSearchInput(event) {
   console.log("add-search-input keyup event");
   let handler = event.target.id;
   let searchValue = addSearchInput.value; // LOCAL variable to store search input value
@@ -386,7 +414,7 @@ function handleAddSearchInput(event)
   else {
     console.log("Search value already being fetched");
   }
-} ;
+};
 // END CODEBLOCK for ADD-SEARCH Auto-Complete
 
 // START CODEBLOCK ADD-ALIEN FORM PROCESS
