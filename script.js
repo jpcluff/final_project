@@ -33,40 +33,26 @@ function menuToggle() {
   }
 }
 
-// load & validate alienRefList from JSON file then populate datalist
-const alienRefListObjSchema = {
-  "type": "object",
-  "properties": {
-    "searchAlienName": {
-      "type": "string",
-      "description": " is for the name of a fictional science-fiction scifi alien species as a string from the prompt"
-    },
-    "alienExists": {
-      "type": "boolean",
-      "description": " is for the boolean value either TRUE or FALSE indicating if a search finds the fictional alien lifeform exists in any published public sources."
-    },
-    "sourceType": {
-      "enum": ["book", "film", "tv", "videogame", "boardgame", "comic", "other"],
-      "maxItems": 1,
-      "description": "is if alienExists is TRUE then field is for single maxItems=1 the earliest known historical real+world published source of the fictional alien lifeform using an enum string"
 
-    },
-    "summary": {
-      "type": "string",
-      "maxLength": 255,
-      "description": "is if alienExists is TRUE then field is for a short summary of the fictional alien lifeform with a maximum maxlength of 255 characters"
-    }
-  },
-  "required": [
-    "name",
-    "alienExists",
-  ],
-  "examples": {
-    "searchAlienName": "Aaamazzarite", "alienExists": true, "sourceType": "tv", "summary": "The Aaamazzarite are a species of peaceful isolationists from the planet Aaamazzara, a homeworld located in the galaxy's Alpha Quadrant. They have no interest in the universe around them & generate their own clothing from out of own mouths, like bees."
-  }
+const alienRefListObj = {
+  "searchAlienName": " is for the name of a fictional science-fiction scifi alien species as a string from the prompt",  
+  "alienExists": " is for the boolean value either TRUE or FALSE indicating if a search finds the fictional alien lifeform exists in any published public sources.",
+  "sourceType": " is if alienExists is TRUE then field is for single maxItems=1 the earliest known historical real+world published source of the fictional alien lifeform using an enum string",
+  "summary": " is if alienExists is TRUE then field is for a short summary of the fictional alien lifeform with a maximum maxlength of 255 characters"
 };
 
-const promptConfirmIfAlien = "Structure response in JSON UTF-8 encoded object format using JSON schema if `${searchValue}` is found matching the name of a fictional science-fiction scifi alien species?";
+const promptConfirmIfAlien = '"Structure response in JSON UTF-8 encoded object format using JSON schema if `${searchValue}` is found matching the name of a fictional science-fiction scifi alien species?"';
+
+function constructOverviewPrompt(searchValue) {
+  let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", searchValue);
+  //iterate over alienRefListObj to construct prompt concatenating key & value
+  for (let key in alienRefListObj) {
+    let value = alienRefListObj[key];
+    overviewPrompt += key + value;
+  }
+  console.log("Prompt: " + overviewPrompt);
+  return overviewPrompt;
+}
 
 // Get search-box elements
 let searching = false;
@@ -261,8 +247,9 @@ function extractSearchValue(searchInput) {
 
 // Ask Gen AI if alien exists in database
 export function askGenAIifAlienExists(searchValue, originAction) {
-  typeof alienRefListObjSchema;
-  console.log("Ask Gen AI if alien exists in database. Testing JSON schema: " + typeof alienRefListObjSchema);
+  console.log("Ask Gen AI if alien exists in database.");
+  let prompt = constructOverviewPrompt(searchValue);
+  alert("Ask Gen AI if alien exists in database using prompt: " + prompt);
   // TO DO JSON schema for the prompt
   // TO DO call the endpoint
   // TO DO await response
