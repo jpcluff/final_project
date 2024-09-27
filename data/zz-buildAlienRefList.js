@@ -57,12 +57,11 @@ function fetchAndProcessData(url) {
             let childArray = data[0];
             let newArray = [];
             childArray.forEach(item => {
-                let imgOverview = setPlaceholderImg();
                 newArray.push({
                     name: item.Name,
                     source: item.Source,
+                    alienValidated: true,
                     summary: item.Type,
-                    imgOverview: imgOverview
                 });
             });
             return newArray;

@@ -1,5 +1,3 @@
-// import fetch from "node-fetch";
-
 // Toggle menu visibility
 document.querySelector('.menu-toggle').addEventListener('click', menuToggle);
 let menuOpen = false;
@@ -236,23 +234,20 @@ function redirectToResults(alienName, alienFound, originAction) {
 }
 // Get the alienOverviewList from JSON file
 export async function getAlienOverviewList(alienName) {
-  const errorReturn = "failed";
   let firstLetter = alienName.charAt(0).toLowerCase();
   // DEBUG with hardcoded datafile
-  //let datafile = "./server/a_alienOverviewList.json";
-  let datafile = `${firstLetter}_alienOverviewList.json`;
-  let path = "../server/" + firstLetter + "_alienOverviewList.json"
+  let path = "/server/  a_alienOverviewList.json";
+  // let path = `${firstLetter}_alienOverviewList.json`;
   try {
-    console.log("Fetching datafile... " + datafile);
+    console.log("Fetching datafile... " + path);
     const response = await fetch(path);
     if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
+      throw new Error(`Response status: ${response.status}`); 
     }
     const alienDatafile = await response.json();
     return alienDatafile;
   } catch (error) {
     console.error(error.message);
-    return errorReturn;
   }
 }
 // Search the alienOverviewList for alienName
@@ -320,7 +315,7 @@ async function dataListUserInput(searchedValue, originAction) {
     // Alien Name not found in database
     else {
       foundAlien;
-      alert("Alien with hyphen:" + alienName + "not found in database. Ask Gen AI to add it.");
+      console.log("Alien with hyphen: " + alienName + " not found in database. Ask Gen AI to add it.");
       askGenAIifAlienExists(searchedValue, originAction);
     }
   }
