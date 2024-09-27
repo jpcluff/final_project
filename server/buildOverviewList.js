@@ -61,8 +61,9 @@ async function createEmptyOverviewJson(letter) {
         "imgOverview": imgOverview,
     };
     jsonArr.push(defaultData);
+    let data = JSON.stringify(jsonArr);
     let jsonFilename = `${letter}_alienOverviewList.json`;
-    writeFileSync(jsonFilename, jsonArr, "utf8", (err) => {
+    writeFileSync(jsonFilename, data, "utf8", (err) => {
         if (err) {
             console.error("Error writing file:", err);
         } else {
@@ -72,11 +73,11 @@ async function createEmptyOverviewJson(letter) {
 }
 
 // Create the alienOverviewList JSON file for a given letter
-function createEmptyOverviewJson() {
+function loopAlphabetCallCreateEmpty() {
     alphabet.forEach(letter => {
         createEmptyOverviewJson(letter);
     });
 }
 
 // Create the alienOverviewList JSON files for all letters 
-createEmptyOverviewJson();
+loopAlphabetCallCreateEmpty();
