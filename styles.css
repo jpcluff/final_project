@@ -70,8 +70,6 @@
         align-items: center;
         padding: 0.5rem 0;
         margin: 1rem 0;
-        border-radius: 0.5rem;
-        border: solid 0.1rem black;
     }
 
     /* basic headers styles */
@@ -272,6 +270,8 @@
         margin: 0.5rem;
         width: 90%;
         background-color: white;
+        border-radius: 0.5rem;
+        border: solid 0.1rem black;
     }
 
     /* ticker */
@@ -320,8 +320,6 @@
     /* stats block */
     .stats {
         min-width: 50%;
-        border-radius: 0.5rem;
-        border: solid 0.1rem black;
         padding: 1rem 0;
     }
 
@@ -376,8 +374,6 @@
         align-items: center;
         margin: 1rem auto;
         max-width: 90%;
-        border-radius: 0.5rem;
-        border: solid 0.1rem black;
     }
 
     .search-result {
@@ -955,10 +951,10 @@
     .add-alien-form {
         display: flex;
         flex-wrap: nowrap;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        width: 100%;
+        width: 70%;
      }
 
     .add-search-box {
@@ -967,9 +963,8 @@
         flex-direction: column;
         justify-content: space-around;
         align-items:center;
-        width: 90%;
+        width: 100%;
         max-height: 20rem;
-        padding: 1rem;
     }
 
     .add-alien-input-container {
@@ -1100,9 +1095,12 @@
         }
 
         .add-alien-form {
-            width: 100%;
+            width: 96%;
         }
-
+        .add-search-box {
+            width: 100%;
+            padding: 0.5rem;
+        }
         .add-alien-input label {
             white-space: wrap;
         }
@@ -1154,7 +1152,11 @@
         }
 
         .add-alien-form {
+            width: 95%;
+        }
+        .add-search-box {
             width: 100%;
+            padding: 0.5rem;
         }
         .search-result-image img {
             max-height: 230px;
@@ -1226,3 +1228,37 @@
     }
 
     /* end responsive----------------------------------------------- */
+
+    .overviewPrompt-copy-instructions-container {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: solid 0.1rem black;
+        width: 90%;
+    }
+
+    .promptCopy-button   {
+        padding: 1rem;
+        border: 0.2rem solid black;
+        border-radius: 0.5rem;
+        background-color: white;
+    }
+
+    .promptCopy-button:hover {
+        background-color: grey;
+    }
+
+    .promptCopy-button img {
+        max-width: 30px;
+    }
+    .overviewPrompt-text {
+                text-align: justify;
+                margin: auto;
+                padding: 1rem;
+                width: 90%;
+               }

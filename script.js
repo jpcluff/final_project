@@ -40,7 +40,7 @@ const alienRefListObj = {
   "sourceType": " is if alienExists is TRUE then field is for single maxItems=1 the earliest known historical real+world published source of the fictional alien lifeform using an enum string",
   "summary": " is if alienExists is TRUE then field is for a short summary of the fictional alien lifeform with a maximum maxlength of 255 characters"
 };
-const promptConfirmIfAlien = '"You are a scifi fan. Is there a fictional alien species called "${searchValue}"? Structure response in a JSON UTF-8 encoded object format using this JSON schema if "${searchValue}" is found matching the name of a fictional science-fiction scifi alien species?"';
+const promptConfirmIfAlien = 'You are a scifi fan. Is there a fictional alien species called "${searchValue}"? Structure response in a JSON UTF-8 encoded object format using this JSON schema if "${searchValue}" is found matching the name of a fictional science-fiction scifi alien species?';
 
 
 function buildOverviewPromptElements(overviewPrompt) {
@@ -84,13 +84,13 @@ function buildOverviewPromptElements(overviewPrompt) {
 }
 
 function constructOverviewPrompt(searchValue) {
-  let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", searchValue);
+  let extractedSearchValue = extractSearchValue(searchValue);
+  let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", extractedSearchValue);
   //iterate over alienRefListObj to construct prompt concatenating key & value
   for (let key in alienRefListObj) {
     let value = alienRefListObj[key];
     overviewPrompt += key + value;
   }
-  console.log("Prompt: " + overviewPrompt);
   return overviewPrompt;
 }
 
@@ -290,7 +290,6 @@ export function askGenAIifAlienExists(searchValue, originAction) {
   console.log("Ask Gen AI if alien exists in database.");
   let overviewPrompt = constructOverviewPrompt(searchValue);
   buildOverviewPromptElements(overviewPrompt, originAction);
-  console.log("Ask Gen AI if alien exists in database using prompt: " + overviewPrompt);
   // TO DO display prompt used to call the generative  AI endpoint
   // TO DO await response
   // TO DO call function test response
