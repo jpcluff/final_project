@@ -4,7 +4,7 @@ const path = require('path');
 
 const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const countPlaceholderImg = 4;
-const locatePlaceholderImg = "images/placeholderImg/";
+const locatePlaceholderImg = "./images/placeholderImg/";
 
 // Create a directory folder data to store the JSON files
 try {
@@ -27,7 +27,7 @@ function setPlaceholderImg() {
 async function createEmptyOverviewJson(letter) {
     letter = letter.toLowerCase();
     let datafile = `${letter}_alienOverviewList.json`;
-    let filename = `server\\data\\${letter}__alienOverviewList.json`;
+    let filename = `server\\data\\${letter}_alienOverviewList.json`;
     let filePath = path.join(__dirname, 'data\\', datafile);
     console.log(`Checking if file ${filePath} exist`);
     if (fs.existsSync(filePath)) {

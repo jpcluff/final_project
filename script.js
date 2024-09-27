@@ -236,8 +236,8 @@ function redirectToResults(alienName, alienFound, originAction) {
 export async function getAlienOverviewList(alienName) {
   let firstLetter = alienName.charAt(0).toLowerCase();
   // DEBUG with hardcoded datafile
-  let datafile = "./server/a_alienOverviewList.json";
-  // let datafile = "./server/"+firstLetter+"_alienOverviewList.json";
+  // let datafile = "./server/b_alienOverviewList.json";
+  let datafile = "./server/data/"+firstLetter+"_alienOverviewList.json";
   try {
     console.log("Fetching datafile... " + datafile);
     const response = await fetch(datafile);
