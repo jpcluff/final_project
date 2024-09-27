@@ -1,0 +1,131 @@
+[
+    {
+        "name": "The Thing",
+        "alienValidated": false,
+        "addedDate": "2024-09-23",
+        "creatorObj": {
+            "creators": "John Carpenter, Bill Lancaster",
+            "validated": false,
+            "validatedDate": "2024-09-23"
+        },
+        "summaryObj": {
+            "summary": "A shape-shifting extraterrestrial organism that infiltrates an Antarctic research station, mimicking its human hosts and creating paranoia and terror among the survivors.",
+            "validated": false,
+            "validatedDate": "2024-09-23"
+        },
+        "imagesArray": [
+            {
+                "imageObj": {
+                    "addSequence": 0,
+                    "imageSrc": "./images/TheThing-0.png",
+                    "validated": false,
+                    "validatedDate": "2024-09-23",
+                    "issuesReportedArray": [
+                        {
+                            "issue": "The image is incorrect.",
+                            "reportedBy": "User123",
+                            "reportedDate": "2024-09-23"
+                        },
+                        {
+                            "issue": "The image is too small.",
+                            "reportedBy": "User456",
+                            "reportedDate": "2024-09-23"
+                        }
+                    ]
+                }
+            },
+            {
+                "imageObj": {
+                    "addSequence": 1,
+                    "imageSrc": "./images/TheThing-1.png",
+                    "validated": false,
+                    "validatedDate": "2024-09-23",
+                    "issuesReportedArray": [
+                        {
+                            "issueObj": {
+                                "addSequence": 0,
+                                "issue": "The image is incorrect.",
+                                "reportedBy": "User123",
+                                "reportedDate": "2024-09-23"
+                            }
+                        },
+                        {
+                            "issueObj": {
+                                "addSequence": 1,
+                                "issue": "The image is too small.",
+                                "reportedBy": "User456",
+                                "reportedDate": "2024-09-23"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "associatedWorksArray": [
+            {
+                "workTitle": "The Thing",
+                "year": 1982,
+                "workFormat": "Film",
+                "creditsArray": [
+                    {
+                        "role": "Director",
+                        "name": "John Carpenter"
+                    },
+                    {
+                        "role": "Screenwriter",
+                        "name": "Bill Lancaster"
+                    }
+                ],
+                "validated": false,
+                "validatedDate": "2024-09-23"
+            },
+            {
+                "workTitle": "Who Goes There?",
+                "year": 1938,
+                "workFormat": "Book",
+                "creditsArray": [
+                    {
+                        "role": "Author",
+                        "name": "John W. Campbell Jr."
+                    }
+                ],
+                "validated": false,
+                "validatedDate": "2024-09-23"
+            }
+        ],
+        "phsyicalCharacteristicsObj": {
+            "phsyicalCharacteristicsSummary": "The Thing is a shape-shifting extraterrestrial organism that infiltrates an Antarctic research station, mimicking its human hosts and creating paranoia and terror among the survivors.",
+            "validated": false,
+            "validatedDate": "2024-09-23",
+            "phsyicalCharacteristicsArray": [
+                {
+                    "characteristic": "Shape-shifting",
+                    "validated": false,
+                    "validatedDate": "2024-09-23"
+                },
+                {
+                    "characteristic": "Paranoia-inducing",
+                    "validated": false,
+                    "validatedDate": "2024-09-23"
+                }
+            ]
+        },
+        "habitatsObj": {
+            "habitatsSummary": "Antarctic research station",
+            "validated": false,
+            "validatedDate": "2024-09-23",
+            "habitatsArray": [
+                {
+                    "habitat": "Antarctic",
+                    "validated": false,
+                    "validatedDate": "2024-09-23"
+                }
+            ]
+        },
+        "cultureObj": {
+            "cultureSummary": "The Thing is a shape-shifting extraterrestrial organism that infiltrates an Antarctic research station, mimicking its human hosts and creating paranoia and terror among the survivors.",
+            "validated": false,
+            "validatedDate": "2024-09-23"
+        }
+    }
+]
