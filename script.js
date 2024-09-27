@@ -254,7 +254,7 @@ export async function getAlienOverviewList(alienName) {
 async function searchAlienOverviewDb(alienName) {
   let alienFound = false;
   let alienDataList = await getAlienOverviewList(alienName);
-  if (alienDataList="failed" || !alienDataList) {
+  if (!alienDataList) {
     console.log("No data returned from getAlienOverviewList");
     return alienFound;
   }
