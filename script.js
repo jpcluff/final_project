@@ -33,15 +33,55 @@ function menuToggle() {
   }
 }
 
-
+// START CODEBLOCK for Generative AI Prompt, call & response
 const alienRefListObj = {
   "searchAlienName": " is for the name of a fictional science-fiction scifi alien species as a string from the prompt",  
   "alienExists": " is for the boolean value either TRUE or FALSE indicating if a search finds the fictional alien lifeform exists in any published public sources.",
   "sourceType": " is if alienExists is TRUE then field is for single maxItems=1 the earliest known historical real+world published source of the fictional alien lifeform using an enum string",
   "summary": " is if alienExists is TRUE then field is for a short summary of the fictional alien lifeform with a maximum maxlength of 255 characters"
 };
+const promptConfirmIfAlien = '"You are a scifi fan. Is there a fictional alien species called "${searchValue}"? Structure response in a JSON UTF-8 encoded object format using this JSON schema if "${searchValue}" is found matching the name of a fictional science-fiction scifi alien species?"';
 
-const promptConfirmIfAlien = '"Structure response in JSON UTF-8 encoded object format using JSON schema if `${searchValue}` is found matching the name of a fictional science-fiction scifi alien species?"';
+
+function buildOverviewPromptElements(overviewPrompt) {
+  let statsElement = document.querySelector(".stats");
+  if (statsElement) {
+    statsElement.remove();
+  }
+  let overviewPromptSection = document.createElement("section");
+  overviewPromptSection.className = "overviewPrompt-section";
+  let overviewPromptLabel = document.createElement("div");
+  overviewPromptLabel.className = "overviewPrompt-label";
+  let overviewPromptH2 = document.createElement("h2");
+  overviewPromptH2.innerHTML = "Generative AI Search - Overview Prompt";
+  let overviewPromptCopyInstructionsContainer = document.createElement("div");
+  overviewPromptCopyInstructionsContainer.className = "overviewPrompt-copy-instructions-container";
+  let overviewPromptCopyInstructionsLabel = document.createElement("h3");
+  overviewPromptCopyInstructionsLabel.className = "overviewPrompt-copy-instructions-label";
+  overviewPromptCopyInstructionsLabel.innerHTML = "Copy the prompt below and paste it into the AI prompt field.";
+  let promptCopyButton = document.createElement("button");
+  promptCopyButton.type = "button";
+  promptCopyButton.id = "promptCopyButton";
+  promptCopyButton.className = "promptCopy-button";
+  promptCopyButton.title = "Copy Prompt";
+  promptCopyButton.setAttribute("aria-label", "Copy Prompt Text");
+  promptCopyButton.setAttribute("onclick", "copyPromptText()");
+  let promptCopyImg = document.createElement("img");
+  promptCopyImg.src = "images/noun-correspondence-crop.png";
+  promptCopyImg.alt = "copy prompt text button";
+  promptCopyButton.appendChild(promptCopyImg);
+  overviewPromptCopyInstructionsContainer.appendChild(overviewPromptCopyInstructionsLabel);
+  overviewPromptCopyInstructionsContainer.appendChild(promptCopyButton);
+  let overviewPromptText = document.createElement("p");
+  overviewPromptText.className = "overviewPrompt-text";
+  overviewPromptText.innerHTML = overviewPrompt;
+  overviewPromptSection.appendChild(overviewPromptCopyInstructionsContainer);
+  overviewPromptSection.appendChild(overviewPromptText);
+  let mainContainer = document.querySelector('.main-container'); // Get the main-container element	
+    if (mainContainer) {
+    mainContainer.appendChild(overviewPromptSection);
+  }
+}
 
 function constructOverviewPrompt(searchValue) {
   let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", searchValue);
@@ -248,10 +288,10 @@ function extractSearchValue(searchInput) {
 // Ask Gen AI if alien exists in database
 export function askGenAIifAlienExists(searchValue, originAction) {
   console.log("Ask Gen AI if alien exists in database.");
-  let prompt = constructOverviewPrompt(searchValue);
-  alert("Ask Gen AI if alien exists in database using prompt: " + prompt);
-  // TO DO JSON schema for the prompt
-  // TO DO call the endpoint
+  let overviewPrompt = constructOverviewPrompt(searchValue);
+  buildOverviewPromptElements(overviewPrompt, originAction);
+  console.log("Ask Gen AI if alien exists in database using prompt: " + overviewPrompt);
+  // TO DO display prompt used to call the generative  AI endpoint
   // TO DO await response
   // TO DO call function test response
   // TO DO call function to generateAlienOverview
