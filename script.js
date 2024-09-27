@@ -236,6 +236,7 @@ function redirectToResults(alienName, alienFound, originAction) {
 }
 // Get the alienOverviewList from JSON file
 export async function getAlienOverviewList(alienName) {
+  const errorReturn = "failed";
   let firstLetter = alienName.charAt(0).toLowerCase();
   // DEBUG with hardcoded datafile
   //let datafile = "./server/a_alienOverviewList.json";
@@ -251,13 +252,14 @@ export async function getAlienOverviewList(alienName) {
     return alienDatafile;
   } catch (error) {
     console.error(error.message);
+    return errorReturn;
   }
 }
 // Search the alienOverviewList for alienName
 async function searchAlienOverviewDb(alienName) {
   let alienFound = false;
   let alienDataList = await getAlienOverviewList(alienName);
-  if (!alienDataList) {
+  if (alienDataList="failed" || !alienDataList) {
     console.log("No data returned from getAlienOverviewList");
     return alienFound;
   }
