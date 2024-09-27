@@ -28,12 +28,12 @@ async function createEmptyOverviewJson(letter) {
     letter = letter.toLowerCase();
     let datafile = `${letter}_alienOverviewList.json`;
     let filename = `server\\data\\${letter}__alienOverviewList.json`;
-    let filePath = path.join(__dirname, 'server\\data', datafile);
+    let filePath = path.join(__dirname, 'data\\', datafile);
+    console.log(`Checking if file ${filePath} exist`);
     if (fs.existsSync(filePath)) {
         console.log(`File ${filePath} already exists. Skipping creation.`);
         return;
     }
-    console.log(`Creating JSON file for letter ${letter} with data`);
     // create a new array push defaultData then write new array to file
     let jsonArr = [];
     let defaultAlienName = `${letter}-alfName`;
