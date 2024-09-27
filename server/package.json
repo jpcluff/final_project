@@ -1,3 +1,21 @@
 {
-    "type": "module"
+  "name": "final_project",
+  "description": "<!-- final_project -->\r TODO generative AI function\r TODO fix search to create success or failed result\r TODO code validator toggle\r TODO background color for search-result to white & add border radius\r TODO consider menu width (avoid horizontal scroll bar) & border radius, bottom shadow/glow\r TODO Edge Datalist exact matching?",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "@google/generative-ai": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpcluff/final_project.git"
+  },
+  "author": "JP Clough",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpcluff/final_project/issues"
+  },
+  "homepage": "https://github.com/jpcluff/final_project#readme"
 }
