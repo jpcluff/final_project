@@ -60,7 +60,7 @@ function fetchAndProcessData(url) {
                 newArray.push({
                     name: item.Name,
                     source: item.Source,
-                    alienValidated: true,
+                    alienValidated: false,
                     summary: item.Type,
                 });
             });

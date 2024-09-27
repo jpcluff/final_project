@@ -1,3 +1,6 @@
+// schema for the Overview Prompt
+const OverviewObjKeys = ["searchAlienName", "alienExists", "sourceType", "summary" ];
+
 // Toggle menu visibility
 document.querySelector('.menu-toggle').addEventListener('click', menuToggle);
 let menuOpen = false;
@@ -81,7 +84,7 @@ function buildOverviewPromptElements(overviewPrompt) {
   overviewPromptSection.appendChild(overviewPromptCopyInstructionsContainer);
   overviewPromptSection.appendChild(overviewPromptText);
     if (mainContainer) {
-    mainContainer.appendChild(overviewPromptSection);
+      mainContainer.insertBefore(overviewPromptSection, mainContainer.firstChild);
   }
 }
 
@@ -475,4 +478,49 @@ export function getQueryParams() {
   }
   console.log("Params:" + JSON.stringify(params));
   return params;
+}
+
+// function to validate the Overview prompt Output
+function validatePrompt(promptOutput) {
+  try {
+    console.log("Validating prompt output:", promptOutput);
+    promptOutput = promptOutput.trim();
+    // Check if promptOutput is a valid JSON string
+    if (typeof promptOutput !== 'string' || !(promptOutput.startsWith('{') && promptOutput.endsWith('}')) || !(promptOutput.startsWith('[') && promptOutput.endsWith(']'))) {
+      console.log("Prompt Output is invalid");
+      return false;
+    }
+    // Parse the JSON string
+    const promptOutputObj = JSON.parse(promptOutput);
+    // Check exists then destructure the required fields
+    // add JSON resilience to check if the fields exist
+
+
+
+    // Validate the required fields
+    if (searchAlienName && alienExists && sourceType && summary) {
+      console.log("Prompt Output is valid");
+      return true;
+    } else {
+      console.log("Prompt Output is invalid");
+      return false;
+    }
+  } catch (error) {
+    console.error("Error validating prompt output:", error);
+    return false;
+  }
+}
+
+const pastePromptOutputBox = document.getElementById('pastePromptOutput-box');
+if (pastePromptOutputBox) {
+  pastePromptOutputBox.addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Form submitted');
+        //get the value of the textarea field #pastePromptOutput-input
+        let pastePromptOutputInput = document.getElementById('pastePromptOutput-input');
+        let pastePromptOutputValue = pastePromptOutputInput.value;
+        console.log('Paste Prompt Value: ' + pastePromptOutputValue);
+        //call function to validate the prompt response
+      validatePrompt(pastePromptOutputValue);
+      });
 }

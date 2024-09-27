@@ -935,6 +935,7 @@
         border: solid 0.1rem black;
         height: 100%;
     }
+
     .add-alien-container {
         display: flex;
         flex-wrap: nowrap;
@@ -955,14 +956,14 @@
         justify-content: space-around;
         align-items: center;
         width: 70%;
-     }
+    }
 
     .add-search-box {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
         justify-content: space-around;
-        align-items:center;
+        align-items: center;
         width: 100%;
         max-height: 20rem;
     }
@@ -1097,10 +1098,12 @@
         .add-alien-form {
             width: 96%;
         }
+
         .add-search-box {
             width: 100%;
             padding: 0.5rem;
         }
+
         .add-alien-input label {
             white-space: wrap;
         }
@@ -1115,10 +1118,11 @@
         }
 
         .search-result-image img
+
         /* .img-search-result */
-        {
+            {
             max-width: 100%;
-            max-height: 100%;   
+            max-height: 100%;
         }
 
         /* END MOBILE Responsive */
@@ -1132,6 +1136,7 @@
             background-color: lightblue;
             flex-direction: column;
         }
+
         .search-bar-container {
             width: 85%;
         }
@@ -1154,10 +1159,12 @@
         .add-alien-form {
             width: 95%;
         }
+
         .add-search-box {
             width: 100%;
             padding: 0.5rem;
         }
+
         .search-result-image img {
             max-height: 230px;
         }
@@ -1242,7 +1249,7 @@
         width: 90%;
     }
 
-    .promptCopy-button   {
+    .promptCopy-button {
         padding: 1rem;
         border: 0.2rem solid black;
         border-radius: 0.5rem;
@@ -1256,9 +1263,72 @@
     .promptCopy-button img {
         max-width: 30px;
     }
+
     .overviewPrompt-text {
-                white-space: pre-line;
-                margin: auto;
-                padding: 1rem;
-                width: 90%;
-               }
+        white-space: pre-line;
+        margin: auto;
+        padding: 1rem;
+        width: 90%;
+    }
+    .pastePromptOutput-box {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 1rem 0;
+        width: 100%;
+    }
+    .pastePromptOutput-input-container {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+ width: 100%;
+    }
+    .pastePromptOutput-input-div {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items:flex-start;
+        padding: 1rem 0;
+        border-radius: 0.5rem;
+        width: 100%;
+    }
+    .pastePromptOutput-label {
+        white-space: nowrap;
+    }
+   .pastePromptOutput-input {
+        resize: none;
+        text-wrap: wrap;
+        border-radius: 0.5rem;
+        border: 2px solid black;
+        width: 100%;
+    }
+    .pastePromptOutput-input-submit {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        width: 90%;
+    }
+    .pastePromptOutput-input-button{
+        padding: 1rem;
+        border: 0.2rem solid black;
+        border-radius: 0.5rem;
+        background-color: white;
+    }
+    textarea.pastePromptOutput-input {
+        text-align: left;
+        align-content: flex-start;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: medium;
+        background-color: white;
+    }
+    .search-button-img {
+        width: 55px;
+    }
