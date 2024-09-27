@@ -40,8 +40,13 @@ const alienRefListObj = {
 };
 const promptConfirmIfAlien = 'You are a scifi fan. Is there a fictional alien species called "${searchValue}"? Structure response in a JSON UTF-8 encoded object format using this JSON schema if "${searchValue}" is found matching the name of a fictional science-fiction scifi alien species?';
 
+  function copyPromptText() {
+  let promptText = document.querySelector(".overviewPrompt-text").textContent;
+  navigator.clipboard.writeText(promptText);
+}
 
 function buildOverviewPromptElements(overviewPrompt) {
+  let mainContainer = document.querySelector('.main-container'); // Get the main-container element	
   let statsElement = document.querySelector(".stats");
   if (statsElement) {
     statsElement.remove();
@@ -59,23 +64,22 @@ function buildOverviewPromptElements(overviewPrompt) {
   overviewPromptCopyInstructionsLabel.innerHTML = "Copy the prompt below and paste it into the AI prompt field.";
   let promptCopyButton = document.createElement("button");
   promptCopyButton.type = "button";
-  promptCopyButton.id = "promptCopyButton";
+  promptCopyButton.id = "promptCopy-button";
   promptCopyButton.className = "promptCopy-button";
   promptCopyButton.title = "Copy Prompt";
   promptCopyButton.setAttribute("aria-label", "Copy Prompt Text");
-  promptCopyButton.setAttribute("onclick", "copyPromptText()");
+  promptCopyButton.addEventListener("click", copyPromptText);
   let promptCopyImg = document.createElement("img");
   promptCopyImg.src = "images/noun-correspondence-crop.png";
   promptCopyImg.alt = "copy prompt text button";
   promptCopyButton.appendChild(promptCopyImg);
   overviewPromptCopyInstructionsContainer.appendChild(overviewPromptCopyInstructionsLabel);
   overviewPromptCopyInstructionsContainer.appendChild(promptCopyButton);
-  let overviewPromptText = document.createElement("p");
+  let overviewPromptText = document.createElement("pre");
   overviewPromptText.className = "overviewPrompt-text";
   overviewPromptText.innerHTML = overviewPrompt;
   overviewPromptSection.appendChild(overviewPromptCopyInstructionsContainer);
   overviewPromptSection.appendChild(overviewPromptText);
-  let mainContainer = document.querySelector('.main-container'); // Get the main-container element	
     if (mainContainer) {
     mainContainer.appendChild(overviewPromptSection);
   }
@@ -84,10 +88,12 @@ function buildOverviewPromptElements(overviewPrompt) {
 function constructOverviewPrompt(searchValue) {
   let extractedSearchValue = extractSearchValue(searchValue);
   let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", extractedSearchValue);
+  overviewPrompt += "\n"; // Add newline character
   //iterate over alienRefListObj to construct prompt concatenating key & value
   for (let key in alienRefListObj) {
     let value = alienRefListObj[key];
-    overviewPrompt += key + value;
+    overviewPrompt += "\""+key+"\""+ value;
+    overviewPrompt += "\n"; // Add newline character
   }
   return overviewPrompt;
 }
@@ -327,7 +333,7 @@ async function dataListUserInput(searchedValue, originAction) {
       redirectToResults(searchedValue, foundAlien, originAction);
     }
     else {
-      alert("Alien end else:" + searchedValue + "not found in database. Ask Gen AI to add it.");
+      console.log("Alien end else:" + searchedValue + "not found in database. Ask Gen AI to add it.");
       askGenAIifAlienExists(searchedValue, originAction);
     }
   }

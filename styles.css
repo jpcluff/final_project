@@ -1257,7 +1257,7 @@
         max-width: 30px;
     }
     .overviewPrompt-text {
-                text-align: justify;
+                white-space: pre-line;
                 margin: auto;
                 padding: 1rem;
                 width: 90%;
