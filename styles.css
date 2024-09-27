@@ -190,8 +190,7 @@
     button:hover {
         background-color: black;
         color: white;
-        padding: 0.5rem;
-
+        /* padding: 0.5rem; */
     }
 
     /* search bar */
@@ -758,7 +757,7 @@
         padding: 0.5rem;
         background-color: black;
         border-radius: 0.5rem;
-        width: 90%;
+        /* width: 90%; */
     }
 
     dd {
