@@ -117,4 +117,45 @@ function buildAlienRefList() {
 }
 
 // Call the function to build the alien reference lists
-buildAlienRefList();
+// buildAlienRefList();
+loopAlphabetCallCreateEmpty();
+
+function loopAlphabetCallCreateEmpty() {
+    alphabet.forEach(letter => {
+        createEmptyAlienOverviewListJsonFile(letter);
+    });
+}
+
+const fs = require('fs');
+const path = require('path');
+
+function createEmptyAlienOverviewListJsonFile(letter) {
+    letter = letter.toLowerCase();
+    let defaultAlienName = `${letter}-alfName`;
+    let imgOverview = setPlaceholderImg();
+    const defaultData = {
+        "name": defaultAlienName,
+        "alien": false,
+        "creators": "creatorName-1, creatorName-2",
+        "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in nibh ullamcorper, pharetra elit vel, luctus dolor. Nullam viverra ligula velit, in ultricies tellus mattis ornare. Nunc id ante tellus. Sed in mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ult",
+        "imgOverview": imgOverview,
+    };
+    console.log(`Checking if JSON file for letter ${letter} exists...`);
+    let filename = path.join(__dirname, `server`, `${letter}_alienOverviewList.json`);
+    if (fs.existsSync(filename)) {
+        console.log(`File ${filename} already exists. Skipping creation.`);
+        return;
+    }
+    console.log(`Creating JSON file for letter ${letter} with default data`);
+    const json = JSON.stringify(defaultData);
+    // create a new array push defaultData then write new array to file
+    let jsonArr = [];
+    jsonArr.push(defaultData);
+    fs.writeFileSync(filename, jsonArr, "utf8", (err) => {
+        if (err) {
+            console.error("Error writing file:", err);
+        } else {
+            console.log(`File ${filename} created successfully.`);
+        }
+    });
+}
