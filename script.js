@@ -111,6 +111,13 @@ function buildOverviewPromptElements(overviewPrompt) {
   overviewPromptSection.appendChild(overviewPromptCopyInstructionsContainer);
   overviewPromptSection.appendChild(overviewPromptText);
   if (mainContainer) {
+    // remove any old overviewPrompt-section from mainContainer
+    let oldOverviewPromptSection = document.querySelectorAll(".overviewPrompt-section");
+    if (oldOverviewPromptSection) {
+      for (let oldSection of oldOverviewPromptSection) {
+        oldSection.remove();
+      }
+    }
     mainContainer.insertBefore(overviewPromptSection, mainContainer.firstChild);
   }
 }
