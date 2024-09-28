@@ -53,5 +53,12 @@
     "summary": "The Acquarans, or Aquans, are a fictional aquatic species from the science fiction television series Farscape. They are amphibian humanoids with a distinctive blue-green skin and live in a society that has mastered the technology of manipulating water.",
     "imgOverview": "./images/placeholderImg/4-alien.png",
     "sourcetype": "tv"
+  },{
+    "name": "Adipose",
+    "alienValidated": false,
+    "sourceType": "",
+    "summary": "The Adipose are a fictional species of alien lifeforms from the British science fiction television series *Doctor Who*.  They are a sentient species of fat-based beings, who are able to reproduce by absorbing fat from other beings.  They were introduced in the 2008 Christmas special \"The Christmas Invasion\" and have since appeared in a number of other episodes.",
+    "imgOverview": "./images/placeholderImg/3-alien.png",
+    "sourcetype": "tv"
   }
 ]

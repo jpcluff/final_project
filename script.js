@@ -601,15 +601,8 @@ async function validatePrompt(promptOutput) {
         return false;
       }
     }
-    // Check if alienExists is true
-    if (promptOutputObj.alienExists) {
-      return true;
-    }
-    else {
-      alertText = "Alien does not exist. Unable to validate prompt output.";
-      displayAlert(alertText);
-      return false;
-    }
+    // If all key name match & properties have values return true
+    return true;
   } catch (error) {
     alertText = "Error validating prompt output. Please paste a valid JSON string.";
     console.error("Error validating prompt output:", error);
@@ -714,7 +707,7 @@ catch (err) {
 }
 
 async function pastePromptProcessor(event) {
-  counter++;
+  
     event.preventDefault();
     console.log('Form submitted');
     // Get the value of the textarea field #pastePromptOutput-input
@@ -727,20 +720,18 @@ async function pastePromptProcessor(event) {
     let validationOutcome = await validatePrompt(pastePromptOutputValue);
     console.log("Validation Outcome: " + validationOutcome);
     if (validationOutcome === true) {
-      counter++;
       // Call function to map the TRUE validated json string to a new alien
       let newAlienObj = await mapWriteNewAlien(pastePromptOutputValue);
       console.log("New Alien type of "+ typeof newAlienObj +". Overview: " + JSON.stringify(newAlienObj));
+      if (newAlienObj.alienExists === true) {
       writeAlienToOverviewList(newAlienObj);
     }
     else {
-      counter++;
-      // Display an alert box if not already displayed
-      let alertBox = document.querySelector('.alert-box');
-      if (alertBox.getAttribute("display") === "none" || alertBox.style.display === "none" || alertBox.style.display === "") 
-        {
-        displayAlert("Pasted text is not valid. Unable to map to new alien.");
-      }
+      // alien does not exist
+      console.log("Alien does not exist. Unable to add to ALfDb.");
+      let failedSearchJson = JSON.parse(pastePromptOutputValue);
+      redirectToResults(failedSearchJson.searchAlienName, failedSearchJson.alienExists, "add");
+    }
     }
   }
 
