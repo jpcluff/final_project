@@ -5,6 +5,9 @@ const countPlaceholderImg = 4;
 const locatePlaceholderImg = "./images/placeholderImg/";
 let alertText = "";
 
+//DEBUG counter for function calls, iterations etc.
+let counter = 0;
+
 function randomNumberGenerator(limit) {
   return Math.floor(Math.random() * limit) + 1;
 }
@@ -562,15 +565,17 @@ async function validatePrompt(promptOutput) {
       promptOutput = promptOutput.slice(1, -1);
       console.log("Prompt Output is JSON string array of objects:", promptOutput);
     }
-    // Parse the string to JSON object
-    const promptOutputObj = JSON.parse(promptOutput);
-    // Use the const overviewObjOutputKeys for required output keys
+     // Use the const overviewObjOutputKeys for string matching in json string
     const requiredOutputKeys = overviewObjOutputKeys;
     const missingKeys = [];
-    console.log("Prompt Output Object:", promptOutputObj);
-    // Check for the presence of object keys
-    for (let key of requiredOutputKeys) {
-      if (!promptOutputObj.hasOwnProperty(key)) {
+    console.log("Prompt Output Object:", promptOutput);
+    // Check for the string match in promptOutput to each value in requiredOutputKeys
+     for (let key of requiredOutputKeys) {
+      let matchString = `"${key}"`;
+      matchString = matchString.replace(/ /g, "");
+      matchString = matchString.toLowerCase();
+      promptOutput = promptOutput.toLowerCase();
+      if (!promptOutput.includes(matchString)) {
         missingKeys.push(key);
       }
     }
@@ -693,6 +698,7 @@ catch (err) {
 }
 
 async function pastePromptProcessor(event) {
+  counter++;
     event.preventDefault();
     console.log('Form submitted');
     // Get the value of the textarea field #pastePromptOutput-input
@@ -705,13 +711,14 @@ async function pastePromptProcessor(event) {
     let validationOutcome = await validatePrompt(pastePromptOutputValue);
     console.log("Validation Outcome: " + validationOutcome);
     if (validationOutcome === true) {
+      counter++;
       // Call function to map the TRUE validated json string to a new alien
       let newAlienObj = await mapWriteNewAlien(pastePromptOutputValue);
       console.log("New Alien type of "+ typeof newAlienObj +". Overview: " + JSON.stringify(newAlienObj));
-      console.log("New Alien Overview: " + JSON.stringify(newAlienObj));
       writeAlienToOverviewList(newAlienObj);
     }
     else {
+      counter++;
       displayAlert("Pasted text is not valid. Unable to map to new alien.");
     }
   }

@@ -25,5 +25,12 @@
     "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by William H. Keith Jr. The Abh are a technologically advanced, humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology.",
     "imgOverview": "./images/placeholderImg/3-alien.png",
     "sourcetype": "book"
+  },{
+    "name": "Abzorbalof",
+    "alienValidated": false,
+    "sourceType": "",
+    "summary": "Abzorbalof is a species of aliens from the animated television series,  'The Venture Bros'. The Abzorbalof have the power to absorb the matter of other objects and beings, and they are considered very dangerous.",
+    "imgOverview": "./images/placeholderImg/4-alien.png",
+    "sourcetype": "tv"
   }
 ]
