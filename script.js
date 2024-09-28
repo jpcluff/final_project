@@ -1,8 +1,9 @@
-// schema for the Overview Prompt
+// global const includ schema for the Overview Prompt
 const overviewObjOutputKeys = ["searchAlienName", "alienExists", "sourceType", "summary"];
-const alienObjKeys = ["name", "alienValidated", "sourceTye", "summary", "imgOverview"];
+const alienObjKeys = ["name", "alienValidated", "sourceType", "summary", "imgOverview"];
 const countPlaceholderImg = 4;
 const locatePlaceholderImg = "./images/placeholderImg/";
+let alertText = "";
 
 function randomNumberGenerator(limit) {
   return Math.floor(Math.random() * limit) + 1;
@@ -54,11 +55,17 @@ const alienRefListObj = {
   "sourceType": " is if alienExists is TRUE then field is for single maxItems=1 the earliest known historical real+world published source of the fictional alien lifeform using an enum string",
   "summary": " is if alienExists is TRUE then field is for a short summary of the fictional alien lifeform with a maximum maxlength of 255 characters"
 };
-const promptConfirmIfAlien = 'You are a scifi fan. Is there a fictional alien species called "${searchValue}"? Structure response in a JSON UTF-8 encoded object format using this JSON schema if "${searchValue}" is found matching the name of a fictional science-fiction scifi alien species?';
+const promptConfirmIfAlien = 'Find if there is a fictional alien species called "${searchValue}" in book, TV show, film, comic or other media source"? Check wikipedia. Structure response in a JSON UTF-8 encoded object format using this JSON schema if "${searchValue}" is found matching the name of a fictional science-fiction scifi alien species.';
+const promptAddSuggestedSourceTypes = "Either in ${sourceType} or another source type.";
 
 function copyPromptText() {
+  clearOldSections();
   let promptText = document.querySelector(".overviewPrompt-text").textContent;
   navigator.clipboard.writeText(promptText);
+}
+function copyNewAlienText() {
+  let alienOverviewText = document.querySelector(".newAlien-text").textContent;
+  navigator.clipboard.writeText(alienOverviewText);
 }
 
 function buildOverviewPromptElements(overviewPrompt) {
@@ -151,6 +158,33 @@ function cleanOutputPaste(text) {
   text = text.trim();
   text = text.replace(/(\r\n|\n|\r)/gm, "");
   return text;
+}
+function clearOldSections() {
+  let pasteArea = document.getElementById('pastePromptOutput-input')
+  if (pasteArea) {
+    pasteArea.value = "";
+  }
+ 
+  let statsElement = document.querySelector(".stats");
+  if (statsElement) {
+    statsElement.remove();
+  }
+  let oldAlienSection = document.querySelector(".newAlien-section");
+  if (oldAlienSection) {
+    oldAlienSection.remove();
+  }
+  let oldPromptSection = document.querySelector(".pastePromptOutput-section");
+  if (oldPromptSection) {
+    oldPromptSection.remove();
+  }
+  // let oldoverviewPromptSection = document.querySelector(".overviewPrompt-section");
+  // if (oldoverviewPromptSection) {
+  //   oldoverviewPromptSection.remove();
+  // }
+  let oldSearchResultsSection = document.querySelector(".search-results");
+  if (oldSearchResultsSection) {
+    oldSearchResultsSection.remove();
+  }
 }
 //END CODE BLOCK for cleaners
 
@@ -509,29 +543,26 @@ function displayAlert(message) {
   alertDiv.style.backgroundColor = "red";
 }
 
-// function to validate the Overview prompt Output
+// function to validate JSON string from prompt Output
 async function validatePrompt(promptOutput) {
-  let alertText = "";
-  // DEBUG hardcode promptOutput
-  promptOutput = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by  William H. Keith Jr. The Abh are a technologically advanced,  humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."} '; // Example JSON
   // Clean the promptOutput string
   promptOutput = cleanOutputPaste(promptOutput);
   // Check if promptOutput is a valid JSON string
   if (!((promptOutput.startsWith('{') && promptOutput.endsWith('}')) || (promptOutput.startsWith('[{') && promptOutput.endsWith('}]')))) {
     console.log("Prompt Output is not valid JSON.");
-    alertText = "Invalid JSON. Please paste a valid JSON object.";
+    alertText = "Invalid JSON. Please paste a valid JSON string.<br> Must encapsulate with '{' and '}' or '[{' and '}]'.";
     displayAlert(alertText);
     return false;
   }
   try {
-    // if promptOutput is an array of objects [{}, {}]
+    // if promptOutput is an json string array [{}, {}]
     // count the number of objects in the array
     if (promptOutput.startsWith('[{') && promptOutput.endsWith('}]')) {
       // remove the square brackets from the string
       promptOutput = promptOutput.slice(1, -1);
-      console.log("Prompt Output is an array of objects:", promptOutput);
+      console.log("Prompt Output is JSON string array of objects:", promptOutput);
     }
-    // Parse the string
+    // Parse the string to JSON object
     const promptOutputObj = JSON.parse(promptOutput);
     // Use the const overviewObjOutputKeys for required output keys
     const requiredOutputKeys = overviewObjOutputKeys;
@@ -551,118 +582,142 @@ async function validatePrompt(promptOutput) {
     }
     // Validate the required fields
     const { searchAlienName, alienExists } = promptOutputObj;
-    if (searchAlienName && alienExists !== undefined) {
+    if (searchAlienName && alienExists !== undefined && (alienExists !== null || alienExists === true)) {
       console.log("Prompt Output is valid. All required values exist!");
       return true;
     } else {
-      alertText = "Prompt Output is invalid. One or more required fields are missing or empty.";
+      alertText = "Prompt Output is invalid, missing data or alien does not exist.";
       displayAlert(alertText);
       return false;
     }
   } catch (error) {
-    alertText = "Error validating prompt output. Please paste a valid JSON object.";
+    alertText = "Error validating prompt output. Please paste a valid JSON string.";
     console.error("Error validating prompt output:", error);
     displayAlert(alertText);
     return false;
   }
 }
 
-async function createAlienObject() {
-  const alienObj = new Object();
-  // initialize the object adding alienObjKeys  keys
-  alienObjKeys.forEach(key => {
-    //add & initialize the alienObj object adding alienObjKeys keys & values
-    alienObj[key]= "";
-  }
-  )
-  if (alienObj.alienValidated) {
-    alienObj.alienValidated = false; // Set alienValidated to boolean false
-  }
-  if (alienObj.imgOverview) {
-    alienObj.imgOverview = await setPlaceholderImg(); // Set imgOverview to a placeholder image
-  }
-  return alienObj;
-}
 
-async function mapWriteAlienToOverviewList(overviewJson) {
-  console.log("Mapping JSON object to alienOverviewList schema.");
+async function createAlienObj() {
+  // Initialize the object with properties using keys from alienObjKeys and empty string values
+  let newAlienObj = {};
+  for (let key of alienObjKeys) {
+    newAlienObj[key] = "";
+  }
+  // Set default values
+  newAlienObj.imgOverview = await setPlaceholderImg();
+  newAlienObj.alienValidated = false;
+  return newAlienObj;
+}
+// function takes a JSON string from the promptOutput, creates a newAlien object and maps it to the alienOverviewList schema
+async function mapWriteNewAlien(overviewJson) {
+  console.log("Called mapWriteNewAlien.");
   // DEBUG hardcode overviewJson
-  overviewJson = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by William H. Keith Jr. The Abh are a technologically advanced, humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."}'; // Example JSON
+  // overviewJson = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by William H. Keith Jr. The Abh are a technologically advanced, humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."}'; // Example JSON
   try {
-    let newAlien = await createAlienObject();
+    let newAlien = await createAlienObj();
+    console.log("New Alien object created to map overviewJson: " + JSON.stringify(newAlien));
+    // newAlien object  {name: "", alienValidated: false, sourceType: "", summary: "", imgOverview:"./images/placeholderImg/n-alien.png"}
     let overviewObj = cleanOutputPaste(overviewJson);
-    overviewObj = JSON.parse(overviewJson);
-    let lowerCaseOverviewObj = {};
-    for (let key in overviewObj) {
-      if (overviewObj.hasOwnProperty(key)) {
-        lowerCaseOverviewObj[key.toLowerCase()] = overviewObj[key];
-      }
+    console.log("Cleaned JSON string: " + overviewObj);
+    // Parse the string to JSON object
+    const overviewObjParsed = JSON.parse(overviewObj);
+    console.log("Parsed JSON string: " + JSON.stringify(overviewObjParsed));
+    // map the values in overviewObjParsed to newAlien
+    if (overviewObjParsed.alienExists) {
+      newAlien.name = overviewObjParsed.searchAlienName;
+      newAlien.sourcetype = overviewObjParsed.sourceType;
+      newAlien.summary = overviewObjParsed.summary;
+      console.log("Mapped newAlienParsed: " + JSON.stringify(newAlien));
     }
-    // Use the global const overviewObjOutputKeys to map the values from lowerCaseOverviewObj object to the newAlien object
-    for (let key of overviewObjOutputKeys) {
-      newAlien[key] = lowerCaseOverviewObj[key.toLowerCase()];
-      console.log("Mapped key: " + key + " to value: " + lowerCaseOverviewObj[key.toLowerCase()] + " in newAlien object.");
+    else {
+      alertText = "Alien does not exist. Unable to map to new alien.";
+      displayAlert(alertText);
+      return false;
     }
+
+    console.log("New alien mapped from values in overviewObjParsed: " + JSON.stringify(newAlien));
     return newAlien;
   }
   catch (error) {
-    const alertText = "Error mapping JSON object to alienOverviewList schema.";
+    const alertText = "Caught error mapping JSON string to newAlien object.";
     console.error(alertText, error);
     displayAlert(alertText);
     return false;
   }
 }
 
-// function write the new alien to the filename = `server\\data\\${letter}_alienOverviewList.json`
+// function create a section & append to main-container to display the the new alien object as as json string so the user can copy & paste it into the AI prompt
 async function writeAlienToOverviewList(newAlien) {
-let alienName = newAlien.name;
-let firstLetter = alienName.charAt(0).toLowerCase();
-let datafile = `server\\data\\${firstLetter}_alienOverviewList.json`;
-let filePath = path.join(__dirname, 'data\\', datafile);
-console.log(`Checking if file ${filePath} exist`);
-try {
-  if (!fs.existsSync(filePath)) {
-    alert(`File ${filePath} does not exist.`);
-    return;
+  try {
+    let mainContainer = document.querySelector('.main-container'); // Get the main-container element	
+    let newAlienSection = document.createElement("section");
+    newAlienSection.className = "newAlien-section";
+    let newAlienLabelDiv = document.createElement("div");
+    newAlienLabelDiv.className = "newAlien-label";
+    let newAlienH2 = document.createElement("h2");
+    newAlienH2.innerHTML = "New Alien Overview";
+    let newAlienCopyInstructionsContainer = document.createElement("div");
+    newAlienCopyInstructionsContainer.className = "newAlien-copy-instructions-container";
+    let newAlienCopyInstructionsLabel = document.createElement("h3");
+    newAlienCopyInstructionsLabel.className = "newAlien-copy-instructions-label";
+    newAlienCopyInstructionsLabel.innerHTML = "This new alien to be added to the ALfDb.";
+    let newAlienCopyButton = document.createElement("button");
+    newAlienCopyButton.type = "button";
+    newAlienCopyButton.id = "newAlienCopy-button";
+    newAlienCopyButton.className = "newAlienCopy-button";
+    newAlienCopyButton.title = "Copy New Alien";
+    newAlienCopyButton.setAttribute("aria-label", "Copy New Alien Text");
+    newAlienCopyButton.addEventListener("click", copyNewAlienText);
+    let newAlienCopyImg = document.createElement("img");
+    newAlienCopyImg.src = "images/noun-correspondence-crop.png";
+    newAlienCopyImg.alt = "copy new alien text button";
+    newAlienCopyButton.appendChild(newAlienCopyImg);
+    newAlienCopyInstructionsContainer.appendChild(newAlienCopyInstructionsLabel);
+    newAlienCopyInstructionsContainer.appendChild(newAlienCopyButton);
+    let newAlienText = document.createElement("pre");
+    newAlienText.className = "newAlien-text";
+    let newAlienJson = JSON.stringify(newAlien, null, 2);
+    newAlienText.innerHTML = ","+newAlienJson;
+    newAlienSection.appendChild(newAlienCopyInstructionsContainer);
+    newAlienSection.appendChild(newAlienText);
+    if (mainContainer) {
+      mainContainer.insertBefore(newAlienSection, mainContainer.firstChild);
+    }
   }
-  fs.accessSync(filePath);
-}
-
-
-
-
-
-
+catch (err) {
+      console.error(`No new alien to add because: ${err}`);
+      return;
+    }
 }
 
 async function pastePromptProcessor(event) {
-  event.preventDefault();
-  console.log('Form submitted');
+    event.preventDefault();
+    console.log('Form submitted');
     // Get the value of the textarea field #pastePromptOutput-input
-  let pastePromptOutputInput = document.getElementById('pastePromptOutput-input');
-  let pastePromptOutputValue = pastePromptOutputInput.value;
-  console.log('Paste Prompt Value: ' + pastePromptOutputValue);
+    let pastePromptOutputInput = document.getElementById('pastePromptOutput-input');
+    let pastePromptOutputValue = pastePromptOutputInput.value;
+    // DEBUG hardcode pastePromptOutputValue json string
+      // pastePromptOutputValue = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by  William H. Keith Jr. The Abh are a technologically advanced,  humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."} '; // Example JSON
+    console.log('Paste Prompt Value: ' + pastePromptOutputValue);
     // Call function to validate the prompt response
-  let validationOutcome = await validatePrompt(pastePromptOutputValue);
-  console.log("Validation Outcome: " + validationOutcome);
-  if (validationOutcome === true) {
-    // Call function to map the TRUE validated pasted prompt response to a new alien Overview
-    let newAlienOverview = mapWriteAlienToOverviewList(pastePromptOutputValue);
-    console.log("New Alien Overview: " + newAlienOverview);
-    // Call function to write new alien to ${letter}_alienOverviewList
-
-    // console.log('New Record written.Redirecting to search-results page.');
-    // Redirect to search-results page
-    // let queryParams = getQueryParams();
-    // let searchValue = queryParams.searchValue;
-    // let alienFound = queryParams.alienFound;
-    // let originAction = queryParams.originAction;
-    // redirectToResults(searchValue, alienFound, originAction);
+    let validationOutcome = await validatePrompt(pastePromptOutputValue);
+    console.log("Validation Outcome: " + validationOutcome);
+    if (validationOutcome === true) {
+      // Call function to map the TRUE validated json string to a new alien
+      let newAlienObj = await mapWriteNewAlien(pastePromptOutputValue);
+      console.log("New Alien type of "+ typeof newAlienObj +". Overview: " + JSON.stringify(newAlienObj));
+      console.log("New Alien Overview: " + JSON.stringify(newAlienObj));
+      writeAlienToOverviewList(newAlienObj);
+    }
+    else {
+      displayAlert("Pasted text is not valid. Unable to map to new alien.");
+    }
   }
-}
 
-// Add the submit event listener to the element with ID pastePromptOutput-box
-const pastePromptOutputBox = document.getElementById('pastePromptOutput-box');
-if (pastePromptOutputBox) {
-  pastePromptOutputBox.addEventListener('submit', pastePromptProcessor);
-}
+  // Add the submit for the pastePromptOutput-box form
+  const pastePromptOutputBox = document.getElementById('pastePromptOutput-box');
+  if (pastePromptOutputBox) {
+    pastePromptOutputBox.addEventListener('submit', pastePromptProcessor);
+  }

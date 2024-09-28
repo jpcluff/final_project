@@ -1262,7 +1262,7 @@
 
     /* end responsive----------------------------------------------- */
 
-    .overviewPrompt-copy-instructions-container {
+    .overviewPrompt-copy-instructions-container, .newAlien-copy-instructions-container {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
@@ -1275,22 +1275,22 @@
         width: 90%;
     }
 
-    .promptCopy-button {
+    .promptCopy-button, .newAlienCopy-button {
         padding: 1rem;
         border: 0.2rem solid black;
         border-radius: 0.5rem;
         background-color: white;
     }
 
-    .promptCopy-button:hover {
+    .promptCopy-button:hover, .newAlienCopy-button:hover {
         background-color: grey;
     }
 
-    .promptCopy-button img {
+    .promptCopy-button img, .newAlienCopy-button img {
         max-width: 30px;
     }
 
-    .overviewPrompt-text {
+    .overviewPrompt-text, .newAlien-text {
         white-space: pre-line;
         margin: auto;
         padding: 1rem;
