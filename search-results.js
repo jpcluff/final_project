@@ -1,5 +1,7 @@
 // Run handleResutlsPageLoad on document load
 let counter = 0;
+const whiteSpace = /\s/g; 
+
 if (document.readyState === "loading") {
   // Loading hasn't finished yet
   document.addEventListener("DOMContentLoaded", handleResultsPageLoad);
@@ -9,8 +11,7 @@ if (document.readyState === "loading") {
 }
 // function to get the alienOverviewList JSON file for the search results page
 import { getAlienOverviewList } from './script.js';
-import { getQueryParams } from './script.js';
-const whiteSpace = /\s/g; 
+import { getQueryParams, extractSearchValue } from './script.js';
 
 
 // Function to remove whitespace & lowercase the search value
@@ -56,13 +57,13 @@ async function fetchImgtoBlob(imgUrl) {
       return defaultImg;
   }
 }
-
-
 async function buildSearchResultsElements(searchValue, originAction) {
   if (!searchValue) {
     console.error("No search value provided.");
     return;
   }
+  searchValue = extractSearchValue(searchValue);
+  searchValue = cleanSearchValue(searchValue);
   // Get the search results from the API
   const matchedAlienObj = await getMatchedAlienOverview(searchValue);
   console.log("Search Results:" + JSON.stringify(matchedAlienObj));
@@ -73,7 +74,7 @@ async function buildSearchResultsElements(searchValue, originAction) {
   const searchResultsSection = document.createElement("section");
   searchResultsSection.classList.add("search-results");
   const alienDetailsHrefElement = document.createElement("a");
-  alienDetailsHrefElement.href = `../alien-details.html?alienName=${cleanSearchValue(searchValue)}?originAction=${originAction}`;
+  alienDetailsHrefElement.href = `../alien-details.html?alienName=${searchValue}?originAction=${originAction}`;
   alienDetailsHrefElement.classList.add("search-result-link");
   const h4alienName = document.createElement("h4");
   h4alienName.innerHTML = matchedAlienObj.name;

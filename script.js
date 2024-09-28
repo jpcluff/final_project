@@ -4,6 +4,9 @@ const alienObjKeys = ["name", "alienValidated", "sourceType", "summary", "imgOve
 const countPlaceholderImg = 4;
 const locatePlaceholderImg = "./images/placeholderImg/";
 let alertText = "";
+let searching = false;
+const acceptableChars = /^[A-Za-z]+$/;
+export const whiteSpace = /\s/g;
 
 //DEBUG counter for function calls, iterations etc.
 let counter = 0;
@@ -62,9 +65,13 @@ const promptConfirmIfAlien = 'Find if there is a fictional alien species called 
 const promptAddSuggestedSourceTypes = "Either in ${sourceType} or another source type.";
 
 function copyPromptText() {
-  clearOldSections();
   let promptText = document.querySelector(".overviewPrompt-text").textContent;
   navigator.clipboard.writeText(promptText);
+  let pastePromptOutputSection = document.querySelector('.pastePromptOutput-section');
+  if (pastePromptOutputSection) {
+    pastePromptOutputSection.style.display = "block";
+    clearOldSections();
+  }
 }
 function copyNewAlienText() {
   let alienOverviewText = document.querySelector(".newAlien-text").textContent;
@@ -73,10 +80,7 @@ function copyNewAlienText() {
 
 function buildOverviewPromptElements(overviewPrompt) {
   let mainContainer = document.querySelector('.main-container'); // Get the main-container element	
-  let statsElement = document.querySelector(".stats");
-  if (statsElement) {
-    statsElement.remove();
-  }
+ clearOldSections();
   let overviewPromptSection = document.createElement("section");
   overviewPromptSection.className = "overviewPrompt-section";
   let overviewPromptLabel = document.createElement("div");
@@ -112,8 +116,10 @@ function buildOverviewPromptElements(overviewPrompt) {
 }
 
 function constructOverviewPrompt(searchValue) {
-  let extractedSearchValue = extractSearchValue(searchValue);
-  let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", extractedSearchValue);
+  // DEBUG use whole searchValue including source
+  // let extractedSearchValue = extractSearchValue(searchValue);
+  // let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", extractedSearchValue);
+  /*DEBUG*/let overviewPrompt = promptConfirmIfAlien.replace("${searchValue}", searchValue);
   overviewPrompt += "\n"; // Add newline character
   //iterate over alienRefListObj to construct prompt concatenating key & value
   for (let key in alienRefListObj) {
@@ -125,9 +131,7 @@ function constructOverviewPrompt(searchValue) {
 }
 
 // Get search-box elements
-let searching = false;
-const acceptableChars = /^[A-Za-z]+$/;
-const whiteSpace = /\s/g;
+
 // global variable search to store search input value for finding & adding alien
 const searchBoxInput = document.getElementById("search"); // Get the search-box input element
 let searchDataList = document.getElementById("search-list"); // Get the search-list datalist element
@@ -163,6 +167,7 @@ function cleanOutputPaste(text) {
   return text;
 }
 function clearOldSections() {
+  console.log("Clearing old sections");
   let pasteArea = document.getElementById('pastePromptOutput-input')
   if (pasteArea) {
     pasteArea.value = "";
@@ -176,19 +181,16 @@ function clearOldSections() {
   if (oldAlienSection) {
     oldAlienSection.remove();
   }
-  let oldPromptSection = document.querySelector(".pastePromptOutput-section");
-  if (oldPromptSection) {
-    oldPromptSection.remove();
-  }
-  // let oldoverviewPromptSection = document.querySelector(".overviewPrompt-section");
-  // if (oldoverviewPromptSection) {
-  //   oldoverviewPromptSection.remove();
+  // let oldPromptSection = document.querySelector(".pastePromptOutput-section");
+  // if (oldPromptSection) {
+  //   oldPromptSection.style.display = "none";
   // }
   let oldSearchResultsSection = document.querySelector(".search-results");
   if (oldSearchResultsSection) {
     oldSearchResultsSection.remove();
   }
 }
+
 //END CODE BLOCK for cleaners
 
 // START CODEBLOCK POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
@@ -341,7 +343,7 @@ async function searchAlienOverviewDb(alienName) {
   return alienFound; // Return false if no match is found
 }
 // Extract an alien name from searchInput selected from datalist value
-function extractSearchValue(searchInput) {
+export function extractSearchValue(searchInput) {
   let searchArray = searchInput.split("-");
   let alienName = searchArray[0].trim();
   return alienName;
@@ -373,6 +375,7 @@ async function dataListUserInput(searchedValue, originAction) {
   // Check if searchedValue is selected from datalist & not just a hyphen
   if (searchedValue.includes("-") && searchedValue.length > 1) {
     let alienName = extractSearchValue(searchedValue);
+    console.log("Searching for Alien Name: " + alienName);
     foundAlien = await searchAlienOverviewDb(alienName);
     if (foundAlien) {
       redirectToResults(alienName, foundAlien, originAction);
@@ -422,6 +425,7 @@ function overwriteSearchValue(event) {
   }
   // Search value is from add-alien add-search input field
   else if (handler === "add-submit-button") {
+    clearOldSections();
     searchValue = addSearchInput.value;
     originAction = "add";
     console.log("overwrite the global variable search with the add-search-input input value: " + searchValue);
@@ -566,16 +570,16 @@ async function validatePrompt(promptOutput) {
       console.log("Prompt Output is JSON string array of objects:", promptOutput);
     }
      // Use the const overviewObjOutputKeys for string matching in json string
-    const requiredOutputKeys = overviewObjOutputKeys;
     const missingKeys = [];
-    console.log("Prompt Output Object:", promptOutput);
     // Check for the string match in promptOutput to each value in requiredOutputKeys
-     for (let key of requiredOutputKeys) {
+     for (let key of overviewObjOutputKeys) {
       let matchString = `"${key}"`;
       matchString = matchString.replace(/ /g, "");
       matchString = matchString.toLowerCase();
-      promptOutput = promptOutput.toLowerCase();
-      if (!promptOutput.includes(matchString)) {
+      let promptOutputLower = promptOutput.toLowerCase();
+      console.log("Testing Match String:", matchString);
+      if (!promptOutputLower.includes(matchString)) {
+        console.log("Missing key:", key);
         missingKeys.push(key);
       }
     }
@@ -586,12 +590,23 @@ async function validatePrompt(promptOutput) {
       return false;
     }
     // Validate the required fields
-    const { searchAlienName, alienExists } = promptOutputObj;
-    if (searchAlienName && alienExists !== undefined && (alienExists !== null || alienExists === true)) {
-      console.log("Prompt Output is valid. All required values exist!");
+    console.log("Prompt Output is valid JSON string. Parsing... for required values.");
+    const promptOutputObj = JSON.parse(promptOutput);
+    console.log("Parsed JSON string: " + JSON.stringify(promptOutputObj));
+    // test all all properties in promptOutputObj have values
+    for (let key in promptOutputObj) {
+      if (promptOutputObj[key] === "") {
+        alertText = `Prompt Output is invalid. Missing value for key: ${key}`;
+        displayAlert(alertText);
+        return false;
+      }
+    }
+    // Check if alienExists is true
+    if (promptOutputObj.alienExists) {
       return true;
-    } else {
-      alertText = "Prompt Output is invalid, missing data or alien does not exist.";
+    }
+    else {
+      alertText = "Alien does not exist. Unable to validate prompt output.";
       displayAlert(alertText);
       return false;
     }
@@ -631,7 +646,8 @@ async function mapWriteNewAlien(overviewJson) {
     console.log("Parsed JSON string: " + JSON.stringify(overviewObjParsed));
     // map the values in overviewObjParsed to newAlien
     if (overviewObjParsed.alienExists) {
-      newAlien.name = overviewObjParsed.searchAlienName;
+      let sanitizedAlienName = extractSearchValue(overviewObjParsed.searchAlienName);
+      newAlien.name = sanitizedAlienName;
       newAlien.sourcetype = overviewObjParsed.sourceType;
       newAlien.summary = overviewObjParsed.summary;
       console.log("Mapped newAlienParsed: " + JSON.stringify(newAlien));
@@ -719,7 +735,12 @@ async function pastePromptProcessor(event) {
     }
     else {
       counter++;
-      displayAlert("Pasted text is not valid. Unable to map to new alien.");
+      // Display an alert box if not already displayed
+      let alertBox = document.querySelector('.alert-box');
+      if (alertBox.getAttribute("display") === "none" || alertBox.style.display === "none" || alertBox.style.display === "") 
+        {
+        displayAlert("Pasted text is not valid. Unable to map to new alien.");
+      }
     }
   }
 

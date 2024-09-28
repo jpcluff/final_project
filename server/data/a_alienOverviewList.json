@@ -32,5 +32,26 @@
     "summary": "Abzorbalof is a species of aliens from the animated television series,  'The Venture Bros'. The Abzorbalof have the power to absorb the matter of other objects and beings, and they are considered very dangerous.",
     "imgOverview": "./images/placeholderImg/4-alien.png",
     "sourcetype": "tv"
+  },{
+    "name": "Abyormenites",
+    "alienValidated": false,
+    "sourceType": "",
+    "summary": "The Abyormenites are a fictional species of alien lifeforms in Hal Clement's science fiction novel *Mission of Gravity* (1954), the first in his *Cycle of Fire* series. They are native to Mesklin, a planet with an immense gravitational pull, and are highly adapted to the harsh environment. The Abyormenites are depicted as being physically strong and intelligent, and have developed a sophisticated society that has mastered the challenges of life on their unique world.",
+    "imgOverview": "./images/placeholderImg/1-alien.png",
+    "sourcetype": "book"
+  },{
+    "name": "Acamarian",
+    "alienValidated": false,
+    "sourceType": "",
+    "summary": "The Acamarians are a fictional humanoid species from the *Star Trek* universe. They were introduced in the *Star Trek: Voyager* episode \"The Chute.\" They are characterized by their pale skin, large heads, and thin bodies. They are also known for their advanced technology and their strict social structure, which makes them difficult to interact with.",
+    "imgOverview": "./images/placeholderImg/2-alien.png",
+    "sourcetype": "tv"
+  },{
+    "name": "Acquarans",
+    "alienValidated": false,
+    "sourceType": "",
+    "summary": "The Acquarans, or Aquans, are a fictional aquatic species from the science fiction television series Farscape. They are amphibian humanoids with a distinctive blue-green skin and live in a society that has mastered the technology of manipulating water.",
+    "imgOverview": "./images/placeholderImg/4-alien.png",
+    "sourcetype": "tv"
   }
 ]
