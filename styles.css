@@ -848,6 +848,11 @@
     /* alert */
     .alert-box {
         display: none;
+        border: none;
+        background-color: transparent;
+        width: 0;
+        padding: 0;
+        margin: 0;  
     }
 
     .alert {
@@ -869,9 +874,26 @@
     }
 
     .alert-text {
+        display: none;
+        white-space: nowrap;
         color: black;
         font-weight: bold;
         margin: 0.2rem;
+    }
+
+    .closex {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin: auto;
+        border: 0.1rem solid black;
+        padding: 0.2rem;
+        border-radius: 0.5rem;
+        color: black;
+        font-weight: bold;
+        font-size: large;
+        cursor: pointer;
+        width: 50%;
     }
 
     /* credits doc */
@@ -1124,6 +1146,10 @@
             max-width: 100%;
             max-height: 100%;
         }
+        .alert-text {
+            display: none;
+            white-space:unset;
+        }
 
         /* END MOBILE Responsive */
     }
@@ -1277,7 +1303,6 @@
         justify-content: center;
         align-items: center;
         margin: auto;
-        padding: 1rem 0;
         width: 100%;
     }
     .pastePromptOutput-input-container {
@@ -1286,12 +1311,28 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
- width: 100%;
+        width: 100%;
+    }
+    .pastePromptOutput-clear-button {
+        font-size:large;
+        padding: 0.1rem;
+        border: 0.2rem solid black;
+        border-radius: 5rem;
+        background-color: white;
+    }
+    .pastePromptOutput-clear {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 0;
     }
     .pastePromptOutput-input-div {
         display: flex;
         flex-wrap: nowrap;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items:flex-start;
         padding: 1rem 0;

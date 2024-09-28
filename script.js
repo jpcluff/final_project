@@ -1,5 +1,5 @@
 // schema for the Overview Prompt
-const OverviewObjKeys = ["searchAlienName", "alienExists", "sourceType", "summary" ];
+const overviewObjKeys = ["searchAlienName", "alienExists", "sourceType", "summary" ];
 
 // Toggle menu visibility
 document.querySelector('.menu-toggle').addEventListener('click', menuToggle);
@@ -133,6 +133,11 @@ function clearSearchList(handler) {
   else {
     console.log("Not actively searching");
   }
+}
+function cleanOutputPaste(text) {
+  text = text.trim();
+  text = text.replace(/(\r\n|\n|\r)/gm,"");
+  return text;
 }
 // Clear search list when clicking outside of the clear pseudo button for add-search input fields
 document.addEventListener("click", function (event) {
@@ -480,37 +485,75 @@ export function getQueryParams() {
   return params;
 }
 
+function displayAlert(message) {
+  let alertText = document.getElementById('alertText');
+  alertText.innerHTML = message;
+  alertText.style.display = "block";
+  document.querySelector('.alert-box').style.display = "block";
+  let alertDiv = document.querySelector('.alert');
+  alertDiv.style.display = "block";
+  alertDiv.style.backgroundColor = "red";
+}
+
 // function to validate the Overview prompt Output
-function validatePrompt(promptOutput) {
-  try {
-    console.log("Validating prompt output:", promptOutput);
-    promptOutput = promptOutput.trim();
+async function validatePrompt(promptOutput) {
+  let alertText = "";
+    // DEBUG hardcode promptOutput
+  // promptOutput = '{"searchAlienName": "AlienName", "alienExists": true}'; // Example JSON
+  // Clean the promptOutput string
+  promptOutput = cleanOutputPaste(promptOutput);
     // Check if promptOutput is a valid JSON string
-    if (typeof promptOutput !== 'string' || !(promptOutput.startsWith('{') && promptOutput.endsWith('}')) || !(promptOutput.startsWith('[') && promptOutput.endsWith(']'))) {
-      console.log("Prompt Output is invalid");
+  if (!((promptOutput.startsWith('{') && promptOutput.endsWith('}')) || (promptOutput.startsWith('[{') && promptOutput.endsWith('}]')))) {
+    console.log("Prompt Output is not valid JSON.");  
+    alertText = "Invalid JSON. Please paste a valid JSON object.";
+    displayAlert(alertText);
+    return false;
+  }
+  try {
+    // if promptOutput is an array of objects [{}, {}]
+    // count the number of objects in the array
+    if (promptOutput.startsWith('[{') && promptOutput.endsWith('}]')) {
+      // remove the square brackets from the string
+      promptOutput = promptOutput.slice(1, -1);
+      console.log("Prompt Output is an array of objects:", promptOutput);
+    }
+    // Parse the string
+    const promptOutputObj = JSON.parse(promptOutput);
+    // Define the required keys
+    const requiredKeys = ["searchAlienName", "alienExists", "sourceType", "summary" ];
+    const missingKeys = [];
+     console.log("Prompt Output Object:", promptOutputObj);
+    // Check for the presence of required keys
+    for (let key of requiredKeys) {
+      if (!promptOutputObj.hasOwnProperty(key)) {
+        missingKeys.push(key);
+      }
+    }
+    // Log missing keys if any
+    if (missingKeys.length > 0) {
+      alertText = `Prompt Output is invalid. Missing keys: ${missingKeys.join(', ')}`;
+      displayAlert(alertText);
       return false;
     }
-    // Parse the JSON string
-    const promptOutputObj = JSON.parse(promptOutput);
-    // Check exists then destructure the required fields
-    // add JSON resilience to check if the fields exist
-
-
-
     // Validate the required fields
-    if (searchAlienName && alienExists && sourceType && summary) {
-      console.log("Prompt Output is valid");
+    const { searchAlienName, alienExists } = promptOutputObj;
+    if (searchAlienName && alienExists !== undefined) {
+      console.log("Prompt Output is valid. All required values exist!");
+      // TODO call function to write the JSON object to alienOverviewList in server/data
       return true;
     } else {
-      console.log("Prompt Output is invalid");
+      alertText = "Prompt Output is invalid. One or more required fields are missing or empty.";
+      displayAlert(alertText);
       return false;
     }
   } catch (error) {
+    alertText = "Error validating prompt output. Please paste a valid JSON object.";
     console.error("Error validating prompt output:", error);
+    displayAlert(alertText);
     return false;
   }
 }
-
+    
 const pastePromptOutputBox = document.getElementById('pastePromptOutput-box');
 if (pastePromptOutputBox) {
   pastePromptOutputBox.addEventListener('submit', function(event) {
@@ -521,6 +564,16 @@ if (pastePromptOutputBox) {
         let pastePromptOutputValue = pastePromptOutputInput.value;
         console.log('Paste Prompt Value: ' + pastePromptOutputValue);
         //call function to validate the prompt response
-      validatePrompt(pastePromptOutputValue);
+      let validationOutcome = validatePrompt(pastePromptOutputValue);
+      if (validationOutcome) {
+        // call function to redirect to search-results page
+        console.log('New Record written.Redirecting to search-results page.');
+        // Redirect to search-results page
+        // let queryParams = getQueryParams();
+        // let searchValue = queryParams.searchValue;
+        // let alienFound = queryParams.alienFound;
+        // let originAction = queryParams.originAction;
+        // redirectToResults(searchValue, alienFound, originAction);
+      }
       });
 }
