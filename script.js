@@ -1,5 +1,18 @@
 // schema for the Overview Prompt
-const overviewObjKeys = ["searchAlienName", "alienExists", "sourceType", "summary" ];
+const overviewObjOutputKeys = ["searchAlienName", "alienExists", "sourceType", "summary"];
+const alienObjKeys = ["name", "alienValidated", "sourceTye", "summary", "imgOverview"];
+const countPlaceholderImg = 4;
+const locatePlaceholderImg = "./images/placeholderImg/";
+
+function randomNumberGenerator(limit) {
+  return Math.floor(Math.random() * limit) + 1;
+}
+function setPlaceholderImg() {
+  let imageNumber = randomNumberGenerator(countPlaceholderImg);
+  let imgUri = locatePlaceholderImg + imageNumber + "-alien.png";
+  console.log("Created Image URI:" + imgUri);
+  return imgUri;
+}
 
 // Toggle menu visibility
 document.querySelector('.menu-toggle').addEventListener('click', menuToggle);
@@ -36,14 +49,14 @@ function menuToggle() {
 
 // START CODEBLOCK for Generative AI Prompt, call & response
 const alienRefListObj = {
-  "searchAlienName": " is for the name of a fictional science-fiction scifi alien species as a string from the prompt",  
+  "searchAlienName": " is for the name of a fictional science-fiction scifi alien species as a string from the prompt",
   "alienExists": " is for the boolean value either TRUE or FALSE indicating if a search finds the fictional alien lifeform exists in any published public sources.",
   "sourceType": " is if alienExists is TRUE then field is for single maxItems=1 the earliest known historical real+world published source of the fictional alien lifeform using an enum string",
   "summary": " is if alienExists is TRUE then field is for a short summary of the fictional alien lifeform with a maximum maxlength of 255 characters"
 };
 const promptConfirmIfAlien = 'You are a scifi fan. Is there a fictional alien species called "${searchValue}"? Structure response in a JSON UTF-8 encoded object format using this JSON schema if "${searchValue}" is found matching the name of a fictional science-fiction scifi alien species?';
 
-  function copyPromptText() {
+function copyPromptText() {
   let promptText = document.querySelector(".overviewPrompt-text").textContent;
   navigator.clipboard.writeText(promptText);
 }
@@ -83,8 +96,8 @@ function buildOverviewPromptElements(overviewPrompt) {
   overviewPromptText.innerHTML = overviewPrompt;
   overviewPromptSection.appendChild(overviewPromptCopyInstructionsContainer);
   overviewPromptSection.appendChild(overviewPromptText);
-    if (mainContainer) {
-      mainContainer.insertBefore(overviewPromptSection, mainContainer.firstChild);
+  if (mainContainer) {
+    mainContainer.insertBefore(overviewPromptSection, mainContainer.firstChild);
   }
 }
 
@@ -95,7 +108,7 @@ function constructOverviewPrompt(searchValue) {
   //iterate over alienRefListObj to construct prompt concatenating key & value
   for (let key in alienRefListObj) {
     let value = alienRefListObj[key];
-    overviewPrompt += "\""+key+"\""+ value;
+    overviewPrompt += "\"" + key + "\"" + value;
     overviewPrompt += "\n"; // Add newline character
   }
   return overviewPrompt;
@@ -112,7 +125,7 @@ const searchBar = document.getElementById("search-box"); // Get the search-box f
 // add event listener to search-box form to handle submit events
 searchBar.onsubmit = overwriteSearchValue;
 
-// START CODEBLOCK POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
+// START CODE BLOCK for cleaners
 function clearSearchList(handler) {
   if (searching) {
     searching = false;
@@ -136,9 +149,13 @@ function clearSearchList(handler) {
 }
 function cleanOutputPaste(text) {
   text = text.trim();
-  text = text.replace(/(\r\n|\n|\r)/gm,"");
+  text = text.replace(/(\r\n|\n|\r)/gm, "");
   return text;
 }
+//END CODE BLOCK for cleaners
+
+// START CODEBLOCK POPULATE SEARCH-BAR DATA LIST for AUTO-COMPLETE
+
 // Clear search list when clicking outside of the clear pseudo button for add-search input fields
 document.addEventListener("click", function (event) {
   const searchClearElement = document.getElementById("search-clear");
@@ -251,12 +268,12 @@ export async function getAlienOverviewList(alienName) {
   let firstLetter = alienName.charAt(0).toLowerCase();
   // DEBUG with hardcoded datafile
   // let datafile = "./server/b_alienOverviewList.json";
-  let datafile = "./server/data/"+firstLetter+"_alienOverviewList.json";
+  let datafile = "./server/data/" + firstLetter + "_alienOverviewList.json";
   try {
     console.log("Fetching datafile... " + datafile);
     const response = await fetch(datafile);
     if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`); 
+      throw new Error(`Response status: ${response.status}`);
     }
     const alienDatafile = await response.json();
     return alienDatafile;
@@ -313,9 +330,6 @@ export function askGenAIifAlienExists(searchValue, originAction) {
   // TO DO call function to write new alien to alienOverviewList
 
 }
-
-
-
 // searchedValue is valid not empty
 async function dataListUserInput(searchedValue, originAction) {
   let foundAlien = false;
@@ -498,13 +512,13 @@ function displayAlert(message) {
 // function to validate the Overview prompt Output
 async function validatePrompt(promptOutput) {
   let alertText = "";
-    // DEBUG hardcode promptOutput
-  // promptOutput = '{"searchAlienName": "AlienName", "alienExists": true}'; // Example JSON
+  // DEBUG hardcode promptOutput
+  promptOutput = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by  William H. Keith Jr. The Abh are a technologically advanced,  humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."} '; // Example JSON
   // Clean the promptOutput string
   promptOutput = cleanOutputPaste(promptOutput);
-    // Check if promptOutput is a valid JSON string
+  // Check if promptOutput is a valid JSON string
   if (!((promptOutput.startsWith('{') && promptOutput.endsWith('}')) || (promptOutput.startsWith('[{') && promptOutput.endsWith('}]')))) {
-    console.log("Prompt Output is not valid JSON.");  
+    console.log("Prompt Output is not valid JSON.");
     alertText = "Invalid JSON. Please paste a valid JSON object.";
     displayAlert(alertText);
     return false;
@@ -519,12 +533,12 @@ async function validatePrompt(promptOutput) {
     }
     // Parse the string
     const promptOutputObj = JSON.parse(promptOutput);
-    // Define the required keys
-    const requiredKeys = ["searchAlienName", "alienExists", "sourceType", "summary" ];
+    // Use the const overviewObjOutputKeys for required output keys
+    const requiredOutputKeys = overviewObjOutputKeys;
     const missingKeys = [];
-     console.log("Prompt Output Object:", promptOutputObj);
-    // Check for the presence of required keys
-    for (let key of requiredKeys) {
+    console.log("Prompt Output Object:", promptOutputObj);
+    // Check for the presence of object keys
+    for (let key of requiredOutputKeys) {
       if (!promptOutputObj.hasOwnProperty(key)) {
         missingKeys.push(key);
       }
@@ -539,7 +553,6 @@ async function validatePrompt(promptOutput) {
     const { searchAlienName, alienExists } = promptOutputObj;
     if (searchAlienName && alienExists !== undefined) {
       console.log("Prompt Output is valid. All required values exist!");
-      // TODO call function to write the JSON object to alienOverviewList in server/data
       return true;
     } else {
       alertText = "Prompt Output is invalid. One or more required fields are missing or empty.";
@@ -553,27 +566,103 @@ async function validatePrompt(promptOutput) {
     return false;
   }
 }
-    
+
+async function createAlienObject() {
+  const alienObj = new Object();
+  // initialize the object adding alienObjKeys  keys
+  alienObjKeys.forEach(key => {
+    //add & initialize the alienObj object adding alienObjKeys keys & values
+    alienObj[key]= "";
+  }
+  )
+  if (alienObj.alienValidated) {
+    alienObj.alienValidated = false; // Set alienValidated to boolean false
+  }
+  if (alienObj.imgOverview) {
+    alienObj.imgOverview = await setPlaceholderImg(); // Set imgOverview to a placeholder image
+  }
+  return alienObj;
+}
+
+async function mapWriteAlienToOverviewList(overviewJson) {
+  console.log("Mapping JSON object to alienOverviewList schema.");
+  // DEBUG hardcode overviewJson
+  overviewJson = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by William H. Keith Jr. The Abh are a technologically advanced, humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."}'; // Example JSON
+  try {
+    let newAlien = await createAlienObject();
+    let overviewObj = cleanOutputPaste(overviewJson);
+    overviewObj = JSON.parse(overviewJson);
+    let lowerCaseOverviewObj = {};
+    for (let key in overviewObj) {
+      if (overviewObj.hasOwnProperty(key)) {
+        lowerCaseOverviewObj[key.toLowerCase()] = overviewObj[key];
+      }
+    }
+    // Use the global const overviewObjOutputKeys to map the values from lowerCaseOverviewObj object to the newAlien object
+    for (let key of overviewObjOutputKeys) {
+      newAlien[key] = lowerCaseOverviewObj[key.toLowerCase()];
+      console.log("Mapped key: " + key + " to value: " + lowerCaseOverviewObj[key.toLowerCase()] + " in newAlien object.");
+    }
+    return newAlien;
+  }
+  catch (error) {
+    const alertText = "Error mapping JSON object to alienOverviewList schema.";
+    console.error(alertText, error);
+    displayAlert(alertText);
+    return false;
+  }
+}
+
+// function write the new alien to the filename = `server\\data\\${letter}_alienOverviewList.json`
+async function writeAlienToOverviewList(newAlien) {
+let alienName = newAlien.name;
+let firstLetter = alienName.charAt(0).toLowerCase();
+let datafile = `server\\data\\${firstLetter}_alienOverviewList.json`;
+let filePath = path.join(__dirname, 'data\\', datafile);
+console.log(`Checking if file ${filePath} exist`);
+try {
+  if (!fs.existsSync(filePath)) {
+    alert(`File ${filePath} does not exist.`);
+    return;
+  }
+  fs.accessSync(filePath);
+}
+
+
+
+
+
+
+}
+
+async function pastePromptProcessor(event) {
+  event.preventDefault();
+  console.log('Form submitted');
+    // Get the value of the textarea field #pastePromptOutput-input
+  let pastePromptOutputInput = document.getElementById('pastePromptOutput-input');
+  let pastePromptOutputValue = pastePromptOutputInput.value;
+  console.log('Paste Prompt Value: ' + pastePromptOutputValue);
+    // Call function to validate the prompt response
+  let validationOutcome = await validatePrompt(pastePromptOutputValue);
+  console.log("Validation Outcome: " + validationOutcome);
+  if (validationOutcome === true) {
+    // Call function to map the TRUE validated pasted prompt response to a new alien Overview
+    let newAlienOverview = mapWriteAlienToOverviewList(pastePromptOutputValue);
+    console.log("New Alien Overview: " + newAlienOverview);
+    // Call function to write new alien to ${letter}_alienOverviewList
+
+    // console.log('New Record written.Redirecting to search-results page.');
+    // Redirect to search-results page
+    // let queryParams = getQueryParams();
+    // let searchValue = queryParams.searchValue;
+    // let alienFound = queryParams.alienFound;
+    // let originAction = queryParams.originAction;
+    // redirectToResults(searchValue, alienFound, originAction);
+  }
+}
+
+// Add the submit event listener to the element with ID pastePromptOutput-box
 const pastePromptOutputBox = document.getElementById('pastePromptOutput-box');
 if (pastePromptOutputBox) {
-  pastePromptOutputBox.addEventListener('submit', function(event) {
-        event.preventDefault();
-        console.log('Form submitted');
-        //get the value of the textarea field #pastePromptOutput-input
-        let pastePromptOutputInput = document.getElementById('pastePromptOutput-input');
-        let pastePromptOutputValue = pastePromptOutputInput.value;
-        console.log('Paste Prompt Value: ' + pastePromptOutputValue);
-        //call function to validate the prompt response
-      let validationOutcome = validatePrompt(pastePromptOutputValue);
-      if (validationOutcome) {
-        // call function to redirect to search-results page
-        console.log('New Record written.Redirecting to search-results page.');
-        // Redirect to search-results page
-        // let queryParams = getQueryParams();
-        // let searchValue = queryParams.searchValue;
-        // let alienFound = queryParams.alienFound;
-        // let originAction = queryParams.originAction;
-        // redirectToResults(searchValue, alienFound, originAction);
-      }
-      });
+  pastePromptOutputBox.addEventListener('submit', pastePromptProcessor);
 }

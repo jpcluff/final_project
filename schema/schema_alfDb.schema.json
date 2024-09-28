@@ -205,7 +205,7 @@
                 "year": {
                   "type": "integer"
                 },
-                "workFormat": {
+                "sourceType": {
                   "type": "string"
                 },
                 "creditsArray": {

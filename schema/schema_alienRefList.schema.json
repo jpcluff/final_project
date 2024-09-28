@@ -11,6 +11,12 @@
         "alienValidated": {
           "type": "boolean"
         },
+        "creators": {
+          "type": "string"
+        },
+        "sourceType": {
+          "enum": ["book","film","tv","game","comic","other"]
+        },
         "summary": {
           "type": "string"
         },
