@@ -164,7 +164,7 @@
 
     menu li.nav-item {
         display: none;
-        padding: 1rem;
+        /* padding: 1rem; */
         margin: 0;
         background-color: white;
         border-left: solid 1rem white;
@@ -175,6 +175,9 @@
     }
 
     /* Ensure the nav-item links have a consistent underline */
+    .nav-item a {
+        padding: 1rem;
+    }
 
     .nav-item.selected a {
         background-color: black;
@@ -184,7 +187,11 @@
     }
 
     .nav-item a:hover {
-        text-decoration: underline;
+        text-decoration: none;
+        background-color: lightgray;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        color: black;
     }
 
     button:hover {
@@ -689,8 +696,6 @@
         text-decoration: none;
         font-size: 3rem;
         color: lightgrey;
-        /* display: block; Display block instead of inline */
-        /* transition: 0.3s; Transition effects on hover (color) */
     }
 
     /* When you mouse over the navigation links, change their color */
