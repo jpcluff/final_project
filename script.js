@@ -379,15 +379,16 @@ export function extractSearchValue(searchInput) {
 export function askGenAIifAlienExists(searchValue, originAction) {
   console.log("Ask Gen AI if alien exists in database.");
   let overviewPrompt = constructOverviewPrompt(searchValue);
+  // function to build the overviewPrompt elements for manual copy & paste
   buildOverviewPromptElements(overviewPrompt, originAction);
-  // TO DO display prompt used to call the generative  AI endpoint
-  // TO DO await response
-  // TO DO call function test response
-  // TO DO call function to generateAlienOverview
-  // TO DO call the endpoint
-  // TO DO await response
-  // TO DO call function test response
-  // TO DO call function to write new alien to alienOverviewList
+  // TO DO sanitize, moderate (if user input) & construct prompt used to call the generative AI endpoint
+  // TO DO function to call the endpoint & ask if alien found
+  // TO DO call function parse AI response then 
+  // TO DO call function to map newAlien object from response
+  // TO DO call function to generateAlienOverview to display in results or fail search.
+  // TO DO call function to write new alien to alienOverviewList then
+  // TO DO call function to redirectToResults with searchValue, alienFOund=true originAction=add
+  // TO DO call function to redirectToResults with searchValue, alienFOund=false
 
 }
 // searchedValue is valid not empty
