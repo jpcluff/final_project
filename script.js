@@ -41,18 +41,32 @@ function menuToggle() {
     });
     mainContainer.style.zIndex = '-1'; // Set z-index to -1 to push main container AND overlay behind menu
   } else {
-    menuToggleImg.src = "images/noun-burger-menu-crop.png";
-    menuToggleImg.alt = "burger menu open";
-    menu.style.backgroundColor = "transparent";
-    menu.style.width = "10%";
-    menu.style.borderBottom = "none";
-    menuOpen = false;
-    menuItems.forEach(listItem => {
-      listItem.style.display = "none";
-    });
-    mainContainer.style.zIndex = '0'; // Set z-index to 0 to bring main container AND overlay in front of menu
+    closeMenu(menu, menuToggleImg, menuItems, mainContainer);
   }
 }
+function closeMenu(menu, menuToggleImg, menuItems, mainContainer) {
+  menuToggleImg.src = "images/noun-burger-menu-crop.png";
+  menuToggleImg.alt = "burger menu open";
+  menu.style.backgroundColor = "transparent";
+  menu.style.width = "10%";
+  menu.style.borderBottom = "none";
+  menuOpen = false;
+  menuItems.forEach(listItem => {
+    listItem.style.display = "none";
+  });
+  mainContainer.style.zIndex = '0'; // Set z-index to 0 to bring main container AND overlay in front of menu
+}
+// Add event listener to document to close menu if click is outside burger-menu
+document.addEventListener('click', function(event) {
+  let menu = document.querySelector('.burger-menu');
+  let menuToggleImg = document.getElementById('menu-toggle');
+  let menuItems = document.querySelectorAll('.nav-item');
+  let mainContainer = document.querySelector('.main-container'); // Get the main-container element
+
+  if (menuOpen && !menu.contains(event.target) && !event.target.classList.contains('menu-toggle')) {
+    closeMenu(menu, menuToggleImg, menuItems, mainContainer);
+  }
+});
 
 // START CODEBLOCK for Generative AI Prompt, call & response
 const alienRefListObj = {

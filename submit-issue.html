@@ -59,6 +59,55 @@
             <h2 class="h2-issue-banner">Submit an Issue</h2>
         </div>
         <div class="main-container">
+            <section class="issue-form-section">
+                <div class="issue-form-container">
+                    <h3 class="h3-issue-form">Update: <a href="alien-details.html" class="a-h2-alfname">alfName</a><a
+                            href="../howto-updates.html">What is an update?</a></h3>
+                    <div class="issue-form-div">
+                        <form autocomplete="off" class="issue-form-box" id="issue-form-box">
+                            <div class="issue-input-container">
+                                <div class="issue-form-category">
+                                    <label for="category" class="category-label">Category:</label>
+                                    <select form="issue-form-box" autocomplete="off" name="category" id="category"
+                                        size="1" tabindex="1" title="Select a category from the list">
+                                        <option value="default" selected>None</option>
+                                        <option value="book">Book</option>
+                                        <option value="film">Film</option>
+                                        <option value="tv">TV</option>
+                                        <option value="game">Game</option>
+                                        <option value="comic">Comic</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="issue-textarea-container">
+                                    <div class="issue-textarea-div">
+                                        <!-- button to clear textarea -->
+                                        <div class="issue-textarea-clear">
+                                            <label for="issue-textarea-input" class="issue-textarea-label">
+                                                Note for update:</label>
+                                            <button type="button" class="issue-textarea-clear-button"
+                                                id="issue-textarea-clear-button" aria-label="Clear text"
+                                                title="Clear text"
+                                                onclick="document.getElementById('issue-textarea-input').value=''">
+                                                &#10006;
+                                            </button>
+                                        </div>
+                                        <textarea class="issue-textarea-input" autocomplete="off"
+                                            id="issue-textarea-input" name="issueTextareaInput"
+                                            aria-label="Issue text  input" title="Write issue or update here." rows="7"
+                                            cols="1"> </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="issue-submit-div">
+                                <button type="submit" class="issue-button" id="issue-submit-button"
+                                    aria-label="Send issue button">Send &#10097;</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
             <section class="actions">
                 <div class="actions-label">
                     <h2>Actions</h2>
@@ -72,7 +121,8 @@
             <!-- alert hidden by default -->
             <section class="alert-box">
                 <div class="alert">
-                    <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
+                    <div class="alert-text" id="alertText" role="alert" aria-live="assertive">
+                        <h3>This is an alert box.</h3>
                     </div>
                     <div class="closebtn" onclick="this.parentElement.style.display='none';">
                         <div class="closex">&times;</div>
