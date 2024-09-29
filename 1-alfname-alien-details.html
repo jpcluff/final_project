@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script async src="script.js" type="module"></script>
-    <script defer src="overlay.js"></script>
+    <script defer src="alien-details.js" type="module"></script>
+    <script defer src="overlay.js" type="module"></script>
     <title>Alien Lifeform Database</title>
 </head>
 
@@ -57,7 +58,7 @@
         <div class="alien-name" id="alien-name">
             <h2 class="h2-alfname-banner">1-alfName</h2>
         </div>
-        <span id="span-open-validatorOverlay">Temp Overlay open</span>
+        <span id="span-open-validatorOverlay">Overlay open (DEMO ONLY)</span>
         <div class="main-container">
             <div class="alien-main-banner" id="alien-name-banner">
                 <div class="alien-name-max" id="alien-name-max">
@@ -69,7 +70,7 @@
                             <label class="icon-validator-label" title="Click to report error or question accuracy">
                                 <input type="checkbox" id="creator-checkbox" name="creator-checkbox" value="valid"
                                     checked="true">
-                                <span class="icon-validator">&#10008;</span>
+                                <span class="icon-validator">&checkmark;</span>
                             </label>
                         </div>
                         <h2 class="h2-creator">Creator&sol;s:</h2>
@@ -104,6 +105,16 @@
                             </label>
                         </div>
                     </div>
+                    <div class="alien-image" id="alien-image-3">
+                        <img src="images/placeholderImg/3-alien.png" alt="placeholder image of an alien lifeform">
+                        <div class="image-validator-container" id="image-validator-icon-1-alien-alfname-3">
+                            <label class="icon-validator-label" title="Click to report error or question accuracy">
+                                <input type="checkbox" id="3-image-checkbox" name="image-checkbox" value="valid"
+                                    checked="true">
+                                <span class="icon-validator">&check;</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section class="alien-details-container overview">
@@ -126,7 +137,7 @@
             <section class="alien-details-container sources">
                 <div class="detail-validator-container">
                     <label class="icon-validator-label" title="Click to report error or question accuracy">
-                        <input type="checkbox" id="overview-checkbox" name="overview-checkbox" value="valid"
+                        <input type="checkbox" id="sources-checkbox" name="sources-checkbox" value="valid"
                             checked="true">
                         <span class="icon-validator">&check;</span>
                 </div>
@@ -171,7 +182,7 @@
             <section class="alien-details-container physical-characteristics">
                 <div class="detail-validator-container">
                     <label class="icon-validator-label" title="Click to report error or question accuracy">
-                        <input type="checkbox" id="overview-checkbox" name="overview-checkbox" value="valid"
+                        <input type="checkbox" id="characteristics-checkbox" name="characteristics-checkbox" value="valid"
                             checked="true">
                         <span class="icon-validator">&check;</span>
                 </div>
@@ -189,7 +200,7 @@
             <section class="alien-details-container habitat">
                 <div class="detail-validator-container">
                     <label class="icon-validator-label" title="Click to report error or question accuracy">
-                        <input type="checkbox" id="overview-checkbox" name="overview-checkbox" value="valid"
+                        <input type="checkbox" id="habitat-checkbox" name="habitat-checkbox" value="valid"
                             checked="true">
                         <span class="icon-validator">&check;</span>
                 </div>
@@ -213,15 +224,16 @@
                     <div class="validator-explainer-container">
                         <hgroup class="explainer-header-container">
                             <h2 class="h2-toast">Congratulations!</h2>
-                            <p class="p">You're adding <div class="span-alfname-add" id="span-alfname-add">alfname-1
-                                </div> to the ALfDb.</h2>
+                            <p class="p">You're adding
+                            <div class="span-alfname-add" id="span-alfname-add">alfname-1
+                            </div> to the ALfDb.</h2>
                         </hgroup>
                         <div class="explainer-steps-container">
                             <div class="explainer-img"><img src="images/noun-about-crop.png" alt=""></div>
                             <dl class="explainer-step">
                                 <dt class="ptext-step">1. Click on the arrow to expand the info section & review
                                     the information.</dt>
-                                </dl>
+                            </dl>
                             <dl class="explainer-step">
                                 <dt class="ptext-step">2. Click on an X to confirm the images & info are correct.</dt>
                                 <dd>2.1 Click again to switch between confirmed ✔ or unconfirmed X.</dd>

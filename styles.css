@@ -472,16 +472,19 @@
     }
 
     .alien-name-max {
-        align-self: flex-start;
-        padding: 0.5rem;
+        width: 100%;
+        padding: 0.5rem 0;
     }
 
     .h2-alfname {
+        display: flex;
         color: black;
         font-size: 3rem;
         text-align: center;
         white-space: nowrap;
-        margin: auto;
+        border-bottom: solid 0.2rem black;
+        padding-left: 1rem;
+        /* margin: auto; */
         text-transform: uppercase;
     }
 
