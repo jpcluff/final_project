@@ -38,9 +38,10 @@ export function openSubmitIssue() {
   let issueWith = issueBtnId.split("-")[0];
   const alienName = document.querySelector(".h2-alfname").innerHTML;
   const submitIssueUrl = `submit-issue.html?issueWith=${issueWith}&alienName=${alienName}`;
-  alert(`Opening Submit Issue page with ${submitIssueUrl}`);
-  // window.location.href = submitIssueUrl
+  console.log(`Opening Submit Issue page with ${submitIssueUrl}`);
+  window.location.href = submitIssueUrl
 }
+
 function replaceAlfname(alienName) {
   console.log("replaceAlfname: alienName=", alienName);
 
