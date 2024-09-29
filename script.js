@@ -640,15 +640,13 @@ async function mapWriteNewAlien(overviewJson) {
     console.log("New Alien object created to map overviewJson: " + JSON.stringify(newAlien));
     // newAlien object  {name: "", alienValidated: false, sourceType: "", summary: "", imgOverview:"./images/placeholderImg/n-alien.png"}
     let overviewObj = cleanOutputPaste(overviewJson);
-    console.log("Cleaned JSON string: " + overviewObj);
     // Parse the string to JSON object
     const overviewObjParsed = JSON.parse(overviewObj);
-    console.log("Parsed JSON string: " + JSON.stringify(overviewObjParsed));
     // map the values in overviewObjParsed to newAlien
     if (overviewObjParsed.alienExists) {
       let sanitizedAlienName = extractSearchValue(overviewObjParsed.searchAlienName);
       newAlien.name = sanitizedAlienName;
-      newAlien.sourcetype = overviewObjParsed.sourceType;
+      newAlien.sourceType = overviewObjParsed.sourceType;
       newAlien.summary = overviewObjParsed.summary;
       console.log("Mapped newAlienParsed: " + JSON.stringify(newAlien));
     }
@@ -730,14 +728,15 @@ async function pastePromptProcessor(event) {
       // Call function to map the TRUE validated json string to a new alien
       let newAlienObj = await mapWriteNewAlien(pastePromptOutputValue);
       console.log("New Alien type of "+ typeof newAlienObj +". Overview: " + JSON.stringify(newAlienObj));
-      if (newAlienObj.alienExists === true) {
+      let validatedResponseJson = JSON.parse(pastePromptOutputValue);
+      if (validatedResponseJson.alienExists === true) {
       writeAlienToOverviewList(newAlienObj);
     }
     else {
       // alien does not exist
-      console.log("Alien does not exist. Unable to add to ALfDb.");
-      let failedSearchJson = JSON.parse(pastePromptOutputValue);
-      redirectToResults(failedSearchJson.searchAlienName, failedSearchJson.alienExists, "add");
+      displayAlert("Alien does not exist. Unable to add to ALfDb.");
+      // let failedSearchJson = JSON.parse(pastePromptOutputValue);
+      // redirectToResults(failedSearchJson.searchAlienName, failedSearchJson.alienExists, "add");
     }
     }
   }

@@ -1,1 +1,9 @@
-[{"name":"b-alfName","alienValidated":false,"creators":"creatorName-1, creatorName-2","summary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in nibh ullamcorper, pharetra elit vel, luctus dolor. Nullam viverra ligula velit, in ultricies tellus mattis ornare. Nunc id ante tellus. Sed in mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ult","imgOverview":"./images/placeholderImg/4-alien.png"}]
+[
+{
+        "name": "Baalols",
+        "alienValidated": false,
+        "sourceType": "book",
+        "summary": "The Baalols are a fictional species of alien lifeforms in the Perry Rhodan science fiction series. The Baalols are a highly advanced, technologically sophisticated species that are known for their mastery of space travel and their ability to create artificial intelligence. They are also known for their distinctive appearance, being tall and slender with large, glowing eyes.",
+        "imgOverview": "./images/placeholderImg/3-alien.png"
+      }
+]

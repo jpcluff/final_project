@@ -381,14 +381,12 @@
         max-width: 90%;
     }
 
-    .search-result {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: center;
-        /* margin: 1rem auto; */
+    .search-results a:hover {
+        background-color: lightgray;
+        text-decoration: none;
+        border-radius: 1rem;
     }
+
 
     .search-result-image {
         display: flex;
@@ -414,11 +412,6 @@
         /* min-width: 50%; */
     }
 
-    a:hover.search-result-link {
-        background-color: rgba(255, 255, 255, 0.5);
-        text-decoration: none;
-        border-radius: 1rem;
-    }
 
     /* .search-result-text {
         min-width: 50%;
