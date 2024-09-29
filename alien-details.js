@@ -22,11 +22,9 @@ const spanCloseOverlay = document.getElementById("overlay-closebtn");
 const continueButton = document.getElementById("a-btn-continue");
 try {
   if (spanCloseOverlay) {
-    console.log("Listener added for spanCloseOverlay");
-    spanCloseOverlay.addEventListener("click", closeOverlay);
+   spanCloseOverlay.addEventListener("click", closeOverlay);
   }
   if (continueButton) {
-    console.log("Listener added for continueButton");
     continueButton.addEventListener("click", closeOverlay);
   }
 
@@ -34,6 +32,15 @@ try {
   console.error("Error adding event listeners for close and continue buttons");
 }
 
+// Open Submit Issue page
+export function openSubmitIssue() {
+  const issueBtnId = this.id;
+  let issueWith = issueBtnId.split("-")[0];
+  const alienName = document.querySelector(".h2-alfname").innerHTML;
+  const submitIssueUrl = `submit-issue.html?issueWith=${issueWith}&alienName=${alienName}`;
+  alert(`Opening Submit Issue page with ${submitIssueUrl}`);
+  // window.location.href = submitIssueUrl
+}
 function replaceAlfname(alienName) {
   console.log("replaceAlfname: alienName=", alienName);
 
@@ -100,8 +107,15 @@ function addListenersToIconValidatorLabels() {
     }
   )
 }
-
-
+function addListenersToIssueBtn() {
+  const issueBtns = document.querySelectorAll(".issue-btn");
+  if (issueBtns) {
+    issueBtns.forEach( 
+      (issueBtn) => {
+    issueBtn.addEventListener("click", openSubmitIssue);
+  });
+  }
+}
 
 //  if add then flow logic must call function to generate the alien details from the alien overview list
 //  else browse i.e. alienFound=true from a search then flow logic must call function to generate the alien details from the alien overview list
@@ -119,7 +133,8 @@ function handleDetailsPageLoad() {
   }
   replaceAlfname(alienName);
   addListenersToCheckBoxes();
- addListenersToIconValidatorLabels()  ;
+ addListenersToIconValidatorLabels();
+ addListenersToIssueBtn();
 }
 
 // validatorOverlay element is open if originAction is "add"

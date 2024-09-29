@@ -393,6 +393,7 @@
         text-decoration: none;
         border-radius: 1rem;
     }
+
     a.search-result-link:hover {
         background-color: lightgray;
         text-decoration: none;
@@ -512,7 +513,7 @@
     .creator-name {
         padding: 2rem;
         overflow: hidden;
-  text-overflow: ellipsis;
+        text-overflow: ellipsis;
     }
 
     .creator-name p {
@@ -522,8 +523,12 @@
 
     .creators-validator-container {
         position: relative;
-        flex-wrap: nowrap;
         display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        flex-wrap: nowrap;
     }
 
     /* alien details images section */
@@ -800,6 +805,7 @@
         padding: 0.5rem 1rem;
 
     }
+
     /* On mouse-over, add a light grey background color */
     .icon-validator:hover {
         cursor: pointer;
@@ -807,12 +813,14 @@
         /* box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); */
         /* Add a shadow for better visibility */
     }
+
     .icon-validator-label {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
     }
+
     /* Hide the browser's default checkbox */
     .icon-validator-label input {
         appearance: none;
@@ -823,6 +831,7 @@
         height: 0;
         width: 0;
     }
+
     /* On mouse-over, add a light grey background color */
     .icon-validator-label:hover input~.icon-validator {
         cursor: pointer;
@@ -830,13 +839,29 @@
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         /* Add a shadow for better visibility */
     }
+
     .icon-validator-label input:checked~.icon-validator {
         background-color: lightgreen;
     }
+
     .icon-validator-label input:not(:checked)~.icon-validator {
         background-color: lightcoral;
     }
 
+    .issue-btn {
+        font-size: medium;
+        padding: 0.5rem 1rem;
+        border: 0.2rem solid black;
+        border-radius: 50%;
+        text-align: center;
+        background-color: black;
+        color: white;
+    }
+
+    .issue-btn:hover {
+        color: black;
+        background-color: grey;
+    }
 
     /* Details table */
     table {
@@ -863,7 +888,7 @@
         background-color: transparent;
         width: 0;
         padding: 0;
-        margin: 0;  
+        margin: 0;
     }
 
     .alert {
@@ -906,6 +931,7 @@
         cursor: pointer;
         width: 50%;
     }
+
     .closex:hover {
         background-color: grey;
     }
@@ -1095,7 +1121,7 @@
         .creator-name {
             /* white-space: wrap; */
             overflow: hidden;
-  text-overflow: ellipsis;
+            text-overflow: ellipsis;
             padding: 0.5rem;
         }
 
@@ -1162,9 +1188,10 @@
             max-width: 100%;
             max-height: 100%;
         }
+
         .alert-text {
             display: none;
-            white-space:unset;
+            white-space: unset;
         }
 
         /* END MOBILE Responsive */
@@ -1277,7 +1304,8 @@
 
     /* end responsive----------------------------------------------- */
 
-    .overviewPrompt-copy-instructions-container, .newAlien-copy-instructions-container {
+    .overviewPrompt-copy-instructions-container,
+    .newAlien-copy-instructions-container {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
@@ -1290,27 +1318,32 @@
         width: 90%;
     }
 
-    .promptCopy-button, .newAlienCopy-button {
+    .promptCopy-button,
+    .newAlienCopy-button {
         padding: 1rem;
         border: 0.2rem solid black;
         border-radius: 0.5rem;
         background-color: white;
     }
 
-    .promptCopy-button:hover, .newAlienCopy-button:hover {
+    .promptCopy-button:hover,
+    .newAlienCopy-button:hover {
         background-color: grey;
     }
 
-    .promptCopy-button img, .newAlienCopy-button img {
+    .promptCopy-button img,
+    .newAlienCopy-button img {
         max-width: 30px;
     }
 
-    .overviewPrompt-text, .newAlien-text {
+    .overviewPrompt-text,
+    .newAlien-text {
         white-space: pre-line;
         margin: auto;
         padding: 1rem;
         width: 90%;
     }
+
     .pastePromptOutput-box {
         display: flex;
         flex-wrap: nowrap;
@@ -1320,6 +1353,7 @@
         margin: auto;
         width: 100%;
     }
+
     .pastePromptOutput-input-container {
         display: flex;
         flex-wrap: nowrap;
@@ -1328,13 +1362,15 @@
         align-items: center;
         width: 100%;
     }
+
     .pastePromptOutput-clear-button {
-        font-size:large;
+        font-size: large;
         padding: 0.1rem;
         border: 0.2rem solid black;
         border-radius: 5rem;
         background-color: white;
     }
+
     .pastePromptOutput-clear {
         display: flex;
         flex-wrap: nowrap;
@@ -1344,26 +1380,30 @@
         width: 100%;
         padding: 0.5rem 0;
     }
+
     .pastePromptOutput-input-div {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
         justify-content: center;
-        align-items:flex-start;
+        align-items: flex-start;
         padding: 1rem 0;
         border-radius: 0.5rem;
         width: 100%;
     }
+
     .pastePromptOutput-label {
         white-space: nowrap;
     }
-   .pastePromptOutput-input {
+
+    .pastePromptOutput-input {
         resize: none;
         text-wrap: wrap;
         border-radius: 0.5rem;
         border: 2px solid black;
         width: 100%;
     }
+
     .pastePromptOutput-input-submit {
         display: flex;
         flex-wrap: nowrap;
@@ -1372,12 +1412,14 @@
         align-items: center;
         width: 90%;
     }
-    .pastePromptOutput-input-button{
+
+    .pastePromptOutput-input-button {
         padding: 1rem;
         border: 0.2rem solid black;
         border-radius: 0.5rem;
         background-color: white;
     }
+
     textarea.pastePromptOutput-input {
         text-align: left;
         align-content: flex-start;
@@ -1385,6 +1427,7 @@
         font-size: medium;
         background-color: white;
     }
+
     .search-button-img {
         width: 55px;
     }
