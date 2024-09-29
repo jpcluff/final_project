@@ -5,5 +5,17 @@
         "sourceType": "book",
         "summary": "The Baalols are a fictional species of alien lifeforms in the Perry Rhodan science fiction series. The Baalols are a highly advanced, technologically sophisticated species that are known for their mastery of space travel and their ability to create artificial intelligence. They are also known for their distinctive appearance, being tall and slender with large, glowing eyes.",
         "imgOverview": "./images/placeholderImg/3-alien.png"
+      },{
+        "name": "Babel fish",
+        "alienValidated": false,
+        "sourceType": "book",
+        "summary": "The Babel fish is a fictional species from the science fiction comedy series *The Hitchhiker's Guide to the Galaxy* by Douglas Adams. It is a small, yellow, fish-like creature that, when placed in someone's ear, allows them to understand any language. This makes it a popular tool for interstellar communication.",
+        "imgOverview": "./images/placeholderImg/4-alien.png"
+      },{
+        "name": "Badoon",
+        "alienValidated": false,
+        "sourceType": "comic",
+        "summary": "The Badoon are a fictional alien race appearing in American comic books published by Marvel Comics.  The Badoon are technologically advanced spacefaring humanoids with reptilian features, known for their cruel and violent nature. They are primarily antagonists of the Fantastic Four and have been featured in numerous comic book stories.",
+        "imgOverview": "./images/placeholderImg/1-alien.png"
       }
 ]

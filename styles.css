@@ -386,6 +386,11 @@
         text-decoration: none;
         border-radius: 1rem;
     }
+    a.search-result-link:hover {
+        background-color: lightgray;
+        text-decoration: none;
+        border-radius: 1rem;
+    }
 
 
     .search-result-image {

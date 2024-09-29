@@ -80,7 +80,7 @@ function copyNewAlienText() {
 
 function buildOverviewPromptElements(overviewPrompt) {
   let mainContainer = document.querySelector('.main-container'); // Get the main-container element	
- clearOldSections();
+  clearOldSections();
   let overviewPromptSection = document.createElement("section");
   overviewPromptSection.className = "overviewPrompt-section";
   let overviewPromptLabel = document.createElement("div");
@@ -179,7 +179,7 @@ function clearOldSections() {
   if (pasteArea) {
     pasteArea.value = "";
   }
- 
+
   let statsElement = document.querySelector(".stats");
   if (statsElement) {
     statsElement.remove();
@@ -576,10 +576,10 @@ async function validatePrompt(promptOutput) {
       promptOutput = promptOutput.slice(1, -1);
       console.log("Prompt Output is JSON string array of objects:", promptOutput);
     }
-     // Use the const overviewObjOutputKeys for string matching in json string
+    // Use the const overviewObjOutputKeys for string matching in json string
     const missingKeys = [];
     // Check for the string match in promptOutput to each value in requiredOutputKeys
-     for (let key of overviewObjOutputKeys) {
+    for (let key of overviewObjOutputKeys) {
       let matchString = `"${key}"`;
       matchString = matchString.replace(/ /g, "");
       matchString = matchString.toLowerCase();
@@ -673,6 +673,13 @@ async function writeAlienToOverviewList(newAlien) {
     let mainContainer = document.querySelector('.main-container'); // Get the main-container element	
     let newAlienSection = document.createElement("section");
     newAlienSection.className = "newAlien-section";
+    let newsearchResultLink = document.createElement("a");
+    // ../alien-details.html?alienName=${searchValue}?originAction=${originAction}`
+    let searchValue = newAlien.name;
+    searchValue = extractSearchValue(searchValue);
+    newsearchResultLink.href = "alien-details.html?alienName=" + searchValue + "?originAction=add";
+    newsearchResultLink.title = "View Alien Details";
+    newsearchResultLink.className = "search-result-link";
     let newAlienLabelDiv = document.createElement("div");
     newAlienLabelDiv.className = "newAlien-label";
     let newAlienH2 = document.createElement("h2");
@@ -698,38 +705,39 @@ async function writeAlienToOverviewList(newAlien) {
     let newAlienText = document.createElement("pre");
     newAlienText.className = "newAlien-text";
     let newAlienJson = JSON.stringify(newAlien, null, 2);
-    newAlienText.innerHTML = ","+newAlienJson;
-    newAlienSection.appendChild(newAlienCopyInstructionsContainer);
-    newAlienSection.appendChild(newAlienText);
+    newAlienText.innerHTML = "," + newAlienJson;
+    newsearchResultLink.appendChild(newAlienCopyInstructionsContainer);
+    newsearchResultLink.appendChild(newAlienText);
+    newAlienSection.appendChild(newsearchResultLink);
     if (mainContainer) {
       mainContainer.insertBefore(newAlienSection, mainContainer.firstChild);
     }
   }
-catch (err) {
-      console.error(`No new alien to add because: ${err}`);
-      return;
-    }
+  catch (err) {
+    console.error(`No new alien to add because: ${err}`);
+    return;
+  }
 }
 
 async function pastePromptProcessor(event) {
-  
-    event.preventDefault();
-    console.log('Form submitted');
-    // Get the value of the textarea field #pastePromptOutput-input
-    let pastePromptOutputInput = document.getElementById('pastePromptOutput-input');
-    let pastePromptOutputValue = pastePromptOutputInput.value;
-    // DEBUG hardcode pastePromptOutputValue json string
-      // pastePromptOutputValue = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by  William H. Keith Jr. The Abh are a technologically advanced,  humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."} '; // Example JSON
-    console.log('Paste Prompt Value: ' + pastePromptOutputValue);
-    // Call function to validate the prompt response
-    let validationOutcome = await validatePrompt(pastePromptOutputValue);
-    console.log("Validation Outcome: " + validationOutcome);
-    if (validationOutcome === true) {
-      // Call function to map the TRUE validated json string to a new alien
-      let newAlienObj = await mapWriteNewAlien(pastePromptOutputValue);
-      console.log("New Alien type of "+ typeof newAlienObj +". Overview: " + JSON.stringify(newAlienObj));
-      let validatedResponseJson = JSON.parse(pastePromptOutputValue);
-      if (validatedResponseJson.alienExists === true) {
+
+  event.preventDefault();
+  console.log('Form submitted');
+  // Get the value of the textarea field #pastePromptOutput-input
+  let pastePromptOutputInput = document.getElementById('pastePromptOutput-input');
+  let pastePromptOutputValue = pastePromptOutputInput.value;
+  // DEBUG hardcode pastePromptOutputValue json string
+  // pastePromptOutputValue = '{"alienExists": true, "searchAlienName": "Abh", "sourceType": "book", "summary": "The Abh are a fictional alien species from the Crest of the Stars science fiction series by  William H. Keith Jr. The Abh are a technologically advanced,  humanoid species. They are known for their strong sense of community and their advanced technology. They are also known for their distinctive culture and their unique physiology."} '; // Example JSON
+  console.log('Paste Prompt Value: ' + pastePromptOutputValue);
+  // Call function to validate the prompt response
+  let validationOutcome = await validatePrompt(pastePromptOutputValue);
+  console.log("Validation Outcome: " + validationOutcome);
+  if (validationOutcome === true) {
+    // Call function to map the TRUE validated json string to a new alien
+    let newAlienObj = await mapWriteNewAlien(pastePromptOutputValue);
+    console.log("New Alien type of " + typeof newAlienObj + ". Overview: " + JSON.stringify(newAlienObj));
+    let validatedResponseJson = JSON.parse(pastePromptOutputValue);
+    if (validatedResponseJson.alienExists === true) {
       writeAlienToOverviewList(newAlienObj);
     }
     else {
@@ -738,11 +746,11 @@ async function pastePromptProcessor(event) {
       // let failedSearchJson = JSON.parse(pastePromptOutputValue);
       // redirectToResults(failedSearchJson.searchAlienName, failedSearchJson.alienExists, "add");
     }
-    }
   }
+}
 
-  // Add the submit for the pastePromptOutput-box form
-  const pastePromptOutputBox = document.getElementById('pastePromptOutput-box');
-  if (pastePromptOutputBox) {
-    pastePromptOutputBox.addEventListener('submit', pastePromptProcessor);
-  }
+// Add the submit for the pastePromptOutput-box form
+const pastePromptOutputBox = document.getElementById('pastePromptOutput-box');
+if (pastePromptOutputBox) {
+  pastePromptOutputBox.addEventListener('submit', pastePromptProcessor);
+}
