@@ -1,1 +1,9 @@
-[{"name":"c-alfName","alienValidated":false,"creators":"creatorName-1, creatorName-2","summary":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in nibh ullamcorper, pharetra elit vel, luctus dolor. Nullam viverra ligula velit, in ultricies tellus mattis ornare. Nunc id ante tellus. Sed in mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ult","imgOverview":"./images/placeholderImg/4-alien.png"}]
+[
+{
+        "name": "Cabal",
+        "alienValidated": false,
+        "sourceType": "videogame",
+        "summary": "The Cabal are a fictional alien race from the Destiny franchise. They are a warlike and militaristic species known for their technological prowess and their massive, imposing physique. They are characterized by their powerful armor and their advanced weaponry. The Cabal are a major antagonist in the Destiny universe, and their goal is to conquer and control the Last City on Earth. They were introduced in the first Destiny game and have since played a major role in the franchise.",
+        "imgOverview": "./images/placeholderImg/4-alien.png"
+      }
+]
