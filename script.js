@@ -677,7 +677,7 @@ async function writeAlienToOverviewList(newAlien) {
     // ../alien-details.html?alienName=${searchValue}?originAction=${originAction}`
     let searchValue = newAlien.name;
     searchValue = extractSearchValue(searchValue);
-    newsearchResultLink.href = "alien-details.html?alienName=" + searchValue + "?originAction=add";
+    newsearchResultLink.href = "alien-details.html?alienName=" + searchValue + "&originAction=add";
     newsearchResultLink.title = "View Alien Details";
     newsearchResultLink.className = "search-result-link";
     let newAlienLabelDiv = document.createElement("div");

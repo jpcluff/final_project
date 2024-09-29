@@ -825,6 +825,10 @@
     .icon-validator-label input:checked~.icon-validator {
         background-color: lightgreen;
     }
+    .icon-validator-label input:not(:checked)~.icon-validator {
+        background-color: lightcoral;
+    }
+
 
     /* Details table */
     table {
@@ -1176,7 +1180,6 @@
         }
 
         .creators-container {
-            overflow: hidden;
             flex-direction: column;
             width: 90%;
         }

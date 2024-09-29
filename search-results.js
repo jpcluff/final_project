@@ -63,7 +63,7 @@ async function buildSearchResultsElements(searchValue, originAction) {
     return;
   }
   searchValue = extractSearchValue(searchValue);
-  searchValue = cleanSearchValue(searchValue);
+  // searchValue = cleanSearchValue(searchValue);
   // Get the search results from the API
   const matchedAlienObj = await getMatchedAlienOverview(searchValue);
   console.log("Search Results:" + JSON.stringify(matchedAlienObj));
@@ -74,7 +74,7 @@ async function buildSearchResultsElements(searchValue, originAction) {
   const searchResultsSection = document.createElement("section");
   searchResultsSection.classList.add("search-results");
   const alienDetailsHrefElement = document.createElement("a");
-  alienDetailsHrefElement.href = `../alien-details.html?alienName=${searchValue}?originAction=${originAction}`;
+  alienDetailsHrefElement.href = `../alien-details.html?alienName=${searchValue}&originAction=${originAction}`;
   alienDetailsHrefElement.classList.add("search-result-link");
   const h4alienName = document.createElement("h4");
   h4alienName.innerHTML = matchedAlienObj.name;
