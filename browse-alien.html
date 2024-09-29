@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script async src="script.js" type="module"></script>
-    <script async src="search-results.js" type="module"></script>
-    <script defer src="overlay.js"></script>
     <title>Alien Lifeform Database</title>
 </head>
 
@@ -30,13 +28,13 @@
         <menu class="burger-menu" tabindex="0">
             <li class="menu-toggle" title="Click to expand &amp; close"><a href="#"><img id="menu-toggle"
                         src="images/noun-burger-menu-crop.png" alt="burger menu open"></a></li>
-            <li class="nav-item selected"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="add-alien.html">Add Alien</a></li>
-            <li class="nav-item"><a href="browse-alien.html">Browse Alien Lifeforms</a></li>
+            <li class="nav-item selected"><a href="browse-alien.html">Browse Alien Lifeforms</a></li>
             <li class="nav-item"><a href="#">How to Submit an Update</a></li>
             <li class="nav-item"><a href="submit-issue.html "> Report an Issue</a></li>
             <li class="nav-item"><a href="#">About the ALfDb</a></li>
-            <li class="nav-item selected"><a href="search-results.html">Search results page</a></li>
+            <li class="nav-item"><a href="search-results.html">Search results page</a></li>
             <li class="nav-item"><a href="lofi-designs.html">Lofi Designs</a></li>
             <li class="nav-item"><a href="credits.html">Credits</a></li>
         </menu>
@@ -57,24 +55,31 @@
         </div>
     </header>
     <main>
-        <div class="search-results-header">
-            <h2>Search Results</h2>
-            <div class="search-results-count">
-                <h3 id="h3-page-count">Showing page <span id="page-count-min">1</span> of <span
-                        id="page-count-max">10</span></h3>
-                <h3 id="h3-result-count"><span id="result-count">1</span> alien matched to search.</h3>
-            </div>
-        </div>
         <div class="main-container">
-            <!-- START search result section including link -->
+            <section class="actions">
+                <div class="actions-label">
+                    <h2>Actions</h2>
+                </div>
+                <div class="submit"><button id="action-add-button" class="action-button add-button" type="button">Add
+                        Alien +</button></div>
+                <div class="submit"><button id="action-browse-button"
+                        onclick="window.location.href='../browse-aliens.html';" class="action-button browse-button"
+                        type="button">Browse</button></div>
+            </section>
+            <section class="browse-alien">
+                <img src="/images/alfdb-lofi-wireframe-browse.png" alt="lofi mockup of browse UI">
+            </section>
+            <!-- alert hidden by default -->
+            <section class="alert-box">
+                <div class="alert">
+                    <div class="alert-text" id="alertText" role="alert" aria-live="assertive">This is an alert box.
+                    </div>
+                    <div class="closebtn" onclick="this.parentElement.style.display='none';">
+                        <div class="closex">&times;</div>
+                    </div>
+                </div>
+            </section>
             <!-- main contain end -->
-        </div>
-        <div class="pagination">
-            <div class="pagination-button" id="previous-page">Previous</div>
-            <div class="pagination">
-                <h3>Page <span id="page-number">1</span> of <span id="page-count">1</span></h3>
-            </div>
-            <div class="pagination-button" id="next-page">Next</div>
         </div>
     </main>
     <footer>

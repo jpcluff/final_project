@@ -876,6 +876,7 @@
     }
 
     .issue-btn:hover {
+        cursor: pointer;
         color: black;
         background-color: grey;
     }

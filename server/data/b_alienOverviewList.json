@@ -23,5 +23,17 @@
         "sourceType": "videogame",
         "summary": "The Bahmi are a fictional alien species in the  *Rift: Planes of Telara* massively multiplayer online role-playing game (MMORPG).  They are a race of aquatic humanoids who live in the Plane of Water.  They are known for their magic and their mastery of the elements.",
         "imgOverview": "./images/placeholderImg/4-alien.png"
+      },{
+        "name": "Bailies",
+        "alienValidated": false,
+        "sourceType": "tv",
+        "summary": "The Bailies are a fictional alien species from the science fiction television series Cleopatra 2525.  They are humanoid beings with a distinctive green skin and are known for their advanced technology and their love of gambling. They are an important part of the series' recurring cast and are known for their unique culture.",
+        "imgOverview": "./images/placeholderImg/1-alien.png"
+      },{
+        "name": "Bajoran",
+        "alienValidated": false,
+        "sourceType": "tv",
+        "summary": "The Bajorans are a fictional humanoid species from the *Star Trek* universe. They are known for their deeply religious culture and their history of oppression under the rule of the Cardassians. Bajorans are characterized by their distinctive facial markings and their deep spirituality. They are a major part of the *Star Trek: Deep Space Nine* television series, where they play a central role in the show's political and religious themes.",
+        "imgOverview": "./images/placeholderImg/1-alien.png"
       }
 ]

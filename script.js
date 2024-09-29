@@ -439,6 +439,8 @@ function overwriteSearchValue(event) {
   let handler = submitter.id;
   let searchValue = "";
   let originAction = "";
+  let sourceType = "";
+  let othersourceTypes = "";
   if (handler === "search-button") {
     searchValue = searchBoxInput.value; // Get the search input value from global variable
     originAction = "search";
