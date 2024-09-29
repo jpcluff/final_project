@@ -17,5 +17,11 @@
         "sourceType": "comic",
         "summary": "The Badoon are a fictional alien race appearing in American comic books published by Marvel Comics.  The Badoon are technologically advanced spacefaring humanoids with reptilian features, known for their cruel and violent nature. They are primarily antagonists of the Fantastic Four and have been featured in numerous comic book stories.",
         "imgOverview": "./images/placeholderImg/1-alien.png"
+      },{
+        "name": "Bahmi",
+        "alienValidated": false,
+        "sourceType": "videogame",
+        "summary": "The Bahmi are a fictional alien species in the  *Rift: Planes of Telara* massively multiplayer online role-playing game (MMORPG).  They are a race of aquatic humanoids who live in the Plane of Water.  They are known for their magic and their mastery of the elements.",
+        "imgOverview": "./images/placeholderImg/4-alien.png"
       }
 ]
