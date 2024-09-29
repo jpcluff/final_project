@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script async src="script.js" type="module"></script>
-    <script async src="alien-details.js" type="module"></script>
-    <script defer src="overlay.js"></script>
+    <script defer src="alien-details.js" type="module"></script>
     <title>Alien Lifeform Database</title>
 </head>
 
@@ -58,7 +57,7 @@
     </header>
     <main>
         <div class="alien-name" id="alien-name">
-            <h2>1-alfName</h2>
+            <h2 class="h2-alfname-banner">1-alfName</h2>
         </div>
             <div class="main-container">
             <div class="alien-main-banner" id="alien-name-banner">
@@ -68,10 +67,14 @@
                 <div class="creators-container" id="creators">
                     <div class="creator-label">
                         <div class="creators-validator-container">
+                            <label class="icon-issue-label" title="Click to report error or question accuracy">
+                                <input type="button" id="creator-issue" name="creator-issue">
+                                <span class="icon-issue">&#10071;</span>
+                            </label>
                             <label class="icon-validator-label" title="Click to report error or question accuracy">
                                 <input type="checkbox" id="creator-checkbox" name="creator-checkbox" value="valid"
                                     checked="true">
-                                <span class="icon-validator">&#10008;</span>
+                                <span class="icon-validator invalid">&#10008;</span>
                             </label>
                         </div>
                         <h2 class="h2-creator">Creator&sol;s:</h2>

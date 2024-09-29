@@ -501,7 +501,8 @@
 
     .creator-name {
         padding: 2rem;
-        white-space: nowrap;
+        overflow: hidden;
+  text-overflow: ellipsis;
     }
 
     .creator-name p {
@@ -791,7 +792,6 @@
         padding: 0.5rem 1rem;
 
     }
-
     /* On mouse-over, add a light grey background color */
     .icon-validator:hover {
         cursor: pointer;
@@ -799,14 +799,12 @@
         /* box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9); */
         /* Add a shadow for better visibility */
     }
-
     .icon-validator-label {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
     }
-
     /* Hide the browser's default checkbox */
     .icon-validator-label input {
         appearance: none;
@@ -817,7 +815,6 @@
         height: 0;
         width: 0;
     }
-
     /* On mouse-over, add a light grey background color */
     .icon-validator-label:hover input~.icon-validator {
         cursor: pointer;
@@ -825,7 +822,6 @@
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
         /* Add a shadow for better visibility */
     }
-
     .icon-validator-label input:checked~.icon-validator {
         background-color: lightgreen;
     }
@@ -1085,7 +1081,9 @@
         }
 
         .creator-name {
-            white-space: wrap;
+            /* white-space: wrap; */
+            overflow: hidden;
+  text-overflow: ellipsis;
             padding: 0.5rem;
         }
 
