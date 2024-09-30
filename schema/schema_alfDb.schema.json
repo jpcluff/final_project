@@ -30,7 +30,8 @@
           },
           "required": [
             "creators",
-            "validated"          ]
+            "validated"
+          ]
         },
         "summaryObj": {
           "type": "object",
@@ -61,7 +62,8 @@
                   "type": "object",
                   "properties": {
                     "addSequence": {
-                      "type": "integer", "Minimum":0
+                      "type": "integer",
+                      "Minimum": 0
                     },
                     "imageSrc": {
                       "type": "string"
@@ -71,7 +73,7 @@
                     },
                     "validatedDate": {
                       "type": "string",
-                      "format":"date-time"
+                      "format": "date-time"
                     },
                     "issuesReportedArray": {
                       "type": "array",
@@ -87,25 +89,9 @@
                             },
                             "reportedDate": {
                               "type": "string"
-                            }
-                          },
-                          "required": [
-                            "issue",
-                            "reportedBy",
-                            "reportedDate"
-                          ]
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "issue": {
-                              "type": "string"
                             },
-                            "reportedBy": {
-                              "type": "string"
-                            },
-                            "reportedDate": {
-                              "type": "string"
+                            "resolved": {
+                              "type": "boolean"
                             }
                           },
                           "required": [
