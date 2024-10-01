@@ -268,7 +268,7 @@ function verifyFileData(data) {
   return true;
 }
 function fetchAlienRefList(firstLetter, handler) {
-  firstLetter.toLowerCase();
+  firstLetter = firstLetter.toLowerCase();
   let datafile = `data\\${firstLetter}_alienRefList.json`;
   fetch(datafile)
     .then(response => {
