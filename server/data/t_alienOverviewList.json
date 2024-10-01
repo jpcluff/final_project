@@ -1,38 +1,8 @@
 [
 {
     "name": "The Thing",
-    "alien": true,
+    "alienValidated": true,
     "creators": "John W. Campbell Jr., John Carpenter",
     "summary": "The Thing is a shape-shifting alien that assimilates and imitates other lifeforms. It is the main antagonist in the 1982 film 'The Thing,' directed by John Carpenter, and the 1938 novella 'Who Goes There?' by John W. Campbell Jr. The creature is discovered in Antarctica by a team of researchers and can replicate any organism it consumes. The Thing's true form is unknown, and it can infect and mimic humans, leading to paranoia and distrust among the crew.",
     "imgOverview": "./images/TheThing-0.png"
-}, {
-        "searchAlienName": "Talosians",
-        "alienExists": true,
-        "sourceType": "TV Show",
-        "summary": "Talosians are a telepathic species from the Star Trek universe, known for their large craniums and mental powers."
-    },
-    {
-        "searchAlienName": "Tholians",
-        "alienExists": true,
-        "sourceType": "TV Show",
-        "summary": "Tholians are a crystalline species from Star Trek, known for their ability to generate energy webs."
-    },
-    {
-        "searchAlienName": "Trill",
-        "alienExists": true,
-        "sourceType": "TV Show",
-        "summary": "Trill are a symbiotic species from Star Trek, consisting of a humanoid host and a long-lived symbiont."
-    },
-    {
-        "searchAlienName": "Togruta",
-        "alienExists": true,
-        "sourceType": "TV Show",
-        "summary": "Togruta are a species from the Star Wars universe, known for their colorful skin, head-tails, and montrals."
-    },
-    {
-        "searchAlienName": "Twi'leks",
-        "alienExists": true,
-        "sourceType": "TV Show",
-        "summary": "Twi'leks are a species from the Star Wars universe, characterized by their twin head-tails called lekku."
-    }
-]
+}]
